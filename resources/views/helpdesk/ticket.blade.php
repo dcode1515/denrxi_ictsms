@@ -3,661 +3,1401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DENR XI - ICT Service Management System</title>
+    <title>DENR XI - ICT Helpdesk</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --denr-green: #006341;
-            --denr-green-dark: #004d31;
-            --denr-blue: #007cc3;
-            --denr-blue-light: #e6f3fa;
-            --denr-gray: #f8f9fa;
-            --denr-text: #333333;
-            --denr-text-light: #666666;
-            --denr-success: #2e7d32;
-            --denr-warning: #ff9800;
-            --denr-danger: #d32f2f;
+            --denr-green: #1e7e34;
+            --denr-light-green: #28a745;
+            --denr-dark-green: #145a32;
+            --denr-blue: #0d6efd;
+            --light-bg: #f8fafc;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            --card-shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.07), 0 4px 6px rgba(0, 0, 0, 0.05);
         }
-
+        
         * {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
+        
         body {
-            background-color: #f8fafc;
-            color: var(--denr-text);
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background-color: var(--light-bg);
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
-
-        /* Custom Header */
-        .denr-header {
-            background: linear-gradient(135deg, var(--denr-green), var(--denr-green-dark));
-            color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #222;
         }
-
-        .denr-header::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
+        
+        /* Navbar */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-
-        .denr-logo {
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 50%;
+        
+        .navbar-brand {
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-right: 15px;
-        }
-
-        .denr-logo-icon {
-            color: var(--denr-green);
-            font-size: 30px;
-        }
-
-        .header-title h1 {
             font-weight: 700;
-            font-size: 1.8rem;
-            margin-bottom: 0.2rem;
+            color: var(--denr-dark-green);
         }
-
-        .header-title p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+        
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 12px;
         }
-
-        /* Custom Card */
-        .denr-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-            border: none;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+        
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 6px;
+            transition: all 0.2s;
         }
-
-        .denr-card:hover {
-            transform: translateY(-5px);
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--denr-green) !important;
+            background-color: rgba(40, 167, 69, 0.05);
         }
-
-        .card-header-custom {
-            background: linear-gradient(to right, var(--denr-green), var(--denr-blue));
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(30, 126, 52, 0.9) 0%, rgba(20, 90, 50, 0.95) 100%);
             color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 3rem;
+            flex: 1;
+        }
+        
+        /* Card Design */
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             padding: 1.5rem;
-            border-bottom: none;
         }
-
-        .card-header-custom h3 {
-            font-weight: 600;
-            margin: 0;
+        
+        .card-body {
+            padding: 2rem;
         }
-
-        /* Form Styling */
-        .form-label-custom {
-            font-weight: 600;
-            color: var(--denr-text);
+        
+        .section-title {
+            color: var(--denr-dark-green);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid rgba(40, 167, 69, 0.2);
+        }
+        
+        /* Form Elements */
+        .form-label {
+            font-weight: 500;
+            color: #444;
             margin-bottom: 0.5rem;
         }
-
-        .required-star {
-            color: var(--denr-danger);
-        }
-
-        .form-control-custom {
-            border: 2px solid #e0e0e0;
+        
+        .form-control, .form-select {
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 12px 15px;
-            transition: all 0.3s;
-            font-size: 0.95rem;
+            transition: all 0.2s;
+            background-color: #fdfdfd;
         }
-
-        .form-control-custom:focus {
-            border-color: var(--denr-blue);
-            box-shadow: 0 0 0 0.25rem rgba(0, 124, 195, 0.25);
-        }
-
-        /* Priority Selector */
-        .priority-selector {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .priority-option {
-            flex: 1;
-            min-width: 120px;
-        }
-
-        .priority-option input[type="radio"] {
-            display: none;
-        }
-
-        .priority-label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .priority-label i {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .priority-label span {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .priority-option input[type="radio"]:checked + .priority-label {
-            border-color: var(--denr-blue);
-            background-color: var(--denr-blue-light);
-            color: var(--denr-blue);
-        }
-
-        .priority-low .priority-label i { color: #2e7d32; }
-        .priority-medium .priority-label i { color: #ff9800; }
-        .priority-high .priority-label i { color: #d32f2f; }
-        .priority-critical .priority-label i { color: #7b1fa2; }
-
-        /* File Upload Area */
-        .file-upload-area {
-            border: 2px dashed #c0c0c0;
-            border-radius: 10px;
-            padding: 40px 20px;
-            text-align: center;
-            background-color: #fafafa;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .file-upload-area:hover {
-            border-color: var(--denr-blue);
-            background-color: rgba(0, 124, 195, 0.05);
-        }
-
-        .file-upload-area.dragover {
+        
+        .form-control:focus, .form-select:focus {
             border-color: var(--denr-green);
-            background-color: rgba(0, 99, 65, 0.05);
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.15);
         }
-
-        .upload-icon {
-            font-size: 48px;
-            color: var(--denr-blue);
-            margin-bottom: 15px;
+        
+        .required-field::after {
+            content: " *";
+            color: #dc3545;
         }
-
-        .file-preview-container {
-            margin-top: 20px;
-        }
-
-        .file-preview {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--denr-gray);
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .file-icon {
-            color: var(--denr-blue);
-            font-size: 20px;
-        }
-
-        .remove-file {
-            color: var(--denr-danger);
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        /* Button Styling */
+        
+        /* Button Styles */
         .btn-denr {
-            background: linear-gradient(to right, var(--denr-green), var(--denr-green-dark));
-            border: none;
+            background-color: var(--denr-green);
             color: white;
-            padding: 12px 30px;
+            padding: 0.75rem 2rem;
             border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            font-weight: 500;
+            border: none;
+            transition: all 0.2s;
         }
-
+        
         .btn-denr:hover {
-            background: linear-gradient(to right, var(--denr-green-dark), var(--denr-green));
+            background-color: var(--denr-dark-green);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 99, 65, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        .btn-denr-secondary {
-            background: #6c757d;
-            color: white;
-        }
-
-        .btn-denr-secondary:hover {
-            background: #5a6268;
-            color: white;
-        }
-
-        /* Toast Notification */
-        .toast-denr {
-            border-left: 5px solid var(--denr-green);
+        
+        .btn-outline-denr {
+            background-color: transparent;
+            color: var(--denr-green);
+            border: 1px solid var(--denr-green);
+            padding: 0.75rem 2rem;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            font-weight: 500;
+            transition: all 0.2s;
         }
-
-        .toast-denr-success {
-            border-left-color: var(--denr-success);
+        
+        .btn-outline-denr:hover {
+            background-color: rgba(40, 167, 69, 0.05);
+            color: var(--denr-dark-green);
         }
-
-        .toast-denr-error {
-            border-left-color: var(--denr-danger);
+        
+        /* File Upload */
+        .file-upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: #fafafa;
         }
-
-        .toast-denr-warning {
-            border-left-color: var(--denr-warning);
+        
+        .file-upload-area:hover {
+            border-color: var(--denr-green);
+            background-color: rgba(40, 167, 69, 0.02);
         }
-
-        /* Progress Steps */
-        .progress-steps {
+        
+        .file-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 30px;
-            position: relative;
+            align-items: center;
+            border: 1px solid #eee;
         }
-
-        .progress-steps::before {
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ddd;
+            padding: 3rem 0 1.5rem;
+            margin-top: auto;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 1.5rem;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-title {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title:after {
             content: '';
             position: absolute;
-            top: 20px;
             left: 0;
-            right: 0;
-            height: 2px;
-            background-color: #e0e0e0;
-            z-index: 1;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--denr-green), var(--denr-blue));
         }
-
-        .step {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            flex: 1;
+        
+        .footer-link {
+            color: #bbb;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: all 0.2s;
+            font-size: 0.95rem;
         }
-
-        .step-icon {
+        
+        .footer-link:hover {
+            color: var(--denr-light-green);
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            color: #bbb;
+            font-size: 0.95rem;
+        }
+        
+        .contact-info i {
+            color: var(--denr-light-green);
+            width: 20px;
+            margin-right: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
             width: 40px;
             height: 40px;
-            background: #e0e0e0;
             border-radius: 50%;
+            background-color: #333;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 10px;
-            color: #666;
-            font-weight: 600;
+            color: white;
+            text-decoration: none;
             transition: all 0.3s;
         }
-
-        .step.active .step-icon {
-            background: var(--denr-green);
-            color: white;
+        
+        .social-link:hover {
+            background-color: var(--denr-green);
+            transform: translateY(-5px);
         }
-
-        .step.completed .step-icon {
-            background: var(--denr-success);
-            color: white;
-        }
-
-        .step-label {
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1.5rem;
+            margin-top: 3rem;
+            text-align: center;
             font-size: 0.85rem;
+            color: #888;
+        }
+        
+        .copyright a {
+            color: var(--denr-light-green);
+            text-decoration: none;
+        }
+        
+        /* Ticket Preview */
+        .ticket-preview {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .preview-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .preview-label {
+            font-weight: 500;
             color: #666;
-        }
-
-        .step.active .step-label {
-            color: var(--denr-green);
-            font-weight: 600;
-        }
-
-        /* Status Badge */
-        .status-badge {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .status-open { background: #e3f2fd; color: #1976d2; }
-        .status-pending { background: #fff3e0; color: #f57c00; }
-        .status-in-progress { background: #e8f5e8; color: #388e3c; }
-        .status-resolved { background: #e8eaf6; color: #5c6bc0; }
-        .status-closed { background: #f5f5f5; color: #616161; }
-
-        /* Footer */
-        .denr-footer {
-            background: var(--denr-green);
-            color: white;
-            padding: 1.5rem 0;
-            margin-top: auto;
-        }
-
-        .denr-footer p {
-            margin: 0;
             font-size: 0.9rem;
-            opacity: 0.9;
         }
-
-        /* Responsive Adjustments */
+        
+        /* Success Modal */
+        .success-modal .modal-content,
+        .status-modal .modal-content {
+            border-radius: 12px;
+            overflow: hidden;
+            border: none;
+        }
+        
+        .success-modal .modal-header,
+        .status-modal .modal-header {
+            background: linear-gradient(135deg, var(--denr-green) 0%, var(--denr-dark-green) 100%);
+            color: white;
+            border: none;
+            padding: 1.5rem 2rem;
+        }
+        
+        .success-modal .modal-body,
+        .status-modal .modal-body {
+            padding: 2.5rem 2rem;
+        }
+        
+        .success-modal .ticket-number {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(13, 110, 253, 0.1) 100%);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 2px dashed var(--denr-green);
+        }
+        
+        .success-modal .ticket-number h3 {
+            color: var(--denr-dark-green);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.2) 0%, rgba(13, 110, 253, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .success-icon i {
+            font-size: 2.5rem;
+            color: var(--denr-green);
+        }
+        
+        /* Status Modal Specific Styles */
+        .status-tab {
+            margin-bottom: 1.5rem;
+        }
+        
+        .status-tab .nav-link {
+            color: #666;
+            border: 1px solid #dee2e6;
+            margin-right: 10px;
+        }
+        
+        .status-tab .nav-link.active {
+            background-color: var(--denr-green);
+            color: white;
+            border-color: var(--denr-green);
+        }
+        
+        .status-result {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        
+        .ticket-status {
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .status-pending {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #e6b400;
+        }
+        
+        .status-in-progress {
+            background-color: rgba(13, 110, 253, 0.1);
+            color: #0d6efd;
+        }
+        
+        .status-resolved {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--denr-green);
+        }
+        
+        .status-closed {
+            background-color: rgba(108, 117, 125, 0.1);
+            color: #6c757d;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .priority-selector {
-                flex-direction: column;
+            .hero-title {
+                font-size: 2rem;
             }
             
-            .priority-option {
-                min-width: 100%;
+            .card-body {
+                padding: 1.5rem;
             }
             
-            .denr-logo {
-                width: 60px;
-                height: 60px;
-                margin-right: 10px;
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
             }
             
-            .header-title h1 {
-                font-size: 1.5rem;
+            .footer {
+                text-align: center;
+            }
+            
+            .footer-title:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
             }
         }
+        
+        /* Utility Classes */
+        .rounded-lg {
+            border-radius: 12px;
+        }
+        
+        .shadow-sm {
+            box-shadow: var(--card-shadow);
+        }
+        
+        .text-denr {
+            color: var(--denr-green);
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        /* Responsive button adjustments */
+@media (max-width: 767.98px) {
+    .btn-responsive {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .btn-group-responsive {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+/* Ensure buttons don't get too small */
+.btn {
+    min-width: 140px;
+    white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+    .btn {
+        min-width: 120px;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn i {
+        font-size: 0.9rem;
+    }
+}
+
+/* Prevent button text from wrapping */
+.btn span {
+    white-space: nowrap;
+}
     </style>
 </head>
 <body>
-    <div id = "app">
-    <Ticket></Ticket>
-   
- </div>
-    <!-- Toast Container -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
-   
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Seal_of_the_Department_of_Environment_and_Natural_Resources.svg/1200px-Seal_of_the_Department_of_Environment_and_Natural_Resources.svg.png" alt="DENR Logo">
+                <div>
+                    <div>DENR Region XI</div>
+                    <small class="text-muted" style="font-size: 0.85rem; font-weight: 400;">ICT Helpdesk System</small>
+                </div>
+            </a>
+            
+           
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="hero-title">ICT Helpdesk Ticketing System</h1>
+                <p class="hero-subtitle">Submit, track, and manage your ICT concerns with the Department of Environment and Natural Resources - Region XI</p>
+                <div class="mt-4">
+                    <a href="#submitTicket" class="btn btn-light me-2" style="padding: 0.75rem 2rem; border-radius: 8px;">
+                        <i class="fas fa-plus-circle me-1"></i> Submit New Ticket
+                    </a>
+                    <button class="btn btn-outline-light" style="padding: 0.75rem 2rem; border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#statusModal">
+                        <i class="fas fa-search me-1"></i> Check Ticket Status
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-     <script src="{{ asset('public/js/app.js') }}?v={{ config('app.version') }}"></script>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Statistics Cards -->
+                    
+
+                    <!-- Ticket Form -->
+                    <div class="card mb-5" id="submitTicket">
+                        <div class="card-header">
+                            <h4 class="section-title mb-0">
+                                <i class="fas fa-ticket-alt me-2 text-denr"></i>
+                                New Helpdesk Ticket
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="ticketForm">
+                                <!-- Ticket Details -->
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="ticketType" class="form-label required-field">Ticket Type</label>
+                                        <select class="form-select" id="ticketType" required>
+                                            <option value="" selected disabled>Select issue type</option>
+                                            <option value="hardware">Hardware Issue</option>
+                                            <option value="software">Software Issue</option>
+                                            <option value="network">Network/Internet</option>
+                                            <option value="email">Email Account</option>
+                                            <option value="system">System Access</option>
+                                            <option value="other">Other Concern</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="priority" class="form-label">Priority Level</label>
+                                        <select class="form-select" id="priority">
+                                            <option value="low">Low Priority</option>
+                                            <option value="medium" selected>Medium Priority</option>
+                                            <option value="high">High Priority</option>
+                                            <option value="urgent">Urgent Priority</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Personal Information -->
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label required-field">Full Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="position" class="form-label required-field">Position</label>
+                                        <input type="text" class="form-control" id="position" placeholder="Enter your position" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="office" class="form-label required-field">Office/Division</label>
+                                        <select class="form-select" id="office" required>
+                                            <option value="" selected disabled>Select your office</option>
+                                            <option value="rd">Office of the Regional Director</option>
+                                            <option value="ard">Office of the Assistant Regional Director</option>
+                                            <option value="finance">Finance and Administrative Division</option>
+                                            <option value="technical">Technical Services Division</option>
+                                            <option value="conservation">Conservation and Development Division</option>
+                                            <option value="other">Other Office/Unit</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label required-field">Email Address</label>
+                                        <input type="email" class="form-control" id="email" placeholder="name@denr.gov.ph" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- Issue Description -->
+                                <div class="mb-4">
+                                    <label for="concern" class="form-label required-field">Issue Description</label>
+                                    <textarea class="form-control" id="concern" rows="5" placeholder="Please describe your ICT concern in detail..." required maxlength="1000"></textarea>
+                                    <div class="text-muted small mt-1" id="charCount">0/1000 characters</div>
+                                </div>
+                                
+                                <!-- File Upload -->
+                                <div class="mb-4">
+                                    <label class="form-label">Attachments (Optional)</label>
+                                    <div class="file-upload-area" id="fileUploadArea">
+                                        <div class="mb-3">
+                                            <i class="fas fa-cloud-upload-alt fa-3x text-muted"></i>
+                                        </div>
+                                        <h5>Drop files here or click to upload</h5>
+                                        <p class="text-muted small">Maximum file size: 5MB. Supported formats: JPG, PNG, PDF, DOC</p>
+                                        <input type="file" id="fileInput" style="display: none;" multiple>
+                                    </div>
+                                    <div id="fileList" class="mt-3"></div>
+                                </div>
+                                
+                                <!-- Preview Section -->
+                                <div class="ticket-preview" id="ticketPreview">
+                                    <h5 class="mb-3">Ticket Preview</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="preview-item">
+                                                <div class="preview-label">Ticket Type</div>
+                                                <div class="preview-value" id="previewType"></div>
+                                            </div>
+                                            <div class="preview-item">
+                                                <div class="preview-label">Priority</div>
+                                                <div class="preview-value" id="previewPriority"></div>
+                                            </div>
+                                            <div class="preview-item">
+                                                <div class="preview-label">Full Name</div>
+                                                <div class="preview-value" id="previewName"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="preview-item">
+                                                <div class="preview-label">Office/Division</div>
+                                                <div class="preview-value" id="previewOffice"></div>
+                                            </div>
+                                            <div class="preview-item">
+                                                <div class="preview-label">Email</div>
+                                                <div class="preview-value" id="previewEmail"></div>
+                                            </div>
+                                            <div class="preview-item">
+                                                <div class="preview-label">Attachments</div>
+                                                <div class="preview-value" id="previewFiles">No files attached</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item">
+                                        <div class="preview-label">Issue Description</div>
+                                        <div class="preview-value" id="previewConcern" style="white-space: pre-line;"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Agreement -->
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="agreement" required>
+                                    <label class="form-check-label" for="agreement">
+                                        I confirm that the information provided is accurate and I understand that false reports may be subject to appropriate action.
+                                    </label>
+                                </div>
+                                
+                                <!-- Form Buttons -->
+                               <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
+                                <div class="d-flex flex-column flex-sm-row gap-2">
+                                    <button type="button" id="previewBtn" class="btn btn-outline-denr">
+                                        <i class="fas fa-eye me-1"></i> Preview Ticket
+                                    </button>
+                                </div>
+                                <div class="d-flex flex-column flex-sm-row gap-2">
+                                    <button type="reset" class="btn btn-outline-secondary">
+                                        <i class="fas fa-eraser me-1"></i> Clear Form
+                                    </button>
+                                    <button type="submit" class="btn btn-denr">
+                                        <i class="fas fa-paper-plane me-1"></i> Submit Ticket
+                                    </button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Seal_of_the_Department_of_Environment_and_Natural_Resources.svg/1200px-Seal_of_the_Department_of_Environment_and_Natural_Resources.svg.png" alt="DENR Logo" class="footer-logo">
+                    <h4 class="text-white mb-3">DENR Region XI</h4>
+                    <p class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i> DENR Regional Office XI,<br>
+                        <span style="margin-left: 30px;">Davao City, Philippines</span>
+                    </p>
+                    <p class="contact-info"><i class="fas fa-phone"></i> (082) 224-1578</p>
+                    <p class="contact-info"><i class="fas fa-envelope"></i> ict.helpdesk@denrxi.gov.ph</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Website">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <a href="#" class="footer-link"><i class="fas fa-chevron-right me-2"></i> Home</a>
+                    <a href="#submitTicket" class="footer-link"><i class="fas fa-chevron-right me-2"></i> Submit Ticket</a>
+                    <a href="#" class="footer-link" data-bs-toggle="modal" data-bs-target="#statusModal"><i class="fas fa-chevron-right me-2"></i> Check Ticket Status</a>
+                    <a href="#" class="footer-link"><i class="fas fa-chevron-right me-2"></i> Knowledge Base</a>
+                    <a href="#" class="footer-link"><i class="fas fa-chevron-right me-2"></i> Download Forms</a>
+                    <a href="#" class="footer-link"><i class="fas fa-chevron-right me-2"></i> ICT Policies</a>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-title">Service Hours</h5>
+                    <p class="contact-info">
+                        <i class="fas fa-clock"></i> Monday - Friday<br>
+                        <span style="margin-left: 30px;">8:00 AM - 5:00 PM</span>
+                    </p>
+                    <p class="contact-info">
+                        <i class="fas fa-calendar"></i> Weekends & Holidays<br>
+                        <span style="margin-left: 30px;">Emergency Support Only</span>
+                    </p>
+                    <div class="mt-4">
+                        <h6 class="text-white mb-3">Emergency Contact</h6>
+                        <p class="contact-info">
+                            <i class="fas fa-phone-volume text-danger"></i> 
+                            <strong>Hotline: (082) 224-9999</strong><br>
+                            <small style="margin-left: 30px;">For critical system outages only</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Department of Environment and Natural Resources - Region XI. All rights reserved.</p>
+                <p class="mb-0">
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a> | 
+                    <a href="#">Accessibility Statement</a> | 
+                    <a href="#">Site Map</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal fade success-modal" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">
+                        <i class="fas fa-check-circle me-2"></i>Ticket Submitted Successfully
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h4 class="mb-3 text-center">Thank You For Your Submission!</h4>
+                    <p class="text-center">Your ICT concern has been logged into our system. Our technical team will review your ticket and contact you shortly.</p>
+                    
+                    <div class="ticket-number animate-pulse">
+                        <p class="text-muted mb-2 text-center">Your Ticket Reference Number:</p>
+                        <h3 class="text-center" id="ticketNumberDisplay">DENR-2023-XXXXX</h3>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="alert alert-light" style="background-color: rgba(0,0,0,0.03); border: none;">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3 text-denr">
+                                    <i class="fas fa-info-circle fa-lg"></i>
+                                </div>
+                                <div class="small">
+                                    <strong>Important:</strong> You will receive a confirmation email within 15 minutes. Please keep your ticket number for reference.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-denr px-4" id="printTicketBtn">
+                        <i class="fas fa-print me-2"></i> Print Ticket
+                    </button>
+                    <button type="button" class="btn btn-outline-denr px-4" data-bs-dismiss="modal">
+                        <i class="fas fa-check me-2"></i> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Check Status Modal -->
+    <div class="modal fade status-modal" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="statusModalLabel">
+                        <i class="fas fa-search me-2"></i>Check Ticket Status
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tabs for search methods -->
+                    <ul class="nav nav-pills status-tab" id="searchTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="ticket-tab" data-bs-toggle="pill" data-bs-target="#ticketTab" type="button">
+                                <i class="fas fa-ticket-alt me-1"></i> By Ticket Number
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="email-tab" data-bs-toggle="pill" data-bs-target="#emailTab" type="button">
+                                <i class="fas fa-envelope me-1"></i> By Email Address
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content" id="searchTabContent">
+                        <!-- Ticket Number Search -->
+                        <div class="tab-pane fade show active" id="ticketTab" role="tabpanel">
+                            <div class="mb-3">
+                                <label for="ticketNumberInput" class="form-label">Ticket Number</label>
+                                <input type="text" class="form-control" id="ticketNumberInput" placeholder="Enter ticket number (e.g., DENR-2023-12345)">
+                                <div class="form-text">Enter the ticket number you received after submission.</div>
+                            </div>
+                            <button class="btn btn-denr w-100" id="searchByTicketBtn">
+                                <i class="fas fa-search me-2"></i> Search Ticket
+                            </button>
+                        </div>
+                        
+                        <!-- Email Address Search -->
+                        <div class="tab-pane fade" id="emailTab" role="tabpanel">
+                            <div class="mb-3">
+                                <label for="emailInput" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email address">
+                                <div class="form-text">Enter the email address used when submitting the ticket.</div>
+                            </div>
+                            <button class="btn btn-denr w-100" id="searchByEmailBtn">
+                                <i class="fas fa-search me-2"></i> Search by Email
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Search Results -->
+                    <div class="status-result" id="statusResult">
+                        <h5 class="mb-3">Ticket Status</h5>
+                        <div class="ticket-status" id="ticketStatusBadge">Pending</div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <p class="mb-1"><strong>Ticket Number:</strong></p>
+                                <p id="resultTicketNumber">DENR-2023-12345</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-1"><strong>Submitted By:</strong></p>
+                                <p id="resultSubmittedBy">Juan Dela Cruz</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <p class="mb-1"><strong>Date Submitted:</strong></p>
+                                <p id="resultDate">October 15, 2023</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-1"><strong>Last Updated:</strong></p>
+                                <p id="resultLastUpdate">October 16, 2023</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="mb-1"><strong>Issue Description:</strong></p>
+                            <p id="resultDescription" class="mb-0">Network connectivity issues in Room 305. Unable to access shared drives.</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="mb-1"><strong>Assigned Technician:</strong></p>
+                            <p id="resultTechnician">John Smith (ICT Support)</p>
+                        </div>
+                        
+                        <div class="mb-0">
+                            <p class="mb-1"><strong>Latest Update:</strong></p>
+                            <p id="resultUpdate" class="mb-0">Technician has been assigned and will visit your location tomorrow morning.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- No Results Message -->
+                    <div class="alert alert-warning mt-3 d-none" id="noResultsAlert">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        No ticket found with the provided information. Please check your details and try again.
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Form elements
-            const form = document.getElementById('ticketForm');
-            const fileInput = document.getElementById('fileInput');
-            const browseBtn = document.getElementById('browseBtn');
-            const dropZone = document.getElementById('dropZone');
-            const filePreviewContainer = document.getElementById('filePreviewContainer');
-            const clearBtn = document.getElementById('clearBtn');
-            const submitBtn = document.getElementById('submitBtn');
+        // Initialize variables
+        let files = [];
+        
+        // File upload functionality
+        document.getElementById('fileUploadArea').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
+        
+        // Drag and drop functionality
+        const fileUploadArea = document.getElementById('fileUploadArea');
+        fileUploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.borderColor = 'var(--denr-green)';
+        });
+        
+        fileUploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#ccc';
+        });
+        
+        fileUploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#ccc';
             
-            // Toast function
-            function showToast(message, type = 'success') {
-                const toastContainer = document.querySelector('.toast-container');
-                const toastId = 'toast-' + Date.now();
+            const droppedFiles = e.dataTransfer.files;
+            document.getElementById('fileInput').files = droppedFiles;
+            
+            // Trigger change event
+            const event = new Event('change');
+            document.getElementById('fileInput').dispatchEvent(event);
+        });
+        
+        // Handle file selection
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const fileList = document.getElementById('fileList');
+            
+            // Clear previous list
+            fileList.innerHTML = '';
+            files = [];
+            
+            // Display each selected file
+            for (let i = 0; i < e.target.files.length; i++) {
+                const file = e.target.files[i];
                 
-                const toastHtml = `
-                    <div id="${toastId}" class="toast toast-denr toast-denr-${type}" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header">
-                            <i class="fas ${type === 'success' ? 'fa-check-circle text-success' : type === 'error' ? 'fa-exclamation-circle text-danger' : 'fa-info-circle text-warning'} me-2"></i>
-                            <strong class="me-auto">${type === 'success' ? 'Success' : type === 'error' ? 'Error' : 'Notice'}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                        <div class="toast-body">
-                            ${message}
-                        </div>
+                // Check file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert(`File "${file.name}" exceeds the 5MB size limit and will not be uploaded.`);
+                    continue;
+                }
+                
+                // Check maximum number of files
+                if (files.length >= 5) {
+                    alert("Maximum of 5 files allowed. Only the first 5 files will be uploaded.");
+                    break;
+                }
+                
+                files.push(file);
+                
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                
+                // Determine file icon
+                let fileIcon = 'fa-file';
+                let fileColor = 'text-primary';
+                if (file.type.startsWith('image/')) {
+                    fileIcon = 'fa-file-image';
+                    fileColor = 'text-success';
+                } else if (file.type.includes('pdf')) {
+                    fileIcon = 'fa-file-pdf';
+                    fileColor = 'text-danger';
+                } else if (file.type.includes('word') || file.type.includes('document')) {
+                    fileIcon = 'fa-file-word';
+                    fileColor = 'text-primary';
+                }
+                
+                fileItem.innerHTML = `
+                    <div>
+                        <i class="fas ${fileIcon} ${fileColor} me-2"></i>
+                        <span>${file.name}</span>
+                        <small class="text-muted ms-2">(${(file.size / 1024).toFixed(1)} KB)</small>
                     </div>
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-file" data-index="${files.length - 1}">
+                        <i class="fas fa-times"></i>
+                    </button>
                 `;
                 
-                toastContainer.insertAdjacentHTML('beforeend', toastHtml);
-                const toastElement = document.getElementById(toastId);
-                const toast = new bootstrap.Toast(toastElement, { delay: 5000 });
-                toast.show();
-                
-                // Remove toast from DOM after it's hidden
-                toastElement.addEventListener('hidden.bs.toast', function () {
-                    toastElement.remove();
+                fileList.appendChild(fileItem);
+            }
+            
+            // Update file input
+            const dataTransfer = new DataTransfer();
+            files.forEach(file => dataTransfer.items.add(file));
+            document.getElementById('fileInput').files = dataTransfer.files;
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-file').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    removeFile(index);
                 });
+            });
+            
+            updatePreview();
+        });
+        
+        function removeFile(index) {
+            files.splice(index, 1);
+            
+            // Update file input
+            const dataTransfer = new DataTransfer();
+            files.forEach(file => dataTransfer.items.add(file));
+            document.getElementById('fileInput').files = dataTransfer.files;
+            
+            // Update file list display
+            const fileList = document.getElementById('fileList');
+            if (files.length === 0) {
+                fileList.innerHTML = '';
+            } else {
+                // Trigger change event to update display
+                const event = new Event('change');
+                document.getElementById('fileInput').dispatchEvent(event);
             }
             
-            // File handling
-            function handleFiles(files) {
-                for (let i = 0; i < files.length; i++) {
-                    const file = files[i];
-                    const fileSize = (file.size / (1024 * 1024)).toFixed(2); // Convert to MB
-                    
-                    if (fileSize > 10) {
-                        showToast(`File "${file.name}" exceeds 10MB limit`, 'error');
-                        continue;
-                    }
-                    
-                    const validTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-                    if (!validTypes.includes(file.type)) {
-                        showToast(`File type not supported for "${file.name}"`, 'error');
-                        continue;
-                    }
-                    
-                    addFilePreview(file);
+            updatePreview();
+        }
+        
+        // Character counter for concern textarea
+        const concernTextarea = document.getElementById('concern');
+        const charCount = document.getElementById('charCount');
+        
+        concernTextarea.addEventListener('input', function() {
+            const length = this.value.length;
+            charCount.textContent = `${length}/1000 characters`;
+            
+            updatePreview();
+        });
+        
+        // Preview button functionality
+        document.getElementById('previewBtn').addEventListener('click', function() {
+            // Validate required fields before showing preview
+            const requiredFields = document.querySelectorAll('#ticketForm [required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
                 }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all required fields before previewing.');
+                return;
             }
             
-            function addFilePreview(file) {
-                const fileId = 'file-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-                const fileSize = (file.size / (1024 * 1024)).toFixed(2);
-                
-                const fileIcon = file.type.startsWith('image/') ? 'fa-file-image' : 
-                                file.type === 'application/pdf' ? 'fa-file-pdf' : 
-                                'fa-file-word';
-                
-                const previewHtml = `
-                    <div class="file-preview" id="${fileId}">
-                        <div class="file-info">
-                            <i class="fas ${fileIcon} file-icon"></i>
-                            <div>
-                                <div class="fw-bold">${file.name}</div>
-                                <small class="text-muted">${fileSize} MB</small>
-                            </div>
-                        </div>
-                        <div class="remove-file" onclick="removeFile('${fileId}')">
-                            <i class="fas fa-times"></i>
-                        </div>
+            // Show preview
+            document.getElementById('ticketPreview').style.display = 'block';
+            this.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Update preview function
+        function updatePreview() {
+            // Get form values
+            const ticketType = document.getElementById('ticketType');
+            const priority = document.getElementById('priority');
+            const name = document.getElementById('name').value;
+            const position = document.getElementById('position').value;
+            const office = document.getElementById('office');
+            const email = document.getElementById('email').value;
+            const concern = document.getElementById('concern').value;
+            const fileCount = files.length;
+            
+            // Update preview elements
+            document.getElementById('previewType').textContent = ticketType.options[ticketType.selectedIndex]?.text || 'Not specified';
+            document.getElementById('previewPriority').textContent = priority.options[priority.selectedIndex]?.text || 'Not specified';
+            document.getElementById('previewName').textContent = name || 'Not specified';
+            document.getElementById('previewOffice').textContent = office.options[office.selectedIndex]?.text || 'Not specified';
+            document.getElementById('previewEmail').textContent = email || 'Not specified';
+            document.getElementById('previewConcern').textContent = concern || 'Not specified';
+            document.getElementById('previewFiles').textContent = fileCount > 0 ? `${fileCount} file(s) attached` : 'No files attached';
+        }
+        
+        // Form submission
+        document.getElementById('ticketForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate required fields
+            const requiredFields = document.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+            
+            if (!document.getElementById('agreement').checked) {
+                alert('Please confirm that the information provided is accurate.');
+                document.getElementById('agreement').focus();
+                return;
+            }
+            
+            if (!isValid) {
+                alert('Please fill in all required fields marked with *.');
+                return;
+            }
+            
+            // Generate ticket number
+            const ticketNumber = 'DENR-' + new Date().getFullYear() + '-' + Math.floor(10000 + Math.random() * 90000);
+            
+            // Update modal with ticket number
+            document.getElementById('ticketNumberDisplay').textContent = ticketNumber;
+            
+            // Show success modal
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            successModal.show();
+            
+            // Reset form after successful submission
+            document.getElementById('successModal').addEventListener('hidden.bs.modal', function () {
+                document.getElementById('ticketForm').reset();
+                document.getElementById('fileList').innerHTML = '';
+                document.getElementById('ticketPreview').style.display = 'none';
+                document.getElementById('charCount').textContent = '0/1000 characters';
+                files = [];
+            });
+        });
+        
+        // Form reset
+        document.querySelector('button[type="reset"]').addEventListener('click', function() {
+            // Clear file list
+            document.getElementById('fileList').innerHTML = '';
+            document.getElementById('ticketPreview').style.display = 'none';
+            document.getElementById('charCount').textContent = '0/1000 characters';
+            files = [];
+        });
+        
+        // Initialize form listeners for preview
+        const formInputs = document.querySelectorAll('#ticketForm input, #ticketForm select, #ticketForm textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('input', updatePreview);
+            input.addEventListener('change', updatePreview);
+        });
+        
+        // Print Ticket button functionality
+        document.getElementById('printTicketBtn').addEventListener('click', function() {
+            const ticketNumber = document.getElementById('ticketNumberDisplay').textContent;
+            const printContent = `
+                <html>
+                <head>
+                    <title>DENR Ticket - ${ticketNumber}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+                        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #28a745; padding-bottom: 20px; }
+                        .ticket-info { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+                        .ticket-number { font-size: 24px; font-weight: bold; color: #28a745; }
+                        .footer { text-align: center; margin-top: 30px; color: #666; font-size: 0.9rem; }
+                        @media print {
+                            body { padding: 0; }
+                            .no-print { display: none; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Seal_of_the_Department_of_Environment_and_Natural_Resources.svg/1200px-Seal_of_the_Department_of_Environment_and_Natural_Resources.svg.png" alt="DENR Logo" style="height: 60px; margin-bottom: 10px;">
+                        <h2>Department of Environment and Natural Resources</h2>
+                        <h3>Region XI - ICT Helpdesk</h3>
+                        <h4>Ticket Confirmation</h4>
                     </div>
-                `;
-                
-                filePreviewContainer.insertAdjacentHTML('beforeend', previewHtml);
+                    <div class="ticket-info">
+                        <p><strong>Ticket Number:</strong> <span class="ticket-number">${ticketNumber}</span></p>
+                        <p><strong>Date Submitted:</strong> ${new Date().toLocaleDateString()}</p>
+                        <p><strong>Time Submitted:</strong> ${new Date().toLocaleTimeString()}</p>
+                        <p><strong>Status:</strong> <span style="color: #e6b400; font-weight: bold;">PENDING REVIEW</span></p>
+                    </div>
+                    <p>Please keep this reference number for follow-up inquiries. You can check your ticket status anytime using our online system.</p>
+                    <div class="footer">
+                        <p>Department of Environment and Natural Resources - Region XI</p>
+                        <p>ICT Service Management System | © 2023 DENR Region XI</p>
+                    </div>
+                    <div class="no-print" style="text-align: center; margin-top: 20px;">
+                        <button onclick="window.print()" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            Print This Page
+                        </button>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.focus();
+        });
+        
+        // Check Status Modal Functionality
+        document.getElementById('searchByTicketBtn').addEventListener('click', function() {
+            const ticketNumber = document.getElementById('ticketNumberInput').value.trim();
+            
+            if (!ticketNumber) {
+                alert('Please enter a ticket number.');
+                return;
             }
             
-            // Make removeFile function globally accessible
-            window.removeFile = function(fileId) {
-                const fileElement = document.getElementById(fileId);
-                if (fileElement) {
-                    fileElement.remove();
-                }
-            };
+            // Simulate search (in a real system, this would be an API call)
+            simulateTicketSearch(ticketNumber, 'ticket');
+        });
+        
+        document.getElementById('searchByEmailBtn').addEventListener('click', function() {
+            const email = document.getElementById('emailInput').value.trim();
             
-            // Event listeners for file upload
-            browseBtn.addEventListener('click', () => {
-                fileInput.click();
-            });
-            
-            fileInput.addEventListener('change', (e) => {
-                if (e.target.files.length > 0) {
-                    handleFiles(e.target.files);
-                }
-            });
-            
-            // Drag and drop functionality
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                dropZone.addEventListener(eventName, preventDefaults, false);
-            });
-            
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
+            if (!email) {
+                alert('Please enter an email address.');
+                return;
             }
             
-            ['dragenter', 'dragover'].forEach(eventName => {
-                dropZone.addEventListener(eventName, () => {
-                    dropZone.classList.add('dragover');
-                }, false);
-            });
-            
-            ['dragleave', 'drop'].forEach(eventName => {
-                dropZone.addEventListener(eventName, () => {
-                    dropZone.classList.remove('dragover');
-                }, false);
-            });
-            
-            dropZone.addEventListener('drop', (e) => {
-                const dt = e.dataTransfer;
-                const files = dt.files;
-                handleFiles(files);
-            });
-            
-            // Form submission
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                if (!form.checkValidity()) {
-                    // Show validation errors
-                    form.classList.add('was-validated');
-                    showToast('Please fill in all required fields correctly.', 'error');
-                    return;
-                }
-                
-                // Check if at least one priority is selected
-                const prioritySelected = document.querySelector('input[name="priority"]:checked');
-                if (!prioritySelected) {
-                    showToast('Please select a priority level.', 'error');
-                    return;
-                }
-                
-                // Disable submit button and show loading state
-                submitBtn.disabled = true;
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
-                
-                // Simulate API call
-                try {
-                    // Collect form data
-                    const formData = {
-                        ticketType: document.getElementById('ticketType').value,
-                        priority: prioritySelected.value,
-                        fullName: document.getElementById('fullName').value,
-                        position: document.getElementById('position').value,
-                        office: document.getElementById('office').value,
-                        email: document.getElementById('email').value,
-                        concernDescription: document.getElementById('concernDescription').value,
-                        files: fileInput.files.length
-                    };
-                    
-                    // Generate a ticket number
-                    const ticketNumber = 'DENR-' + Date.now().toString().substr(-6);
-                    
-                    // Simulate network delay
-                    await new Promise(resolve => setTimeout(resolve, 1500));
-                    
-                    // Show success message
-                    showToast(`Ticket #${ticketNumber} submitted successfully! You'll receive a confirmation email shortly.`, 'success');
-                    
-                    // Reset form
-                    resetForm();
-                    
-                    // Show ticket details in console (for demo)
-                    console.log('Ticket submitted:', formData);
-                    
-                } catch (error) {
-                    showToast('An error occurred while submitting your ticket. Please try again.', 'error');
-                    console.error('Submission error:', error);
-                } finally {
-                    // Re-enable submit button
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalText;
-                }
-            });
-            
-            // Clear form function
-            function resetForm() {
-                form.reset();
-                form.classList.remove('was-validated');
-                filePreviewContainer.innerHTML = '';
-                fileInput.value = '';
-                
-                // Reset priority to default (High)
-                document.getElementById('priorityHigh').checked = true;
-                
-                // Remove any Bootstrap validation classes
-                const formControls = form.querySelectorAll('.form-control, .form-select');
-                formControls.forEach(control => {
-                    control.classList.remove('is-valid', 'is-invalid');
-                });
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
             }
             
-            // Clear button event listener
-            clearBtn.addEventListener('click', resetForm);
+            // Simulate search (in a real system, this would be an API call)
+            simulateTicketSearch(email, 'email');
+        });
+        
+        function simulateTicketSearch(searchValue, searchType) {
+            // Hide previous results and alerts
+            document.getElementById('statusResult').style.display = 'none';
+            document.getElementById('noResultsAlert').classList.add('d-none');
             
-            // Real-time validation
-            const inputs = form.querySelectorAll('input, select, textarea');
-            inputs.forEach(input => {
-                input.addEventListener('blur', () => {
-                    if (input.checkValidity()) {
-                        input.classList.remove('is-invalid');
-                        input.classList.add('is-valid');
-                    } else {
-                        input.classList.remove('is-valid');
-                        input.classList.add('is-invalid');
-                    }
-                });
-            });
-            
-            // Initialize tooltips
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            
-            // Show initial help message
+            // Simulate API delay
             setTimeout(() => {
-                showToast('Welcome to DENR XI ICT Ticketing System. Fill out the form to submit a service request.', 'info');
-            }, 1000);
+                // Mock data - in a real system, this would come from a database
+                const mockTickets = [
+                    {
+                        ticketNumber: 'DENR-2023-12345',
+                        email: 'juan.delacruz@denr.gov.ph',
+                        name: 'Juan Dela Cruz',
+                        date: 'October 15, 2023',
+                        lastUpdate: 'October 16, 2023',
+                        description: 'Network connectivity issues in Room 305. Unable to access shared drives.',
+                        status: 'in-progress',
+                        technician: 'John Smith (ICT Support)',
+                        update: 'Technician has been assigned and will visit your location tomorrow morning.'
+                    },
+                    {
+                        ticketNumber: 'DENR-2023-67890',
+                        email: 'maria.santos@denr.gov.ph',
+                        name: 'Maria Santos',
+                        date: 'October 14, 2023',
+                        lastUpdate: 'October 15, 2023',
+                        description: 'Printer not working in Finance Division.',
+                        status: 'resolved',
+                        technician: 'Sarah Johnson (Hardware Support)',
+                        update: 'Printer issue has been resolved. Replaced toner cartridge.'
+                    },
+                    {
+                        ticketNumber: 'DENR-2023-54321',
+                        email: 'robert.lim@denr.gov.ph',
+                        name: 'Robert Lim',
+                        date: 'October 16, 2023',
+                        lastUpdate: 'October 16, 2023',
+                        description: 'Email account login issues.',
+                        status: 'pending',
+                        technician: 'Not assigned yet',
+                        update: 'Ticket is in queue for review by ICT team.'
+                    }
+                ];
+                
+                let foundTicket = null;
+                
+                if (searchType === 'ticket') {
+                    foundTicket = mockTickets.find(ticket => 
+                        ticket.ticketNumber.toLowerCase() === searchValue.toLowerCase()
+                    );
+                } else if (searchType === 'email') {
+                    foundTicket = mockTickets.find(ticket => 
+                        ticket.email.toLowerCase() === searchValue.toLowerCase()
+                    );
+                }
+                
+                if (foundTicket) {
+                    // Update result display
+                    document.getElementById('resultTicketNumber').textContent = foundTicket.ticketNumber;
+                    document.getElementById('resultSubmittedBy').textContent = foundTicket.name;
+                    document.getElementById('resultDate').textContent = foundTicket.date;
+                    document.getElementById('resultLastUpdate').textContent = foundTicket.lastUpdate;
+                    document.getElementById('resultDescription').textContent = foundTicket.description;
+                    document.getElementById('resultTechnician').textContent = foundTicket.technician;
+                    document.getElementById('resultUpdate').textContent = foundTicket.update;
+                    
+                    // Update status badge
+                    const statusBadge = document.getElementById('ticketStatusBadge');
+                    statusBadge.textContent = foundTicket.status.replace('-', ' ').toUpperCase();
+                    statusBadge.className = 'ticket-status';
+                    
+                    switch(foundTicket.status) {
+                        case 'pending':
+                            statusBadge.classList.add('status-pending');
+                            break;
+                        case 'in-progress':
+                            statusBadge.classList.add('status-in-progress');
+                            break;
+                        case 'resolved':
+                            statusBadge.classList.add('status-resolved');
+                            break;
+                        case 'closed':
+                            statusBadge.classList.add('status-closed');
+                            break;
+                    }
+                    
+                    // Show results
+                    document.getElementById('statusResult').style.display = 'block';
+                } else {
+                    // Show no results message
+                    document.getElementById('noResultsAlert').classList.remove('d-none');
+                }
+            }, 500); // Simulate network delay
+        }
+        
+        // Clear search results when modal is closed
+        document.getElementById('statusModal').addEventListener('hidden.bs.modal', function () {
+            document.getElementById('ticketNumberInput').value = '';
+            document.getElementById('emailInput').value = '';
+            document.getElementById('statusResult').style.display = 'none';
+            document.getElementById('noResultsAlert').classList.add('d-none');
         });
     </script>
 </body>
