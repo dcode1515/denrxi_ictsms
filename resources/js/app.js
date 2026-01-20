@@ -22,6 +22,7 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('Login', require('./components/Auth/Login.vue').default);
 Vue.component('Ticket', require('./components/Helpdesk/Ticket.vue').default);
+Vue.component('Headoffice', require('./components/Admin/Headoffice.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

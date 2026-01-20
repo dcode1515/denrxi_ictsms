@@ -19,12 +19,16 @@ Route::get('/', function () {
 
 /*Auth Routes*/
 Route::get('/', [App\Http\Controllers\Auth\AuthController::class, 'login'])->name('login');
-
-
+Route::post('/api/post/login', [App\Http\Controllers\Auth\AuthController::class, 'post_login']);
 /*End Auth Routes*/
 
+
 /*Ticket Routes*/
-Route::get('/request/ticket', [App\Http\Controllers\HelpdeskController::class, 'ticket']);
-
-
+Route::get('/ticket/request', [App\Http\Controllers\HelpdeskController::class, 'ticket']);
 /*End Ticket Routes*/
+
+
+/*Admin  Routes*/
+Route::get('/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('/head/office', [App\Http\Controllers\Admin\AdminController::class, 'head_office'])->name('head.office');
+/*End Admin Routes*/
