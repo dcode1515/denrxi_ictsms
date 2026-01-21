@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\HeadOffice;
+use App\Models\Office;
+use Illuminate\Support\Facades\Validator; // Correct import for Laravel Validator
 
 class AdminController extends Controller
 {
@@ -17,4 +20,225 @@ class AdminController extends Controller
     {
         return view('admin.head_office ');
     }
+    public function store_office_head(Request $request){
+        $validator = Validator::make($request->all(), [
+            'head_of_office' => 'required|string|max:255',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
+        }
+        if (HeadOffice::where('head_of_office', $request->head_of_office)->exists()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'The Office Head already exists.'
+            ], 409); // 409 Conflict status code
+        }
+    
+        try {
+            $office = new HeadOffice;
+            $office->head_of_office = $request->head_of_office;
+            $office->save();
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Office Heads created successfully',
+                'data' => $office
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while creating the Office Head',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+     public function get_data_office_head(Request $request){
+           // Get the search query and per_page from the request
+           $search = $request->query('search');
+           $perPage = $request->query('per_page', 10); // Default to 10 if per_page is not provided
+       
+           // Query certifications with optional search
+           $offices = HeadOffice::when($search, function ($query, $search) {
+               return $query->where('head_of_office', 'like', '%' . $search . '%');
+                           
+           })
+           ->paginate($perPage);
+       
+           return response()->json([
+               'success' => true,
+               'data' => $offices
+           ]);
+
+    }
+    public function update_office_head(Request $request,$id){
+        $validator = Validator::make($request->all(), [
+            'head_of_office' => 'required|string|max:255',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
+        }
+       
+        try {
+            $office =  HeadOffice::find($id);
+            $office->head_of_office = $request->head_of_office;
+            $office->status = $request->status;
+            $office->save();
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Office Heads Updated successfully',
+                'data' => $office
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while creating the Office Head',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function delete_office_head(Request $request, $id)
+    {
+        try {
+            $office = HeadOffice::find($id);
+            
+            if (!$office) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Office Head not found'
+                ], 404);
+            }
+            
+            $office->delete();
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Office Head deleted successfully'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while deleting the Office Head',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function office ()
+    {
+        return view('admin.office');
+    }
+      public function getOfficeHead()
+    {
+        $officeheads = HeadOffice::orderBy('head_of_office', 'asc')->get();
+        return response()->json($officeheads);
+        
+    }
+    public function store_office(Request $request){
+        $validator = Validator::make($request->all(), [
+            'head_of_office' => 'required',
+            'office' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
+        }
+        if (Office::where('head_office_id', $request->head_of_office)
+        ->where('office', $request->office)
+        ->exists()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'The office already exists under the selected office.',
+            ], 409); // 409 Conflict status code
+            }
+    
+        try {
+            $office = new Office;
+            $office->head_office_id = $request->head_of_office;
+            $office->office = $request->office;
+            $office->save();
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Office created successfully',
+                'data' => $office
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while creating the Office Head',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+
+    }
+    public function getDataOffice(Request $request){
+         // Get the search query and per_page from the request
+           // Get the search query and per_page from the request
+          $search = $request->query('search');
+          $perPage = $request->query('per_page', 10); // Default to 10 if per_page is not provided
+      
+          // Query certifications with optional search
+          $offices = Office::with('office_under')->when($search, function ($query, $search) {
+                  return $query->where('office', 'like', '%' . $search . '%')
+                  ->orWhereHas('office_under', function ($q) use ($search) {
+                    $q->where('head_of_office', 'like', '%' . $search . '%');
+                });
+          })
+          ->paginate($perPage);
+      
+          return response()->json([
+              'success' => true,
+              'data' => $offices
+          ]);
+    }
+
+    public function update_office(Request $request,$id){
+        $validator = Validator::make($request->all(), [
+            'head_of_office' => 'required',
+             'office' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
+        }
+       
+        try {
+            $office =  Office::find($id);
+            $office->head_office_id = $request->head_of_office;
+            $office->office = $request->office;
+             $office->status = $request->status;
+            $office->save();
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Office  Updated successfully',
+                'data' => $office
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while creating the Office Head',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+
+
 }

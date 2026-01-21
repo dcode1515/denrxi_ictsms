@@ -1,197 +1,365 @@
 <template>
-  <div>
-    <div class="page-header">
-      <div class="page-header-left d-flex align-items-center">
-        <div class="page-header-title">
-          <h5 class="m-b-10">Head of Office</h5>
-        </div>
-        <ul class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Head of Office</li>
-        </ul>
-      </div>
-      <div class="page-header-right ms-auto">
-        <div class="page-header-right-items">
-          <div class="d-flex d-md-none">
-            <a href="javascript:void(0)" class="page-header-right-close-toggle">
-              <i class="feather-arrow-left me-2"></i>
-              <span>Back</span>
-            </a>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card border-0 shadow-sm">
+        <!-- DENR Themed Header -->
+        <div class="card-header bg-primary border-0">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <div class="d-flex align-items-center">
+                <div class="bg-white rounded-circle p-2 me-3">
+                  <i class="ri-government-line text-primary fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="card-title mb-0 text-white">
+                    <i class="ri-building-3-line me-2"></i>
+                    DENR - Manage Head of Office List
+                  </h5>
+                  <p class="text-white-50 mb-0 small">
+                    <i class="ri-list-check me-1"></i>
+                    Department of Environment and Natural Resources XI
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 text-end">
+              <button
+                type="button"
+                class="btn btn-light btn-sm"
+                @click="openModal('add')"
+              >
+                <i class="ri-add-circle-line me-1"></i>
+                Create Head of Office
+              </button>
+            </div>
           </div>
-          <div
-            class="d-flex align-items-center gap-2 page-header-right-items-wrapper"
-          >
-            <button @click="openModal('add')" class="btn btn-primary">
-              <i class="feather-plus me-2"></i>
-              <span>Create Head of Office</span>
-            </button>
-          </div>
         </div>
-        <div class="d-md-none d-flex align-items-center">
-          <a href="javascript:void(0)" class="page-header-right-open-toggle">
-            <i class="feather-align-right fs-20"></i>
-          </a>
-        </div>
-      </div>
-    </div>
 
-    <div class="modal-overlay" >
-      <div class="modal-container">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4>{{ modalTitle }}</h4>
-            <button @click="closeModal" class="btn-close"></button>
-          </div>
-          <div class="modal-body">
-            <!-- Your form content -->
-          </div>
-          <div class="modal-footer">
-            <!-- Your buttons -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="main-content">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card stretch stretch-full">
-            <div
-              class="card-header d-flex align-items-center justify-content-between"
-            >
-              <h5 class="card-title mb-0">Head of Office List</h5>
-              <div class="d-flex gap-2">
-                <input
-                  v-model="searchQuery"
-                  type="text"
-                  class="form-control form-control-sm"
-                  placeholder="Search..."
-                  style="width: 200px"
-                />
+        <!-- Filters Section -->
+        <div class="card-body border-bottom">
+          <div class="row g-3 align-items-center">
+            <div class="col-md-3">
+              <div class="input-group input-group">
+                <span class="input-group-text bg-light">
+                  <i class="ri-list-settings-line"></i>
+                </span>
                 <select
+                  class="form-control form-control"
                   v-model="perPage"
-                  class="form-select form-select-sm"
-                  style="width: 100px"
+                  @change="getDataOfficeHead"
                 >
-                  <option value="10">10</option>
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
+                  <option value="5">5 per page</option>
+                  <option value="10">10 per page</option>
+                  <option value="20">20 per page</option>
+                  <option value="50">50 per page</option>
                 </select>
               </div>
             </div>
-            <div class="card-body p-0">
-              <div class="table-responsive">
-                <table class="table table-hover" id="proposalList">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Head of Office</th>
-                      <th>Status</th>
-                      <th class="text-end">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="single-item">
-                      <td>
-                        <a href="javascript:void(0);" class="fw-bold"
-                          >#357895</a
-                        >
-                      </td>
-                      <td>Test</td>
-                      <td>Active</td>
+            <div class="col-md-6">
+              <div class="input-group input-group">
+                <span class="input-group-text bg-light">
+                  <i class="ri-search-line"></i>
+                </span>
+                <input
+                  v-model="searchQuery"
+                  @input="getDataOfficeHead"
+                  type="text"
+                  class="form-control"
+                  placeholder="Search head of office..."
+                />
+              </div>
+            </div>
+            <div class="col-md-3 text-end">
+              <button
+                @click="refreshData"
+                class="btn btn-outline-primary btn-lg me-1"
+              >
+                <i class="ri-refresh-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
 
-                      <td>
-                        <div class="hstack gap-2 justify-content-end">
-                          <a
-                            href="javascript:void(0)"
-                            class="avatar-text avatar-md"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#proposalSent"
-                          >
-                            <i class="feather feather-send"></i>
-                          </a>
-                          <a
-                            href="proposal-view.html"
-                            class="avatar-text avatar-md"
-                          >
-                            <i class="feather feather-eye"></i>
-                          </a>
-                          <div class="dropdown">
-                            <a
-                              href="javascript:void(0)"
-                              class="avatar-text avatar-md"
-                              data-bs-toggle="dropdown"
-                              data-bs-offset="0,21"
-                            >
-                              <i class="feather feather-more-horizontal"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                              <li>
-                                <a
-                                  class="dropdown-item"
-                                  href="proposal-edit.html"
-                                >
-                                  <i class="feather feather-edit-3 me-3"></i>
-                                  <span>Edit</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  class="dropdown-item printBTN"
-                                  href="javascript:void(0)"
-                                >
-                                  <i class="feather feather-printer me-3"></i>
-                                  <span>Print</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  class="dropdown-item"
-                                  href="javascript:void(0)"
-                                >
-                                  <i class="feather feather-clock me-3"></i>
-                                  <span>Remind</span>
-                                </a>
-                              </li>
-                              <li class="dropdown-divider"></li>
-                              <li>
-                                <a
-                                  class="dropdown-item"
-                                  href="javascript:void(0)"
-                                >
-                                  <i class="feather feather-archive me-3"></i>
-                                  <span>Archive</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  class="dropdown-item"
-                                  href="javascript:void(0)"
-                                >
-                                  <i
-                                    class="feather feather-alert-octagon me-3"
-                                  ></i>
-                                  <span>Report Spam</span>
-                                </a>
-                              </li>
-                              <li class="dropdown-divider"></li>
-                              <li>
-                                <a
-                                  class="dropdown-item"
-                                  href="javascript:void(0)"
-                                >
-                                  <i class="feather feather-trash-2 me-3"></i>
-                                  <span>Delete</span>
-                                </a>
-                              </li>
-                            </ul>
+        <!-- Table Section -->
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th class="ps-4" width="50">
+                    <i class="ri-list-check"></i>
+                  </th>
+
+                  <th>
+                    <i class="ri-user-line me-1"></i>
+                    Head of Office
+                  </th>
+                  <th>
+                    <i class="ri-leaf-line me-1"></i>
+                    Status
+                  </th>
+                  <th>
+                    <i class="ri-calendar-line me-1"></i>
+                    Date Created
+                  </th>
+                  <th class="text-center">
+                    <i class="ri-settings-3-line me-1"></i>
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(office, index) in offices.data" :key="office.id">
+                  <td class="ps-4">
+                    {{
+                      (offices.current_page - 1) * offices.per_page + index + 1
+                    }}
+                  </td>
+
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <strong>{{ office.head_of_office }}</strong>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span :class="getStatusClass(office.status)">
+                      <i :class="getStatusIcon(office.status)" class="me-1"></i>
+                      {{ office.status }}
+                    </span>
+                  </td>
+                  <td>
+                    <i class="ri-time-line me-1 text-muted"></i>
+                    {{ formatDate(office.created_at) }}
+                  </td>
+                  <td class="text-center">
+                    <div class="btn-group" role="group">
+                      <button
+                        class="btn btn-sm btn-outline-primary"
+                        @click="openModal('edit', office)"
+                        title="Edit"
+                      >
+                        <i class="ri-edit-line"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-info"
+                        @click="viewDetails(office)"
+                        title="View"
+                      >
+                        <i class="ri-eye-line"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-danger"
+                        @click="confirmDelete(office)"
+                        title="Delete"
+                      >
+                        <i class="ri-delete-bin-line"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr v-if="offices.data.length === 0">
+                  <td colspan="6" class="text-center py-5">
+                    <div class="text-muted">
+                      <i class="ri-search-line display-5"></i>
+                      <p class="mt-3 mb-0">No records found</p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div v-if="offices.total > 0" class="card-footer bg-white">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <span class="text-muted small">
+                <i class="ri-file-list-line me-1"></i>
+                Showing {{ offices.from }} to {{ offices.to }} of
+                {{ offices.total }} entries
+              </span>
+            </div>
+            <div class="col-md-6">
+              <nav class="float-end">
+                <ul class="pagination pagination-sm mb-0">
+                  <li
+                    class="page-item"
+                    :class="{ disabled: offices.current_page === 1 }"
+                  >
+                    <button
+                      class="page-link"
+                      @click="changePage(1)"
+                      title="First"
+                    >
+                      <i class="ri-skip-back-line"></i>
+                    </button>
+                  </li>
+                  <li
+                    class="page-item"
+                    :class="{ disabled: offices.current_page === 1 }"
+                  >
+                    <button
+                      class="page-link"
+                      @click="changePage(offices.current_page - 1)"
+                      title="Previous"
+                    >
+                      <i class="ri-arrow-left-s-line"></i>
+                    </button>
+                  </li>
+
+                  <li
+                    v-for="page in pages"
+                    :key="page"
+                    class="page-item"
+                    :class="{ active: page === offices.current_page }"
+                  >
+                    <button class="page-link" @click="changePage(page)">
+                      {{ page }}
+                    </button>
+                  </li>
+
+                  <li
+                    class="page-item"
+                    :class="{
+                      disabled: offices.current_page === offices.last_page,
+                    }"
+                  >
+                    <button
+                      class="page-link"
+                      @click="changePage(offices.current_page + 1)"
+                      title="Next"
+                    >
+                      <i class="ri-arrow-right-s-line"></i>
+                    </button>
+                  </li>
+                  <li
+                    class="page-item"
+                    :class="{
+                      disabled: offices.current_page === offices.last_page,
+                    }"
+                  >
+                    <button
+                      class="page-link"
+                      @click="changePage(offices.last_page)"
+                      title="Last"
+                    >
+                      <i class="ri-skip-forward-line"></i>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+              <div
+                class="modal fade zoomIn"
+                id="modalHeadOffice"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered modal">
+                  <div class="modal-content border-0">
+                    <div
+                      class="modal-header bg-light p-3 bg-primary"
+                     
+                    >
+                      <h5 class="modal-title" id="exampleModalLabel" style="color: white">
+                        {{ modalTitle }}
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close btn-close-white"
+                         @click="closeModal"
+                      ></button>
+                    </div>
+                    <div class="modal-body p-4">
+                      <div class="mb-4">
+                        <label class="form-label fw-medium mb-2">
+                          Head of Office Name
+                          <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                          <span class="input-group-text bg-light">
+                            <i class="ri-user-3-line"></i>
+                          </span>
+                          <input
+                            type="text"
+                            class="form-control"
+                            v-model="formData.head_of_office"
+                            placeholder="Enter Head of Office Name"
+                            :disabled="modalMode === 'view'"
+                          />
+                        </div>
+                      </div>
+
+                      <div v-if="modalMode === 'edit'" class="mb-3">
+                        <label class="form-label fw-medium mb-2">
+                          <i class="ri-leaf-line me-1"></i>
+                          Status
+                        </label>
+                        <div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              v-model="formData.status"
+                              value="active"
+                              id="active"
+                            />
+                            <label class="form-check-label" for="active">
+                              <i
+                                class="ri-checkbox-circle-line me-1 text-success"
+                              ></i>
+                              Active
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              v-model="formData.status"
+                              value="inactive"
+                              id="inactive"
+                            />
+                            <label class="form-check-label" for="inactive">
+                              <i
+                                class="ri-close-circle-line me-1 text-danger"
+                              ></i>
+                              Inactive
+                            </label>
                           </div>
                         </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-light"
+                       @click="closeModal"
+                      >
+                        <i class="ri-close-line me-1"></i>
+                        Cancel
+                      </button>
+                      <button
+                        v-if="modalMode !== 'view'"
+                        type="button"
+                        class="btn btn-primary"
+                        @click="submitForm"
+                        :disabled="loading"
+                      >
+                        <i class="ri-save-line me-1"></i>
+                        <span
+                          v-if="loading"
+                          class="spinner-border spinner-border-sm me-1"
+                        ></span>
+                        {{
+                          modalMode === "add" ? "Save Record" : "Update Record"
+                        }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -202,89 +370,355 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
+
 export default {
-  methods: {
-    openModal(mode, headoffice) {
-      this.formData = {
-        id: "",
-        head_of_office: "",
-      };
-
-      this.modalMode = mode;
-      this.modalTitle =
-        mode === "add"
-          ? "Add Head of Office"
-          : mode === "edit"
-          ? "Edit Head of Office"
-          : "View Head of Office";
-
-      if (mode === "edit" || mode === "view") {
-        this.formData.id = headoffice.id;
-        this.formData.head_of_office = headoffice.head_of_office;
-      }
-
-      $("#modalHeadoffice").modal("show");
-    },
-  },
   data() {
     return {
-      modalTitle: "",
+      offices: {
+        data: [],
+        current_page: 1,
+        from: 1,
+        to: 1,
+        last_page: 1,
+        per_page: 10,
+        total: 0,
+      },
+      formData: {
+        id: "",
+        head_of_office: "",
+        status: "active",
+      },
       modalMode: "add",
+      modalTitle: "Add Head of Office",
       searchQuery: "",
       perPage: 10,
-      formData: {
-        head_of_office: "",
-      },
+      loading: false,
     };
   },
 
+  computed: {
+    pages() {
+      const pages = [];
+      const total = this.offices.last_page;
+      const current = this.offices.current_page;
+      const maxVisible = 5;
+
+      if (total <= maxVisible) {
+        for (let i = 1; i <= total; i++) pages.push(i);
+      } else {
+        let start = Math.max(1, current - 2);
+        let end = Math.min(total, start + maxVisible - 1);
+
+        if (end - start + 1 < maxVisible) {
+          start = Math.max(1, end - maxVisible + 1);
+        }
+
+        for (let i = start; i <= end; i++) pages.push(i);
+      }
+
+      return pages;
+    },
+  },
+
+  methods: {
+    async getDataOfficeHead() {
+      try {
+        const response = await axios.get(
+          "/denrxi_ictsms/api/get/data/office/head",
+          {
+            params: {
+              page: this.offices.current_page,
+              per_page: this.perPage,
+              search: this.searchQuery,
+            },
+          }
+        );
+
+        this.offices = response.data.data;
+      } catch (error) {
+        this.showError("Failed to load data. Please try again.");
+      }
+    },
+
+    changePage(page) {
+      if (page >= 1 && page <= this.offices.last_page) {
+        this.offices.current_page = page;
+        this.getDataOfficeHead();
+      }
+    },
+
+    formatDate(dateString) {
+      if (!dateString) return "";
+      const date = new Date(dateString);
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+    },
+
+    getStatusClass(status) {
+      switch (status) {
+        case "active":
+          return "badge bg-success bg-opacity-10 text-success";
+        case "inactive":
+          return "badge bg-danger bg-opacity-10 text-danger";
+        case "pending":
+          return "badge bg-warning bg-opacity-10 text-warning";
+        default:
+          return "badge bg-secondary bg-opacity-10 text-secondary";
+      }
+    },
+
+    getStatusIcon(status) {
+      switch (status) {
+        case "active":
+          return "ri-checkbox-circle-line";
+        case "inactive":
+          return "ri-close-circle-line";
+        case "pending":
+          return "ri-time-line";
+        default:
+          return "ri-question-line";
+      }
+    },
+
+    openModal(mode, office = null) {
+      this.modalMode = mode;
+
+      if (mode === "add") {
+        this.modalTitle = "Add New Head of Office";
+        this.formData = { id: "", head_of_office: "", status: "active" };
+      } else if (mode === "edit") {
+        this.modalTitle = "Edit Head of Office";
+        this.formData = {
+          id: office.id,
+          head_of_office: office.head_of_office,
+          status: office.status || "active",
+        };
+      }
+
+      $("#modalHeadOffice").modal("show");
+    },
+     closeModal() {
+      $("#modalHeadOffice").modal("hide");
+    },
+
+    viewDetails(office) {
+      this.modalMode = "view";
+      this.modalTitle = "View Details";
+      this.formData = {
+        id: office.id,
+        head_of_office: office.head_of_office,
+        status: office.status || "active",
+      };
+      $("#modalHeadOffice").modal("show");
+    },
+
+    async submitForm() {
+      if (!this.formData.head_of_office.trim()) {
+        this.showError("Please enter head of office name");
+        return;
+      }
+
+      this.loading = true;
+      try {
+        let response;
+
+        if (this.modalMode === "add") {
+          response = await axios.post(
+            "/denrxi_ictsms/api/store/office/head",
+            this.formData
+          );
+        } else {
+          response = await axios.post(
+            `/denrxi_ictsms/api/update/office/head/${this.formData.id}`,
+            this.formData
+          );
+        }
+
+        await Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: response.data.message || "Operation completed successfully",
+          confirmButtonColor: "#198754",
+          confirmButtonText: "OK",
+        });
+
+        $("#modalHeadOffice").modal("hide");
+        this.getDataOfficeHead();
+      } catch (error) {
+        if (error.response?.status === 409) {
+          this.showError("This head of office already exists");
+        } else if (error.response?.data?.errors) {
+          const errors = error.response.data.errors;
+          const errorMessage = Object.values(errors).flat().join(", ");
+          this.showError(errorMessage);
+        } else {
+          this.showError("Something went wrong. Please try again.");
+        }
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    async confirmDelete(office) {
+      const result = await Swal.fire({
+        title: "Delete Record",
+        text: `Are you sure you want to delete "${office.head_of_office}"?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "Cancel",
+        reverseButtons: true,
+      });
+
+      if (result.isConfirmed) {
+        try {
+          await axios.delete(
+            `/denrxi_ictsms/api/delete/office/head/${office.id}`
+          );
+
+          await Swal.fire({
+            icon: "success",
+            title: "Deleted!",
+            text: "Record has been deleted successfully.",
+            confirmButtonColor: "#198754",
+            timer: 2000,
+          });
+
+          this.getDataOfficeHead();
+        } catch (error) {
+          this.showError("Failed to delete record");
+        }
+      }
+    },
+
+    refreshData() {
+      this.getDataOfficeHead();
+      this.showSuccess("Data refreshed successfully!");
+    },
+
+    exportData() {
+      this.showInfo("Export feature will be available soon!");
+    },
+
+    showError(message) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: message,
+        confirmButtonColor: "#dc3545",
+      });
+    },
+
+    showSuccess(message) {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: message,
+        confirmButtonColor: "#198754",
+        timer: 1500,
+      });
+    },
+
+    showInfo(message) {
+      Swal.fire({
+        icon: "info",
+        title: "Information",
+        text: message,
+        confirmButtonColor: "#0dcaf0",
+      });
+    },
+  },
+
   mounted() {
-    // Click outside to close modal
+    this.getDataOfficeHead();
   },
 };
 </script>
 
 <style scoped>
-/* Fix for blurry modal */
-.modal {
-  backdrop-filter: none !important;
+.card {
+  border-radius: 10px;
 }
 
-/* Remove blur effect from modal backdrop */
-.modal-backdrop {
-  backdrop-filter: none !important;
+.card-header {
+  border-radius: 10px 10px 0 0 !important;
+  padding: 1.2rem 1.5rem;
 }
 
-/* Fix for focused elements */
-.form-control:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-  border-color: #86b7fe;
+.table th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
 }
 
-/* Ensure modal content is crisp */
+.table td {
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+.badge {
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.btn-group .btn {
+  border-radius: 6px;
+  margin: 0 2px;
+}
+
+.btn-outline-primary {
+  border-color: #198754;
+  color: #198754;
+}
+
+.btn-outline-primary:hover {
+  background-color: #198754;
+  color: white;
+}
+
+.page-link {
+  color: #198754;
+  border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link {
+  background-color: #198754;
+  border-color: #198754;
+  color: white;
+}
+
+.page-link:hover {
+  color: #146c43;
+  background-color: #e9ecef;
+}
+
 .modal-content {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translateZ(0); /* Force hardware acceleration */
+  border-radius: 10px;
 }
 
-/* Animation fix */
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.input-group-text {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
 }
 
-/* Additional fix for text rendering */
-.modal * {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.form-check-input:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.bg-primary {
+  background-color: #198754 !important;
+}
+
+.text-primary {
+  color: #198754 !important;
 }
 </style>

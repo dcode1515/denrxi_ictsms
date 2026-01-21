@@ -1,1111 +1,1286 @@
 @extends('layout.template')
 @section('content')
 
-  <div class="nxl-content">
-            <!-- [ page-header ] start -->
-            <div class="page-header">
-                <div class="page-header-left d-flex align-items-center">
-                    <div class="page-header-title">
-                        <h5 class="m-b-10">Dashboard</h5>
-                    </div>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item">Dashboard</li>
-                    </ul>
-                </div>
-                <div class="page-header-right ms-auto">
-                    <div class="page-header-right-items">
-                        <div class="d-flex d-md-none">
-                            <a href="javascript:void(0)" class="page-header-right-close-toggle">
-                                <i class="feather-arrow-left me-2"></i>
-                                <span>Back</span>
-                            </a>
-                        </div>
-                        <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
-                            <div id="reportrange" class="reportrange-picker d-flex align-items-center">
-                                <span class="reportrange-picker-field"></span>
-                            </div>
-                            <div class="dropdown filter-dropdown">
-                                <a class="btn btn-md btn-light-brand" data-bs-toggle="dropdown" data-bs-offset="0, 10" data-bs-auto-close="outside">
-                                    <i class="feather-filter me-2"></i>
-                                    <span>Filter</span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Role" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Role">Role</label>
-                                        </div>
+  <div class="page-content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="h-100">
+                                <div class="row mb-3 pb-1">
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-lg-center flex-lg-row flex-column">
+                                            <div class="flex-grow-1">
+                                                <h4 class="fs-16 mb-1">Good Morning, Anna!</h4>
+                                                <p class="text-muted mb-0">Here's what's happening with your store today.</p>
+                                            </div>
+                                            <div class="mt-3 mt-lg-0">
+                                                <form action="javascript:void(0);">
+                                                    <div class="row g-3 mb-0 align-items-center">
+                                                        <div class="col-sm-auto">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control border-0 minimal-border dash-filter-picker shadow" data-provider="flatpickr" data-range-date="true" data-date-format="d M, Y" data-deafult-date="01 Jan 2022 to 31 Jan 2022">
+                                                                <div class="input-group-text bg-primary border-primary text-white">
+                                                                    <i class="ri-calendar-2-line"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-auto">
+                                                            <button type="button" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Add Product</button>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-auto">
+                                                            <button type="button" class="btn btn-soft-info btn-icon waves-effect material-shadow-none waves-light layout-rightside-btn"><i class="ri-pulse-line"></i></button>
+                                                        </div>
+                                                        <!--end col-->
+                                                    </div>
+                                                    <!--end row-->
+                                                </form>
+                                            </div>
+                                        </div><!-- end card header -->
                                     </div>
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Team" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Team">Team</label>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Email" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Email">Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Member" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Member">Member</label>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Recommendation" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Recommendation">Recommendation</label>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <i class="feather-plus me-3"></i>
-                                        <span>Create New</span>
-                                    </a>
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <i class="feather-filter me-3"></i>
-                                        <span>Manage Filter</span>
-                                    </a>
+                                    <!--end col-->
                                 </div>
-                            </div>
-                        </div>
+                                <!--end row-->
+
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Total Earnings</p>
+                                                    </div>
+                                                    <div class="flex-shrink-0">
+                                                        <h5 class="text-success fs-14 mb-0">
+                                                            <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +16.24 %
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="559.25">0</span>k </h4>
+                                                        <a href="#" class="text-decoration-underline">View net earnings</a>
+                                                    </div>
+                                                    <div class="avatar-sm flex-shrink-0">
+                                                        <span class="avatar-title bg-success-subtle rounded fs-3">
+                                                            <i class="bx bx-dollar-circle text-success"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+
+                                    <div class="col-xl-3 col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                     <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Orders</p>
+                                                    </div>
+                                                    <div class="flex-shrink-0">
+                                                        <h5 class="text-danger fs-14 mb-0">
+                                                            <i class="ri-arrow-right-down-line fs-13 align-middle"></i> -3.57 %
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="36894">0</span></h4>
+                                                        <a href="#" class="text-decoration-underline">View all orders</a>
+                                                    </div>
+                                                    <div class="avatar-sm flex-shrink-0">
+                                                        <span class="avatar-title bg-info-subtle rounded fs-3">
+                                                            <i class="bx bx-shopping-bag text-info"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+
+                                    <div class="col-xl-3 col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Customers</p>
+                                                    </div>
+                                                    <div class="flex-shrink-0">
+                                                        <h5 class="text-success fs-14 mb-0">
+                                                            <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +29.08 %
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="183.35">0</span>M </h4>
+                                                        <a href="#" class="text-decoration-underline">See details</a>
+                                                    </div>
+                                                    <div class="avatar-sm flex-shrink-0">
+                                                        <span class="avatar-title bg-warning-subtle rounded fs-3">
+                                                            <i class="bx bx-user-circle text-warning"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+
+                                    <div class="col-xl-3 col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> My Balance</p>
+                                                    </div>
+                                                    <div class="flex-shrink-0">
+                                                        <h5 class="text-muted fs-14 mb-0">
+                                                            +0.00 %
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="165.89">0</span>k </h4>
+                                                        <a href="#" class="text-decoration-underline">Withdraw money</a>
+                                                    </div>
+                                                    <div class="avatar-sm flex-shrink-0">
+                                                        <span class="avatar-title bg-primary-subtle rounded fs-3">
+                                                            <i class="bx bx-wallet text-primary"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+                                </div> <!-- end row-->
+
+                                <div class="row">
+                                    <div class="col-xl-8">
+                                        <div class="card">
+                                            <div class="card-header border-0 align-items-center d-flex">
+                                                <h4 class="card-title mb-0 flex-grow-1">Revenue</h4>
+                                                <div>
+                                                    <button type="button" class="btn btn-soft-secondary material-shadow-none btn-sm">
+                                                        ALL
+                                                    </button>
+                                                    <button type="button" class="btn btn-soft-secondary material-shadow-none btn-sm">
+                                                        1M
+                                                    </button>
+                                                    <button type="button" class="btn btn-soft-secondary material-shadow-none btn-sm">
+                                                        6M
+                                                    </button>
+                                                    <button type="button" class="btn btn-soft-primary material-shadow-none btn-sm">
+                                                        1Y
+                                                    </button>
+                                                </div>
+                                            </div><!-- end card header -->
+
+                                            <div class="card-header p-0 border-0 bg-light-subtle">
+                                                <div class="row g-0 text-center">
+                                                    <div class="col-6 col-sm-3">
+                                                        <div class="p-3 border border-dashed border-start-0">
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="7585">0</span></h5>
+                                                            <p class="text-muted mb-0">Orders</p>
+                                                        </div>
+                                                    </div>
+                                                    <!--end col-->
+                                                    <div class="col-6 col-sm-3">
+                                                        <div class="p-3 border border-dashed border-start-0">
+                                                            <h5 class="mb-1">$<span class="counter-value" data-target="22.89">0</span>k</h5>
+                                                            <p class="text-muted mb-0">Earnings</p>
+                                                        </div>
+                                                    </div>
+                                                    <!--end col-->
+                                                    <div class="col-6 col-sm-3">
+                                                        <div class="p-3 border border-dashed border-start-0">
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="367">0</span></h5>
+                                                            <p class="text-muted mb-0">Refunds</p>
+                                                        </div>
+                                                    </div>
+                                                    <!--end col-->
+                                                    <div class="col-6 col-sm-3">
+                                                        <div class="p-3 border border-dashed border-start-0 border-end-0">
+                                                            <h5 class="mb-1 text-success"><span class="counter-value" data-target="18.92">0</span>%</h5>
+                                                            <p class="text-muted mb-0">Conversation Ratio</p>
+                                                        </div>
+                                                    </div>
+                                                    <!--end col-->
+                                                </div>
+                                            </div><!-- end card header -->
+
+                                            <div class="card-body p-0 pb-2">
+                                                <div class="w-100">
+                                                    <div id="customer_impression_charts" data-colors='["--vz-primary", "--vz-success", "--vz-danger"]' data-colors-minimal='["--vz-light", "--vz-primary", "--vz-info"]' data-colors-saas='["--vz-success", "--vz-info", "--vz-danger"]' data-colors-modern='["--vz-warning", "--vz-primary", "--vz-success"]' data-colors-interactive='["--vz-info", "--vz-primary", "--vz-danger"]' data-colors-creative='["--vz-warning", "--vz-primary", "--vz-danger"]' data-colors-corporate='["--vz-light", "--vz-primary", "--vz-secondary"]' data-colors-galaxy='["--vz-secondary", "--vz-primary", "--vz-primary-rgb, 0.50"]' data-colors-classic='["--vz-light", "--vz-primary", "--vz-secondary"]' data-colors-vintage='["--vz-success", "--vz-primary", "--vz-secondary"]' class="apex-charts" dir="ltr"></div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+
+                                    <div class="col-xl-4">
+                                        <!-- card -->
+                                        <div class="card card-height-100">
+                                            <div class="card-header align-items-center d-flex">
+                                                <h4 class="card-title mb-0 flex-grow-1">Sales by Locations</h4>
+                                                <div class="flex-shrink-0">
+                                                    <button type="button" class="btn btn-soft-primary material-shadow-none btn-sm">
+                                                        Export Report
+                                                    </button>
+                                                </div>
+                                            </div><!-- end card header -->
+
+                                            <!-- card body -->
+                                            <div class="card-body">
+
+                                                <div id="sales-by-locations" data-colors='["--vz-light", "--vz-success", "--vz-primary"]' data-colors-interactive='["--vz-light", "--vz-info", "--vz-primary"]' style="height: 269px" dir="ltr"></div>
+
+                                                <div class="px-2 py-2 mt-1">
+                                                    <p class="mb-1">Canada <span class="float-end">75%</span></p>
+                                                    <div class="progress mt-2" style="height: 6px;">
+                                                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="75"></div>
+                                                    </div>
+
+                                                    <p class="mt-3 mb-1">Greenland <span class="float-end">47%</span>
+                                                    </p>
+                                                    <div class="progress mt-2" style="height: 6px;">
+                                                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 47%" aria-valuenow="47" aria-valuemin="0" aria-valuemax="47"></div>
+                                                    </div>
+
+                                                    <p class="mt-3 mb-1">Russia <span class="float-end">82%</span></p>
+                                                    <div class="progress mt-2" style="height: 6px;">
+                                                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="82"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end card body -->
+                                        </div>
+                                        <!-- end card -->
+                                    </div>
+                                    <!-- end col -->
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <div class="card">
+                                            <div class="card-header align-items-center d-flex">
+                                                <h4 class="card-title mb-0 flex-grow-1">Best Selling Products</h4>
+                                                <div class="flex-shrink-0">
+                                                    <div class="dropdown card-header-dropdown">
+                                                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="fw-semibold text-uppercase fs-12">Sort by:
+                                                            </span><span class="text-muted">Today<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">Today</a>
+                                                            <a class="dropdown-item" href="#">Yesterday</a>
+                                                            <a class="dropdown-item" href="#">Last 7 Days</a>
+                                                            <a class="dropdown-item" href="#">Last 30 Days</a>
+                                                            <a class="dropdown-item" href="#">This Month</a>
+                                                            <a class="dropdown-item" href="#">Last Month</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card header -->
+
+                                            <div class="card-body">
+                                                <div class="table-responsive table-card">
+                                                    <table class="table table-hover table-centered align-middle table-nowrap mb-0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="avatar-sm bg-light rounded p-1 me-2">
+                                                                            <img src="assets/images/products/img-1.png" alt="" class="img-fluid d-block" />
+                                                                        </div>
+                                                                        <div>
+                                                                            <h5 class="fs-14 my-1"><a href="apps-ecommerce-product-details.html" class="text-reset">Branded T-Shirts</a></h5>
+                                                                            <span class="text-muted">24 Apr 2021</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$29.00</h5>
+                                                                    <span class="text-muted">Price</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">62</h5>
+                                                                    <span class="text-muted">Orders</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">510</h5>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$1,798</h5>
+                                                                    <span class="text-muted">Amount</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="avatar-sm bg-light rounded p-1 me-2">
+                                                                            <img src="assets/images/products/img-2.png" alt="" class="img-fluid d-block" />
+                                                                        </div>
+                                                                        <div>
+                                                                            <h5 class="fs-14 my-1"><a href="apps-ecommerce-product-details.html" class="text-reset">Bentwood Chair</a></h5>
+                                                                            <span class="text-muted">19 Mar 2021</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$85.20</h5>
+                                                                    <span class="text-muted">Price</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">35</h5>
+                                                                    <span class="text-muted">Orders</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal"><span class="badge bg-danger-subtle text-danger">Out of stock</span> </h5>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$2982</h5>
+                                                                    <span class="text-muted">Amount</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="avatar-sm bg-light rounded p-1 me-2">
+                                                                            <img src="assets/images/products/img-3.png" alt="" class="img-fluid d-block" />
+                                                                        </div>
+                                                                        <div>
+                                                                            <h5 class="fs-14 my-1"><a href="apps-ecommerce-product-details.html" class="text-reset">Borosil Paper Cup</a></h5>
+                                                                            <span class="text-muted">01 Mar 2021</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$14.00</h5>
+                                                                    <span class="text-muted">Price</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">80</h5>
+                                                                    <span class="text-muted">Orders</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">749</h5>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$1120</h5>
+                                                                    <span class="text-muted">Amount</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="avatar-sm bg-light rounded p-1 me-2">
+                                                                            <img src="assets/images/products/img-4.png" alt="" class="img-fluid d-block" />
+                                                                        </div>
+                                                                        <div>
+                                                                            <h5 class="fs-14 my-1"><a href="apps-ecommerce-product-details.html" class="text-reset">One Seater Sofa</a></h5>
+                                                                            <span class="text-muted">11 Feb 2021</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$127.50</h5>
+                                                                    <span class="text-muted">Price</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">56</h5>
+                                                                    <span class="text-muted">Orders</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal"><span class="badge bg-danger-subtle text-danger">Out of stock</span></h5>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$7140</h5>
+                                                                    <span class="text-muted">Amount</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="avatar-sm bg-light rounded p-1 me-2">
+                                                                            <img src="assets/images/products/img-5.png" alt="" class="img-fluid d-block" />
+                                                                        </div>
+                                                                        <div>
+                                                                            <h5 class="fs-14 my-1"><a href="apps-ecommerce-product-details.html" class="text-reset">Stillbird Helmet</a></h5>
+                                                                            <span class="text-muted">17 Jan 2021</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$54</h5>
+                                                                    <span class="text-muted">Price</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">74</h5>
+                                                                    <span class="text-muted">Orders</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">805</h5>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">$3996</h5>
+                                                                    <span class="text-muted">Amount</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <div class="align-items-center mt-4 pt-2 justify-content-between row text-center text-sm-start">
+                                                    <div class="col-sm">
+                                                        <div class="text-muted">
+                                                            Showing <span class="fw-semibold">5</span> of <span class="fw-semibold">25</span> Results
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-auto  mt-3 mt-sm-0">
+                                                        <ul class="pagination pagination-separated pagination-sm mb-0 justify-content-center">
+                                                            <li class="page-item disabled">
+                                                                <a href="#" class="page-link">←</a>
+                                                            </li>
+                                                            <li class="page-item">
+                                                                <a href="#" class="page-link">1</a>
+                                                            </li>
+                                                            <li class="page-item active">
+                                                                <a href="#" class="page-link">2</a>
+                                                            </li>
+                                                            <li class="page-item">
+                                                                <a href="#" class="page-link">3</a>
+                                                            </li>
+                                                            <li class="page-item">
+                                                                <a href="#" class="page-link">→</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-6">
+                                        <div class="card card-height-100">
+                                            <div class="card-header align-items-center d-flex">
+                                                <h4 class="card-title mb-0 flex-grow-1">Top Sellers</h4>
+                                                <div class="flex-shrink-0">
+                                                    <div class="dropdown card-header-dropdown">
+                                                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="text-muted">Report<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">Download Report</a>
+                                                            <a class="dropdown-item" href="#">Export</a>
+                                                            <a class="dropdown-item" href="#">Import</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card header -->
+
+                                            <div class="card-body">
+                                                <div class="table-responsive table-card">
+                                                    <table class="table table-centered table-hover align-middle table-nowrap mb-0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/companies/img-1.png" alt="" class="avatar-sm p-2" />
+                                                                        </div>
+                                                                        <div>
+                                                                            <h5 class="fs-14 my-1 fw-medium">
+                                                                                <a href="apps-ecommerce-seller-details.html" class="text-reset">iTest Factory</a>
+                                                                            </h5>
+                                                                            <span class="text-muted">Oliver Tyler</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">Bags and Wallets</span>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="mb-0">8547</p>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">$541200</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 mb-0">32%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
+                                                                </td>
+                                                            </tr><!-- end -->
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/companies/img-2.png" alt="" class="avatar-sm p-2" />
+                                                                        </div>
+                                                                        <div class="flex-grow-1">
+                                                                            <h5 class="fs-14 my-1 fw-medium"><a href="apps-ecommerce-seller-details.html" class="text-reset">Digitech Galaxy</a></h5>
+                                                                            <span class="text-muted">John Roberts</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">Watches</span>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="mb-0">895</p>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">$75030</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 mb-0">79%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
+                                                                </td>
+                                                            </tr><!-- end -->
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/companies/img-3.png" alt="" class="avatar-sm p-2" />
+                                                                        </div>
+                                                                        <div class="flex-gow-1">
+                                                                            <h5 class="fs-14 my-1 fw-medium"><a href="apps-ecommerce-seller-details.html" class="text-reset">Nesta Technologies</a></h5>
+                                                                            <span class="text-muted">Harley Fuller</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">Bike Accessories</span>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="mb-0">3470</p>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">$45600</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 mb-0">90%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
+                                                                </td>
+                                                            </tr><!-- end -->
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/companies/img-8.png" alt="" class="avatar-sm p-2" />
+                                                                        </div>
+                                                                        <div class="flex-grow-1">
+                                                                            <h5 class="fs-14 my-1 fw-medium"><a href="apps-ecommerce-seller-details.html" class="text-reset">Zoetic Fashion</a></h5>
+                                                                            <span class="text-muted">James Bowen</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">Clothes</span>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="mb-0">5488</p>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">$29456</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 mb-0">40%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
+                                                                </td>
+                                                            </tr><!-- end -->
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/companies/img-5.png" alt="" class="avatar-sm p-2" />
+                                                                        </div>
+                                                                        <div class="flex-grow-1">
+                                                                            <h5 class="fs-14 my-1 fw-medium">
+                                                                                <a href="apps-ecommerce-seller-details.html" class="text-reset">Meta4Systems</a>
+                                                                            </h5>
+                                                                            <span class="text-muted">Zoe Dennis</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">Furniture</span>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="mb-0">4100</p>
+                                                                    <span class="text-muted">Stock</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">$11260</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 mb-0">57%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
+                                                                </td>
+                                                            </tr><!-- end -->
+                                                        </tbody>
+                                                    </table><!-- end table -->
+                                                </div>
+
+                                                <div class="align-items-center mt-4 pt-2 justify-content-between row text-center text-sm-start">
+                                                    <div class="col-sm">
+                                                        <div class="text-muted">
+                                                            Showing <span class="fw-semibold">5</span> of <span class="fw-semibold">25</span> Results
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-auto  mt-3 mt-sm-0">
+                                                        <ul class="pagination pagination-separated pagination-sm mb-0 justify-content-center">
+                                                            <li class="page-item disabled">
+                                                                <a href="#" class="page-link">←</a>
+                                                            </li>
+                                                            <li class="page-item">
+                                                                <a href="#" class="page-link">1</a>
+                                                            </li>
+                                                            <li class="page-item active">
+                                                                <a href="#" class="page-link">2</a>
+                                                            </li>
+                                                            <li class="page-item">
+                                                                <a href="#" class="page-link">3</a>
+                                                            </li>
+                                                            <li class="page-item">
+                                                                <a href="#" class="page-link">→</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div> <!-- .card-body-->
+                                        </div> <!-- .card-->
+                                    </div> <!-- .col-->
+                                </div> <!-- end row-->
+
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="card card-height-100">
+                                            <div class="card-header align-items-center d-flex">
+                                                <h4 class="card-title mb-0 flex-grow-1">Store Visits by Source</h4>
+                                                <div class="flex-shrink-0">
+                                                    <div class="dropdown card-header-dropdown">
+                                                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="text-muted">Report<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">Download Report</a>
+                                                            <a class="dropdown-item" href="#">Export</a>
+                                                            <a class="dropdown-item" href="#">Import</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card header -->
+
+                                            <div class="card-body">
+                                                <div id="store-visits-source" data-colors='["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]' data-colors-minimal='["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.60", "--vz-primary-rgb, 0.45"]' data-colors-interactive='["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.60", "--vz-primary-rgb, 0.45"]' data-colors-galaxy='["--vz-primary", "--vz-primary-rgb, 0.85", "--vz-primary-rgb, 0.70", "--vz-primary-rgb, 0.60", "--vz-primary-rgb, 0.45"]' class="apex-charts" dir="ltr"></div>
+                                            </div>
+                                        </div> <!-- .card-->
+                                    </div> <!-- .col-->
+
+                                    <div class="col-xl-8">
+                                        <div class="card">
+                                            <div class="card-header align-items-center d-flex">
+                                                <h4 class="card-title mb-0 flex-grow-1">Recent Orders</h4>
+                                                <div class="flex-shrink-0">
+                                                    <button type="button" class="btn btn-soft-info btn-sm material-shadow-none">
+                                                        <i class="ri-file-list-3-line align-middle"></i> Generate Report
+                                                    </button>
+                                                </div>
+                                            </div><!-- end card header -->
+
+                                            <div class="card-body">
+                                                <div class="table-responsive table-card">
+                                                    <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
+                                                        <thead class="text-muted table-light">
+                                                            <tr>
+                                                                <th scope="col">Order ID</th>
+                                                                <th scope="col">Customer</th>
+                                                                <th scope="col">Product</th>
+                                                                <th scope="col">Amount</th>
+                                                                <th scope="col">Vendor</th>
+                                                                <th scope="col">Status</th>
+                                                                <th scope="col">Rating</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2112</a>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-xs rounded-circle material-shadow" />
+                                                                        </div>
+                                                                        <div class="flex-grow-1">Alex Smith</div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>Clothes</td>
+                                                                <td>
+                                                                    <span class="text-success">$109.00</span>
+                                                                </td>
+                                                                <td>Zoetic Fashion</td>
+                                                                <td>
+                                                                    <span class="badge bg-success-subtle text-success">Paid</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 fw-medium mb-0">5.0<span class="text-muted fs-11 ms-1">(61 votes)</span></h5>
+                                                                </td>
+                                                            </tr><!-- end tr -->
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2111</a>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-xs rounded-circle material-shadow" />
+                                                                        </div>
+                                                                        <div class="flex-grow-1">Jansh Brown</div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>Kitchen Storage</td>
+                                                                <td>
+                                                                    <span class="text-success">$149.00</span>
+                                                                </td>
+                                                                <td>Micro Design</td>
+                                                                <td>
+                                                                    <span class="badge bg-warning-subtle text-warning">Pending</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 fw-medium mb-0">4.5<span class="text-muted fs-11 ms-1">(61 votes)</span></h5>
+                                                                </td>
+                                                            </tr><!-- end tr -->
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2109</a>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-xs rounded-circle material-shadow" />
+                                                                        </div>
+                                                                        <div class="flex-grow-1">Ayaan Bowen</div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>Bike Accessories</td>
+                                                                <td>
+                                                                    <span class="text-success">$215.00</span>
+                                                                </td>
+                                                                <td>Nesta Technologies</td>
+                                                                <td>
+                                                                    <span class="badge bg-success-subtle text-success">Paid</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 fw-medium mb-0">4.9<span class="text-muted fs-11 ms-1">(89 votes)</span></h5>
+                                                                </td>
+                                                            </tr><!-- end tr -->
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2108</a>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/users/avatar-4.jpg" alt="" class="avatar-xs rounded-circle material-shadow" />
+                                                                        </div>
+                                                                        <div class="flex-grow-1">Prezy Mark</div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>Furniture</td>
+                                                                <td>
+                                                                    <span class="text-success">$199.00</span>
+                                                                </td>
+                                                                <td>Syntyce Solutions</td>
+                                                                <td>
+                                                                    <span class="badge bg-danger-subtle text-danger">Unpaid</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 fw-medium mb-0">4.3<span class="text-muted fs-11 ms-1">(47 votes)</span></h5>
+                                                                </td>
+                                                            </tr><!-- end tr -->
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2107</a>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-2">
+                                                                            <img src="assets/images/users/avatar-6.jpg" alt="" class="avatar-xs rounded-circle material-shadow" />
+                                                                        </div>
+                                                                        <div class="flex-grow-1">Vihan Hudda</div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>Bags and Wallets</td>
+                                                                <td>
+                                                                    <span class="text-success">$330.00</span>
+                                                                </td>
+                                                                <td>iTest Factory</td>
+                                                                <td>
+                                                                    <span class="badge bg-success-subtle text-success">Paid</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 fw-medium mb-0">4.7<span class="text-muted fs-11 ms-1">(161 votes)</span></h5>
+                                                                </td>
+                                                            </tr><!-- end tr -->
+                                                        </tbody><!-- end tbody -->
+                                                    </table><!-- end table -->
+                                                </div>
+                                            </div>
+                                        </div> <!-- .card-->
+                                    </div> <!-- .col-->
+                                </div> <!-- end row-->
+
+                            </div> <!-- end .h-100-->
+
+                        </div> <!-- end col -->
+
+                        <div class="col-auto layout-rightside-col">
+                            <div class="overlay"></div>
+                            <div class="layout-rightside">
+                                <div class="card h-100 rounded-0">
+                                    <div class="card-body p-0">
+                                        <div class="p-3">
+                                            <h6 class="text-muted mb-0 text-uppercase fw-semibold">Recent Activity</h6>
+                                        </div>
+                                        <div data-simplebar style="max-height: 410px;" class="p-3 pt-0">
+                                            <div class="acitivity-timeline acitivity-main">
+                                                <div class="acitivity-item d-flex">
+                                                    <div class="flex-shrink-0 avatar-xs acitivity-avatar">
+                                                        <div class="avatar-title bg-success-subtle text-success rounded-circle material-shadow">
+                                                            <i class="ri-shopping-cart-2-line"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        <h6 class="mb-1 lh-base">Purchase by James Price</h6>
+                                                        <p class="text-muted mb-1">Product noise evolve smartwatch </p>
+                                                        <small class="mb-0 text-muted">02:14 PM Today</small>
+                                                    </div>
+                                                </div>
+                                                <div class="acitivity-item py-3 d-flex">
+                                                    <div class="flex-shrink-0 avatar-xs acitivity-avatar">
+                                                        <div class="avatar-title bg-danger-subtle text-danger rounded-circle material-shadow">
+                                                            <i class="ri-stack-fill"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        <h6 class="mb-1 lh-base">Added new <span class="fw-semibold">style collection</span></h6>
+                                                        <p class="text-muted mb-1">By Nesta Technologies</p>
+                                                        <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2">
+                                                            <a href="apps-ecommerce-product-details.html" class="bg-light rounded p-1">
+                                                                <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block" />
+                                                            </a>
+                                                            <a href="apps-ecommerce-product-details.html" class="bg-light rounded p-1">
+                                                                <img src="assets/images/products/img-2.png" alt="" class="img-fluid d-block" />
+                                                            </a>
+                                                            <a href="apps-ecommerce-product-details.html" class="bg-light rounded p-1">
+                                                                <img src="assets/images/products/img-10.png" alt="" class="img-fluid d-block" />
+                                                            </a>
+                                                        </div>
+                                                        <p class="mb-0 text-muted"><small>9:47 PM Yesterday</small></p>
+                                                    </div>
+                                                </div>
+                                                <div class="acitivity-item py-3 d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-xs rounded-circle acitivity-avatar material-shadow">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        <h6 class="mb-1 lh-base">Natasha Carey have liked the products</h6>
+                                                        <p class="text-muted mb-1">Allow users to like products in your WooCommerce store.</p>
+                                                        <small class="mb-0 text-muted">25 Dec, 2021</small>
+                                                    </div>
+                                                </div>
+                                                <div class="acitivity-item py-3 d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar-xs acitivity-avatar">
+                                                            <div class="avatar-title rounded-circle bg-secondary material-shadow">
+                                                                <i class="mdi mdi-sale fs-14"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        <h6 class="mb-1 lh-base">Today offers by <a href="apps-ecommerce-seller-details.html" class="link-secondary">Digitech Galaxy</a></h6>
+                                                        <p class="text-muted mb-2">Offer is valid on orders of Rs.500 Or above for selected products only.</p>
+                                                        <small class="mb-0 text-muted">12 Dec, 2021</small>
+                                                    </div>
+                                                </div>
+                                                <div class="acitivity-item py-3 d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar-xs acitivity-avatar">
+                                                            <div class="avatar-title rounded-circle bg-danger-subtle text-danger material-shadow">
+                                                                <i class="ri-bookmark-fill"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        <h6 class="mb-1 lh-base">Favorite Product</h6>
+                                                        <p class="text-muted mb-2">Esther James have Favorite product.</p>
+                                                        <small class="mb-0 text-muted">25 Nov, 2021</small>
+                                                    </div>
+                                                </div>
+                                                <div class="acitivity-item py-3 d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar-xs acitivity-avatar">
+                                                            <div class="avatar-title rounded-circle bg-secondary material-shadow">
+                                                                <i class="mdi mdi-sale fs-14"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        <h6 class="mb-1 lh-base">Flash sale starting <span class="text-primary">Tomorrow.</span></h6>
+                                                        <p class="text-muted mb-0">Flash sale by <a href="javascript:void(0);" class="link-secondary fw-medium">Zoetic Fashion</a></p>
+                                                        <small class="mb-0 text-muted">22 Oct, 2021</small>
+                                                    </div>
+                                                </div>
+                                                <div class="acitivity-item py-3 d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar-xs acitivity-avatar">
+                                                            <div class="avatar-title rounded-circle bg-info-subtle text-info material-shadow">
+                                                                <i class="ri-line-chart-line"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        <h6 class="mb-1 lh-base">Monthly sales report</h6>
+                                                        <p class="text-muted mb-2"><span class="text-danger">2 days left</span> notification to submit the monthly sales report. <a href="javascript:void(0);" class="link-warning text-decoration-underline">Reports Builder</a></p>
+                                                        <small class="mb-0 text-muted">15 Oct</small>
+                                                    </div>
+                                                </div>
+                                                <div class="acitivity-item d-flex">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-xs rounded-circle acitivity-avatar material-shadow" />
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-3">
+                                                        <h6 class="mb-1 lh-base">Frank Hook Commented</h6>
+                                                        <p class="text-muted mb-2 fst-italic">" A product that has reviews is more likable to be sold than a product. "</p>
+                                                        <small class="mb-0 text-muted">26 Aug, 2021</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="p-3 mt-2">
+                                            <h6 class="text-muted mb-3 text-uppercase fw-semibold">Top 10 Categories
+                                            </h6>
+
+                                            <ol class="ps-3 text-muted">
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Mobile & Accessories <span class="float-end">(10,294)</span></a>
+                                                </li>
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Desktop <span class="float-end">(6,256)</span></a>
+                                                </li>
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Electronics <span class="float-end">(3,479)</span></a>
+                                                </li>
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Home & Furniture <span class="float-end">(2,275)</span></a>
+                                                </li>
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Grocery <span class="float-end">(1,950)</span></a>
+                                                </li>
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Fashion <span class="float-end">(1,582)</span></a>
+                                                </li>
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Appliances <span class="float-end">(1,037)</span></a>
+                                                </li>
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Beauty, Toys & More <span class="float-end">(924)</span></a>
+                                                </li>
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Food & Drinks <span class="float-end">(701)</span></a>
+                                                </li>
+                                                <li class="py-1">
+                                                    <a href="#" class="text-muted">Toys & Games <span class="float-end">(239)</span></a>
+                                                </li>
+                                            </ol>
+                                            <div class="mt-3 text-center">
+                                                <a href="javascript:void(0);" class="text-muted text-decoration-underline">View all Categories</a>
+                                            </div>
+                                        </div>
+                                        <div class="p-3">
+                                            <h6 class="text-muted mb-3 text-uppercase fw-semibold">Products Reviews</h6>
+                                            <!-- Swiper -->
+                                            <div class="swiper vertical-swiper" style="height: 250px;">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div class="card border border-dashed shadow-none">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-shrink-0 avatar-sm">
+                                                                        <div class="avatar-title bg-light rounded material-shadow">
+                                                                            <img src="assets/images/companies/img-1.png" alt="" height="30">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-3">
+                                                                        <div>
+                                                                            <p class="text-muted mb-1 fst-italic text-truncate-two-lines"> " Great product and looks great, lots of features. "</p>
+                                                                            <div
+                                                                                class="fs-11 align-middle text-warning">
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="text-end mb-0 text-muted">
+                                                                            - by <cite title="Source Title">Force Medicines</cite>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="card border border-dashed shadow-none">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-sm rounded material-shadow">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-3">
+                                                                        <div>
+                                                                            <p class="text-muted mb-1 fst-italic text-truncate-two-lines"> " Amazing template, very easy to understand and manipulate. "</p>
+                                                                            <div class="fs-11 align-middle text-warning">
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-half-fill"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="text-end mb-0 text-muted">
+                                                                            - by <cite title="Source Title">Henry Baird</cite>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="card border border-dashed shadow-none">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-shrink-0 avatar-sm">
+                                                                        <div class="avatar-title bg-light rounded">
+                                                                            <img src="assets/images/companies/img-8.png" alt="" height="30">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-3">
+                                                                        <div>
+                                                                            <p class="text-muted mb-1 fst-italic text-truncate-two-lines"> "Very beautiful product and Very helpful customer service."</p>
+                                                                            <div class="fs-11 align-middle text-warning">
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-line"></i>
+                                                                                <i class="ri-star-line"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="text-end mb-0 text-muted">
+                                                                            - by <cite title="Source Title">Zoetic Fashion</cite>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="card border border-dashed shadow-none">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-sm rounded material-shadow">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-3">
+                                                                        <div>
+                                                                            <p class="text-muted mb-1 fst-italic text-truncate-two-lines">" The product is very beautiful. I like it. "</p>
+                                                                            <div class="fs-11 align-middle text-warning">
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-fill"></i>
+                                                                                <i class="ri-star-half-fill"></i>
+                                                                                <i class="ri-star-line"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="text-end mb-0 text-muted">
+                                                                            - by <cite title="Source Title">Nancy Martino</cite>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="p-3">
+                                            <h6 class="text-muted mb-3 text-uppercase fw-semibold">Customer Reviews</h6>
+                                            <div class="bg-light px-3 py-2 rounded-2 mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">
+                                                        <div class="fs-16 align-middle text-warning">
+                                                            <i class="ri-star-fill"></i>
+                                                            <i class="ri-star-fill"></i>
+                                                            <i class="ri-star-fill"></i>
+                                                            <i class="ri-star-fill"></i>
+                                                            <i class="ri-star-half-fill"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0">
+                                                        <h6 class="mb-0">4.5 out of 5</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="text-muted">Total <span class="fw-medium">5.50k</span> reviews</div>
+                                            </div>
+
+                                            <div class="mt-3">
+                                                <div class="row align-items-center g-2">
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0">5 star</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="p-1">
+                                                            <div class="progress animated-progress progress-sm">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 50.16%" aria-valuenow="50.16" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0 text-muted">2758</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end row -->
+
+                                                <div class="row align-items-center g-2">
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0">4 star</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="p-1">
+                                                            <div class="progress animated-progress progress-sm">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 29.32%" aria-valuenow="29.32" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0 text-muted">1063</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end row -->
+
+                                                <div class="row align-items-center g-2">
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0">3 star</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="p-1">
+                                                            <div class="progress animated-progress progress-sm">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 18.12%" aria-valuenow="18.12" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0 text-muted">997</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end row -->
+
+                                                <div class="row align-items-center g-2">
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0">2 star</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="p-1">
+                                                            <div class="progress animated-progress progress-sm">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 4.98%" aria-valuenow="4.98" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0 text-muted">227</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end row -->
+
+                                                <div class="row align-items-center g-2">
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0">1 star</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="p-1">
+                                                            <div class="progress animated-progress progress-sm">
+                                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 7.42%" aria-valuenow="7.42" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <div class="p-1">
+                                                            <h6 class="mb-0 text-muted">408</h6>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- end row -->
+                                            </div>
+                                        </div>
+
+                                        <div class="card sidebar-alert bg-light border-0 text-center mx-4 mb-0 mt-3">
+                                            <div class="card-body">
+                                                <img src="assets/images/giftbox.png" alt="">
+                                                <div class="mt-4">
+                                                    <h5>Invite New Seller</h5>
+                                                    <p class="text-muted lh-base">Refer a new seller to us and earn $100 per refer.</p>
+                                                    <button type="button" class="btn btn-primary btn-label rounded-pill"><i class="ri-mail-fill label-icon align-middle rounded-pill fs-16 me-2"></i> Invite Now</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div> <!-- end card-->
+                            </div> <!-- end .rightbar-->
+
+                        </div> <!-- end col -->
                     </div>
-                    <div class="d-md-none d-flex align-items-center">
-                        <a href="javascript:void(0)" class="page-header-right-open-toggle">
-                            <i class="feather-align-right fs-20"></i>
-                        </a>
-                    </div>
+
                 </div>
+                <!-- container-fluid -->
             </div>
-            <!-- [ page-header ] end -->
-            <!-- [ Main Content ] start -->
-            <div class="main-content">
-                <div class="row">
-                    <!-- [Invoices Awaiting Payment] start -->
-                    <div class="col-xxl-3 col-md-6">
-                        <div class="card stretch stretch-full">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start justify-content-between mb-4">
-                                    <div class="d-flex gap-4 align-items-center">
-                                        <div class="avatar-text avatar-lg bg-gray-200">
-                                            <i class="feather-dollar-sign"></i>
-                                        </div>
-                                        <div>
-                                            <div class="fs-4 fw-bold text-dark"><span class="counter">45</span>/<span class="counter">76</span></div>
-                                            <h3 class="fs-13 fw-semibold text-truncate-1-line">Invoices Awaiting Payment</h3>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="">
-                                        <i class="feather-more-vertical"></i>
-                                    </a>
-                                </div>
-                                <div class="pt-4">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">Invoices Awaiting </a>
-                                        <div class="w-100 text-end">
-                                            <span class="fs-12 text-dark">$5,569</span>
-                                            <span class="fs-11 text-muted">(56%)</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress mt-2 ht-3">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 56%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Invoices Awaiting Payment] end -->
-                    <!-- [Converted Leads] start -->
-                    <div class="col-xxl-3 col-md-6">
-                        <div class="card stretch stretch-full">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start justify-content-between mb-4">
-                                    <div class="d-flex gap-4 align-items-center">
-                                        <div class="avatar-text avatar-lg bg-gray-200">
-                                            <i class="feather-cast"></i>
-                                        </div>
-                                        <div>
-                                            <div class="fs-4 fw-bold text-dark"><span class="counter">48</span>/<span class="counter">86</span></div>
-                                            <h3 class="fs-13 fw-semibold text-truncate-1-line">Converted Leads</h3>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="">
-                                        <i class="feather-more-vertical"></i>
-                                    </a>
-                                </div>
-                                <div class="pt-4">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">Converted Leads </a>
-                                        <div class="w-100 text-end">
-                                            <span class="fs-12 text-dark">52 Completed</span>
-                                            <span class="fs-11 text-muted">(63%)</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress mt-2 ht-3">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 63%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Converted Leads] end -->
-                    <!-- [Projects In Progress] start -->
-                    <div class="col-xxl-3 col-md-6">
-                        <div class="card stretch stretch-full">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start justify-content-between mb-4">
-                                    <div class="d-flex gap-4 align-items-center">
-                                        <div class="avatar-text avatar-lg bg-gray-200">
-                                            <i class="feather-briefcase"></i>
-                                        </div>
-                                        <div>
-                                            <div class="fs-4 fw-bold text-dark"><span class="counter">16</span>/<span class="counter">20</span></div>
-                                            <h3 class="fs-13 fw-semibold text-truncate-1-line">Projects In Progress</h3>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="">
-                                        <i class="feather-more-vertical"></i>
-                                    </a>
-                                </div>
-                                <div class="pt-4">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">Projects In Progress </a>
-                                        <div class="w-100 text-end">
-                                            <span class="fs-12 text-dark">16 Completed</span>
-                                            <span class="fs-11 text-muted">(78%)</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress mt-2 ht-3">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 78%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Projects In Progress] end -->
-                    <!-- [Conversion Rate] start -->
-                    <div class="col-xxl-3 col-md-6">
-                        <div class="card stretch stretch-full">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start justify-content-between mb-4">
-                                    <div class="d-flex gap-4 align-items-center">
-                                        <div class="avatar-text avatar-lg bg-gray-200">
-                                            <i class="feather-activity"></i>
-                                        </div>
-                                        <div>
-                                            <div class="fs-4 fw-bold text-dark"><span class="counter">46.59</span>%</div>
-                                            <h3 class="fs-13 fw-semibold text-truncate-1-line">Conversion Rate</h3>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="">
-                                        <i class="feather-more-vertical"></i>
-                                    </a>
-                                </div>
-                                <div class="pt-4">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line"> Conversion Rate </a>
-                                        <div class="w-100 text-end">
-                                            <span class="fs-12 text-dark">$2,254</span>
-                                            <span class="fs-11 text-muted">(46%)</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress mt-2 ht-3">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 46%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Conversion Rate] end -->
-                    <!-- [Payment Records] start -->
-                    <div class="col-xxl-8">
-                        <div class="card stretch stretch-full">
-                            <div class="card-header">
-                                <h5 class="card-title">Payment Record</h5>
-                                <div class="card-header-action">
-                                    <div class="card-header-btn">
-                                        <div data-bs-toggle="tooltip" title="Delete">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Refresh">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Maximize/Minimize">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
-                                            <div data-bs-toggle="tooltip" title="Options">
-                                                <i class="feather-more-vertical"></i>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body custom-card-action p-0">
-                                <div id="payment-records-chart"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row g-4">
-                                    <div class="col-lg-3">
-                                        <div class="p-3 border border-dashed rounded">
-                                            <div class="fs-12 text-muted mb-1">Awaiting</div>
-                                            <h6 class="fw-bold text-dark">$5,486</h6>
-                                            <div class="progress mt-2 ht-3">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 81%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="p-3 border border-dashed rounded">
-                                            <div class="fs-12 text-muted mb-1">Completed</div>
-                                            <h6 class="fw-bold text-dark">$9,275</h6>
-                                            <div class="progress mt-2 ht-3">
-                                                <div class="progress-bar bg-success" role="progressbar" style="width: 82%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="p-3 border border-dashed rounded">
-                                            <div class="fs-12 text-muted mb-1">Rejected</div>
-                                            <h6 class="fw-bold text-dark">$3,868</h6>
-                                            <div class="progress mt-2 ht-3">
-                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 68%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="p-3 border border-dashed rounded">
-                                            <div class="fs-12 text-muted mb-1">Revenue</div>
-                                            <h6 class="fw-bold text-dark">$50,668</h6>
-                                            <div class="progress mt-2 ht-3">
-                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 75%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Payment Records] end -->
-                    <!-- [Total Sales] start -->
-                    <div class="col-xxl-4">
-                        <div class="card stretch stretch-full overflow-hidden">
-                            <div class="bg-primary text-white">
-                                <div class="p-4">
-                                    <span class="badge bg-light text-primary text-dark float-end">12%</span>
-                                    <div class="text-start">
-                                        <h4 class="text-reset">30,569</h4>
-                                        <p class="text-reset m-0">Total Sales</p>
-                                    </div>
-                                </div>
-                                <div id="total-sales-color-graph"></div>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image avatar-lg p-2 rounded">
-                                            <img class="img-fluid" src="assets/images/brand/shopify.png" alt="" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="d-block">Shopify eCommerce Store</a>
-                                            <span class="fs-12 text-muted">Development</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="fw-bold text-dark">$1200</div>
-                                        <div class="fs-12 text-end">6 Projects</div>
-                                    </div>
-                                </div>
-                                <hr class="border-dashed my-3" />
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image avatar-lg p-2 rounded">
-                                            <img class="img-fluid" src="assets/images/brand/app-store.png" alt="" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="d-block">iOS Apps Development</a>
-                                            <span class="fs-12 text-muted">Development</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="fw-bold text-dark">$1450</div>
-                                        <div class="fs-12 text-end">3 Projects</div>
-                                    </div>
-                                </div>
-                                <hr class="border-dashed my-3" />
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image avatar-lg p-2 rounded">
-                                            <img class="img-fluid" src="assets/images/brand/figma.png" alt="" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="d-block">Figma Dashboard Design</a>
-                                            <span class="fs-12 text-muted">UI/UX Design</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="fw-bold text-dark">$1250</div>
-                                        <div class="fs-12 text-end">5 Projects</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center py-4">Full Details</a>
-                        </div>
-                    </div>
-                    <!-- [Total Sales] end !-->
-                    <!-- [Mini] start -->
-                    <div class="col-lg-4">
-                        <div class="card mb-4 stretch stretch-full">
-                            <div class="card-header d-flex align-items-center justify-content-between">
-                                <div class="d-flex gap-3 align-items-center">
-                                    <div class="avatar-text">
-                                        <i class="feather feather-star"></i>
-                                    </div>
-                                    <div>
-                                        <div class="fw-semibold text-dark">Tasks Completed</div>
-                                        <div class="fs-12 text-muted">22/35 completed</div>
-                                    </div>
-                                </div>
-                                <div class="fs-4 fw-bold text-dark">22/35</div>
-                            </div>
-                            <div class="card-body d-flex align-items-center justify-content-between gap-4">
-                                <div id="task-completed-area-chart"></div>
-                                <div class="fs-12 text-muted text-nowrap">
-                                    <span class="fw-semibold text-primary">28% more</span><br />
-                                    <span>from last week</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card mb-4 stretch stretch-full">
-                            <div class="card-header d-flex align-items-center justify-content-between">
-                                <div class="d-flex gap-3 align-items-center">
-                                    <div class="avatar-text">
-                                        <i class="feather feather-file-text"></i>
-                                    </div>
-                                    <div>
-                                        <div class="fw-semibold text-dark">New Tasks</div>
-                                        <div class="fs-12 text-muted">0/20 tasks</div>
-                                    </div>
-                                </div>
-                                <div class="fs-4 fw-bold text-dark">5/20</div>
-                            </div>
-                            <div class="card-body d-flex align-items-center justify-content-between gap-4">
-                                <div id="new-tasks-area-chart"></div>
-                                <div class="fs-12 text-muted text-nowrap">
-                                    <span class="fw-semibold text-success">34% more</span><br />
-                                    <span>from last week</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card mb-4 stretch stretch-full">
-                            <div class="card-header d-flex align-items-center justify-content-between">
-                                <div class="d-flex gap-3 align-items-center">
-                                    <div class="avatar-text">
-                                        <i class="feather feather-airplay"></i>
-                                    </div>
-                                    <div>
-                                        <div class="fw-semibold text-dark">Project Done</div>
-                                        <div class="fs-12 text-muted">20/30 project</div>
-                                    </div>
-                                </div>
-                                <div class="fs-4 fw-bold text-dark">20/30</div>
-                            </div>
-                            <div class="card-body d-flex align-items-center justify-content-between gap-4">
-                                <div id="project-done-area-chart"></div>
-                                <div class="fs-12 text-muted text-nowrap">
-                                    <span class="fw-semibold text-danger">42% more</span><br />
-                                    <span>from last week</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Mini] end !-->
-                    <!-- [Leads Overview] start -->
-                    <div class="col-xxl-4">
-                        <div class="card stretch stretch-full">
-                            <div class="card-header">
-                                <h5 class="card-title">Leads Overview</h5>
-                                <div class="card-header-action">
-                                    <div class="card-header-btn">
-                                        <div data-bs-toggle="tooltip" title="Delete">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Refresh">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Maximize/Minimize">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
-                                            <div data-bs-toggle="tooltip" title="Options">
-                                                <i class="feather-more-vertical"></i>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body custom-card-action">
-                                <div id="leads-overview-donut"></div>
-                                <div class="row g-2">
-                                    <div class="col-4">
-                                        <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">
-                                            <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #3454d1"></span>
-                                            <span>New<span class="fs-10 text-muted ms-1">(20K)</span></span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">
-                                            <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #0d519e"></span>
-                                            <span>Contacted<span class="fs-10 text-muted ms-1">(15K)</span></span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">
-                                            <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #1976d2"></span>
-                                            <span>Qualified<span class="fs-10 text-muted ms-1">(10K)</span></span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">
-                                            <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #1e88e5"></span>
-                                            <span>Working<span class="fs-10 text-muted ms-1">(18K)</span></span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">
-                                            <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #2196f3"></span>
-                                            <span>Customer<span class="fs-10 text-muted ms-1">(10K)</span></span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">
-                                            <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #42a5f5"></span>
-                                            <span>Proposal<span class="fs-10 text-muted ms-1">(15K)</span></span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">
-                                            <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #64b5f6"></span>
-                                            <span>Leads<span class="fs-10 text-muted ms-1">(16K)</span></span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">
-                                            <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #90caf9"></span>
-                                            <span>Progress<span class="fs-10 text-muted ms-1">(14K)</span></span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">
-                                            <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #aad6fa"></span>
-                                            <span>Others<span class="fs-10 text-muted ms-1">(10K)</span></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Leads Overview] end -->
-                    <!-- [Latest Leads] start -->
-                    <div class="col-xxl-8">
-                        <div class="card stretch stretch-full">
-                            <div class="card-header">
-                                <h5 class="card-title">Latest Leads</h5>
-                                <div class="card-header-action">
-                                    <div class="card-header-btn">
-                                        <div data-bs-toggle="tooltip" title="Delete">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Refresh">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Maximize/Minimize">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
-                                            <div data-bs-toggle="tooltip" title="Options">
-                                                <i class="feather-more-vertical"></i>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body custom-card-action p-0">
-                                <div class="table-responsive">
-                                    <table class="table table-hover mb-0">
-                                        <thead>
-                                            <tr class="border-b">
-                                                <th scope="row">Users</th>
-                                                <th>Proposal</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th class="text-end">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center gap-3">
-                                                        <div class="avatar-image">
-                                                            <img src="assets/images/avatar/2.png" alt="" class="img-fluid" />
-                                                        </div>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="d-block">Archie Cantones</span>
-                                                            <span class="fs-12 d-block fw-normal text-muted">arcie.tones@gmail.com</span>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="badge bg-gray-200 text-dark">Sent</span>
-                                                </td>
-                                                <td>11/06/2023 10:53</td>
-                                                <td>
-                                                    <span class="badge bg-soft-success text-success">Completed</span>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center gap-3">
-                                                        <div class="avatar-image">
-                                                            <img src="assets/images/avatar/3.png" alt="" class="img-fluid" />
-                                                        </div>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="d-block">Holmes Cherryman</span>
-                                                            <span class="fs-12 d-block fw-normal text-muted">golms.chan@gmail.com</span>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="badge bg-gray-200 text-dark">New</span>
-                                                </td>
-                                                <td>11/06/2023 10:53</td>
-                                                <td>
-                                                    <span class="badge bg-soft-primary text-primary">In Progress </span>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center gap-3">
-                                                        <div class="avatar-image">
-                                                            <img src="assets/images/avatar/4.png" alt="" class="img-fluid" />
-                                                        </div>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="d-block">Malanie Hanvey</span>
-                                                            <span class="fs-12 d-block fw-normal text-muted">lanie.nveyn@gmail.com</span>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="badge bg-gray-200 text-dark">Sent</span>
-                                                </td>
-                                                <td>11/06/2023 10:53</td>
-                                                <td>
-                                                    <span class="badge bg-soft-success text-success">Completed</span>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center gap-3">
-                                                        <div class="avatar-image">
-                                                            <img src="assets/images/avatar/5.png" alt="" class="img-fluid" />
-                                                        </div>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="d-block">Kenneth Hune</span>
-                                                            <span class="fs-12 d-block fw-normal text-muted">nneth.une@gmail.com</span>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="badge bg-gray-200 text-dark">Returning</span>
-                                                </td>
-                                                <td>11/06/2023 10:53</td>
-                                                <td>
-                                                    <span class="badge bg-soft-warning text-warning">Not Interested</span>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center gap-3">
-                                                        <div class="avatar-image">
-                                                            <img src="assets/images/avatar/6.png" alt="" class="img-fluid" />
-                                                        </div>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="d-block">Valentine Maton</span>
-                                                            <span class="fs-12 d-block fw-normal text-muted">alenine.aton@gmail.com</span>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="badge bg-gray-200 text-dark">Sent</span>
-                                                </td>
-                                                <td>11/06/2023 10:53</td>
-                                                <td>
-                                                    <span class="badge bg-soft-success text-success">Completed</span>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <ul class="list-unstyled d-flex align-items-center gap-2 mb-0 pagination-common-style">
-                                    <li>
-                                        <a href="javascript:void(0);"><i class="bi bi-arrow-left"></i></a>
-                                    </li>
-                                    <li><a href="javascript:void(0);" class="active">1</a></li>
-                                    <li><a href="javascript:void(0);">2</a></li>
-                                    <li>
-                                        <a href="javascript:void(0);"><i class="bi bi-dot"></i></a>
-                                    </li>
-                                    <li><a href="javascript:void(0);">8</a></li>
-                                    <li><a href="javascript:void(0);">9</a></li>
-                                    <li>
-                                        <a href="javascript:void(0);"><i class="bi bi-arrow-right"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Latest Leads] end -->
-                    <!--! BEGIN: [Upcoming Schedule] !-->
-                    <div class="col-xxl-4">
-                        <div class="card stretch stretch-full">
-                            <div class="card-header">
-                                <h5 class="card-title">Upcoming Schedule</h5>
-                                <div class="card-header-action">
-                                    <div class="card-header-btn">
-                                        <div data-bs-toggle="tooltip" title="Delete">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Refresh">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Maximize/Minimize">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
-                                            <div data-bs-toggle="tooltip" title="Options">
-                                                <i class="feather-more-vertical"></i>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <!--! BEGIN: [Events] !-->
-                                <div class="p-3 border border-dashed rounded-3 mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="wd-50 ht-50 bg-soft-primary text-primary lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">
-                                                <span class="fs-18 fw-bold mb-1 d-block">20</span>
-                                                <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>
-                                            </div>
-                                            <div class="text-dark">
-                                                <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">React Dashboard Design</a>
-                                                <span class="fs-11 fw-normal text-muted text-truncate-1-line">11:30am - 12:30pm</span>
-                                            </div>
-                                        </div>
-                                        <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
-                                                <img src="assets/images/avatar/2.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">
-                                                <img src="assets/images/avatar/3.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">
-                                                <img src="assets/images/avatar/4.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="assets/images/avatar/6.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                                <i class="feather-more-horizontal"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--! BEGIN: [Events] !-->
-                                <div class="p-3 border border-dashed rounded-3 mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="wd-50 ht-50 bg-soft-warning text-warning lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">
-                                                <span class="fs-18 fw-bold mb-1 d-block">30</span>
-                                                <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>
-                                            </div>
-                                            <div class="text-dark">
-                                                <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Admin Design Concept</a>
-                                                <span class="fs-11 fw-normal text-muted text-truncate-1-line">10:00am - 12:00pm</span>
-                                            </div>
-                                        </div>
-                                        <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
-                                                <img src="assets/images/avatar/2.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">
-                                                <img src="assets/images/avatar/3.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="assets/images/avatar/5.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="assets/images/avatar/6.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                                <i class="feather-more-horizontal"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--! BEGIN: [Events] !-->
-                                <div class="p-3 border border-dashed rounded-3 mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="wd-50 ht-50 bg-soft-success text-success lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">
-                                                <span class="fs-18 fw-bold mb-1 d-block">17</span>
-                                                <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>
-                                            </div>
-                                            <div class="text-dark">
-                                                <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Standup Team Meeting</a>
-                                                <span class="fs-11 fw-normal text-muted text-truncate-1-line">8:00am - 9:00am</span>
-                                            </div>
-                                        </div>
-                                        <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
-                                                <img src="assets/images/avatar/2.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">
-                                                <img src="assets/images/avatar/3.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">
-                                                <img src="assets/images/avatar/4.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="assets/images/avatar/5.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                                <i class="feather-more-horizontal"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--! BEGIN: [Events] !-->
-                                <div class="p-3 border border-dashed rounded-3 mb-2">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="wd-50 ht-50 bg-soft-danger text-danger lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">
-                                                <span class="fs-18 fw-bold mb-1 d-block">25</span>
-                                                <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>
-                                            </div>
-                                            <div class="text-dark">
-                                                <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Zoom Team Meeting</a>
-                                                <span class="fs-11 fw-normal text-muted text-truncate-1-line">03:30pm - 05:30pm</span>
-                                            </div>
-                                        </div>
-                                        <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
-                                                <img src="assets/images/avatar/2.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">
-                                                <img src="assets/images/avatar/4.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="assets/images/avatar/5.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="assets/images/avatar/6.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                                <i class="feather-more-horizontal"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center py-4">Upcomming Schedule</a>
-                        </div>
-                    </div>
-                    <!--! END: [Upcoming Schedule] !-->
-                    <!--! BEGIN: [Project Status] !-->
-                    <div class="col-xxl-4">
-                        <div class="card stretch stretch-full">
-                            <div class="card-header">
-                                <h5 class="card-title">Project Status</h5>
-                                <div class="card-header-action">
-                                    <div class="card-header-btn">
-                                        <div data-bs-toggle="tooltip" title="Delete">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Refresh">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Maximize/Minimize">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
-                                            <div data-bs-toggle="tooltip" title="Options">
-                                                <i class="feather-more-vertical"></i>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body custom-card-action">
-                                <div class="mb-3">
-                                    <div class="mb-4 pb-1 d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="assets/images/brand/app-store.png" alt="laravel-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">Apps Development</a>
-                                                <div class="fs-11 text-muted">Applications</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 54%" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">54%</span>
-                                        </div>
-                                    </div>
-                                    <hr class="border-dashed my-3" />
-                                    <div class="mb-4 pb-1 d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="assets/images/brand/figma.png" alt="figma-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">Dashboard Design</a>
-                                                <div class="fs-11 text-muted">App UI Kit</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 86%" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">86%</span>
-                                        </div>
-                                    </div>
-                                    <hr class="border-dashed my-3" />
-                                    <div class="mb-4 pb-1 d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="assets/images/brand/facebook.png" alt="vue-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">Facebook Marketing</a>
-                                                <div class="fs-11 text-muted">Marketing</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">90%</span>
-                                        </div>
-                                    </div>
-                                    <hr class="border-dashed my-3" />
-                                    <div class="mb-4 pb-1 d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="assets/images/brand/github.png" alt="react-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">React Dashboard Github</a>
-                                                <div class="fs-11 text-muted">Dashboard</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">37%</span>
-                                        </div>
-                                    </div>
-                                    <hr class="border-dashed my-3" />
-                                    <div class="d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="assets/images/brand/paypal.png" alt="sketch-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">Paypal Payment Gateway</a>
-                                                <div class="fs-11 text-muted">Payment</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 29%" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">29%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center">Upcomming Projects</a>
-                        </div>
-                    </div>
-                    <!--! END: [Project Status] !-->
-                    <!--! BEGIN: [Team Progress] !-->
-                    <div class="col-xxl-4">
-                        <div class="card stretch stretch-full">
-                            <div class="card-header">
-                                <h5 class="card-title">Team Progress</h5>
-                                <div class="card-header-action">
-                                    <div class="card-header-btn">
-                                        <div data-bs-toggle="tooltip" title="Delete">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Refresh">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Maximize/Minimize">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
-                                            <div data-bs-toggle="tooltip" title="Options">
-                                                <i class="feather-more-vertical"></i>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body custom-card-action">
-                                <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-3">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image">
-                                            <img src="assets/images/avatar/1.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);">Alexandra Della</a>
-                                            <div class="fs-11 text-muted">Frontend Developer</div>
-                                        </div>
-                                    </div>
-                                    <div class="team-progress-1"></div>
-                                </div>
-                                <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-3">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image">
-                                            <img src="assets/images/avatar/2.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);">Archie Cantones</a>
-                                            <div class="fs-11 text-muted">UI/UX Designer</div>
-                                        </div>
-                                    </div>
-                                    <div class="team-progress-2"></div>
-                                </div>
-                                <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-3">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image">
-                                            <img src="assets/images/avatar/3.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);">Malanie Hanvey</a>
-                                            <div class="fs-11 text-muted">Backend Developer</div>
-                                        </div>
-                                    </div>
-                                    <div class="team-progress-3"></div>
-                                </div>
-                                <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-2">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image">
-                                            <img src="assets/images/avatar/4.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);">Kenneth Hune</a>
-                                            <div class="fs-11 text-muted">Digital Marketer</div>
-                                        </div>
-                                    </div>
-                                    <div class="team-progress-4"></div>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center">Update 30 Min Ago</a>
-                        </div>
-                    </div>
-                    <!--! END: [Team Progress] !-->
-                </div>
-            </div>
-            <!-- [ Main Content ] end -->
-        </div>
 
 @endsection
