@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\HeadOffice;
 use App\Models\Office;
+use App\Models\TicketType;
 use Illuminate\Support\Facades\Validator; // Correct import for Laravel Validator
 
 class AdminController extends Controller
@@ -132,6 +133,32 @@ class AdminController extends Controller
             ], 500);
         }
     }
+    public function delete_office(Request $request, $id)
+    {
+        try {
+            $office = Office::find($id);
+            
+            if (!$office) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Office Head not found'
+                ], 404);
+            }
+            
+            $office->delete();
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Office  deleted successfully'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while deleting the Office Head',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 
     public function office ()
     {
@@ -234,6 +261,124 @@ class AdminController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'An error occurred while creating the Office Head',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function ticket_type ()
+    {
+        return view('admin.ticket_type');
+    }
+    public function store_ticket_type(Request $request){
+        $validator = Validator::make($request->all(), [
+            'ticket_type' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
+        }
+        if (TicketType::where('ticket_type', $request->ticket_type)->exists()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'The Ticket Type already exists.'
+            ], 409); // 409 Conflict status code
+        }
+    
+        try {
+            $ticket = new TicketType;
+            $ticket->ticket_type = $request->ticket_type;
+            $ticket->save();
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Ticket Type created successfully',
+                'data' => $ticket
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while creating the Office Head',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function getDataTicketType(Request $request){
+         $search = $request->query('search');
+           $perPage = $request->query('per_page', 10); // Default to 10 if per_page is not provided
+       
+           // Query certifications with optional search
+           $tickets = TicketType::when($search, function ($query, $search) {
+               return $query->where('ticket_type', 'like', '%' . $search . '%');
+                           
+           })
+           ->paginate($perPage);
+       
+           return response()->json([
+               'success' => true,
+               'data' => $tickets
+           ]);
+    }
+     public function update_ticket_type(Request $request,$id){
+        $validator = Validator::make($request->all(), [
+            'ticket_type' => 'required',
+           
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
+        }
+       
+        try {
+            $ticket =  TicketType::find($id);
+            $ticket->ticket_type = $request->ticket_type;
+           
+             $ticket->status = $request->status;
+             $ticket->save();
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Ticket Type  Updated successfully',
+                'data' => $ticket
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while creating the Ticket Type',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+     public function delete_ticket_type(Request $request, $id)
+    {
+        try {
+            $ticket = TicketType::find($id);
+            
+            if (!$ticket) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Ticket Type not found'
+                ], 404);
+            }
+            
+            $ticket->delete();
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Ticket Type deleted successfully'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while deleting the Ticket Type',
                 'error' => $e->getMessage()
             ], 500);
         }

@@ -57,7 +57,7 @@
                                         <a href="apps-chat.html" class="nav-link" data-key="t-chat"> Ticket Request </a>
                                     </li>
                                      <li class="nav-item">
-                                        <a href="apps-chat.html" class="nav-link" data-key="t-chat"> Ticket Type </a>
+                                        <a href="{{route('ticket.type')}}" class="nav-link" data-key="t-chat"> Ticket Type </a>
                                     </li>
                                     
                                 </ul>

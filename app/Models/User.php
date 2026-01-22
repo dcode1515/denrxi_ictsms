@@ -18,16 +18,21 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-         'name',
+       'name',
         'email',
-        'password',
+        'contact_number',
+        'position',
         'role',
-        'status',
-        'avatar',
-        'last_login_at',
-        'last_login_ip',
-        'login_attempts',
-        'locked_until'
+        'password',
+        'head_office_id',
+        'office_id',
+        'agree_and_terms_condition',
+        'information_confirmed',
+        'approval_status',
+        'email_verified_at',
+        'created_at',
+        'updated_at',
+      
     ];
 
     /**
@@ -46,32 +51,21 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'last_login_at' => 'datetime',
-        'locked_until' => 'datetime',
-        'login_attempts' => 'integer'
+       'email_verified_at' => 'datetime',
+        'agree_and_terms_condition' => 'boolean',
+        'information_confirmed' => 'boolean',
     ];
-     public function isAdmin(): bool
+     public function headOffice()
     {
-        return $this->role === 'admin';
+        return $this->belongsTo(HeadOffice::class, 'head_office_id');
     }
-     public function isActive(): bool
+    public function office()
     {
-        return $this->status === 'active';
+        return $this->belongsTo(Office::class, 'office_id');
     }
-      public function isLocked(): bool
+     public function scopeActive($query)
     {
-        return $this->locked_until && now()->lt($this->locked_until);
+        return $query->where('status', 'active');
     }
-    public function resetLoginAttempts(): void
-    {
-        $this->update([
-            'login_attempts' => 0,
-            'locked_until' => null
-        ]);
-    }
-      public function incrementLoginAttempts(): void
-    {
-        $this->increment('login_attempts');
-    }
+
 }

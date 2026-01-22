@@ -2,7 +2,7 @@
   <div class="form-wrapper">
     <div class="login-header">
       <h3>Welcome Back</h3>
-      <p>Access the ICT Service Management Portal</p>
+      <p>Access the Account ICT Service Management Portal</p>
     </div>
 
     <form id="loginForm" @submit.prevent="handleLogin">
@@ -21,7 +21,7 @@
           autocomplete="off"
         />
         <i class="input-icon fas fa-user"></i>
-        <label for="username" class="input-label">ICT Account / Email</label>
+        <label for="username" class="input-label">Account / Email</label>
         <div v-if="fieldErrors.email_address" class="text-danger mt-1 small">
           {{ fieldErrors.email_address[0] }}
         </div>
@@ -78,8 +78,9 @@
 
     <div class="register-text">
       Don't have an account?
-      <a class="register-link" onclick="openModal()">Request Access</a>
+      <a class="register-link" :href="'/denrxi_ictsms/request/access'">Request Access</a>
     </div>
+    
 
     <div
       class="login-footer"

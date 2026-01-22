@@ -26,4 +26,5 @@ class Office extends Model
     {
         return $this->belongsTo(HeadOffice::class, 'head_office_id');
     }
+    
 }

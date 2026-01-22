@@ -13,7 +13,7 @@
                 <div>
                   <h5 class="card-title mb-0 text-white">
                     <i class="ri-building-3-line me-2"></i>
-                    DENR - Manage Office List
+                    DENR - Manage Ticket Type List
                   </h5>
                   <p class="text-white-50 mb-0 small">
                     <i class="ri-list-check me-1"></i>
@@ -29,7 +29,7 @@
                 @click="openModal('add')"
               >
                 <i class="ri-add-circle-line me-1"></i>
-                Create Office
+                Create Ticket Type
               </button>
             </div>
           </div>
@@ -46,7 +46,7 @@
                 <select
                   class="form-control form-control"
                   v-model="perPage"
-                  @change="getDataOffice"
+                  @change="getDataTickettype"
                 >
                   <option value="5">5 per page</option>
                   <option value="10">10 per page</option>
@@ -62,7 +62,7 @@
                 </span>
                 <input
                   v-model="searchQuery"
-                  @input="getDataOffice"
+                  @input="getDataTickettype"
                   type="text"
                   class="form-control"
                   placeholder="Search head of office..."
@@ -95,10 +95,6 @@
                     Head of Office
                   </th>
                   <th>
-                    <i class="ri-user-line me-1"></i>
-                    Office Name
-                  </th>
-                  <th>
                     <i class="ri-leaf-line me-1"></i>
                     Status
                   </th>
@@ -113,57 +109,49 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(office, index) in offices.data" :key="office.id">
+                <tr v-for="(ticket, index) in tickets.data" :key="ticket.id">
                   <td class="ps-4">
                     {{
-                      (offices.current_page - 1) * offices.per_page + index + 1
+                      (tickets.current_page - 1) * tickets.per_page + index + 1
                     }}
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <strong>{{ office.office_under.head_of_office }}</strong>
-                      </div>
-                    </div>
                   </td>
 
                   <td>
                     <div class="d-flex align-items-center">
                       <div>
-                        <strong>{{ office.office }}</strong>
+                        <strong>{{ ticket.ticket_type }}</strong>
                       </div>
                     </div>
                   </td>
-                 
                   <td>
-                    <span :class="getStatusClass(office.status)">
-                      <i :class="getStatusIcon(office.status)" class="me-1"></i>
-                      {{ office.status }}
+                    <span :class="getStatusClass(ticket.status)">
+                      <i :class="getStatusIcon(ticket.status)" class="me-1"></i>
+                      {{ ticket.status }}
                     </span>
                   </td>
                   <td>
                     <i class="ri-time-line me-1 text-muted"></i>
-                    {{ formatDate(office.created_at) }}
+                    {{ formatDate(ticket.created_at) }}
                   </td>
                   <td class="text-center">
                     <div class="btn-group" role="group">
                       <button
                         class="btn btn-sm btn-outline-primary"
-                        @click="openModal('edit', office)"
+                        @click="openModal('edit', ticket)"
                         title="Edit"
                       >
                         <i class="ri-edit-line"></i>
                       </button>
                       <button
                         class="btn btn-sm btn-outline-info"
-                        @click="viewDetails(office)"
+                        @click="viewDetails(ticket)"
                         title="View"
                       >
                         <i class="ri-eye-line"></i>
                       </button>
                       <button
                         class="btn btn-sm btn-outline-danger"
-                        @click="confirmDelete(office)"
+                        @click="confirmDelete(ticket)"
                         title="Delete"
                       >
                         <i class="ri-delete-bin-line"></i>
@@ -171,7 +159,7 @@
                     </div>
                   </td>
                 </tr>
-                <tr v-if="offices.data.length === 0">
+                <tr v-if="tickets.data.length === 0">
                   <td colspan="6" class="text-center py-5">
                     <div class="text-muted">
                       <i class="ri-search-line display-5"></i>
@@ -185,13 +173,13 @@
         </div>
 
         <!-- Pagination -->
-        <div v-if="offices.total > 0" class="card-footer bg-white">
+        <div v-if="tickets.total > 0" class="card-footer bg-white">
           <div class="row align-items-center">
             <div class="col-md-6">
               <span class="text-muted small">
                 <i class="ri-file-list-line me-1"></i>
-                Showing {{ offices.from }} to {{ offices.to }} of
-                {{ offices.total }} entries
+                Showing {{ tickets.from }} to {{ tickets.to }} of
+                {{ tickets.total }} entries
               </span>
             </div>
             <div class="col-md-6">
@@ -199,7 +187,7 @@
                 <ul class="pagination pagination-sm mb-0">
                   <li
                     class="page-item"
-                    :class="{ disabled: offices.current_page === 1 }"
+                    :class="{ disabled: tickets.current_page === 1 }"
                   >
                     <button
                       class="page-link"
@@ -211,11 +199,11 @@
                   </li>
                   <li
                     class="page-item"
-                    :class="{ disabled: offices.current_page === 1 }"
+                    :class="{ disabled: tickets.current_page === 1 }"
                   >
                     <button
                       class="page-link"
-                      @click="changePage(offices.current_page - 1)"
+                      @click="changePage(tickets.current_page - 1)"
                       title="Previous"
                     >
                       <i class="ri-arrow-left-s-line"></i>
@@ -226,7 +214,7 @@
                     v-for="page in pages"
                     :key="page"
                     class="page-item"
-                    :class="{ active: page === offices.current_page }"
+                    :class="{ active: page === tickets.current_page }"
                   >
                     <button class="page-link" @click="changePage(page)">
                       {{ page }}
@@ -236,12 +224,12 @@
                   <li
                     class="page-item"
                     :class="{
-                      disabled: offices.current_page === offices.last_page,
+                      disabled: tickets.current_page === tickets.last_page,
                     }"
                   >
                     <button
                       class="page-link"
-                      @click="changePage(offices.current_page + 1)"
+                      @click="changePage(tickets.current_page + 1)"
                       title="Next"
                     >
                       <i class="ri-arrow-right-s-line"></i>
@@ -250,12 +238,12 @@
                   <li
                     class="page-item"
                     :class="{
-                      disabled: offices.current_page === offices.last_page,
+                      disabled: tickets.current_page === tickets.last_page,
                     }"
                   >
                     <button
                       class="page-link"
-                      @click="changePage(offices.last_page)"
+                      @click="changePage(tickets.last_page)"
                       title="Last"
                     >
                       <i class="ri-skip-forward-line"></i>
@@ -265,7 +253,7 @@
               </nav>
               <div
                 class="modal fade zoomIn"
-                id="modalOffice"
+                id="modalTickettype"
                 tabindex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
@@ -289,48 +277,20 @@
                     <div class="modal-body p-4">
                       <div class="mb-4">
                         <label class="form-label fw-medium mb-2">
-                          Head of Office Name
+                          Ticket Type
                           <span class="text-danger">*</span>
                         </label>
                         <div class="input-group">
                           <span class="input-group-text bg-light">
                             <i class="ri-user-3-line"></i>
                           </span>
-                          <select
-                            v-model="formData.head_of_office"
+                          <input
+                            type="text"
                             class="form-control"
+                            v-model="formData.ticket_type"
+                            placeholder="Enter Ticket Type"
                             :disabled="modalMode === 'view'"
-                          >
-                            <option value="" disabled selected>
-                              Select an Office Head
-                            </option>
-                            <option
-                              v-for="officeHead in officeheads"
-                              :key="officeHead.id"
-                              :value="officeHead.id"
-                            >
-                              {{ officeHead.head_of_office }}
-                            </option>
-                          </select>
-                        </div>
-                        <div class="mb-4">
-                          <label class="form-label fw-medium mb-2">
-                            Office Name
-                            <span class="text-danger">*</span>
-                          </label>
-                          <div class="input-group">
-                            <span class="input-group-text bg-light">
-                              <i class="ri-building-line"></i>
-                            </span>
-
-                            <input
-                              :disabled="modalMode === 'view'"
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter Office Name"
-                              v-model="formData.office"
-                            />
-                          </div>
+                          />
                         </div>
                       </div>
 
@@ -416,8 +376,7 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
-      officeheads: [],
-      offices: {
+      tickets: {
         data: [],
         current_page: 1,
         from: 1,
@@ -428,12 +387,11 @@ export default {
       },
       formData: {
         id: "",
-        head_of_office: "",
-        office: "",
+        ticket_type: "",
         status: "active",
       },
       modalMode: "add",
-      modalTitle: "Add Head of Office",
+      modalTitle: "Add Ticket Type",
       searchQuery: "",
       perPage: 10,
       loading: false,
@@ -443,8 +401,8 @@ export default {
   computed: {
     pages() {
       const pages = [];
-      const total = this.offices.last_page;
-      const current = this.offices.current_page;
+      const total = this.tickets.last_page;
+      const current = this.tickets.current_page;
       const maxVisible = 5;
 
       if (total <= maxVisible) {
@@ -465,38 +423,29 @@ export default {
   },
 
   methods: {
-    async getOfficeHead() {
-      try {
-        const response = await fetch("/denrxi_ictsms/api/get/office/head"); // Replace with your actual endpoint
-        if (!response.ok) throw new Error("Network response was not ok");
-        this.officeheads = await response.json(); // Assign fetched data to chairmanships
-      } catch (error) {
-        console.error("There was a problem fetching the officeheads:", error);
-      }
-    },
-    async getDataOffice() {
+    async getDataTickettype() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/data/office",
+          "/denrxi_ictsms/api/get/data/ticket/type",
           {
             params: {
-              page: this.offices.current_page,
+              page: this.tickets.current_page,
               per_page: this.perPage,
               search: this.searchQuery,
             },
           }
         );
 
-        this.offices = response.data.data;
+        this.tickets = response.data.data;
       } catch (error) {
         this.showError("Failed to load data. Please try again.");
       }
     },
 
     changePage(page) {
-      if (page >= 1 && page <= this.offices.last_page) {
-        this.offices.current_page = page;
-        this.getDataOffice();
+      if (page >= 1 && page <= this.tickets.last_page) {
+        this.tickets.current_page = page;
+        this.getDataTickettype();
       }
     },
 
@@ -536,42 +485,43 @@ export default {
       }
     },
 
-    openModal(mode, office = null) {
+    openModal(mode, ticket = null) {
       this.modalMode = mode;
 
       if (mode === "add") {
-        this.modalTitle = "Add New Office";
-        this.formData = { id: "", head_of_office: "", status: "active" };
+        this.modalTitle = "Add Ticket Type";
+        this.formData = { id: "", ticket_type: "", status: "active" };
       } else if (mode === "edit") {
-        this.modalTitle = "Edit Office";
+        this.modalTitle = "Edit Ticket Type";
         this.formData = {
-          id: office.id,
-          head_of_office: office.head_office_id,
-          office: office.office,
-          status: office.status || "active",
+          id: ticket.id,
+          ticket_type: ticket.ticket_type,
+          status: ticket.status || "active",
         };
       }
 
-      $("#modalOffice").modal("show");
+      $("#modalTickettype").modal("show");
     },
     closeModal() {
-      $("#modalOffice").modal("hide");
+      $("#modalTickettype").modal("hide");
     },
 
-    viewDetails(office) {
+    viewDetails(ticket) {
       this.modalMode = "view";
       this.modalTitle = "View Details";
       this.formData = {
-        id: office.id,
-      head_of_office: office.head_office_id,
-        office: office.office,
-        status: office.status || "active",
+        id: ticket.id,
+        ticket_type: ticket.ticket_type,
+        status: ticket.status || "active",
       };
-      $("#modalOffice").modal("show");
+      $("#modalTickettype").modal("show");
     },
 
     async submitForm() {
-     
+      if (!this.formData.ticket_type.trim()) {
+        this.showError("Please enter Ticket Type");
+        return;
+      }
 
       this.loading = true;
       try {
@@ -579,12 +529,12 @@ export default {
 
         if (this.modalMode === "add") {
           response = await axios.post(
-            "/denrxi_ictsms/api/store/office",
+            "/denrxi_ictsms/api/store/ticket/type",
             this.formData
           );
         } else {
           response = await axios.post(
-            `/denrxi_ictsms/api/update/office/${this.formData.id}`,
+            `/denrxi_ictsms/api/update/ticket/type/${this.formData.id}`,
             this.formData
           );
         }
@@ -597,13 +547,13 @@ export default {
           confirmButtonText: "OK",
         });
 
-        $("#modalOffice").modal("show");
-        this.formData.head_of_office = "",
-        this.formData.office = "",
-        this.getDataOffice();
+      $("#modalTickettype").modal("show");
+       
+        this.formData.ticket_type = "",
+        this.getDataTickettype();
       } catch (error) {
         if (error.response?.status === 409) {
-          this.showError("This head of office already exists");
+          this.showError("This Ticket Type is already exists");
         } else if (error.response?.data?.errors) {
           const errors = error.response.data.errors;
           const errorMessage = Object.values(errors).flat().join(", ");
@@ -616,10 +566,10 @@ export default {
       }
     },
 
-    async confirmDelete(office) {
+    async confirmDelete(ticket) {
       const result = await Swal.fire({
         title: "Delete Record",
-        text: `Are you sure you want to delete "${office.head_of_office}"?`,
+        text: `Are you sure you want to delete "${ticket.ticket_type}"?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
@@ -632,7 +582,7 @@ export default {
       if (result.isConfirmed) {
         try {
           await axios.delete(
-            `/denrxi_ictsms/api/delete/office/${office.id}`
+            `/denrxi_ictsms/api/delete/ticket/type/${ticket.id}`
           );
 
           await Swal.fire({
@@ -643,7 +593,7 @@ export default {
             timer: 2000,
           });
 
-          this.getDataOffice();
+          this.getDataTickettype();
         } catch (error) {
           this.showError("Failed to delete record");
         }
@@ -651,11 +601,13 @@ export default {
     },
 
     refreshData() {
-      this.getDataOffice();
+      this.getDataTickettype();
       this.showSuccess("Data refreshed successfully!");
     },
 
-   
+    exportData() {
+      this.showInfo("Export feature will be available soon!");
+    },
 
     showError(message) {
       Swal.fire({
@@ -687,8 +639,7 @@ export default {
   },
 
   mounted() {
-    this.getOfficeHead();
-    this.getDataOffice();
+    this.getDataTickettype();
   },
 };
 </script>

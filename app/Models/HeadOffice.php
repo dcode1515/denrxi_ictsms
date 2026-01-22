@@ -20,4 +20,8 @@ class HeadOffice extends Model
          'deleted_at',
 
       ];
+       public function offices()
+    {
+        return $this->hasMany(Office::class, 'head_office_id');
+    }
 }
