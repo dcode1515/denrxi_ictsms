@@ -28,6 +28,8 @@
                 <div class="container-fluid">
                     <div id="two-column-menu">
                     </div>
+
+                    @if(Auth::user()->role == 'admin')
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
@@ -80,7 +82,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="widgets.html">
+                            <a class="nav-link menu-link" href="{{route('user.management')}}">
                                 <i class="ri-user-line"></i> <span data-key="t-widgets">User Management</span>
                             </a>
                         </li>
@@ -96,6 +98,38 @@
                         </li>
 
                     </ul>
+                    @endif
+
+                    @if(Auth::user()->module_assign == 1 && Auth::user()->approval_status === "Approved")
+                    <ul class="navbar-nav" id="navbar-nav">
+                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="">
+                                <i class="ri-apps-2-line"></i> <span data-key="t-widgets">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route('profile.show', ['id' => Auth::id()]) }}">
+                                <i class="ri-user-line"></i> <span data-key="t-widgets">Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="apps-chat.html">
+                                <i class="ri-headphone-line"></i> <span data-key="t-chat">Ticket Request</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="widgets.html">
+                                <i class="ri-file-text-line"></i> <span data-key="t-widgets">Reports</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="widgets.html">
+                                <i class="ri-archive-line"></i> <span data-key="t-widgets">Data Logs</span>
+                            </a>
+                        </li>
+                    </ul>
+                    @endif
                 </div>
                 <!-- Sidebar -->
             </div>

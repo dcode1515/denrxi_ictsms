@@ -26,6 +26,8 @@ Vue.component('Headoffice', require('./components/Admin/Headoffice.vue').default
 Vue.component('Office', require('./components/Admin/Office.vue').default);
 Vue.component('Tickettype', require('./components/Admin/Tickettype.vue').default);
 Vue.component('Register', require('./components/Auth/Register.vue').default);
+Vue.component('Usermanagement', require('./components/Admin/Usermanagement.vue').default);
+Vue.component('Profile', require('./components/Auth/Profile.vue').default);
 
 
 /**

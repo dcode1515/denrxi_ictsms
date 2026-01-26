@@ -53,7 +53,17 @@ Route::post('/api/store/ticket/type', [App\Http\Controllers\Admin\AdminControlle
 Route::get('/api/get/data/ticket/type', [App\Http\Controllers\Admin\AdminController::class, 'getDataTicketType']);
 Route::post('/api/update/ticket/type/{id}', [App\Http\Controllers\Admin\AdminController::class, 'update_ticket_type']);
 Route::delete('/api/delete/ticket/type/{id}', [App\Http\Controllers\Admin\AdminController::class, 'delete_ticket_type']);
-
-
-
+Route::get('/user/management', [App\Http\Controllers\Admin\AdminController::class, 'user_management'])->name('user.management');
+Route::get('/api/get/data/user/pending', [App\Http\Controllers\Admin\AdminController::class, 'getDataUserPending']);
+Route::get('/api/get/data/module', [App\Http\Controllers\Admin\AdminController::class, 'getModuleAssign']);
+Route::put('/api/update/user/account/{id}', [App\Http\Controllers\Admin\AdminController::class, 'update_user_account']);
 /*End Admin Routes*/
+
+
+
+
+/*Technician  Routes*/
+Route::get('/helpdesk/dashboard', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'helpdesk'])->name('helpdesk.dashboard');
+Route::get('/profile/{id}', [App\Http\Controllers\Auth\AuthController::class, 'showProfile'])->name('profile.show');
+
+/*End Technician  Routes*/

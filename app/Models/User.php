@@ -18,7 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-       'name',
+       'firstname',
+         'middle_initial',
+         'lastname',
+         'extension',
+          'module_assign',
         'email',
         'contact_number',
         'position',
@@ -62,6 +66,10 @@ class User extends Authenticatable
     public function office()
     {
         return $this->belongsTo(Office::class, 'office_id');
+    }
+     public function module_system()
+    {
+        return $this->belongsTo(SystemModule::class, 'module_assign');
     }
      public function scopeActive($query)
     {

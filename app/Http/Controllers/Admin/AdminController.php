@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\HeadOffice;
 use App\Models\Office;
 use App\Models\TicketType;
+use App\Models\User;
+use App\Models\SystemModule;
 use Illuminate\Support\Facades\Validator; // Correct import for Laravel Validator
 
 class AdminController extends Controller
@@ -383,6 +385,85 @@ class AdminController extends Controller
             ], 500);
         }
     }
+
+    public function user_management(){
+        return view('admin.user_management');
+    }
+
+    public function getDataUserPending(Request $request){
+        // Get the search query and per_page from the request
+        $search = $request->query('search');
+        $perPage = $request->query('per_page', 10); // Default to 10 if per_page is not provided
+
+        // Query users with optional search
+        $users = User::with('module_system')->with('headOffice')->with('office')->when($search, function ($query, $search) {
+            return $query->where(function($q) use ($search) {
+                $q->where('firstname', 'like', '%' . $search . '%')
+                  ->orWhere('middle_initial', 'like', '%' . $search . '%')
+                  ->orWhere('lastname', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%');
+            })
+            ->orWhereHas('headOffice', function ($q) use ($search) {
+                $q->where('head_of_office', 'like', '%' . $search . '%');
+            })
+            ->orWhereHas('office', function ($q) use ($search) {
+                $q->where('office', 'like', '%' . $search . '%');
+            });
+        })
+        ->where('role','!=','admin')
+        ->paginate($perPage);
+
+        return response()->json([
+            'success' => true,
+            'data' => $users
+        ]);
+    }
+
+    public function getModuleAssign()
+{
+            $moduled = SystemModule::orderBy('module_assign', 'asc')->get();
+            return response()->json($moduled);
+        }
+
+        public function update_user_account(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [ 
+            'approval_status' => 'required',
+             'module_assign_name' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
+        }
+        try {
+            $user = User::find($id);
+            if (!$user) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'User not found'
+                ], 404);
+            }
+
+            $user->approval_status = $request->approval_status;
+            $user->module_assign = $request->module_assign_name;
+            $user->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'User account updated successfully',
+                'data' => $user
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while updating the user account',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+          }
+
 
 
 

@@ -42,21 +42,91 @@
     <!-- Step 1: Personal Information -->
     <form v-if="currentStep === 0" @submit.prevent="nextStep" class="step-form">
       <div class="form-section">
+        <!-- Name Row - Compact Layout -->
+
+        <!-- First Name -->
+
         <div class="input-group">
           <input
             type="text"
             class="input-field"
-            :class="{ 'is-invalid': fieldErrors.full_name }"
+            :class="{ 'is-invalid': fieldErrors.firstname }"
             placeholder=" "
-            v-model="formData.full_name"
-            autocomplete="name"
+            v-model="formData.firstname"
+            autocomplete="given-name"
           />
           <i class="input-icon fas fa-user"></i>
-          <label class="input-label">Full Name *</label>
-          <div v-if="fieldErrors.full_name" class="text-danger mt-1 small">
-            {{ fieldErrors.full_name[0] }}
+          <label class="input-label">First Name *</label>
+          <div v-if="fieldErrors.firstname" class="text-danger mt-1 small">
+            {{ fieldErrors.firstname[0] }}
           </div>
         </div>
+
+        <!-- Middle Initial -->
+
+        <div class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            :class="{ 'is-invalid': fieldErrors.middle_initial }"
+            placeholder=" "
+            v-model="formData.middle_initial"
+            @input="formatMiddleInitial"
+            maxlength="1"
+            autocomplete="additional-name"
+          />
+          <i class="input-icon fas fa-user"></i>
+          <label class="input-label">MI</label>
+          <div v-if="fieldErrors.middle_initial" class="text-danger mt-1 small">
+            {{ fieldErrors.middle_initial[0] }}
+          </div>
+        </div>
+
+        <!-- Last Name -->
+
+        <div class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            :class="{ 'is-invalid': fieldErrors.lastname }"
+            placeholder=" "
+            v-model="formData.lastname"
+            autocomplete="family-name"
+          />
+          <i class="input-icon fas fa-user"></i>
+          <label class="input-label">Last Name *</label>
+          <div v-if="fieldErrors.lastname" class="text-danger mt-1 small">
+            {{ fieldErrors.lastname[0] }}
+          </div>
+        </div>
+
+        <!-- Extension -->
+
+        <div class="input-group">
+          <select
+            class="input-field compact-select"
+            :class="{ 'is-invalid': fieldErrors.extension }"
+            v-model="formData.extension"
+          >
+            <option value="">Ext.</option>
+            <option value="N/A">N/A</option>
+            <option value="Jr.">Jr.</option>
+            <option value="Sr.">Sr.</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+          </select>
+          <i class="input-icon fas fa-user-plus"></i>
+          <label class="input-label">Extension</label>
+          <div v-if="fieldErrors.extension" class="text-danger mt-1 small">
+            {{ fieldErrors.extension[0] }}
+          </div>
+        </div>
+
+        <!-- Contact Number and Position Row -->
+
+        <!-- Contact Number -->
 
         <div class="input-group">
           <input
@@ -76,23 +146,24 @@
             {{ fieldErrors.contact_number[0] }}
           </div>
         </div>
-      </div>
 
-      <div class="input-group">
-        <input
-          type="text"
-          class="input-field"
-          :class="{ 'is-invalid': fieldErrors.position }"
-          placeholder=" "
-          v-model="formData.position"
-          list="positionList"
-          autocomplete="organization-title"
-        />
-        <i class="input-icon fas fa-briefcase"></i>
-        <label class="input-label">Position *</label>
+        <!-- Position -->
 
-        <div v-if="fieldErrors.position" class="text-danger mt-1 small">
-          {{ fieldErrors.position[0] }}
+        <div class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            :class="{ 'is-invalid': fieldErrors.position }"
+            placeholder=" "
+            v-model="formData.position"
+            list="positionList"
+            autocomplete="organization-title"
+          />
+          <i class="input-icon fas fa-briefcase"></i>
+          <label class="input-label">Position *</label>
+          <div v-if="fieldErrors.position" class="text-danger mt-1 small">
+            {{ fieldErrors.position[0] }}
+          </div>
         </div>
       </div>
 
@@ -164,7 +235,7 @@
     <!-- Step 3: Account Setup -->
     <form
       v-if="currentStep === 2"
-      @submit.prevent="validateStep3"
+      @submit.prevent="handleRegistration"
       class="step-form"
     >
       <div class="form-section">
@@ -207,28 +278,27 @@
           <div v-if="fieldErrors.password" class="text-danger mt-1 small">
             {{ fieldErrors.password[0] }}
           </div>
-          
         </div>
 
         <div v-if="formData.password" class="password-strength">
-            <div class="strength-text">
-              <small>Strength: </small>
-              <span :class="passwordStrengthClass">{{
-                passwordStrengthText
-              }}</span>
-            </div>
-            <div class="strength-bars">
-              <div
-                v-for="i in 5"
-                :key="i"
-                class="strength-bar"
-                :class="{
-                  active: i <= passwordStrength,
-                  [passwordStrengthClass]: i <= passwordStrength,
-                }"
-              ></div>
-            </div>
+          <div class="strength-text">
+            <small>Strength: </small>
+            <span :class="passwordStrengthClass">{{
+              passwordStrengthText
+            }}</span>
           </div>
+          <div class="strength-bars">
+            <div
+              v-for="i in 5"
+              :key="i"
+              class="strength-bar"
+              :class="{
+                active: i <= passwordStrength,
+                [passwordStrengthClass]: i <= passwordStrength,
+              }"
+            ></div>
+          </div>
+        </div>
 
         <div class="input-group password-group">
           <input
@@ -269,7 +339,7 @@
           />
           <label class="form-check-label" for="terms">
             I agree to the
-            <a href="#" @click.prevent="showTermsModal">Terms and Conditions</a>
+            <a href="#">Terms and Conditions</a>
             *
           </label>
           <div v-if="fieldErrors.terms" class="text-danger mt-1 small">
@@ -282,141 +352,16 @@
         <button type="button" class="btn login-btn" @click="prevStep">
           <i class="fas fa-arrow-left"></i> Back
         </button>
-        <button type="submit" class="btn login-btn">
-          <i class="fas fa-search"></i> Review & Confirm
+        <button type="submit" class="btn login-btn" :disabled="loading">
+          <i v-if="!loading" class="fas fa-paper-plane"></i>
+          <span v-if="!loading">Submit Registration</span>
+          <span v-else>
+            <span class="spinner-border spinner-border-sm" role="status"></span>
+            Processing...
+          </span>
         </button>
       </div>
     </form>
-
-    <!-- Step 4: Confirmation -->
-    <div v-if="currentStep === 3" class="confirmation-step">
-      <div class="confirmation-header">
-        <div class="confirmation-icon">
-          <i class="fas fa-clipboard-check"></i>
-        </div>
-        <h4>Confirm Your Details</h4>
-        <p class="confirmation-subtitle">
-          Please review your information before submitting
-        </p>
-      </div>
-
-      <!-- Information Summary -->
-      <div class="info-summary">
-        <!-- Personal Info -->
-        <div class="info-section">
-          <h5 class="section-title">
-            <i class="fas fa-user-circle"></i> Personal Information
-          </h5>
-          <div class="info-grid">
-            <div class="info-item">
-              <span class="info-label">Full Name:</span>
-              <span class="info-value">{{ formData.full_name }}</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Contact Number:</span>
-              <span class="info-value">{{ formData.contact_number }}</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Position:</span>
-              <span class="info-value">{{ formData.position }}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Office Info -->
-        <div class="info-section">
-          <h5 class="section-title">
-            <i class="fas fa-building"></i> Office Information
-          </h5>
-          <div class="info-grid">
-            <div class="info-item">
-              <span class="info-label">Head Office:</span>
-              <span class="info-value">{{
-                getHeadOfficeName(formData.head_office)
-              }}</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Office:</span>
-              <span class="info-value">{{
-                getOfficeName(formData.office)
-              }}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Account Info -->
-        <div class="info-section">
-          <h5 class="section-title">
-            <i class="fas fa-key"></i> Account Information
-          </h5>
-          <div class="info-grid">
-            <div class="info-item">
-              <span class="info-label">Email Address:</span>
-              <span class="info-value email">{{ formData.email_address }}</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Password Strength:</span>
-              <span class="info-value">
-                <span class="strength-badge" :class="passwordStrengthClass">
-                  {{ passwordStrengthText }}
-                </span>
-              </span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Terms Accepted:</span>
-              <span class="info-value">
-                <span class="terms-badge" :class="{ accepted: formData.terms }">
-                  <i
-                    :class="formData.terms ? 'fas fa-check' : 'fas fa-times'"
-                  ></i>
-                  {{ formData.terms ? "Yes" : "No" }}
-                </span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Final Confirmation -->
-      <div class="final-confirmation">
-        <div class="confirmation-check">
-          <div class="form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="final-confirm"
-              v-model="finalConfirmation"
-            />
-            <label class="form-check-label" for="final-confirm">
-              <i class="fas fa-check-circle"></i>
-              I confirm that all information is accurate
-            </label>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <button type="button" class="btn btn-outline" @click="prevStep">
-            <i class="fas fa-edit"></i> Edit Details
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            :disabled="loading || !finalConfirmation"
-            @click="handleRegistration"
-          >
-            <i v-if="!loading" class="fas fa-paper-plane"></i>
-            <span v-if="!loading">Submit Registration</span>
-            <span v-else>
-              <span
-                class="spinner-border spinner-border-sm"
-                role="status"
-              ></span>
-              Processing...
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Already have an account - Login link -->
     <div class="already-have-account">
@@ -429,68 +374,8 @@
     </div>
 
     <!-- Success Modal -->
-    <div
-      v-if="showSuccessModal"
-      class="modal-overlay"
-      @click="closeSuccessModal"
-    >
-      <div class="modal-content" @click.stop>
-        <div class="success-icon">
-          <i class="fas fa-check-circle"></i>
-        </div>
-        <h3>Registration Successful!</h3>
-        <p class="success-message">{{ successMessage }}</p>
-        <div class="success-details">
-          <div class="detail-item">
-            <i class="fas fa-envelope"></i>
-            <span
-              >Verification email sent to
-              <strong>{{ formData.email_address }}</strong></span
-            >
-          </div>
-        </div>
-        <div class="success-actions">
-          <button
-            type="button"
-            class="btn btn-success"
-            @click="redirectToLogin"
-          >
-            <i class="fas fa-sign-in-alt"></i> Go to Login
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Terms Modal -->
-    <div v-if="showTerms" class="modal-overlay" @click="showTerms = false">
-      <div class="modal-content" @click.stop>
-        <div class="modal-header">
-          <h5>Terms and Conditions</h5>
-          <button type="button" class="close" @click="showTerms = false">
-            <span>&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="terms-content">
-            <h6>ICT Service Management System Registration Agreement</h6>
-            <ul>
-              <li>Provide accurate and complete information</li>
-              <li>Maintain the confidentiality of your account credentials</li>
-              <li>Use the system in accordance with organizational policies</li>
-            </ul>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-primary"
-            @click="showTerms = false"
-          >
-            I Understand
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Footer -->
     <div class="login-footer">
@@ -503,6 +388,9 @@
 </template>
 
 <script>
+import "toastr/build/toastr.min.css"; // Ensure Toastr CSS is imported
+
+import Swal from "sweetalert2";
 export default {
   data() {
     return {
@@ -523,14 +411,12 @@ export default {
           title: "Account Setup",
           description: "Create your login credentials",
         },
-        {
-          label: "Confirm",
-          title: "Confirmation",
-          description: "Review and submit your registration",
-        },
       ],
       formData: {
-        full_name: "",
+        firstname: "",
+        middle_initial: "",
+        lastname: "",
+        extension: "",
         email_address: "",
         contact_number: "",
         head_office: "",
@@ -546,9 +432,7 @@ export default {
       fieldErrors: {},
       showPassword: false,
       showConfirmPassword: false,
-      showTerms: false,
-      showSuccessModal: false,
-      finalConfirmation: false,
+
       headOffices: [],
       offices: [],
       passwordStrength: 0,
@@ -617,6 +501,13 @@ export default {
         event.preventDefault();
       }
     },
+    formatMiddleInitial() {
+      if (this.formData.middle_initial) {
+        this.formData.middle_initial = this.formData.middle_initial
+          .charAt(0)
+          .toUpperCase();
+      }
+    },
     nextStep() {
       if (this.validateCurrentStep()) {
         this.currentStep = Math.min(
@@ -639,8 +530,12 @@ export default {
 
       switch (this.currentStep) {
         case 0:
-          if (!this.formData.full_name.trim()) {
-            this.fieldErrors.full_name = ["Full name is required"];
+          if (!this.formData.firstname.trim()) {
+            this.fieldErrors.firstname = ["First name is required"];
+            isValid = false;
+          }
+          if (!this.formData.lastname.trim()) {
+            this.fieldErrors.lastname = ["Last name is required"];
             isValid = false;
           }
           if (!this.formData.contact_number.trim()) {
@@ -728,9 +623,7 @@ export default {
         isValid = false;
       }
 
-      if (isValid) {
-        this.nextStep();
-      } else {
+      if (!isValid) {
         this.$nextTick(() => {
           const firstError = document.querySelector(".is-invalid");
           if (firstError) {
@@ -764,8 +657,7 @@ export default {
       return re.test(email);
     },
     async handleRegistration() {
-      if (!this.finalConfirmation) {
-        this.error = "Please confirm that all information is accurate";
+      if (!this.validateStep3()) {
         return;
       }
 
@@ -775,7 +667,10 @@ export default {
       try {
         // Prepare data for submission
         const registrationData = {
-          full_name: this.formData.full_name,
+          firstname: this.formData.firstname,
+          middle_initial: this.formData.middle_initial,
+          lastname: this.formData.lastname,
+          extension: this.formData.extension,
           email_address: this.formData.email_address,
           contact_number: this.formData.contact_number.replace(/\s+/g, ""),
           position: this.formData.position,
@@ -784,7 +679,6 @@ export default {
           password: this.formData.password,
           password_confirmation: this.formData.password_confirmation,
           terms: this.formData.terms,
-          finalConfirmation: this.finalConfirmation,
         };
 
         const response = await axios.post(
@@ -799,16 +693,20 @@ export default {
         );
 
         if (response.data.success) {
-          // Update success message to remove email verification reference
-          this.successMessage =
-            "Registration successful! Your account has been created.";
-          this.showSuccessModal = true;
+          // Show SweetAlert success message
+          Swal.fire({
+            icon: "success",
+            title: "Registration Successful!",
+            text: "Registration submitted successfully! Please wait for admin approval.",
+            confirmButtonColor: "#2ecc71",
+            confirmButtonText: "Go to Login",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.redirectToLogin();
+            }
+          });
 
-          // Reset form after successful registration
-          setTimeout(() => {
-            this.resetForm();
-            this.redirectToLogin();
-          }, 3000);
+          this.resetForm();
         } else {
           this.error =
             response.data.message || "Registration failed. Please try again.";
@@ -874,26 +772,16 @@ export default {
         });
       }
     },
-    getHeadOfficeName(id) {
-      const office = this.headOffices.find((o) => o.id === id);
-      return office ? office.head_of_office : "Not selected";
-    },
-    getOfficeName(id) {
-      const office = this.offices.find((o) => o.id === id);
-      return office ? office.office : "Not selected";
-    },
-    showTermsModal() {
-      this.showTerms = true;
-    },
-    closeSuccessModal() {
-      this.showSuccessModal = false;
-    },
+
     redirectToLogin() {
       window.location.href = "/denrxi_ictsms/";
     },
     resetForm() {
       this.formData = {
-        full_name: "",
+        firstname: "",
+        middle_initial: "",
+        lastname: "",
+        extension: "",
         email_address: "",
         contact_number: "",
         head_office: "",
@@ -904,7 +792,6 @@ export default {
         terms: false,
       };
       this.currentStep = 0;
-      this.finalConfirmation = false;
       this.passwordStrength = 0;
     },
   },
@@ -1204,238 +1091,7 @@ export default {
   box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
-/* CONFIRMATION STEP */
-.confirmation-step {
-  max-width: 600px;
-  margin: 0 auto;
-  animation: fadeIn 0.4s ease;
-}
-
-.confirmation-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.confirmation-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #3498db, #2ecc71);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  color: white;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
-}
-
-.confirmation-header h4 {
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.confirmation-subtitle {
-  color: #7f8c8d;
-  font-size: 0.95rem;
-}
-
-/* Information Summary */
-.info-summary {
-  background: #f8fafc;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  border: 1px solid #e9ecef;
-}
-
-.info-section {
-  margin-bottom: 1.5rem;
-}
-
-.info-section:last-child {
-  margin-bottom: 0;
-}
-
-.section-title {
-  color: #2c3e50;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e9ecef;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.section-title i {
-  color: #3498db;
-  font-size: 0.9rem;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-}
-
-@media (min-width: 576px) {
-  .info-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.info-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.info-label {
-  color: #6c757d;
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
-.info-value {
-  color: #2c3e50;
-  font-size: 0.95rem;
-  font-weight: 500;
-  word-break: break-word;
-}
-
-.info-value.email {
-  color: #3498db;
-}
-
-/* Strength Badge */
-.strength-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.strength-weak {
-  background: #fff5f5;
-  color: #e74c3c;
-  border: 1px solid #fadbd8;
-}
-
-.strength-medium {
-  background: #fef9e7;
-  color: #f39c12;
-  border: 1px solid #fdebd0;
-}
-
-.strength-strong {
-  background: #e8f6f3;
-  color: #27ae60;
-  border: 1px solid #d1f2eb;
-}
-
-/* Terms Badge */
-.terms-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  color: #6c757d;
-}
-
-.terms-badge.accepted {
-  background: #e8f6f3;
-  border-color: #d1f2eb;
-  color: #27ae60;
-}
-
-.terms-badge i {
-  font-size: 0.9rem;
-}
-
-/* Final Confirmation */
-.final-confirmation {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 2px solid #e9ecef;
-}
-
-.confirmation-check {
-  margin-bottom: 1.5rem;
-}
-
-.confirmation-check .form-check {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.confirmation-check .form-check-input {
-  width: 20px;
-  height: 20px;
-  margin: 0;
-  flex-shrink: 0;
-}
-
-.confirmation-check .form-check-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  color: #2c3e50;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-
-.confirmation-check .form-check-label i {
-  color: #3498db;
-  font-size: 1rem;
-}
-
-/* Action Buttons */
-.action-buttons {
-  display: flex;
-  gap: 1rem;
-}
-
-.btn-outline {
-  background: transparent;
-  border: 2px solid #dee2e6;
-  color: #6c757d;
-  flex: 1;
-}
-
-.btn-outline:hover {
-  background: #f8f9fa;
-  border-color: #adb5bd;
-  color: #495057;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
-  border: none;
-  flex: 2;
-}
-
-.btn-primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, #2980b9, #1f639b);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.25);
-}
-
-.btn-primary:disabled {
+.btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -1610,26 +1266,12 @@ export default {
     height: 36px;
   }
 
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-
   .action-buttons {
     flex-direction: column;
   }
 
   .btn {
     width: 100%;
-  }
-
-  .confirmation-header h4 {
-    font-size: 1.2rem;
-  }
-
-  .confirmation-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.25rem;
   }
 
   .already-have-account {
@@ -1686,26 +1328,6 @@ export default {
     padding: 0.7rem 3.2rem 0.7rem 2.2rem;
   }
 
-  .info-summary {
-    padding: 1rem;
-  }
-
-  .final-confirmation {
-    padding: 1rem;
-  }
-
-  .section-title {
-    font-size: 0.9rem;
-  }
-
-  .info-label {
-    font-size: 0.8rem;
-  }
-
-  .info-value {
-    font-size: 0.85rem;
-  }
-
   .modal-content {
     padding: 1.5rem;
   }
@@ -1726,14 +1348,6 @@ export default {
 
   .btn {
     padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-  }
-
-  .confirmation-header h4 {
-    font-size: 1.1rem;
-  }
-
-  .confirmation-subtitle {
     font-size: 0.85rem;
   }
 

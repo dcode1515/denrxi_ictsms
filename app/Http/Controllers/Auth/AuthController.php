@@ -42,7 +42,17 @@ class AuthController extends Controller
 
         if ($user->role === "admin") {
             return redirect()->route('dashboard');
-        } else {
+        }
+        if ($user->module_assign == 1  && $user->approval_status === "Approved") {
+            return redirect()->route('helpdesk.dashboard');
+        }
+        if ($user->approval_status === "Pending") {
+            Auth::logout();
+            return response()->json([
+                'error' => 'Your account is currently pending approval from an administrator. Please reach out to your administrator for further assistance.'
+            ], 401);
+        }
+         else {
             Auth::logout();
             return response()->json([
                 'error' => 'Your Email address or Password is incorrect. Please try again.'
@@ -82,7 +92,10 @@ public function headOffices()
     public function register_user(Request $request)
     {
         $validated = $request->validate([
-            'full_name'            => 'required|string|max:255',
+            'firstname'            => 'required',
+            'middle_initial'       => 'nullable',
+            'lastname'             => 'required',
+            'extension'            => 'nullable',
             'email_address'        => 'required|email|unique:users,email',
             'contact_number'       => 'required|string|min:11|max:15',
             'position'             => 'required|string|max:255',
@@ -93,7 +106,10 @@ public function headOffices()
         ]);
 
         $user = User::create([
-            'name'                        => $validated['full_name'],
+            'firstname'                   => $validated['firstname'],
+             'middle_initial'                   => $validated['middle_initial'],
+              'lastname'                   => $validated['lastname'],
+               'extension'                   => $validated['extension'],
             'email'                       => $validated['email_address'],
             'contact_number'              => $validated['contact_number'],
             'position'                    => $validated['position'],
@@ -114,6 +130,18 @@ public function headOffices()
             ],
         ], 201);
     }
+
+            public function showProfile($id)
+        {
+            // Optional: make sure user can only view their own profile
+            if (Auth::id() != $id) {
+                abort(403, 'Unauthorized access.');
+            }
+
+            $user = Auth::user(); // or User::findOrFail($id);
+
+            return view('profile.show', compact('user'));
+        }
 
 
 }
