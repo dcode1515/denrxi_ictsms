@@ -1,0 +1,3817 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://localhost/denrxi_ictsms/profile/2 -->
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default" data-bs-theme="light" data-layout-width="fluid" data-layout-position="fixed" data-layout-style="default" data-body-image="none" data-sidebar-visibility="show"><!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:44:28 GMT --><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+
+    
+    <title>DENR XI | ICT Service Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin &amp; Dashboard Template" name="description">
+    <meta content="Themesbrand" name="author">
+    <link rel="shortcut icon" href="http://localhost/denrxi_ictsms/profile/assets/images/favicon.ico">
+    <link rel="stylesheet" href="./DENR XI _ ICT Service Management System_files/jsvectormap.min.css">
+    <link rel="stylesheet" href="./DENR XI _ ICT Service Management System_files/swiper-bundle.min.css">
+    <script src="./DENR XI _ ICT Service Management System_files/layout.js.download"></script>
+    <link rel="stylesheet" href="./DENR XI _ ICT Service Management System_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./DENR XI _ ICT Service Management System_files/icons.min.css">
+    <link rel="stylesheet" href="./DENR XI _ ICT Service Management System_files/app.min.css">   
+    <link rel="stylesheet" href="./DENR XI _ ICT Service Management System_files/custom.min.css">
+    <style>
+  
+        </style>
+
+
+<style>
+:root {
+  --danger: #dc3545;
+  --danger-dark: #b02a37;
+  --success: #28a745;
+  --input-bg: #ffffff;
+  --border-default: #d1d5db;
+  --text-muted: #6c757d;
+}
+
+/* ===========================
+   FORM WRAPPER
+=========================== */
+
+/* ===========================
+   INPUT GROUP
+=========================== */
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.input-field:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* ===========================
+   ICON & LABEL
+=========================== */
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.85rem;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+.input-label {
+  position: absolute;
+  top: 50%;
+  left: 2.75rem;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* ===========================
+   VALIDATION LEVEL 1:
+   FIELD ERROR
+=========================== */
+.input-field.is-invalid {
+  border-color: var(--danger);
+  background: #fff5f5;
+  box-shadow: 0 0 0 0.15rem rgba(220, 53, 69, 0.25);
+}
+.input-field.is-invalid ~ .input-icon {
+  color: var(--danger);
+}
+.text-danger {
+  color: var(--danger);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* ===========================
+   VALIDATION LEVEL 2:
+   FORM ERROR ALERT
+=========================== */
+.alert-danger {
+  background: linear-gradient(135deg, var(--danger), var(--danger-dark));
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  animation: shake 0.35s ease-in-out;
+}
+
+/* ===========================
+   VALIDATION LEVEL 3:
+   INTERACTION FEEDBACK
+=========================== */
+.input-group.shake {
+  animation: shake 0.35s ease-in-out;
+}
+@keyframes shake {
+0% {
+    transform: translateX(0);
+}
+20% {
+    transform: translateX(-5px);
+}
+40% {
+    transform: translateX(5px);
+}
+60% {
+    transform: translateX(-5px);
+}
+80% {
+    transform: translateX(5px);
+}
+100% {
+    transform: translateX(0);
+}
+}
+@keyframes fadeIn {
+from {
+    opacity: 0;
+    transform: translateY(-4px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+</style><style>:root{--swal2-outline: 0 0 0 3px rgba(100, 150, 200, 0.5);--swal2-container-padding: 0.625em;--swal2-backdrop: rgba(0, 0, 0, 0.4);--swal2-backdrop-transition: background-color 0.15s;--swal2-width: 32em;--swal2-padding: 0 0 1.25em;--swal2-border: none;--swal2-border-radius: 0.3125rem;--swal2-background: white;--swal2-color: #545454;--swal2-show-animation: swal2-show 0.3s;--swal2-hide-animation: swal2-hide 0.15s forwards;--swal2-icon-zoom: 1;--swal2-icon-animations: true;--swal2-title-padding: 0.8em 1em 0;--swal2-html-container-padding: 1em 1.6em 0.3em;--swal2-input-border: 1px solid #d9d9d9;--swal2-input-border-radius: 0.1875em;--swal2-input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px transparent;--swal2-input-background: transparent;--swal2-input-transition: border-color 0.2s, box-shadow 0.2s;--swal2-input-hover-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px transparent;--swal2-input-focus-border: 1px solid #b4dbed;--swal2-input-focus-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px rgba(100, 150, 200, 0.5);--swal2-progress-step-background: #add8e6;--swal2-validation-message-background: #f0f0f0;--swal2-validation-message-color: #666;--swal2-footer-border-color: #eee;--swal2-footer-background: transparent;--swal2-footer-color: inherit;--swal2-timer-progress-bar-background: rgba(0, 0, 0, 0.3);--swal2-close-button-position: initial;--swal2-close-button-inset: auto;--swal2-close-button-font-size: 2.5em;--swal2-close-button-color: #ccc;--swal2-close-button-transition: color 0.2s, box-shadow 0.2s;--swal2-close-button-outline: initial;--swal2-close-button-box-shadow: inset 0 0 0 3px transparent;--swal2-close-button-focus-box-shadow: inset var(--swal2-outline);--swal2-close-button-hover-transform: none;--swal2-actions-justify-content: center;--swal2-actions-width: auto;--swal2-actions-margin: 1.25em auto 0;--swal2-actions-padding: 0;--swal2-actions-border-radius: 0;--swal2-actions-background: transparent;--swal2-action-button-transition: background-color 0.2s, box-shadow 0.2s;--swal2-action-button-hover: black 10%;--swal2-action-button-active: black 10%;--swal2-confirm-button-box-shadow: none;--swal2-confirm-button-border-radius: 0.25em;--swal2-confirm-button-background-color: #7066e0;--swal2-confirm-button-color: #fff;--swal2-deny-button-box-shadow: none;--swal2-deny-button-border-radius: 0.25em;--swal2-deny-button-background-color: #dc3741;--swal2-deny-button-color: #fff;--swal2-cancel-button-box-shadow: none;--swal2-cancel-button-border-radius: 0.25em;--swal2-cancel-button-background-color: #6e7881;--swal2-cancel-button-color: #fff;--swal2-toast-show-animation: swal2-toast-show 0.5s;--swal2-toast-hide-animation: swal2-toast-hide 0.1s forwards;--swal2-toast-border: none;--swal2-toast-box-shadow: 0 0 1px hsl(0deg 0% 0% / 0.075), 0 1px 2px hsl(0deg 0% 0% / 0.075), 1px 2px 4px hsl(0deg 0% 0% / 0.075), 1px 3px 8px hsl(0deg 0% 0% / 0.075), 2px 4px 16px hsl(0deg 0% 0% / 0.075)}[data-swal2-theme=dark]{--swal2-dark-theme-black: #19191a;--swal2-dark-theme-white: #e1e1e1;--swal2-background: var(--swal2-dark-theme-black);--swal2-color: var(--swal2-dark-theme-white);--swal2-footer-border-color: #555;--swal2-input-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);--swal2-validation-message-background: color-mix( in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10% );--swal2-validation-message-color: var(--swal2-dark-theme-white);--swal2-timer-progress-bar-background: rgba(255, 255, 255, 0.7)}@media(prefers-color-scheme: dark){[data-swal2-theme=auto]{--swal2-dark-theme-black: #19191a;--swal2-dark-theme-white: #e1e1e1;--swal2-background: var(--swal2-dark-theme-black);--swal2-color: var(--swal2-dark-theme-white);--swal2-footer-border-color: #555;--swal2-input-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);--swal2-validation-message-background: color-mix( in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10% );--swal2-validation-message-color: var(--swal2-dark-theme-white);--swal2-timer-progress-bar-background: rgba(255, 255, 255, 0.7)}}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto !important}body.swal2-no-backdrop .swal2-container{background-color:rgba(0,0,0,0) !important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px var(--swal2-backdrop)}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:rgba(0,0,0,0);pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{inset:0 auto auto 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{inset:0 0 auto auto}body.swal2-toast-shown .swal2-container.swal2-top-start,body.swal2-toast-shown .swal2-container.swal2-top-left{inset:0 auto auto 0}body.swal2-toast-shown .swal2-container.swal2-center-start,body.swal2-toast-shown .swal2-container.swal2-center-left{inset:50% auto auto 0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{inset:50% auto auto 50%;transform:translate(-50%, -50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{inset:50% 0 auto auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-start,body.swal2-toast-shown .swal2-container.swal2-bottom-left{inset:auto auto 0 0}body.swal2-toast-shown .swal2-container.swal2-bottom{inset:auto auto 0 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{inset:auto 0 0 auto}@media print{body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow-y:scroll !important}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown) .swal2-container{position:static !important}}div:where(.swal2-container){display:grid;position:fixed;z-index:1060;inset:0;box-sizing:border-box;grid-template-areas:"top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";grid-template-rows:minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);height:100%;padding:var(--swal2-container-padding);overflow-x:hidden;transition:var(--swal2-backdrop-transition);-webkit-overflow-scrolling:touch}div:where(.swal2-container).swal2-backdrop-show,div:where(.swal2-container).swal2-noanimation{background:var(--swal2-backdrop)}div:where(.swal2-container).swal2-backdrop-hide{background:rgba(0,0,0,0) !important}div:where(.swal2-container).swal2-top-start,div:where(.swal2-container).swal2-center-start,div:where(.swal2-container).swal2-bottom-start{grid-template-columns:minmax(0, 1fr) auto auto}div:where(.swal2-container).swal2-top,div:where(.swal2-container).swal2-center,div:where(.swal2-container).swal2-bottom{grid-template-columns:auto minmax(0, 1fr) auto}div:where(.swal2-container).swal2-top-end,div:where(.swal2-container).swal2-center-end,div:where(.swal2-container).swal2-bottom-end{grid-template-columns:auto auto minmax(0, 1fr)}div:where(.swal2-container).swal2-top-start>.swal2-popup{align-self:start}div:where(.swal2-container).swal2-top>.swal2-popup{grid-column:2;place-self:start center}div:where(.swal2-container).swal2-top-end>.swal2-popup,div:where(.swal2-container).swal2-top-right>.swal2-popup{grid-column:3;place-self:start end}div:where(.swal2-container).swal2-center-start>.swal2-popup,div:where(.swal2-container).swal2-center-left>.swal2-popup{grid-row:2;align-self:center}div:where(.swal2-container).swal2-center>.swal2-popup{grid-column:2;grid-row:2;place-self:center center}div:where(.swal2-container).swal2-center-end>.swal2-popup,div:where(.swal2-container).swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;place-self:center end}div:where(.swal2-container).swal2-bottom-start>.swal2-popup,div:where(.swal2-container).swal2-bottom-left>.swal2-popup{grid-column:1;grid-row:3;align-self:end}div:where(.swal2-container).swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;place-self:end center}div:where(.swal2-container).swal2-bottom-end>.swal2-popup,div:where(.swal2-container).swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;place-self:end end}div:where(.swal2-container).swal2-grow-row>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-column:1/4;width:100%}div:where(.swal2-container).swal2-grow-column>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}div:where(.swal2-container).swal2-no-transition{transition:none !important}div:where(.swal2-container)[popover]{width:auto;border:0}div:where(.swal2-container) div:where(.swal2-popup){display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0, 100%);width:var(--swal2-width);max-width:100%;padding:var(--swal2-padding);border:var(--swal2-border);border-radius:var(--swal2-border-radius);background:var(--swal2-background);color:var(--swal2-color);font-family:inherit;font-size:1rem;container-name:swal2-popup}div:where(.swal2-container) div:where(.swal2-popup):focus{outline:none}div:where(.swal2-container) div:where(.swal2-popup).swal2-loading{overflow-y:hidden}div:where(.swal2-container) div:where(.swal2-popup).swal2-draggable{cursor:grab}div:where(.swal2-container) div:where(.swal2-popup).swal2-draggable div:where(.swal2-icon){cursor:grab}div:where(.swal2-container) div:where(.swal2-popup).swal2-dragging{cursor:grabbing}div:where(.swal2-container) div:where(.swal2-popup).swal2-dragging div:where(.swal2-icon){cursor:grabbing}div:where(.swal2-container) h2:where(.swal2-title){position:relative;max-width:100%;margin:0;padding:var(--swal2-title-padding);color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;overflow-wrap:break-word;cursor:initial}div:where(.swal2-container) div:where(.swal2-actions){display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:var(--swal2-actions-justify-content);width:var(--swal2-actions-width);margin:var(--swal2-actions-margin);padding:var(--swal2-actions-padding);border-radius:var(--swal2-actions-border-radius);background:var(--swal2-actions-background)}div:where(.swal2-container) div:where(.swal2-loader){display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 rgba(0,0,0,0) #2778c4 rgba(0,0,0,0)}div:where(.swal2-container) button:where(.swal2-styled){margin:.3125em;padding:.625em 1.1em;transition:var(--swal2-action-button-transition);border:none;box-shadow:0 0 0 3px rgba(0,0,0,0);font-weight:500}div:where(.swal2-container) button:where(.swal2-styled):not([disabled]){cursor:pointer}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){border-radius:var(--swal2-confirm-button-border-radius);background:initial;background-color:var(--swal2-confirm-button-background-color);box-shadow:var(--swal2-confirm-button-box-shadow);color:var(--swal2-confirm-button-color);font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm):hover{background-color:color-mix(in srgb, var(--swal2-confirm-button-background-color), var(--swal2-action-button-hover))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm):active{background-color:color-mix(in srgb, var(--swal2-confirm-button-background-color), var(--swal2-action-button-active))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny){border-radius:var(--swal2-deny-button-border-radius);background:initial;background-color:var(--swal2-deny-button-background-color);box-shadow:var(--swal2-deny-button-box-shadow);color:var(--swal2-deny-button-color);font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny):hover{background-color:color-mix(in srgb, var(--swal2-deny-button-background-color), var(--swal2-action-button-hover))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny):active{background-color:color-mix(in srgb, var(--swal2-deny-button-background-color), var(--swal2-action-button-active))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel){border-radius:var(--swal2-cancel-button-border-radius);background:initial;background-color:var(--swal2-cancel-button-background-color);box-shadow:var(--swal2-cancel-button-box-shadow);color:var(--swal2-cancel-button-color);font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel):hover{background-color:color-mix(in srgb, var(--swal2-cancel-button-background-color), var(--swal2-action-button-hover))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel):active{background-color:color-mix(in srgb, var(--swal2-cancel-button-background-color), var(--swal2-action-button-active))}div:where(.swal2-container) button:where(.swal2-styled):focus-visible{outline:none;box-shadow:var(--swal2-action-button-focus-box-shadow)}div:where(.swal2-container) button:where(.swal2-styled)[disabled]:not(.swal2-loading){opacity:.4}div:where(.swal2-container) button:where(.swal2-styled)::-moz-focus-inner{border:0}div:where(.swal2-container) div:where(.swal2-footer){margin:1em 0 0;padding:1em 1em 0;border-top:1px solid var(--swal2-footer-border-color);background:var(--swal2-footer-background);color:var(--swal2-footer-color);font-size:1em;text-align:center;cursor:initial}div:where(.swal2-container) .swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto !important;overflow:hidden;border-bottom-right-radius:var(--swal2-border-radius);border-bottom-left-radius:var(--swal2-border-radius)}div:where(.swal2-container) div:where(.swal2-timer-progress-bar){width:100%;height:.25em;background:var(--swal2-timer-progress-bar-background)}div:where(.swal2-container) img:where(.swal2-image){max-width:100%;margin:2em auto 1em;cursor:initial}div:where(.swal2-container) button:where(.swal2-close){position:var(--swal2-close-button-position);inset:var(--swal2-close-button-inset);z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:var(--swal2-close-button-transition);border:none;border-radius:var(--swal2-border-radius);outline:var(--swal2-close-button-outline);background:rgba(0,0,0,0);color:var(--swal2-close-button-color);font-family:monospace;font-size:var(--swal2-close-button-font-size);cursor:pointer;justify-self:end}div:where(.swal2-container) button:where(.swal2-close):hover{transform:var(--swal2-close-button-hover-transform);background:rgba(0,0,0,0);color:#f27474}div:where(.swal2-container) button:where(.swal2-close):focus-visible{outline:none;box-shadow:var(--swal2-close-button-focus-box-shadow)}div:where(.swal2-container) button:where(.swal2-close)::-moz-focus-inner{border:0}div:where(.swal2-container) div:where(.swal2-html-container){z-index:1;justify-content:center;margin:0;padding:var(--swal2-html-container-padding);overflow:auto;color:inherit;font-size:1.125em;font-weight:normal;line-height:normal;text-align:center;overflow-wrap:break-word;word-break:break-word;cursor:initial}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea),div:where(.swal2-container) select:where(.swal2-select),div:where(.swal2-container) div:where(.swal2-radio),div:where(.swal2-container) label:where(.swal2-checkbox){margin:1em 2em 3px}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea){box-sizing:border-box;width:auto;transition:var(--swal2-input-transition);border:var(--swal2-input-border);border-radius:var(--swal2-input-border-radius);background:var(--swal2-input-background);box-shadow:var(--swal2-input-box-shadow);color:inherit;font-size:1.125em}div:where(.swal2-container) input:where(.swal2-input).swal2-inputerror,div:where(.swal2-container) input:where(.swal2-file).swal2-inputerror,div:where(.swal2-container) textarea:where(.swal2-textarea).swal2-inputerror{border-color:#f27474 !important;box-shadow:0 0 2px #f27474 !important}div:where(.swal2-container) input:where(.swal2-input):hover,div:where(.swal2-container) input:where(.swal2-file):hover,div:where(.swal2-container) textarea:where(.swal2-textarea):hover{box-shadow:var(--swal2-input-hover-box-shadow)}div:where(.swal2-container) input:where(.swal2-input):focus,div:where(.swal2-container) input:where(.swal2-file):focus,div:where(.swal2-container) textarea:where(.swal2-textarea):focus{border:var(--swal2-input-focus-border);outline:none;box-shadow:var(--swal2-input-focus-box-shadow)}div:where(.swal2-container) input:where(.swal2-input)::placeholder,div:where(.swal2-container) input:where(.swal2-file)::placeholder,div:where(.swal2-container) textarea:where(.swal2-textarea)::placeholder{color:#ccc}div:where(.swal2-container) .swal2-range{margin:1em 2em 3px;background:var(--swal2-background)}div:where(.swal2-container) .swal2-range input{width:80%}div:where(.swal2-container) .swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}div:where(.swal2-container) .swal2-range input,div:where(.swal2-container) .swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}div:where(.swal2-container) .swal2-input{height:2.625em;padding:0 .75em}div:where(.swal2-container) .swal2-file{width:75%;margin-right:auto;margin-left:auto;background:var(--swal2-input-background);font-size:1.125em}div:where(.swal2-container) .swal2-textarea{height:6.75em;padding:.75em}div:where(.swal2-container) .swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:var(--swal2-input-background);color:inherit;font-size:1.125em}div:where(.swal2-container) .swal2-radio,div:where(.swal2-container) .swal2-checkbox{align-items:center;justify-content:center;background:var(--swal2-background);color:inherit}div:where(.swal2-container) .swal2-radio label,div:where(.swal2-container) .swal2-checkbox label{margin:0 .6em;font-size:1.125em}div:where(.swal2-container) .swal2-radio input,div:where(.swal2-container) .swal2-checkbox input{flex-shrink:0;margin:0 .4em}div:where(.swal2-container) label:where(.swal2-input-label){display:flex;justify-content:center;margin:1em auto 0}div:where(.swal2-container) div:where(.swal2-validation-message){align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:var(--swal2-validation-message-background);color:var(--swal2-validation-message-color);font-size:1em;font-weight:300}div:where(.swal2-container) div:where(.swal2-validation-message)::before{content:"!";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}div:where(.swal2-container) .swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:rgba(0,0,0,0);font-weight:600}div:where(.swal2-container) .swal2-progress-steps li{display:inline-block;position:relative}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:var(--swal2-progress-step-background);color:#fff}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:var(--swal2-progress-step-background)}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}div:where(.swal2-icon){position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;zoom:var(--swal2-icon-zoom);border:.25em solid rgba(0,0,0,0);border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;user-select:none}div:where(.swal2-icon) .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}div:where(.swal2-icon).swal2-error{border-color:#f27474;color:#f27474}div:where(.swal2-icon).swal2-error .swal2-x-mark{position:relative;flex-grow:1}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-error.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark{animation:swal2-animate-error-x-mark .5s}}div:where(.swal2-icon).swal2-warning{border-color:#f8bb86;color:#f8bb86}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-warning.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-warning.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .5s}}div:where(.swal2-icon).swal2-info{border-color:#3fc3ee;color:#3fc3ee}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-info.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-info.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .8s}}div:where(.swal2-icon).swal2-question{border-color:#87adbd;color:#87adbd}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-question.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-question.swal2-icon-show .swal2-icon-content{animation:swal2-animate-question-mark .8s}}div:where(.swal2-icon).swal2-success{border-color:#a5dc86;color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;border-radius:50%}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}div:where(.swal2-icon).swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-0.25em;left:-0.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}div:where(.swal2-icon).swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-animate-success-line-tip .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-animate-success-line-long .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-circular-line-right{animation:swal2-rotate-success-circular-line 4.25s ease-in}}[class^=swal2]{-webkit-tap-highlight-color:rgba(0,0,0,0)}.swal2-show{animation:var(--swal2-show-animation)}.swal2-hide{animation:var(--swal2-hide-animation)}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}.swal2-toast{box-sizing:border-box;grid-column:1/4 !important;grid-row:1/4 !important;grid-template-columns:min-content auto min-content;padding:1em;overflow-y:hidden;border:var(--swal2-toast-border);background:var(--swal2-background);box-shadow:var(--swal2-toast-box-shadow);pointer-events:all}.swal2-toast>*{grid-column:2}.swal2-toast h2:where(.swal2-title){margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-toast .swal2-loading{justify-content:center}.swal2-toast input:where(.swal2-input){height:2em;margin:.5em;font-size:1em}.swal2-toast .swal2-validation-message{font-size:1em}.swal2-toast div:where(.swal2-footer){margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-toast button:where(.swal2-close){grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-toast div:where(.swal2-html-container){margin:.5em 1em;padding:0;overflow:initial;font-size:1em;text-align:initial}.swal2-toast div:where(.swal2-html-container):empty{padding:0}.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:bold}.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-toast div:where(.swal2-actions){justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-toast button:where(.swal2-styled){margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;border-radius:50%}.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.8em;left:-0.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}@container swal2-popup style(--swal2-icon-animations:true){.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-toast-animate-success-line-tip .75s}.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-toast-animate-success-line-long .75s}}.swal2-toast.swal2-show{animation:var(--swal2-toast-show-animation)}.swal2-toast.swal2-hide{animation:var(--swal2-toast-hide-animation)}@keyframes swal2-show{0%{transform:translate3d(0, -50px, 0) scale(0.9);opacity:0}100%{transform:translate3d(0, 0, 0) scale(1);opacity:1}}@keyframes swal2-hide{0%{transform:translate3d(0, 0, 0) scale(1);opacity:1}100%{transform:translate3d(0, -50px, 0) scale(0.9);opacity:0}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-0.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(0.4);opacity:0}50%{margin-top:1.625em;transform:scale(0.4);opacity:0}80%{margin-top:-0.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0deg);opacity:1}}@keyframes swal2-rotate-loading{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-toast-show{0%{transform:translateY(-0.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(0.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0deg)}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-0.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}</style><style>
+.card[data-v-07556be7] {
+  border-radius: 10px;
+}
+.card-header[data-v-07556be7] {
+  border-radius: 10px 10px 0 0 !important;
+  padding: 1.2rem 1.5rem;
+}
+.table th[data-v-07556be7] {
+  background-color: #f8fafc;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+.table td[data-v-07556be7] {
+  padding: 1rem;
+  vertical-align: middle;
+}
+.badge[data-v-07556be7] {
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.btn-group .btn[data-v-07556be7] {
+  border-radius: 6px;
+  margin: 0 2px;
+}
+.btn-outline-primary[data-v-07556be7] {
+  border-color: #198754;
+  color: #198754;
+}
+.btn-outline-primary[data-v-07556be7]:hover {
+  background-color: #198754;
+  color: white;
+}
+.page-link[data-v-07556be7] {
+  color: #198754;
+  border: 1px solid #dee2e6;
+}
+.page-item.active .page-link[data-v-07556be7] {
+  background-color: #198754;
+  border-color: #198754;
+  color: white;
+}
+.page-link[data-v-07556be7]:hover {
+  color: #146c43;
+  background-color: #e9ecef;
+}
+.modal-content[data-v-07556be7] {
+  border-radius: 10px;
+}
+.input-group-text[data-v-07556be7] {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+.form-check-input[data-v-07556be7]:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+.bg-primary[data-v-07556be7] {
+  background-color: #198754 !important;
+}
+.text-primary[data-v-07556be7] {
+  color: #198754 !important;
+}
+</style><style>
+.card[data-v-4a0070f2] {
+  border-radius: 10px;
+}
+.card-header[data-v-4a0070f2] {
+  border-radius: 10px 10px 0 0 !important;
+  padding: 1.2rem 1.5rem;
+}
+.table th[data-v-4a0070f2] {
+  background-color: #f8fafc;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+.table td[data-v-4a0070f2] {
+  padding: 1rem;
+  vertical-align: middle;
+}
+.badge[data-v-4a0070f2] {
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.btn-group .btn[data-v-4a0070f2] {
+  border-radius: 6px;
+  margin: 0 2px;
+}
+.btn-outline-primary[data-v-4a0070f2] {
+  border-color: #198754;
+  color: #198754;
+}
+.btn-outline-primary[data-v-4a0070f2]:hover {
+  background-color: #198754;
+  color: white;
+}
+.page-link[data-v-4a0070f2] {
+  color: #198754;
+  border: 1px solid #dee2e6;
+}
+.page-item.active .page-link[data-v-4a0070f2] {
+  background-color: #198754;
+  border-color: #198754;
+  color: white;
+}
+.page-link[data-v-4a0070f2]:hover {
+  color: #146c43;
+  background-color: #e9ecef;
+}
+.modal-content[data-v-4a0070f2] {
+  border-radius: 10px;
+}
+.input-group-text[data-v-4a0070f2] {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+.form-check-input[data-v-4a0070f2]:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+.bg-primary[data-v-4a0070f2] {
+  background-color: #198754 !important;
+}
+.text-primary[data-v-4a0070f2] {
+  color: #198754 !important;
+}
+</style><style>
+.card[data-v-1d2df691] {
+  border-radius: 10px;
+}
+.card-header[data-v-1d2df691] {
+  border-radius: 10px 10px 0 0 !important;
+  padding: 1.2rem 1.5rem;
+}
+.table th[data-v-1d2df691] {
+  background-color: #f8fafc;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+.table td[data-v-1d2df691] {
+  padding: 1rem;
+  vertical-align: middle;
+}
+.badge[data-v-1d2df691] {
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.btn-group .btn[data-v-1d2df691] {
+  border-radius: 6px;
+  margin: 0 2px;
+}
+.btn-outline-primary[data-v-1d2df691] {
+  border-color: #198754;
+  color: #198754;
+}
+.btn-outline-primary[data-v-1d2df691]:hover {
+  background-color: #198754;
+  color: white;
+}
+.page-link[data-v-1d2df691] {
+  color: #198754;
+  border: 1px solid #dee2e6;
+}
+.page-item.active .page-link[data-v-1d2df691] {
+  background-color: #198754;
+  border-color: #198754;
+  color: white;
+}
+.page-link[data-v-1d2df691]:hover {
+  color: #146c43;
+  background-color: #e9ecef;
+}
+.modal-content[data-v-1d2df691] {
+  border-radius: 10px;
+}
+.input-group-text[data-v-1d2df691] {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+.form-check-input[data-v-1d2df691]:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+.bg-primary[data-v-1d2df691] {
+  background-color: #198754 !important;
+}
+.text-primary[data-v-1d2df691] {
+  color: #198754 !important;
+}
+</style><style>.toast-title{font-weight:700}.toast-message{-ms-word-wrap:break-word;word-wrap:break-word}.toast-message a,.toast-message label{color:#FFF}.toast-message a:hover{color:#CCC;text-decoration:none}.toast-close-button{position:relative;right:-.3em;top:-.3em;float:right;font-size:20px;font-weight:700;color:#FFF;-webkit-text-shadow:0 1px 0 #fff;text-shadow:0 1px 0 #fff;opacity:.8;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);filter:alpha(opacity=80);line-height:1}.toast-close-button:focus,.toast-close-button:hover{color:#000;text-decoration:none;cursor:pointer;opacity:.4;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=40);filter:alpha(opacity=40)}.rtl .toast-close-button{left:-.3em;float:left;right:.3em}button.toast-close-button{padding:0;cursor:pointer;background:0 0;border:0;-webkit-appearance:none}.toast-top-center{top:0;right:0;width:100%}.toast-bottom-center{bottom:0;right:0;width:100%}.toast-top-full-width{top:0;right:0;width:100%}.toast-bottom-full-width{bottom:0;right:0;width:100%}.toast-top-left{top:12px;left:12px}.toast-top-right{top:12px;right:12px}.toast-bottom-right{right:12px;bottom:12px}.toast-bottom-left{bottom:12px;left:12px}#toast-container{position:fixed;z-index:999999;pointer-events:none}#toast-container *{box-sizing:border-box}#toast-container>div{position:relative;pointer-events:auto;overflow:hidden;margin:0 0 6px;padding:15px 15px 15px 50px;width:300px;border-radius:3px;background-position:15px center;background-repeat:no-repeat;box-shadow:0 0 12px #999;color:#FFF;opacity:.8;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);filter:alpha(opacity=80)}#toast-container>div.rtl{direction:rtl;padding:15px 50px 15px 15px;background-position:right 15px center}#toast-container>div:hover{box-shadow:0 0 12px #000;opacity:1;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);filter:alpha(opacity=100);cursor:pointer}#toast-container>.toast-info{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=)!important}#toast-container>.toast-error{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVEhLrZa/SgNBEMZzh0WKCClSCKaIYOED+AAKeQQLG8HWztLCImBrYadgIdY+gIKNYkBFSwu7CAoqCgkkoGBI/E28PdbLZmeDLgzZzcx83/zZ2SSXC1j9fr+I1Hq93g2yxH4iwM1vkoBWAdxCmpzTxfkN2RcyZNaHFIkSo10+8kgxkXIURV5HGxTmFuc75B2RfQkpxHG8aAgaAFa0tAHqYFfQ7Iwe2yhODk8+J4C7yAoRTWI3w/4klGRgR4lO7Rpn9+gvMyWp+uxFh8+H+ARlgN1nJuJuQAYvNkEnwGFck18Er4q3egEc/oO+mhLdKgRyhdNFiacC0rlOCbhNVz4H9FnAYgDBvU3QIioZlJFLJtsoHYRDfiZoUyIxqCtRpVlANq0EU4dApjrtgezPFad5S19Wgjkc0hNVnuF4HjVA6C7QrSIbylB+oZe3aHgBsqlNqKYH48jXyJKMuAbiyVJ8KzaB3eRc0pg9VwQ4niFryI68qiOi3AbjwdsfnAtk0bCjTLJKr6mrD9g8iq/S/B81hguOMlQTnVyG40wAcjnmgsCNESDrjme7wfftP4P7SP4N3CJZdvzoNyGq2c/HWOXJGsvVg+RA/k2MC/wN6I2YA2Pt8GkAAAAASUVORK5CYII=)!important}#toast-container>.toast-success{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==)!important}#toast-container>.toast-warning{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGYSURBVEhL5ZSvTsNQFMbXZGICMYGYmJhAQIJAICYQPAACiSDB8AiICQQJT4CqQEwgJvYASAQCiZiYmJhAIBATCARJy+9rTsldd8sKu1M0+dLb057v6/lbq/2rK0mS/TRNj9cWNAKPYIJII7gIxCcQ51cvqID+GIEX8ASG4B1bK5gIZFeQfoJdEXOfgX4QAQg7kH2A65yQ87lyxb27sggkAzAuFhbbg1K2kgCkB1bVwyIR9m2L7PRPIhDUIXgGtyKw575yz3lTNs6X4JXnjV+LKM/m3MydnTbtOKIjtz6VhCBq4vSm3ncdrD2lk0VgUXSVKjVDJXJzijW1RQdsU7F77He8u68koNZTz8Oz5yGa6J3H3lZ0xYgXBK2QymlWWA+RWnYhskLBv2vmE+hBMCtbA7KX5drWyRT/2JsqZ2IvfB9Y4bWDNMFbJRFmC9E74SoS0CqulwjkC0+5bpcV1CZ8NMej4pjy0U+doDQsGyo1hzVJttIjhQ7GnBtRFN1UarUlH8F3xict+HY07rEzoUGPlWcjRFRr4/gChZgc3ZL2d8oAAAAASUVORK5CYII=)!important}#toast-container.toast-bottom-center>div,#toast-container.toast-top-center>div{width:300px;margin-left:auto;margin-right:auto}#toast-container.toast-bottom-full-width>div,#toast-container.toast-top-full-width>div{width:96%;margin-left:auto;margin-right:auto}.toast{background-color:#030303}.toast-success{background-color:#51A351}.toast-error{background-color:#BD362F}.toast-info{background-color:#2F96B4}.toast-warning{background-color:#F89406}.toast-progress{position:absolute;left:0;bottom:0;height:4px;background-color:#000;opacity:.4;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=40);filter:alpha(opacity=40)}@media all and (max-width:240px){#toast-container>div{padding:8px 8px 8px 50px;width:11em}#toast-container>div.rtl{padding:8px 50px 8px 8px}#toast-container .toast-close-button{right:-.2em;top:-.2em}#toast-container .rtl .toast-close-button{left:-.2em;right:.2em}}@media all and (min-width:241px) and (max-width:480px){#toast-container>div{padding:8px 8px 8px 50px;width:18em}#toast-container>div.rtl{padding:8px 50px 8px 8px}#toast-container .toast-close-button{right:-.2em;top:-.2em}#toast-container .rtl .toast-close-button{left:-.2em;right:.2em}}@media all and (min-width:481px) and (max-width:768px){#toast-container>div{padding:15px 15px 15px 50px;width:25em}#toast-container>div.rtl{padding:15px 50px 15px 15px}}</style><style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Base Styles */
+.form-wrapper[data-v-ff714c22] {
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Progress Indicator */
+.progress-container[data-v-ff714c22] {
+  margin-bottom: 2rem;
+}
+.progress-steps[data-v-ff714c22] {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.step[data-v-ff714c22] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  flex: 1;
+}
+.step-circle[data-v-ff714c22] {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ecf0f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #95a5a6;
+  border: 3px solid #ecf0f1;
+  transition: all 0.3s;
+  margin-bottom: 0.5rem;
+}
+.step.active .step-circle[data-v-ff714c22] {
+  background: #3498db;
+  border-color: #3498db;
+  color: white;
+  transform: scale(1.1);
+}
+.step.completed .step-circle[data-v-ff714c22] {
+  background: #2ecc71;
+  border-color: #2ecc71;
+  color: white;
+}
+.step-label[data-v-ff714c22] {
+  font-size: 0.8rem;
+  color: #95a5a6;
+  font-weight: 600;
+  text-align: center;
+}
+.step.active .step-label[data-v-ff714c22] {
+  color: #3498db;
+}
+.step.completed .step-label[data-v-ff714c22] {
+  color: #2ecc71;
+}
+.progress-bar[data-v-ff714c22] {
+  height: 4px;
+  background: #ecf0f1;
+  border-radius: 2px;
+  position: relative;
+  margin: 0 20px;
+}
+.progress-fill[data-v-ff714c22] {
+  height: 100%;
+  background: linear-gradient(90deg, #2ecc71, #3498db);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* Header */
+.login-header[data-v-ff714c22] {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.login-header h3[data-v-ff714c22] {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+.login-header p[data-v-ff714c22] {
+  color: #7f8c8d;
+  font-size: 0.95rem;
+}
+
+/* Already Have Account Section */
+.already-have-account[data-v-ff714c22] {
+  text-align: center;
+  margin: 2rem 0 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ecf0f1;
+}
+.already-have-account p[data-v-ff714c22] {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+.login-link[data-v-ff714c22] {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.login-link[data-v-ff714c22]:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+.login-link i[data-v-ff714c22] {
+  font-size: 0.9rem;
+}
+
+/* Form Styles */
+.step-form[data-v-ff714c22] {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.form-section[data-v-ff714c22] {
+  margin-bottom: 1.5rem;
+}
+.input-group[data-v-ff714c22] {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.input-field[data-v-ff714c22] {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  background: #f8f9fa;
+}
+.input-field[data-v-ff714c22]:focus {
+  outline: none;
+  border-color: #3498db;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+.input-field.is-invalid[data-v-ff714c22] {
+  border-color: #e74c3c;
+  background: #fff5f5;
+}
+.input-icon[data-v-ff714c22] {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #95a5a6;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Password group specific styles */
+.password-group[data-v-ff714c22] {
+  position: relative;
+}
+.password-group .input-field[data-v-ff714c22] {
+  padding: 0.75rem 3.5rem 0.75rem 2.5rem;
+}
+.password-group .input-icon[data-v-ff714c22] {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #95a5a6;
+  z-index: 1;
+  pointer-events: none;
+}
+.password-group .password-toggle-btn[data-v-ff714c22] {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #95a5a6;
+  cursor: pointer;
+  padding: 0.25rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+.password-group .password-toggle-btn[data-v-ff714c22]:hover {
+  color: #3498db;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 4px;
+}
+.password-group ~ .password-group[data-v-ff714c22] {
+  margin-top: 0.5rem;
+}
+.password-strength[data-v-ff714c22] {
+  margin-top: 0.5rem;
+  padding-left: 2.5rem;
+}
+.password-group .text-danger[data-v-ff714c22] {
+  padding-left: 2.5rem;
+}
+.password-group .input-field.is-invalid[data-v-ff714c22] {
+  padding-right: 3.5rem;
+}
+
+/* Buttons */
+.form-buttons[data-v-ff714c22] {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.btn[data-v-ff714c22] {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  flex: 1;
+}
+.btn-prev[data-v-ff714c22] {
+  background: #ecf0f1;
+  color: #7f8c8d;
+}
+.btn-prev[data-v-ff714c22]:hover {
+  background: #bdc3c7;
+}
+.btn-next[data-v-ff714c22],
+.btn-confirm[data-v-ff714c22] {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+}
+.btn-next[data-v-ff714c22]:hover,
+.btn-confirm[data-v-ff714c22]:hover {
+  background: linear-gradient(135deg, #2980b9, #1f639b);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+.btn[data-v-ff714c22]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Modal Styles */
+.modal-overlay[data-v-ff714c22] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.modal-content[data-v-ff714c22] {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.success-icon[data-v-ff714c22] {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+  font-size: 2.5rem;
+}
+.success-message[data-v-ff714c22] {
+  color: #27ae60;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.success-details[data-v-ff714c22] {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+.success-details .detail-item[data-v-ff714c22] {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #495057;
+  font-size: 0.9rem;
+  justify-content: center;
+}
+.success-actions[data-v-ff714c22] {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.btn-success[data-v-ff714c22] {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  border: none;
+  flex: 1;
+}
+.btn-success[data-v-ff714c22]:hover {
+  background: linear-gradient(135deg, #27ae60, #219653);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.25);
+}
+
+/* Footer */
+.login-footer[data-v-ff714c22] {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #95a5a6;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+/* Animations */
+@keyframes fadeIn-data-v-ff714c22 {
+from {
+    opacity: 0;
+    transform: translateY(10px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* Password Strength */
+.strength-text[data-v-ff714c22] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.strength-bars[data-v-ff714c22] {
+  display: flex;
+  gap: 2px;
+  height: 6px;
+}
+.strength-bar[data-v-ff714c22] {
+  flex: 1;
+  background: #ecf0f1;
+  border-radius: 1px;
+  transition: all 0.3s;
+}
+.strength-bar.active.strength-weak[data-v-ff714c22] {
+  background: #e74c3c;
+}
+.strength-bar.active.strength-medium[data-v-ff714c22] {
+  background: #f39c12;
+}
+.strength-bar.active.strength-strong[data-v-ff714c22] {
+  background: #2ecc71;
+}
+
+/* Alert */
+.alert[data-v-ff714c22] {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  animation: fadeIn-data-v-ff714c22 0.3s;
+}
+.alert-danger[data-v-ff714c22] {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.form-wrapper[data-v-ff714c22] {
+    padding: 1.5rem;
+    margin: 1rem auto;
+}
+.progress-steps[data-v-ff714c22] {
+    flex-wrap: wrap;
+}
+.step[data-v-ff714c22] {
+    min-width: 70px;
+    margin-bottom: 1rem;
+}
+.step-circle[data-v-ff714c22] {
+    width: 36px;
+    height: 36px;
+}
+.action-buttons[data-v-ff714c22] {
+    flex-direction: column;
+}
+.btn[data-v-ff714c22] {
+    width: 100%;
+}
+.already-have-account[data-v-ff714c22] {
+    margin: 1.5rem 0 1rem;
+}
+
+  /* Password group responsive */
+.password-group .input-field[data-v-ff714c22] {
+    padding: 0.7rem 3.2rem 0.7rem 2.2rem;
+}
+.password-group .input-icon[data-v-ff714c22] {
+    left: 0.75rem;
+}
+.password-group .password-toggle-btn[data-v-ff714c22] {
+    right: 0.75rem;
+}
+.password-strength[data-v-ff714c22] {
+    padding-left: 2.2rem;
+}
+.password-group .text-danger[data-v-ff714c22] {
+    padding-left: 2.2rem;
+}
+
+  /* Regular input fields */
+.input-field[data-v-ff714c22] {
+    padding: 0.7rem 1rem 0.7rem 2.2rem;
+}
+.input-icon[data-v-ff714c22] {
+    left: 0.75rem;
+}
+}
+@media (max-width: 576px) {
+.form-wrapper[data-v-ff714c22] {
+    padding: 1rem;
+    margin: 0.5rem;
+}
+.login-header h3[data-v-ff714c22] {
+    font-size: 1.25rem;
+}
+.input-field[data-v-ff714c22] {
+    padding: 0.7rem 1rem 0.7rem 2.2rem;
+    font-size: 0.9rem;
+}
+.password-group .input-field[data-v-ff714c22] {
+    padding: 0.7rem 3.2rem 0.7rem 2.2rem;
+}
+.modal-content[data-v-ff714c22] {
+    padding: 1.5rem;
+}
+.already-have-account p[data-v-ff714c22] {
+    font-size: 0.9rem;
+}
+.login-link[data-v-ff714c22] {
+    font-size: 0.9rem;
+}
+}
+@media (max-width: 400px) {
+.step-label[data-v-ff714c22] {
+    font-size: 0.7rem;
+}
+.btn[data-v-ff714c22] {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+}
+.already-have-account[data-v-ff714c22] {
+    margin: 1rem 0 0.5rem;
+}
+}
+</style><style>
+.card[data-v-17b3ef19] {
+  border-radius: 10px;
+}
+.card-header[data-v-17b3ef19] {
+  border-radius: 10px 10px 0 0 !important;
+  padding: 1.2rem 1.5rem;
+}
+.table th[data-v-17b3ef19] {
+  background-color: #f8fafc;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+.table td[data-v-17b3ef19] {
+  padding: 1rem;
+  vertical-align: middle;
+}
+.badge[data-v-17b3ef19] {
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.btn-group .btn[data-v-17b3ef19] {
+  border-radius: 6px;
+  margin: 0 2px;
+}
+.btn-outline-primary[data-v-17b3ef19] {
+  border-color: #198754;
+  color: #198754;
+}
+.btn-outline-primary[data-v-17b3ef19]:hover {
+  background-color: #198754;
+  color: white;
+}
+.page-link[data-v-17b3ef19] {
+  color: #198754;
+  border: 1px solid #dee2e6;
+}
+.page-item.active .page-link[data-v-17b3ef19] {
+  background-color: #198754;
+  border-color: #198754;
+  color: white;
+}
+.page-link[data-v-17b3ef19]:hover {
+  color: #146c43;
+  background-color: #e9ecef;
+}
+.modal-content[data-v-17b3ef19] {
+  border-radius: 10px;
+}
+.input-group-text[data-v-17b3ef19] {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+.form-check-input[data-v-17b3ef19]:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+.bg-primary[data-v-17b3ef19] {
+  background-color: #198754 !important;
+}
+.text-primary[data-v-17b3ef19] {
+  color: #198754 !important;
+}
+.modal-header[data-v-17b3ef19] {
+  background: linear-gradient(135deg, #198754 0%, #198754 100%);
+}
+.modal-icon-container[data-v-17b3ef19] {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-group-custom .input-group-text[data-v-17b3ef19] {
+  border-right: none;
+  background-color: #f8f9fa;
+}
+.input-group-custom .form-control[data-v-17b3ef19],
+.input-group-custom .form-select[data-v-17b3ef19] {
+  border-left: none;
+  transition: all 0.3s ease;
+}
+.input-group-custom .form-control[data-v-17b3ef19]:focus,
+.input-group-custom .form-select[data-v-17b3ef19]:focus {
+  border-color: #4a6cf7;
+  box-shadow: 0 0 0 0.2rem rgba(74, 108, 247, 0.25);
+}
+.status-container[data-v-17b3ef19] {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+}
+.status-card[data-v-17b3ef19] {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+}
+.status-card[data-v-17b3ef19]:hover {
+  border-color: #4a6cf7;
+  background: #f8faff;
+}
+.status-card.selected[data-v-17b3ef19] {
+  border-color: #4a6cf7;
+  background: #f0f4ff;
+}
+.status-indicator[data-v-17b3ef19] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.form-check-input[data-v-17b3ef19]:checked {
+  background-color: #4a6cf7;
+  border-color: #4a6cf7;
+}
+.card[data-v-17b3ef19] {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}
+</style><style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DENR Color Palette */
+[data-v-09b0a70d]:root {
+  --denr-primary: #006747;
+  --denr-secondary: #008542;
+  --denr-accent: #7ab800;
+  --denr-dark: #004d33;
+  --denr-light: #e8f5e9;
+  --denr-gradient: linear-gradient(
+    135deg,
+    var(--denr-primary) 0%,
+    var(--denr-secondary) 100%
+  );
+  --danger-light: #f8d7da;
+}
+
+/* Profile Card Enhancements */
+.profile-card[data-v-09b0a70d] {
+  position: relative;
+  overflow: hidden;
+}
+.profile-card[data-v-09b0a70d]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--denr-gradient);
+}
+
+/* Online Status Indicator */
+.online-status-indicator[data-v-09b0a70d] {
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: pulse-data-v-09b0a70d 2s infinite;
+}
+@keyframes pulse-data-v-09b0a70d {
+0% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+}
+70% {
+    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+}
+100% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+}
+}
+
+/* Availability Dot */
+.availability-dot[data-v-09b0a70d] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.availability-dot.available[data-v-09b0a70d] {
+  background-color: #28a745;
+  animation: blink-data-v-09b0a70d 1.5s infinite;
+}
+.availability-dot.unavailable[data-v-09b0a70d] {
+  background-color: #6c757d;
+}
+@keyframes blink-data-v-09b0a70d {
+0%,
+  100% {
+    opacity: 1;
+}
+50% {
+    opacity: 0.5;
+}
+}
+
+/* Technical Icons */
+.technical-icon[data-v-09b0a70d] {
+  width: 40px;
+  height: 40px;
+  background: var(--denr-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: var(--denr-primary);
+  font-size: 1.2rem;
+}
+.cert-icon[data-v-09b0a70d] {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffc107;
+  font-size: 1.2rem;
+}
+
+/* Activity Feed */
+.activity-feed[data-v-09b0a70d] {
+  position: relative;
+  padding-left: 20px;
+}
+.activity-feed[data-v-09b0a70d]::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--denr-light);
+}
+.activity-item[data-v-09b0a70d] {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.activity-icon[data-v-09b0a70d] {
+  position: absolute;
+  left: -20px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.7rem;
+}
+.activity-content[data-v-09b0a70d] {
+  margin-left: 10px;
+}
+
+/* Circular Progress */
+.circular-progress[data-v-09b0a70d] {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.circular-progress[data-v-09b0a70d]::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: white;
+}
+.progress-value[data-v-09b0a70d] {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--denr-primary);
+  z-index: 1;
+}
+
+/* Equipment Proficiency */
+.equipment-item[data-v-09b0a70d] {
+  transition: all 0.3s ease;
+}
+.equipment-item[data-v-09b0a70d]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Skill Badges */
+.badge[data-v-09b0a70d] {
+  transition: all 0.3s ease;
+}
+.badge[data-v-09b0a70d]:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.online-status-indicator[data-v-09b0a70d] {
+    width: 20px;
+    height: 20px;
+    font-size: 0.6rem;
+}
+.technical-icon[data-v-09b0a70d] {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+}
+.circular-progress[data-v-09b0a70d] {
+    width: 80px;
+    height: 80px;
+}
+.circular-progress[data-v-09b0a70d]::before {
+    width: 60px;
+    height: 60px;
+}
+.progress-value[data-v-09b0a70d] {
+    font-size: 1.2rem;
+}
+}
+
+/* Hover Effects */
+.card[data-v-09b0a70d] {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card[data-v-09b0a70d]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for new tab */
+@keyframes slideIn-data-v-09b0a70d {
+from {
+    opacity: 0;
+    transform: translateX(20px);
+}
+to {
+    opacity: 1;
+    transform: translateX(0);
+}
+}
+.tab-pane[data-v-09b0a70d] {
+  animation: slideIn-data-v-09b0a70d 0.3s ease-out;
+}
+
+/* Enhanced Form Controls */
+.form-control[data-v-09b0a70d]:focus {
+  border-color: var(--denr-primary);
+  box-shadow: 0 0 0 0.2rem rgba(0, 103, 71, 0.25);
+}
+
+/* Custom Scrollbar for Activity Feed */
+.activity-feed[data-v-09b0a70d] {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.activity-feed[data-v-09b0a70d]::-webkit-scrollbar {
+  width: 4px;
+}
+.activity-feed[data-v-09b0a70d]::-webkit-scrollbar-track {
+  background: var(--denr-light);
+  border-radius: 2px;
+}
+.activity-feed[data-v-09b0a70d]::-webkit-scrollbar-thumb {
+  background: var(--denr-primary);
+  border-radius: 2px;
+}
+
+/* Badge Colors */
+.bg-danger-light[data-v-09b0a70d] {
+  background-color: var(--danger-light) !important;
+}
+.text-danger[data-v-09b0a70d] {
+  color: #dc3545 !important;
+}
+
+/* Button Enhancements */
+.btn-outline-denr[data-v-09b0a70d] {
+  border-width: 2px;
+}
+.btn-outline-denr[data-v-09b0a70d]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 103, 71, 0.2);
+}
+
+/* Card Header Enhancement */
+.card-header[data-v-09b0a70d] {
+  padding: 1rem 1.5rem;
+}
+
+/* Form Switch Customization */
+.form-switch .form-check-input[data-v-09b0a70d]:checked {
+  background-color: var(--denr-primary);
+  border-color: var(--denr-primary);
+}
+.form-switch .form-check-input[data-v-09b0a70d]:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 103, 71, 0.25);
+}
+
+/* List Group Item Hover */
+.list-group-item[data-v-09b0a70d]:hover {
+  background-color: var(--denr-light);
+}
+
+/* Skill Input Group */
+.input-group .btn[data-v-09b0a70d] {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Smooth Transitions */
+*[data-v-09b0a70d] {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+</style><style>
+.card[data-v-5510aad5] {
+  border-radius: 10px;
+}
+.card-header[data-v-5510aad5] {
+  border-radius: 10px 10px 0 0 !important;
+  padding: 1.2rem 1.5rem;
+}
+.table th[data-v-5510aad5] {
+  background-color: #f8fafc;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+.table td[data-v-5510aad5] {
+  padding: 1rem;
+  vertical-align: middle;
+}
+.badge[data-v-5510aad5] {
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.btn-group .btn[data-v-5510aad5] {
+  border-radius: 6px;
+  margin: 0 2px;
+}
+.btn-outline-primary[data-v-5510aad5] {
+  border-color: #198754;
+  color: #198754;
+}
+.btn-outline-primary[data-v-5510aad5]:hover {
+  background-color: #198754;
+  color: white;
+}
+.page-link[data-v-5510aad5] {
+  color: #198754;
+  border: 1px solid #dee2e6;
+}
+.page-item.active .page-link[data-v-5510aad5] {
+  background-color: #198754;
+  border-color: #198754;
+  color: white;
+}
+.page-link[data-v-5510aad5]:hover {
+  color: #146c43;
+  background-color: #e9ecef;
+}
+.modal-content[data-v-5510aad5] {
+  border-radius: 10px;
+}
+.input-group-text[data-v-5510aad5] {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+.form-check-input[data-v-5510aad5]:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+.bg-primary[data-v-5510aad5] {
+  background-color: #198754 !important;
+}
+.text-primary[data-v-5510aad5] {
+  color: #198754 !important;
+}
+</style></head>
+
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+            <header id="page-topbar">
+    <div class="layout-width">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <!-- LOGO -->
+                <div class="navbar-brand-box horizontal-logo">
+                    <a href="http://localhost/denrxi_ictsms/profile/index.html" class="logo logo-dark">
+                        <span class="logo-sm">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="" height="22">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="" height="17">
+                        </span>
+                    </a>
+
+                    <a href="http://localhost/denrxi_ictsms/profile/index.html" class="logo logo-light">
+                        <span class="logo-sm">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="" height="22">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="" height="17">
+                        </span>
+                    </a>
+                </div>
+
+                <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger material-shadow-none" id="topnav-hamburger-icon">
+                    <span class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+
+                <!-- App Search-->
+                <form class="app-search d-none d-md-block">
+                    <div class="position-relative">
+                        <input type="text" class="form-control" placeholder="Search..." autocomplete="off" id="search-options" value="">
+                        <span class="mdi mdi-magnify search-widget-icon"></span>
+                        <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none" id="search-close-options"></span>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
+                        <div data-simplebar="init" style="max-height: 320px;"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 0px;">
+                            <!-- item-->
+                            <div class="dropdown-header">
+                                <h6 class="text-overflow text-muted mb-0 text-uppercase">Recent Searches</h6>
+                            </div>
+
+                            <div class="dropdown-item bg-transparent text-wrap">
+                                <a href="http://localhost/denrxi_ictsms/profile/index.html" class="btn btn-soft-secondary btn-sm rounded-pill">how to setup <i class="mdi mdi-magnify ms-1"></i></a>
+                                <a href="http://localhost/denrxi_ictsms/profile/index.html" class="btn btn-soft-secondary btn-sm rounded-pill">buttons <i class="mdi mdi-magnify ms-1"></i></a>
+                            </div>
+                            <!-- item-->
+                            <div class="dropdown-header mt-2">
+                                <h6 class="text-overflow text-muted mb-1 text-uppercase">Pages</h6>
+                            </div>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="ri-bubble-chart-line align-middle fs-18 text-muted me-2"></i>
+                                <span>Analytics Dashboard</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="ri-lifebuoy-line align-middle fs-18 text-muted me-2"></i>
+                                <span>Help Center</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="ri-user-settings-line align-middle fs-18 text-muted me-2"></i>
+                                <span>My account settings</span>
+                            </a>
+
+                            <!-- item-->
+                            <div class="dropdown-header mt-2">
+                                <h6 class="text-overflow text-muted mb-2 text-uppercase">Members</h6>
+                            </div>
+
+                            <div class="notification-list">
+                                <!-- item -->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
+                                    <div class="d-flex">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                        <div class="flex-grow-1">
+                                            <h6 class="m-0">Angela Bernier</h6>
+                                            <span class="fs-11 mb-0 text-muted">Manager</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- item -->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
+                                    <div class="d-flex">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                        <div class="flex-grow-1">
+                                            <h6 class="m-0">David Grasso</h6>
+                                            <span class="fs-11 mb-0 text-muted">Web Designer</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- item -->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
+                                    <div class="d-flex">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                        <div class="flex-grow-1">
+                                            <h6 class="m-0">Mike Bunch</h6>
+                                            <span class="fs-11 mb-0 text-muted">React Developer</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></div>
+
+                        <div class="text-center pt-3 pb-1">
+                            <a href="http://localhost/denrxi_ictsms/profile/pages-search-results.html" class="btn btn-primary btn-sm">View All Results <i class="ri-arrow-right-line ms-1"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="d-flex align-items-center">
+
+                <div class="dropdown d-md-none topbar-head-dropdown header-item">
+                    <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bx bx-search fs-22"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-search-dropdown">
+                        <form class="p-3">
+                            <div class="form-group m-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient&#39;s username">
+                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="dropdown ms-1 topbar-head-dropdown header-item">
+                    <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img id="header-lang-img" src="http://localhost/denrxi_ictsms/profile/2" alt="Header Language" height="20" class="rounded">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language py-2" data-lang="en" title="English">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="user-image" class="me-2 rounded" height="18">
+                            <span class="align-middle">English</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp" title="Spanish">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="user-image" class="me-2 rounded" height="18">
+                            <span class="align-middle">Española</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr" title="German">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="user-image" class="me-2 rounded" height="18"> <span class="align-middle">Deutsche</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it" title="Italian">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="user-image" class="me-2 rounded" height="18">
+                            <span class="align-middle">Italiana</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru" title="Russian">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="user-image" class="me-2 rounded" height="18">
+                            <span class="align-middle">русский</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ch" title="Chinese">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="user-image" class="me-2 rounded" height="18">
+                            <span class="align-middle">中国人</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="fr" title="French">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" alt="user-image" class="me-2 rounded" height="18">
+                            <span class="align-middle">français</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ar" title="Arabic">
+                            <img src="http://localhost/denrxi_ictsms/profile/2" class="me-2 rounded" height="18">
+                            <span class="align-middle">Arabic</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                    <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bx bx-category-alt fs-22"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg p-0 dropdown-menu-end">
+                        <div class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="m-0 fw-semibold fs-15"> Web Apps </h6>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="http://localhost/denrxi_ictsms/profile/2#!" class="btn btn-sm btn-soft-info"> View All Apps
+                                        <i class="ri-arrow-right-s-line align-middle"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-2">
+                            <div class="row g-0">
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="http://localhost/denrxi_ictsms/profile/2#!">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" alt="Github">
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="http://localhost/denrxi_ictsms/profile/2#!">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" alt="bitbucket">
+                                        <span>Bitbucket</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="http://localhost/denrxi_ictsms/profile/2#!">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" alt="dribbble">
+                                        <span>Dribbble</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row g-0">
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="http://localhost/denrxi_ictsms/profile/2#!">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" alt="dropbox">
+                                        <span>Dropbox</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="http://localhost/denrxi_ictsms/profile/2#!">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" alt="mail_chimp">
+                                        <span>Mail Chimp</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="http://localhost/denrxi_ictsms/profile/2#!">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" alt="slack">
+                                        <span>Slack</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                    <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" id="page-header-cart-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                        <i class="bx bx-shopping-bag fs-22"></i>
+                        <span class="position-absolute topbar-badge cartitem-badge fs-10 translate-middle badge rounded-pill bg-info">5</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end p-0 dropdown-menu-cart" aria-labelledby="page-header-cart-dropdown">
+                        <div class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="m-0 fs-16 fw-semibold"> My Cart</h6>
+                                </div>
+                                <div class="col-auto">
+                                    <span class="badge bg-warning-subtle text-warning fs-13"><span class="cartitem-badge">5</span>
+                                        items</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-simplebar="init" style="max-height: 300px;"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 0px;">
+                            <div class="p-2">
+                                <div class="text-center empty-cart" id="empty-cart" style="display: none;">
+                                    <div class="avatar-md mx-auto my-3">
+                                        <div class="avatar-title bg-info-subtle text-info fs-36 rounded-circle">
+                                            <i class="bx bx-cart"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-3">Your Cart is Empty!</h5>
+                                    <a href="http://localhost/denrxi_ictsms/profile/apps-ecommerce-products.html" class="btn btn-success w-md mb-3">Shop Now</a>
+                                </div>
+                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mt-0 mb-1 fs-14">
+                                                <a href="http://localhost/denrxi_ictsms/profile/apps-ecommerce-product-details.html" class="text-reset">Branded
+                                                    T-Shirts</a>
+                                            </h6>
+                                            <p class="mb-0 fs-12 text-muted">
+                                                Quantity: <span>10 x $32</span>
+                                            </p>
+                                        </div>
+                                        <div class="px-2">
+                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">320</span></h5>
+                                        </div>
+                                        <div class="ps-2">
+                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mt-0 mb-1 fs-14">
+                                                <a href="http://localhost/denrxi_ictsms/profile/apps-ecommerce-product-details.html" class="text-reset">Bentwood Chair</a>
+                                            </h6>
+                                            <p class="mb-0 fs-12 text-muted">
+                                                Quantity: <span>5 x $18</span>
+                                            </p>
+                                        </div>
+                                        <div class="px-2">
+                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">89</span></h5>
+                                        </div>
+                                        <div class="ps-2">
+                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mt-0 mb-1 fs-14">
+                                                <a href="http://localhost/denrxi_ictsms/profile/apps-ecommerce-product-details.html" class="text-reset">
+                                                    Borosil Paper Cup</a>
+                                            </h6>
+                                            <p class="mb-0 fs-12 text-muted">
+                                                Quantity: <span>3 x $250</span>
+                                            </p>
+                                        </div>
+                                        <div class="px-2">
+                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">750</span></h5>
+                                        </div>
+                                        <div class="ps-2">
+                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mt-0 mb-1 fs-14">
+                                                <a href="http://localhost/denrxi_ictsms/profile/apps-ecommerce-product-details.html" class="text-reset">Gray
+                                                    Styled T-Shirt</a>
+                                            </h6>
+                                            <p class="mb-0 fs-12 text-muted">
+                                                Quantity: <span>1 x $1250</span>
+                                            </p>
+                                        </div>
+                                        <div class="px-2">
+                                            <h5 class="m-0 fw-normal">$ <span class="cart-item-price">1250</span></h5>
+                                        </div>
+                                        <div class="ps-2">
+                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mt-0 mb-1 fs-14">
+                                                <a href="http://localhost/denrxi_ictsms/profile/apps-ecommerce-product-details.html" class="text-reset">Stillbird Helmet</a>
+                                            </h6>
+                                            <p class="mb-0 fs-12 text-muted">
+                                                Quantity: <span>2 x $495</span>
+                                            </p>
+                                        </div>
+                                        <div class="px-2">
+                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">990</span></h5>
+                                        </div>
+                                        <div class="ps-2">
+                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></div>
+                        <div class="p-3 border-bottom-0 border-start-0 border-end-0 border-dashed border" id="checkout-elem" style="display: block;">
+                            <div class="d-flex justify-content-between align-items-center pb-3">
+                                <h5 class="m-0 text-muted">Total:</h5>
+                                <div class="px-2">
+                                    <h5 class="m-0" id="cart-item-total">$3399.00</h5>
+                                </div>
+                            </div>
+
+                            <a href="http://localhost/denrxi_ictsms/profile/apps-ecommerce-checkout.html" class="btn btn-success text-center w-100">
+                                Checkout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ms-1 header-item d-none d-sm-flex">
+                    <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" data-toggle="fullscreen">
+                        <i class="bx bx-fullscreen fs-22"></i>
+                    </button>
+                </div>
+
+                <div class="ms-1 header-item d-none d-sm-flex">
+                    <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle light-dark-mode">
+                        <i class="bx bx-moon fs-22"></i>
+                    </button>
+                </div>
+
+                <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
+                    <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                        <i class="bx bx-bell fs-22"></i>
+                        <span class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">3<span class="visually-hidden">unread messages</span></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
+
+                        <div class="dropdown-head bg-primary bg-pattern rounded-top">
+                            <div class="p-3">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h6 class="m-0 fs-16 fw-semibold text-white"> Notifications </h6>
+                                    </div>
+                                    <div class="col-auto dropdown-tabs">
+                                        <span class="badge bg-light text-body fs-13"> 4 New</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="px-2 pt-2">
+                                <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom" data-dropdown-tabs="true" id="notificationItemsTab" role="tablist">
+                                    <li class="nav-item waves-effect waves-light" role="presentation">
+                                        <a class="nav-link active" data-bs-toggle="tab" href="http://localhost/denrxi_ictsms/profile/2#all-noti-tab" role="tab" aria-selected="true">
+                                            All (4)
+                                        </a>
+                                    </li>
+                                    <li class="nav-item waves-effect waves-light" role="presentation">
+                                        <a class="nav-link" data-bs-toggle="tab" href="http://localhost/denrxi_ictsms/profile/2#messages-tab" role="tab" aria-selected="false" tabindex="-1">
+                                            Messages
+                                        </a>
+                                    </li>
+                                    <li class="nav-item waves-effect waves-light" role="presentation">
+                                        <a class="nav-link" data-bs-toggle="tab" href="http://localhost/denrxi_ictsms/profile/2#alerts-tab" role="tab" aria-selected="false" tabindex="-1">
+                                            Alerts
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-content position-relative" id="notificationItemsTabContent">
+                            <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab" role="tabpanel">
+                                <div data-simplebar="init" style="max-height: 300px;" class="pe-2"><div class="simplebar-wrapper" style="margin: 0px -8px 0px 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 0px 8px 0px 0px;">
+                                    <div class="text-reset notification-item d-block dropdown-item position-relative">
+                                        <div class="d-flex">
+                                            <div class="avatar-xs me-3 flex-shrink-0">
+                                                <span class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
+                                                    <i class="bx bx-badge-check"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <a href="http://localhost/denrxi_ictsms/profile/2#!" class="stretched-link">
+                                                    <h6 class="mt-0 mb-2 lh-base">Your <b>Elite</b> author Graphic
+                                                        Optimization <span class="text-secondary">reward</span> is
+                                                        ready!
+                                                    </h6>
+                                                </a>
+                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                    <span><i class="mdi mdi-clock-outline"></i> Just 30 sec ago</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2 fs-15">
+                                                <div class="form-check notification-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="all-notification-check01">
+                                                    <label class="form-check-label" for="all-notification-check01"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-reset notification-item d-block dropdown-item position-relative">
+                                        <div class="d-flex">
+                                            <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-xs flex-shrink-0" alt="user-pic">
+                                            <div class="flex-grow-1">
+                                                <a href="http://localhost/denrxi_ictsms/profile/2#!" class="stretched-link">
+                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier</h6>
+                                                </a>
+                                                <div class="fs-13 text-muted">
+                                                    <p class="mb-1">Answered to your comment on the cash flow forecast's
+                                                        graph 🔔.</p>
+                                                </div>
+                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                    <span><i class="mdi mdi-clock-outline"></i> 48 min ago</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2 fs-15">
+                                                <div class="form-check notification-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="all-notification-check02">
+                                                    <label class="form-check-label" for="all-notification-check02"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-reset notification-item d-block dropdown-item position-relative">
+                                        <div class="d-flex">
+                                            <div class="avatar-xs me-3 flex-shrink-0">
+                                                <span class="avatar-title bg-danger-subtle text-danger rounded-circle fs-16">
+                                                    <i class="bx bx-message-square-dots"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <a href="http://localhost/denrxi_ictsms/profile/2#!" class="stretched-link">
+                                                    <h6 class="mt-0 mb-2 fs-13 lh-base">You have received <b class="text-success">20</b> new messages in the conversation
+                                                    </h6>
+                                                </a>
+                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                    <span><i class="mdi mdi-clock-outline"></i> 2 hrs ago</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2 fs-15">
+                                                <div class="form-check notification-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="all-notification-check03">
+                                                    <label class="form-check-label" for="all-notification-check03"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-reset notification-item d-block dropdown-item position-relative">
+                                        <div class="d-flex">
+                                            <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-xs flex-shrink-0" alt="user-pic">
+                                            <div class="flex-grow-1">
+                                                <a href="http://localhost/denrxi_ictsms/profile/2#!" class="stretched-link">
+                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Maureen Gibson</h6>
+                                                </a>
+                                                <div class="fs-13 text-muted">
+                                                    <p class="mb-1">We talked about a project on linkedin.</p>
+                                                </div>
+                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                    <span><i class="mdi mdi-clock-outline"></i> 4 hrs ago</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2 fs-15">
+                                                <div class="form-check notification-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="all-notification-check04">
+                                                    <label class="form-check-label" for="all-notification-check04"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="my-3 text-center view-all" style="display: block;">
+                                        <button type="button" class="btn btn-soft-success waves-effect waves-light">View
+                                            All Notifications <i class="ri-arrow-right-line align-middle"></i></button>
+                                    </div>
+                                </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></div>
+
+                            </div>
+
+                            <div class="tab-pane fade py-2 ps-2" id="messages-tab" role="tabpanel" aria-labelledby="messages-tab">
+                                <div data-simplebar="init" style="max-height: 300px;" class="pe-2"><div class="simplebar-wrapper" style="margin: 0px -8px 0px 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 0px 8px 0px 0px;">
+                                    <div class="text-reset notification-item d-block dropdown-item">
+                                        <div class="d-flex">
+                                            <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                            <div class="flex-grow-1">
+                                                <a href="http://localhost/denrxi_ictsms/profile/2#!" class="stretched-link">
+                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">James Lemire</h6>
+                                                </a>
+                                                <div class="fs-13 text-muted">
+                                                    <p class="mb-1">We talked about a project on linkedin.</p>
+                                                </div>
+                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                    <span><i class="mdi mdi-clock-outline"></i> 30 min ago</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2 fs-15">
+                                                <div class="form-check notification-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="messages-notification-check01">
+                                                    <label class="form-check-label" for="messages-notification-check01"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-reset notification-item d-block dropdown-item">
+                                        <div class="d-flex">
+                                            <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                            <div class="flex-grow-1">
+                                                <a href="http://localhost/denrxi_ictsms/profile/2#!" class="stretched-link">
+                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier</h6>
+                                                </a>
+                                                <div class="fs-13 text-muted">
+                                                    <p class="mb-1">Answered to your comment on the cash flow forecast's
+                                                        graph 🔔.</p>
+                                                </div>
+                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                    <span><i class="mdi mdi-clock-outline"></i> 2 hrs ago</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2 fs-15">
+                                                <div class="form-check notification-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="messages-notification-check02">
+                                                    <label class="form-check-label" for="messages-notification-check02"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-reset notification-item d-block dropdown-item">
+                                        <div class="d-flex">
+                                            <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                            <div class="flex-grow-1">
+                                                <a href="http://localhost/denrxi_ictsms/profile/2#!" class="stretched-link">
+                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Kenneth Brown</h6>
+                                                </a>
+                                                <div class="fs-13 text-muted">
+                                                    <p class="mb-1">Mentionned you in his comment on 📃 invoice #12501.
+                                                    </p>
+                                                </div>
+                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                    <span><i class="mdi mdi-clock-outline"></i> 10 hrs ago</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2 fs-15">
+                                                <div class="form-check notification-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="messages-notification-check03">
+                                                    <label class="form-check-label" for="messages-notification-check03"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-reset notification-item d-block dropdown-item">
+                                        <div class="d-flex">
+                                            <img src="http://localhost/denrxi_ictsms/profile/2" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                            <div class="flex-grow-1">
+                                                <a href="http://localhost/denrxi_ictsms/profile/2#!" class="stretched-link">
+                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Maureen Gibson</h6>
+                                                </a>
+                                                <div class="fs-13 text-muted">
+                                                    <p class="mb-1">We talked about a project on linkedin.</p>
+                                                </div>
+                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                    <span><i class="mdi mdi-clock-outline"></i> 3 days ago</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2 fs-15">
+                                                <div class="form-check notification-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="messages-notification-check04">
+                                                    <label class="form-check-label" for="messages-notification-check04"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="my-3 text-center view-all" style="display: block;">
+                                        <button type="button" class="btn btn-soft-success waves-effect waves-light">View
+                                            All Messages <i class="ri-arrow-right-line align-middle"></i></button>
+                                    </div>
+                                </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></div>
+                            </div>
+                            <div class="tab-pane fade p-4" id="alerts-tab" role="tabpanel" aria-labelledby="alerts-tab"><div class="empty-notification-elem">							<div class="w-25 w-sm-50 pt-3 mx-auto">								<img src="http://localhost/denrxi_ictsms/profile/2" class="img-fluid" alt="user-pic">							</div>							<div class="text-center pb-5 mt-2">								<h6 class="fs-18 fw-semibold lh-base">Hey! You have no any notifications </h6>							</div>						</div></div>
+
+                            <div class="notification-actions" id="notification-actions">
+                                <div class="d-flex text-muted justify-content-center">
+                                    Select <div id="select-content" class="text-body fw-semibold px-1">0</div> Result <button type="button" class="btn btn-link link-danger p-0 ms-3" data-bs-toggle="modal" data-bs-target="#removeNotificationModal">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown ms-sm-3 header-item topbar-user">
+                    <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-flex align-items-center">
+                            <img class="rounded-circle header-profile-user" src="http://localhost/denrxi_ictsms/profile/2" alt="Header Avatar">
+                            <span class="text-start ms-xl-2">
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anna Adame</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        <h6 class="dropdown-header">Welcome Anna!</h6>
+                        <a class="dropdown-item" href="http://localhost/denrxi_ictsms/profile/pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
+                        <a class="dropdown-item" href="http://localhost/denrxi_ictsms/profile/apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
+                        <a class="dropdown-item" href="http://localhost/denrxi_ictsms/profile/apps-tasks-kanban.html"><i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Taskboard</span></a>
+                        <a class="dropdown-item" href="http://localhost/denrxi_ictsms/profile/pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="http://localhost/denrxi_ictsms/profile/pages-profile.html"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$5971.67</b></span></a>
+                        <a class="dropdown-item" href="http://localhost/denrxi_ictsms/profile/pages-profile-settings.html"><span class="badge bg-success-subtle text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
+                        <a class="dropdown-item" href="http://localhost/denrxi_ictsms/profile/auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
+                        <a class="dropdown-item" href="http://localhost/denrxi_ictsms/profile/auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+            <div class="app-menu navbar-menu">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <!-- Dark Logo-->
+                <a href="http://localhost/denrxi_ictsms/profile/index.html" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="./DENR XI _ ICT Service Management System_files/denr1.png" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="./DENR XI _ ICT Service Management System_files/denr1.png" alt="" height="17">
+                    </span>
+                </a>
+                <!-- Light Logo-->
+                <a href="http://localhost/denrxi_ictsms/profile/index.html" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="./DENR XI _ ICT Service Management System_files/denr1.png" alt="" height="30">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="./DENR XI _ ICT Service Management System_files/denr1.png" alt="" height="90">
+                    </span>
+                </a>
+                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+                    <i class="ri-record-circle-line"></i>
+                </button>
+            </div>
+    
+            <div id="scrollbar" data-simplebar="init" class="h-100"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden;"><div class="simplebar-content" style="padding: 0px;">
+                <div class="container-fluid">
+                    <div id="two-column-menu">
+                    </div>
+
+                    
+                                        <ul class="navbar-nav" id="navbar-nav" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 0px;">
+                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="http://localhost/denrxi_ictsms/profile/2">
+                                <i class="ri-apps-2-line"></i> <span data-key="t-widgets">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="http://localhost/denrxi_ictsms/profile/2">
+                                <i class="ri-user-line"></i> <span data-key="t-widgets">Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="http://localhost/denrxi_ictsms/profile/apps-chat.html">
+                                <i class="ri-headphone-line"></i> <span data-key="t-chat">Ticket Request</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="http://localhost/denrxi_ictsms/profile/widgets.html">
+                                <i class="ri-file-text-line"></i> <span data-key="t-widgets">Reports</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="http://localhost/denrxi_ictsms/profile/widgets.html">
+                                <i class="ri-archive-line"></i> <span data-key="t-widgets">Data Logs</span>
+                            </a>
+                        </li>
+                    </div></div></div></div><div class="simplebar-placeholder" style="width: 249px; height: 276px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></ul>
+                                    </div>
+                <!-- Sidebar -->
+            </div></div></div></div><div class="simplebar-placeholder" style="width: 249px; height: 276px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></div>
+
+            <div class="sidebar-background"></div>
+        </div>        <!-- Left Sidebar End -->
+        <!-- Vertical Overlay-->
+        <div class="vertical-overlay"></div>
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+                <div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+                    <h4 class="mb-sm-0">Profile</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">DENR XI - ICTSMS</a>
+                            </li>
+                            <li class="breadcrumb-item active">Profile</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+    <br><br><br>
+        <div id="app"><div data-v-09b0a70d="" class="container-fluid"><div data-v-09b0a70d="" class="row"><div data-v-09b0a70d="" class="col-xxl-3"><div data-v-09b0a70d="" class="card mt-n5 border-denr profile-card"><div data-v-09b0a70d="" class="card-body p-4"><div data-v-09b0a70d="" class="text-center"><div data-v-09b0a70d="" class="profile-user position-relative d-inline-block mx-auto mb-4"><div data-v-09b0a70d="" class="position-relative"><img data-v-09b0a70d="" src="./DENR XI _ ICT Service Management System_files/2026-DANRICKS_S_TEKIKO-09199533529.jpg" alt="user-profile-image" class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow"></div> <div data-v-09b0a70d="" class="avatar-xs p-0 rounded-circle profile-photo-edit"><input data-v-09b0a70d="" id="profile-img-file-input" type="file" class="profile-img-file-input"></div></div> <h5 data-v-09b0a70d="" class="fs-16 mb-1 font-display text-denr-dark">
+              Danrick s.
+              Tekiko
+            </h5> <p data-v-09b0a70d="" class="text-muted mb-0"><i data-v-09b0a70d="" class="ri-briefcase-line me-1"></i>Computer Programmer II
+            </p></div> <div data-v-09b0a70d="" class="mt-4"><div data-v-09b0a70d="" class="d-flex align-items-center mb-3"><div data-v-09b0a70d="" class="icon-denr p-2 rounded-circle me-3"><i data-v-09b0a70d="" class="ri-mail-line fs-5"></i></div> <div data-v-09b0a70d="" class="flex-grow-1"><span data-v-09b0a70d="" class="font-body">dcode0516@gmail.com</span> <!----></div></div> <div data-v-09b0a70d="" class="d-flex align-items-center mb-3"><div data-v-09b0a70d="" class="icon-denr p-2 rounded-circle me-3"><i data-v-09b0a70d="" class="ri-phone-line fs-5"></i></div> <div data-v-09b0a70d="" class="flex-grow-1"><span data-v-09b0a70d="" class="font-body">09199533529</span></div></div> <div data-v-09b0a70d="" class="d-flex align-items-center mb-3"><div data-v-09b0a70d="" class="icon-denr p-2 rounded-circle me-3"><i data-v-09b0a70d="" class="ri-user-3-line fs-5"></i></div> <div data-v-09b0a70d="" class="flex-grow-1"><span data-v-09b0a70d="" class="font-body">Regional Office</span></div></div> <div data-v-09b0a70d="" class="d-flex align-items-center mb-3"><div data-v-09b0a70d="" class="icon-denr p-2 rounded-circle me-3"><i data-v-09b0a70d="" class="ri-building-line fs-5"></i></div> <div data-v-09b0a70d="" class="flex-grow-1"><span data-v-09b0a70d="" class="font-body">Planning and Management Division</span></div></div></div></div></div></div> <div data-v-09b0a70d="" class="col-xxl-9"><div data-v-09b0a70d="" class="card mt-xxl-n5 border-denr"><div data-v-09b0a70d="" class="card-header bg-denr-gradient border-bottom-0"><ul data-v-09b0a70d="" role="tablist" class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0"><li data-v-09b0a70d="" class="nav-item" role="presentation"><a data-v-09b0a70d="" data-bs-toggle="tab" href="http://localhost/denrxi_ictsms/profile/2#personalDetails" role="tab" class="nav-link active" aria-selected="true"><i data-v-09b0a70d="" class="ri-user-line me-2"></i> <span data-v-09b0a70d="" class="d-none d-md-inline">Personal Details</span> <span data-v-09b0a70d="" class="badge bg-white text-denr ms-2">Basic Info</span></a></li> <li data-v-09b0a70d="" class="nav-item" role="presentation"><a data-v-09b0a70d="" data-bs-toggle="tab" href="http://localhost/denrxi_ictsms/profile/2#changePassword" role="tab" class="nav-link" aria-selected="false" tabindex="-1"><i data-v-09b0a70d="" class="ri-shield-keyhole-line me-2"></i> <span data-v-09b0a70d="" class="d-none d-md-inline">Security</span> <span data-v-09b0a70d="" class="badge bg-white text-denr ms-2">Protected</span></a></li></ul></div> <div data-v-09b0a70d="" class="card-body p-4"><div data-v-09b0a70d="" class="tab-content"><div data-v-09b0a70d="" id="personalDetails" role="tabpanel" class="tab-pane active"><div data-v-09b0a70d="" class="d-flex align-items-center mb-4"><div data-v-09b0a70d="" class="icon-denr p-3 rounded-circle me-3"><i data-v-09b0a70d="" class="ri-user-line fs-3"></i></div> <div data-v-09b0a70d=""><h5 data-v-09b0a70d="" class="mb-0 font-display text-denr-dark">
+                    Personal Information
+                  </h5> <p data-v-09b0a70d="" class="text-muted mb-0">
+                    Update your personal details and contact information
+                  </p></div></div> <form data-v-09b0a70d=""><div data-v-09b0a70d="" class="row"><div data-v-09b0a70d="" class="col-lg-4"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="firstnameInput" class="form-label"><i data-v-09b0a70d="" class="ri-user-3-line me-1"></i>First Name *
+                      </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-user-line"></i></span> <input data-v-09b0a70d="" type="text" id="firstnameInput" required="required" class="form-control form-control-enhanced"></div></div></div> <div data-v-09b0a70d="" class="col-lg-2"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="middleInitialInput" class="form-label"><i data-v-09b0a70d="" class="ri-text me-1"></i>M.I.
+                      </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-text"></i></span> <input data-v-09b0a70d="" type="text" id="middleInitialInput" maxlength="1" class="form-control form-control-enhanced text-center"></div></div></div> <div data-v-09b0a70d="" class="col-lg-4"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="lastnameInput" class="form-label"><i data-v-09b0a70d="" class="ri-user-3-line me-1"></i>Last Name *
+                      </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-user-line"></i></span> <input data-v-09b0a70d="" type="text" id="lastnameInput" required="required" class="form-control form-control-enhanced"></div></div></div> <div data-v-09b0a70d="" class="col-lg-2"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="extensionInput" class="form-label"><i data-v-09b0a70d="" class="ri-hashtag me-1"></i>Ext.
+                      </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-number-1"></i></span> <input data-v-09b0a70d="" type="text" id="extensionInput" class="form-control form-control-enhanced"></div></div></div> <div data-v-09b0a70d="" class="col-lg-6"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="emailInput" class="form-label"><i data-v-09b0a70d="" class="ri-mail-line me-1"></i>Email Address *
+                      </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-mail-line"></i></span> <input data-v-09b0a70d="" type="email" id="emailInput" disabled="disabled" class="form-control form-control-enhanced"></div> <!----></div></div> <div data-v-09b0a70d="" class="col-lg-6"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="contactNumberInput" class="form-label"><i data-v-09b0a70d="" class="ri-smartphone-line me-1"></i>Contact Number
+                      </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-phone-line"></i></span> <input data-v-09b0a70d="" type="tel" id="contactNumberInput" class="form-control form-control-enhanced"></div></div></div> <div data-v-09b0a70d="" class="col-lg-12"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="positionInput" class="form-label"><i data-v-09b0a70d="" class="ri-briefcase-2-line me-1"></i>Position
+                      </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-briefcase-line"></i></span> <input data-v-09b0a70d="" type="text" id="positionInput" class="form-control form-control-enhanced"></div></div></div> <div data-v-09b0a70d="" class="col-lg-12"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="positionInput" class="form-label"><i data-v-09b0a70d="" class="ri-camera-line me-1"></i>Upload Photo
+                      </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-camera-line"></i></span> <input data-v-09b0a70d="" type="file" id="positionInput" class="form-control form-control-enhanced"></div></div></div> <div data-v-09b0a70d="" class="col-12 mt-4"><div data-v-09b0a70d="" class="card border-denr-light"><div data-v-09b0a70d="" class="card-body"><h6 data-v-09b0a70d="" class="mb-3 text-denr-dark font-display"><i data-v-09b0a70d="" class="ri-file-text-line me-2"></i>Terms &amp;
+                          Agreements
+                        </h6> <div data-v-09b0a70d="" class="form-check mb-3"><input data-v-09b0a70d="" type="checkbox" id="agreeTerms" disabled="disabled" class="form-check-input"> <label data-v-09b0a70d="" for="agreeTerms" class="form-check-label font-body"><i data-v-09b0a70d="" class="ri-checkbox-circle-line text-success me-2"></i>
+                            I agree to the DENR terms and conditions
+                          </label></div> <div data-v-09b0a70d="" class="form-check mb-3"><input data-v-09b0a70d="" type="checkbox" id="confirmInfo" disabled="disabled" class="form-check-input"> <label data-v-09b0a70d="" for="confirmInfo" class="form-check-label font-body"><i data-v-09b0a70d="" class="ri-check-double-line text-primary me-2"></i>
+                            Confirm information is accurate and verified
+                          </label></div></div></div></div> <div data-v-09b0a70d="" class="col-12"><div data-v-09b0a70d="" class="d-flex justify-content-end"><button data-v-09b0a70d="" type="submit" class="btn btn-success"><i data-v-09b0a70d="" class="ri-save-line me-2"></i>
+                        Update Personal Info
+                      </button></div></div></div></form></div> <div data-v-09b0a70d="" id="changePassword" role="tabpanel" class="tab-pane"><div data-v-09b0a70d="" class="d-flex align-items-center mb-4"><div data-v-09b0a70d="" class="icon-denr p-3 rounded-circle me-3"><i data-v-09b0a70d="" class="ri-shield-keyhole-line fs-3"></i></div> <div data-v-09b0a70d=""><h5 data-v-09b0a70d="" class="mb-0 font-display text-denr-dark">
+                    Security Settings
+                  </h5> <p data-v-09b0a70d="" class="text-muted mb-0">
+                    Manage your password and account security
+                  </p></div></div> <div data-v-09b0a70d="" class="row"><div data-v-09b0a70d="" class="col-lg-12"><div data-v-09b0a70d="" class="card border-denr-light mb-2"><div data-v-09b0a70d="" class="card-body"><form data-v-09b0a70d=""><div data-v-09b0a70d="" class="row g-3"><div data-v-09b0a70d="" class="col-12"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="oldpasswordInput" class="form-label"><i data-v-09b0a70d="" class="ri-lock-line me-1"></i>Current
+                                Password
+                              </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-lock-line"></i></span> <input data-v-09b0a70d="" type="password" id="oldpasswordInput" required="required" class="form-control form-control-enhanced"> <button data-v-09b0a70d="" type="button" class="btn btn-outline-denr"><i data-v-09b0a70d="" class="ri-eye-line"></i></button></div></div></div> <div data-v-09b0a70d="" class="col-lg-6"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="newpasswordInput" class="form-label"><i data-v-09b0a70d="" class="ri-key-2-line me-1"></i>New Password
+                              </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-lock-password-line"></i></span> <input data-v-09b0a70d="" type="password" id="newpasswordInput" required="required" class="form-control form-control-enhanced"> <button data-v-09b0a70d="" type="button" class="btn btn-outline-denr"><i data-v-09b0a70d="" class="ri-eye-line"></i></button></div> <div data-v-09b0a70d="" class="form-text"><i data-v-09b0a70d="" class="ri-information-line me-1"></i>
+                                Must be at least 8 characters with uppercase,
+                                lowercase, and numbers
+                              </div></div></div> <div data-v-09b0a70d="" class="col-lg-6"><div data-v-09b0a70d="" class="mb-3"><label data-v-09b0a70d="" for="confirmpasswordInput" class="form-label"><i data-v-09b0a70d="" class="ri-key-2-fill me-1"></i>Confirm
+                                Password
+                              </label> <div data-v-09b0a70d="" class="input-group input-group-with-icon"><span data-v-09b0a70d="" class="input-group-text bg-denr-light text-denr"><i data-v-09b0a70d="" class="ri-lock-password-line"></i></span> <input data-v-09b0a70d="" type="password" id="confirmpasswordInput" required="required" class="form-control form-control-enhanced"> <button data-v-09b0a70d="" type="button" class="btn btn-outline-denr"><i data-v-09b0a70d="" class="ri-eye-line"></i></button></div></div></div> <div data-v-09b0a70d="" class="col-12"><div data-v-09b0a70d="" class="d-flex justify-content-end"><button data-v-09b0a70d="" type="submit" class="btn btn-success"><i data-v-09b0a70d="" class="ri-key-2-line me-2"></i>
+                                Update Password
+                              </button></div></div></div></form></div></div></div></div></div></div></div></div></div></div></div></div>
+
+    </div>
+</div>
+            <!-- End Page-content -->
+
+                <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            2025 © DENR XI - ICTSMS
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Developed by: Plannning and Mangement Division - Regional ICT Unit
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+
+
+    <!--start back-to-top-->
+    
+    
+
+    <!-- Theme Settings -->
+   
+    <!-- JAVASCRIPT -->
+    <script src="./DENR XI _ ICT Service Management System_files/app.js.download"></script>
+
+    <!-- jQuery & Bootstrap JS -->
+    <script src="./DENR XI _ ICT Service Management System_files/jquery-3.5.1.slim.min.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/popper.min.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/bootstrap.bundle.min.js.download"></script>
+
+    <script src="./DENR XI _ ICT Service Management System_files/simplebar.min.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/waves.min.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/feather.min.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/apexcharts.min.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/jsvectormap.min.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/world-merc.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/swiper-bundle.min.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/dashboard-ecommerce.init.js.download"></script>
+    <script src="./DENR XI _ ICT Service Management System_files/app(1).js.download"></script>
+
+
+
+
+
+<svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg></body><!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:45:33 GMT --></html>

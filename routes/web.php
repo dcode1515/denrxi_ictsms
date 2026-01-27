@@ -31,7 +31,11 @@ Route::post('/api/post/register', [App\Http\Controllers\Auth\AuthController::cla
 
 
 /*Ticket Routes*/
-Route::get('/ticket/request', [App\Http\Controllers\HelpdeskController::class, 'ticket']);
+Route::get('/ticket/request', [App\Http\Controllers\TicketController::class, 'ticket']);
+Route::get('/api/ticket/type', [App\Http\Controllers\TicketController::class, 'TicketType']);
+Route::get('/api/ticket/categories/{tickettypeID}', [App\Http\Controllers\TicketController::class, 'categoriesByTicketType']);
+Route::get('/api/ticket/head-offices', [App\Http\Controllers\TicketController::class, 'headOffices']);
+Route::get('/api/ticket/offices/{headOfficeId}', [App\Http\Controllers\TicketController::class, 'officesByHeadOffice']);
 /*End Ticket Routes*/
 
 
@@ -49,6 +53,7 @@ Route::get('/api/get/data/office', [App\Http\Controllers\Admin\AdminController::
 Route::post('/api/update/office/{id}', [App\Http\Controllers\Admin\AdminController::class, 'update_office']);
 Route::delete('/api/delete/office/{id}', [App\Http\Controllers\Admin\AdminController::class, 'delete_office']);
 Route::get('/ticket/type', [App\Http\Controllers\Admin\AdminController::class, 'ticket_type'])->name('ticket.type');
+Route::get('/ticket/category', [App\Http\Controllers\Admin\AdminController::class, 'ticket_category'])->name('ticket.category');
 Route::post('/api/store/ticket/type', [App\Http\Controllers\Admin\AdminController::class, 'store_ticket_type']);
 Route::get('/api/get/data/ticket/type', [App\Http\Controllers\Admin\AdminController::class, 'getDataTicketType']);
 Route::post('/api/update/ticket/type/{id}', [App\Http\Controllers\Admin\AdminController::class, 'update_ticket_type']);
@@ -57,6 +62,11 @@ Route::get('/user/management', [App\Http\Controllers\Admin\AdminController::clas
 Route::get('/api/get/data/user/pending', [App\Http\Controllers\Admin\AdminController::class, 'getDataUserPending']);
 Route::get('/api/get/data/module', [App\Http\Controllers\Admin\AdminController::class, 'getModuleAssign']);
 Route::put('/api/update/user/account/{id}', [App\Http\Controllers\Admin\AdminController::class, 'update_user_account']);
+Route::get('/api/get/data/type', [App\Http\Controllers\Admin\AdminController::class, 'getTicketType']);
+Route::post('/api/store/ticket/category', [App\Http\Controllers\Admin\AdminController::class, 'store_ticket_category']);
+Route::get('/api/get/data/ticket/category', [App\Http\Controllers\Admin\AdminController::class, 'getDataTicketCategory']);
+Route::put('/api/update/ticket/category/{id}', [App\Http\Controllers\Admin\AdminController::class, 'update_ticket_category']);
+Route::delete('/api/delete/ticket/category/{id}', [App\Http\Controllers\Admin\AdminController::class, 'delete_ticket_category']);
 /*End Admin Routes*/
 
 
@@ -65,5 +75,9 @@ Route::put('/api/update/user/account/{id}', [App\Http\Controllers\Admin\AdminCon
 /*Technician  Routes*/
 Route::get('/helpdesk/dashboard', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'helpdesk'])->name('helpdesk.dashboard');
 Route::get('/profile/{id}', [App\Http\Controllers\Auth\AuthController::class, 'showProfile'])->name('profile.show');
+Route::get('/profile/{id}', [App\Http\Controllers\Auth\AuthController::class, 'showProfile'])->name('profile.show');
+Route::post('/api/update/profile/{id}', [App\Http\Controllers\Auth\AuthController::class, 'update_profile']);
+Route::post('/api/update/user/credential/{id}', [App\Http\Controllers\Auth\AuthController::class, 'update_user_credentials']);
+
 
 /*End Technician  Routes*/

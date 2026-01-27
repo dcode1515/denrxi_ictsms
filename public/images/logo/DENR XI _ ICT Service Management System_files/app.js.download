@@ -9645,6 +9645,15 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -9670,10 +9679,10 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
         approval_status: "agreed",
         photo: null
       },
-      password_form: {
-        password: "",
-        email: this.user.email || "",
-        confirm_password: ""
+      password: {
+        current: "",
+        "new": "",
+        confirm: ""
       },
       userProfileImage: "assets/images/users/technician-avatar.png",
       // Changed to technician avatar
@@ -9728,30 +9737,13 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
   mounted: function mounted() {},
   methods: {
     getUserPhoto: function getUserPhoto() {
-      // Debug: log current user data
-      console.log("User data:", this.user);
-      if (!this.user || !this.user.photo) {
-        console.log("No photo found, using default");
-        return "/denrxi_ictsms/public/images/logo/6342684.png";
+      if (this.user.photo) {
+        // For URL path: replace spaces with underscores or remove them
+        var namePath = "".concat(this.user.firstname, "  ").concat(this.user.lastname).replace(/\s+/g, " "); // Replace any spaces with underscores
+
+        return "/denrxi_ictsms/public/user/profile/".concat(namePath, "/").concat(this.user.photo);
       }
-
-      // Debug: log photo info
-      console.log("Photo filename:", this.user.photo);
-      console.log("First name:", this.user.firstname);
-      console.log("Last name:", this.user.lastname);
-
-      // Create path exactly as you saved in backend
-      // Based on your backend code: public_path('user/profile/' . $user->firstname . '_' . $user->lastname)
-      var firstName = this.user.firstname ? this.user.firstname.trim() : "";
-      var lastName = this.user.lastname ? this.user.lastname.trim() : "";
-
-      // Remove any existing photo extension if needed
-      var photoName = this.user.photo;
-
-      // Construct URL (without /public)
-      var photoUrl = "/denrxi_ictsms/public/user/profile/".concat(firstName, "_").concat(lastName, "/").concat(photoName);
-      console.log("Generated photo URL:", photoUrl);
-      return photoUrl;
+      return "/denrxi_ictsms/public/images/logo/6342684.png";
     },
     updatePersonalDetails: function updatePersonalDetails() {
       var _this = this;
@@ -9812,11 +9804,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 showCloseButton: false,
                 allowOutsideClick: false,
                 allowEscapeKey: false
-              }).then(function (result) {
-                // Redirect to profile page when user clicks "Okay, Got It!"
-                if (result.isConfirmed) {
-                  window.location.href = "/denrxi_ictsms/profile/".concat(_this.user.id);
-                }
               });
             case 5:
               // Update local user data
@@ -9877,218 +9864,11 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
         }, _callee, null, [[3, 8, 11, 12]]);
       }))();
     },
-    updateUserCredentials: function updateUserCredentials() {
-      var _this2 = this;
-      return _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
-        var password, confirmPassword, errors, confirmResult, formData, response, result, _errors, errorMessages, _error$response2, _error$response3, _t2;
-        return _regenerator().w(function (_context2) {
-          while (1) switch (_context2.p = _context2.n) {
-            case 0:
-              if (!(!_this2.password_form.password || !_this2.password_form.confirm_password)) {
-                _context2.n = 2;
-                break;
-              }
-              _context2.n = 1;
-              return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
-                title: '<span class="text-warning"><i class="ri-alert-line me-2"></i>Missing Information</span>',
-                html: '<div class="text-start">' + '<div class="alert alert-warning bg-warning bg-opacity-10 border-warning border-opacity-25">' + '<i class="ri-information-line me-2"></i>' + "Please fill in both password fields before proceeding." + "</div></div>",
-                icon: "warning",
-                confirmButtonText: '<i class="ri-check-line me-1"></i> OK',
-                confirmButtonColor: "#fd7e14",
-                customClass: {
-                  confirmButton: "btn btn-warning"
-                }
-              });
-            case 1:
-              return _context2.a(2);
-            case 2:
-              // Step 2: Frontend password validation
-              password = _this2.password_form.password;
-              confirmPassword = _this2.password_form.confirm_password; // Check password requirements
-              errors = [];
-              if (password.length < 8) {
-                errors.push("Password must be at least 8 characters long");
-              }
-              if (!/[a-z]/.test(password)) {
-                errors.push("Password must contain at least one lowercase letter");
-              }
-              if (!/[A-Z]/.test(password)) {
-                errors.push("Password must contain at least one uppercase letter");
-              }
-              if (!/\d/.test(password)) {
-                errors.push("Password must contain at least one number");
-              }
-              if (password !== confirmPassword) {
-                errors.push("Passwords do not match");
-              }
-              if (!(errors.length > 0)) {
-                _context2.n = 4;
-                break;
-              }
-              _context2.n = 3;
-              return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
-                title: '<span class="text-danger"><i class="ri-error-warning-line me-2"></i>Password Requirements</span>',
-                html: '<div class="text-start">' + '<div class="alert alert-danger bg-danger bg-opacity-10 border-danger border-opacity-25">' + '<p class="fw-semibold mb-2">Your password must meet the following requirements:</p>' + '<ul class="mb-0 ps-3">' + errors.map(function (error) {
-                  return "<li><i class=\"ri-close-circle-line text-danger me-2\"></i>".concat(error, "</li>");
-                }).join("") + "</ul>" + "</div></div>",
-                icon: "error",
-                confirmButtonText: '<i class="ri-edit-line me-1"></i> Fix Password',
-                confirmButtonColor: "#dc3545",
-                customClass: {
-                  confirmButton: "btn btn-danger"
-                }
-              });
-            case 3:
-              return _context2.a(2);
-            case 4:
-              _context2.n = 5;
-              return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
-                title: '<span class="text-denr"><i class="ri-lock-password-line me-2"></i>Update Password</span>',
-                html: '<div class="text-start">' + '<div class="card border-denr border-opacity-25">' + '<div class="card-body">' + '<h6 class="card-subtitle mb-3 text-denr"><i class="ri-information-line me-1"></i>You are about to update your password</h6>' + '<div class="alert alert-info bg-info bg-opacity-10 border-info border-opacity-25">' + '<p class="mb-2"><i class="ri-shield-keyhole-line me-1"></i><strong>Password requirements:</strong></p>' + '<ul class="small mb-0">' + '<li><i class="ri-check-line text-success me-1"></i>At least 8 characters</li>' + '<li><i class="ri-check-line text-success me-1"></i>One uppercase letter</li>' + '<li><i class="ri-check-line text-success me-1"></i>One lowercase letter</li>' + '<li><i class="ri-check-line text-success me-1"></i>One number</li>' + "</ul>" + "</div>" + '<div class="alert alert-warning bg-warning bg-opacity-10 border-warning border-opacity-25 mt-2">' + '<p class="mb-0"><i class="ri-alert-line me-1"></i>For security, it is recommended to log in again with your new password.</p>' + "</div>" + "</div>" + "</div></div>",
-                icon: "question",
-                showCancelButton: true,
-                confirmButtonColor: "#198754",
-                cancelButtonColor: "#6c757d",
-                confirmButtonText: '<i class="ri-check-line me-1"></i> Yes, Update Password',
-                cancelButtonText: '<i class="ri-close-line me-1"></i> Cancel',
-                reverseButtons: true,
-                focusCancel: true,
-                customClass: {
-                  confirmButton: "btn btn-success px-4",
-                  cancelButton: "btn btn-secondary"
-                }
-              });
-            case 5:
-              confirmResult = _context2.v;
-              if (confirmResult.isConfirmed) {
-                _context2.n = 6;
-                break;
-              }
-              return _context2.a(2);
-            case 6:
-              // Step 4: Show loading state
-              _this2.updating = true;
-              _context2.p = 7;
-              formData = new FormData();
-              Object.keys(_this2.password_form).forEach(function (key) {
-                if (_this2.password_form[key] !== null && _this2.password_form[key] !== undefined) {
-                  formData.append(key, _this2.password_form[key]);
-                }
-              });
-              _context2.n = 8;
-              return axios.post("/denrxi_ictsms/api/update/user/credential/".concat(_this2.user.id), formData);
-            case 8:
-              response = _context2.v;
-              if (!response.data.success) {
-                _context2.n = 10;
-                break;
-              }
-              // Close loading dialog
-              sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().close();
-
-              // Success dialog with option to remain logged in
-              _context2.n = 9;
-              return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
-                title: '<span class="text-success"><i class="ri-checkbox-circle-line me-2"></i>Password Updated!</span>',
-                html: '<div class="text-center">' + '<div class="mb-3"><i class="ri-shield-check-fill text-success" style="font-size: 4rem;"></i></div>' + '<p class="h5 mb-3">Your password has been updated successfully</p>' + '<div class="alert alert-success bg-success bg-opacity-10 border-success border-opacity-25 mb-3">' + '<p class="mb-0"><i class="ri-check-double-line me-2"></i>Password successfully changed</p>' + "</div>" + '<div class="alert alert-info bg-info bg-opacity-10 border-info border-opacity-25">' + '<p class="mb-0 small"><i class="ri-information-line me-1"></i>For security reasons, we recommend logging in again with your new password.</p>' + "</div>" + "</div>",
-                showDenyButton: true,
-                confirmButtonText: '<i class="ri-login-circle-line me-1"></i> Log In Again',
-                denyButtonText: '<i class="ri-user-line me-1"></i> Remain Logged In',
-                confirmButtonColor: "#198754",
-                denyButtonColor: "#6c757d",
-                customClass: {
-                  confirmButton: "btn btn-success px-4",
-                  denyButton: "btn btn-secondary px-4"
-                },
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                showCloseButton: false
-              });
-            case 9:
-              result = _context2.v;
-              if (result.isConfirmed) {
-                // User chose to log in again
-                localStorage.clear();
-                sessionStorage.clear();
-                window.location.href = "/denrxi_ictsms";
-              } else if (result.isDenied) {
-                // User chose to remain logged in
-                // Optionally refresh the page to ensure new credentials are active
-                window.location.reload();
-              }
-              _context2.n = 11;
-              break;
-            case 10:
-              throw new Error(response.data.message || "Update failed");
-            case 11:
-              _context2.n = 15;
-              break;
-            case 12:
-              _context2.p = 12;
-              _t2 = _context2.v;
-              // Close loading dialog
-              sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().close();
-              console.error("Update error:", _t2);
-              if (!(_t2.response && _t2.response.status === 422)) {
-                _context2.n = 14;
-                break;
-              }
-              _errors = _t2.response.data.errors;
-              errorMessages = []; // Format error messages
-              Object.keys(_errors).forEach(function (key) {
-                if (Array.isArray(_errors[key])) {
-                  var _errorMessages;
-                  (_errorMessages = errorMessages).push.apply(_errorMessages, _toConsumableArray(_errors[key]));
-                } else {
-                  errorMessages.push(_errors[key]);
-                }
-              });
-
-              // Remove duplicates
-              errorMessages = _toConsumableArray(new Set(errorMessages));
-              _context2.n = 13;
-              return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
-                icon: "error",
-                title: '<span class="text-danger"><i class="ri-error-warning-line me-2"></i>Validation Error</span>',
-                html: '<div class="text-start">' + '<div class="alert alert-danger bg-danger bg-opacity-10 border-danger border-opacity-25">' + '<p class="fw-semibold mb-2"><i class="ri-alert-line me-2"></i>Please fix the following issues:</p>' + '<ul class="mb-0 ps-3">' + errorMessages.map(function (msg) {
-                  return "<li><i class=\"ri-close-circle-line text-danger me-2\"></i>".concat(msg, "</li>");
-                }).join("") + "</ul>" + "</div></div>",
-                confirmButtonText: '<i class="ri-edit-line me-1"></i> Try Again',
-                confirmButtonColor: "#dc3545",
-                customClass: {
-                  confirmButton: "btn btn-danger px-4"
-                }
-              });
-            case 13:
-              _context2.n = 15;
-              break;
-            case 14:
-              _context2.n = 15;
-              return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
-                icon: "error",
-                title: '<span class="text-danger"><i class="ri-close-circle-line me-2"></i>Update Failed</span>',
-                html: '<div class="text-start alert alert-danger bg-danger bg-opacity-10 border-danger border-opacity-25">' + '<p class="mb-2"><i class="ri-bug-line me-2"></i><strong>Something went wrong</strong></p>' + '<p class="mb-0">' + (((_error$response2 = _t2.response) === null || _error$response2 === void 0 || (_error$response2 = _error$response2.data) === null || _error$response2 === void 0 ? void 0 : _error$response2.message) || ((_error$response3 = _t2.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.error) || _t2.message || "Unable to update password. Please try again later.") + "</p>" + "</div>",
-                confirmButtonText: '<i class="ri-refresh-line me-1"></i> Retry',
-                confirmButtonColor: "#dc3545",
-                customClass: {
-                  confirmButton: "btn btn-danger"
-                }
-              });
-            case 15:
-              _context2.p = 15;
-              _this2.updating = false;
-              return _context2.f(15);
-            case 16:
-              return _context2.a(2);
-          }
-        }, _callee2, null, [[7, 12, 15, 16]]);
-      }))();
-    },
     handleFileUpload: function handleFileUpload(event) {
       this.formData.photo = event.target.files[0];
     },
     changePassword: function changePassword() {
-      var _this3 = this;
+      var _this2 = this;
       if (this.password["new"] !== this.password.confirm) {
         this.$toast.error("New passwords do not match!", {
           icon: "ri-error-warning-line"
@@ -10104,13 +9884,13 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       this.changingPassword = true;
       setTimeout(function () {
         console.log("Changing password");
-        _this3.changingPassword = false;
-        _this3.password = {
+        _this2.changingPassword = false;
+        _this2.password = {
           current: "",
           "new": "",
           confirm: ""
         };
-        _this3.$toast.success("Password changed successfully!", {
+        _this2.$toast.success("Password changed successfully!", {
           icon: "ri-shield-check-line"
         });
       }, 1500);
@@ -11263,153 +11043,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  methods: {
-    fetchHeadOffices: function fetchHeadOffices() {
-      var _this = this;
-      axios.get("/denrxi_ictsms/api/ticket/head-offices").then(function (response) {
-        _this.headOffices = response.data.data;
-      })["catch"](function (error) {
-        console.error(error);
-      });
-    },
-    fetchOffices: function fetchOffices() {
-      var _this2 = this;
-      this.formData.office = "";
-      this.offices = [];
-      if (!this.formData.head_office) return;
-      axios.get("/denrxi_ictsms/api/ticket/offices/".concat(this.formData.head_office)).then(function (response) {
-        _this2.offices = response.data.data;
-      })["catch"](function (error) {
-        console.error(error);
-      });
-    },
-    getDataTicketTypes: function getDataTicketTypes() {
-      var _this3 = this;
-      axios.get("/denrxi_ictsms/api/ticket/type").then(function (response) {
-        _this3.tickettypes = response.data.data;
-      })["catch"](function (error) {
-        console.error(error);
-      });
-    },
-    getDataTicketCategory: function getDataTicketCategory() {
-      var _this4 = this;
-      this.formData.category = "";
-      this.categories = [];
-      if (!this.formData.ticket_type) return;
-      axios.get("/denrxi_ictsms/api/ticket/categories/".concat(this.formData.ticket_type)).then(function (response) {
-        _this4.categories = response.data.data;
-      })["catch"](function (error) {
-        console.error(error);
-      });
-    }
-  },
-  data: function data() {
-    return {
-      tickettypes: [],
-      categories: [],
-      headOffices: [],
-      offices: [],
-      formData: {
-        ticket_type: "",
-        head_office: "",
-        office: ""
-      }
-    };
-  },
-  created: function created() {},
-  mounted: function mounted() {
-    this.fetchHeadOffices();
-    this.getDataTicketTypes();
-    console.log("Component Mounted");
-  }
-});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ },
 
@@ -16073,7 +15708,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* DENR Color Palette */\n[data-v-09b0a70d]:root {\r\n  --denr-primary: #006747;\r\n  --denr-secondary: #008542;\r\n  --denr-accent: #7ab800;\r\n  --denr-dark: #004d33;\r\n  --denr-light: #e8f5e9;\r\n  --denr-gradient: linear-gradient(\r\n    135deg,\r\n    var(--denr-primary) 0%,\r\n    var(--denr-secondary) 100%\r\n  );\r\n  --danger-light: #f8d7da;\n}\r\n\r\n/* Profile Card Enhancements */\n.profile-card[data-v-09b0a70d] {\r\n  position: relative;\r\n  overflow: hidden;\n}\n.profile-card[data-v-09b0a70d]::before {\r\n  content: \"\";\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  height: 4px;\r\n  background: var(--denr-gradient);\n}\r\n\r\n/* Online Status Indicator */\n.online-status-indicator[data-v-09b0a70d] {\r\n  border: 2px solid white;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n  animation: pulse-data-v-09b0a70d 2s infinite;\n}\n@keyframes pulse-data-v-09b0a70d {\n0% {\r\n    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);\n}\n70% {\r\n    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);\n}\n100% {\r\n    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);\n}\n}\r\n\r\n/* Availability Dot */\n.availability-dot[data-v-09b0a70d] {\r\n  width: 10px;\r\n  height: 10px;\r\n  border-radius: 50%;\r\n  display: inline-block;\n}\n.availability-dot.available[data-v-09b0a70d] {\r\n  background-color: #28a745;\r\n  animation: blink-data-v-09b0a70d 1.5s infinite;\n}\n.availability-dot.unavailable[data-v-09b0a70d] {\r\n  background-color: #6c757d;\n}\n@keyframes blink-data-v-09b0a70d {\n0%,\r\n  100% {\r\n    opacity: 1;\n}\n50% {\r\n    opacity: 0.5;\n}\n}\r\n\r\n/* Technical Icons */\n.technical-icon[data-v-09b0a70d] {\r\n  width: 40px;\r\n  height: 40px;\r\n  background: var(--denr-light);\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  margin: 0 auto;\r\n  color: var(--denr-primary);\r\n  font-size: 1.2rem;\n}\n.cert-icon[data-v-09b0a70d] {\r\n  width: 40px;\r\n  height: 40px;\r\n  background: rgba(255, 193, 7, 0.1);\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: #ffc107;\r\n  font-size: 1.2rem;\n}\r\n\r\n/* Activity Feed */\n.activity-feed[data-v-09b0a70d] {\r\n  position: relative;\r\n  padding-left: 20px;\n}\n.activity-feed[data-v-09b0a70d]::before {\r\n  content: \"\";\r\n  position: absolute;\r\n  left: 9px;\r\n  top: 0;\r\n  bottom: 0;\r\n  width: 2px;\r\n  background-color: var(--denr-light);\n}\n.activity-item[data-v-09b0a70d] {\r\n  position: relative;\r\n  margin-bottom: 1.5rem;\n}\n.activity-icon[data-v-09b0a70d] {\r\n  position: absolute;\r\n  left: -20px;\r\n  width: 18px;\r\n  height: 18px;\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: white;\r\n  font-size: 0.7rem;\n}\n.activity-content[data-v-09b0a70d] {\r\n  margin-left: 10px;\n}\r\n\r\n/* Circular Progress */\n.circular-progress[data-v-09b0a70d] {\r\n  width: 100px;\r\n  height: 100px;\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  position: relative;\n}\n.circular-progress[data-v-09b0a70d]::before {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 80px;\r\n  height: 80px;\r\n  border-radius: 50%;\r\n  background-color: white;\n}\n.progress-value[data-v-09b0a70d] {\r\n  position: relative;\r\n  font-size: 1.5rem;\r\n  font-weight: 600;\r\n  color: var(--denr-primary);\r\n  z-index: 1;\n}\r\n\r\n/* Equipment Proficiency */\n.equipment-item[data-v-09b0a70d] {\r\n  transition: all 0.3s ease;\n}\n.equipment-item[data-v-09b0a70d]:hover {\r\n  transform: translateY(-2px);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n}\r\n\r\n/* Skill Badges */\n.badge[data-v-09b0a70d] {\r\n  transition: all 0.3s ease;\n}\n.badge[data-v-09b0a70d]:hover {\r\n  transform: scale(1.05);\n}\r\n\r\n/* Responsive Design */\n@media (max-width: 768px) {\n.online-status-indicator[data-v-09b0a70d] {\r\n    width: 20px;\r\n    height: 20px;\r\n    font-size: 0.6rem;\n}\n.technical-icon[data-v-09b0a70d] {\r\n    width: 30px;\r\n    height: 30px;\r\n    font-size: 1rem;\n}\n.circular-progress[data-v-09b0a70d] {\r\n    width: 80px;\r\n    height: 80px;\n}\n.circular-progress[data-v-09b0a70d]::before {\r\n    width: 60px;\r\n    height: 60px;\n}\n.progress-value[data-v-09b0a70d] {\r\n    font-size: 1.2rem;\n}\n}\r\n\r\n/* Hover Effects */\n.card[data-v-09b0a70d] {\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n}\n.card[data-v-09b0a70d]:hover {\r\n  transform: translateY(-5px);\r\n  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);\n}\r\n\r\n/* Animation for new tab */\n@keyframes slideIn-data-v-09b0a70d {\nfrom {\r\n    opacity: 0;\r\n    transform: translateX(20px);\n}\nto {\r\n    opacity: 1;\r\n    transform: translateX(0);\n}\n}\n.tab-pane[data-v-09b0a70d] {\r\n  animation: slideIn-data-v-09b0a70d 0.3s ease-out;\n}\r\n\r\n/* Enhanced Form Controls */\n.form-control[data-v-09b0a70d]:focus {\r\n  border-color: var(--denr-primary);\r\n  box-shadow: 0 0 0 0.2rem rgba(0, 103, 71, 0.25);\n}\r\n\r\n/* Custom Scrollbar for Activity Feed */\n.activity-feed[data-v-09b0a70d] {\r\n  max-height: 200px;\r\n  overflow-y: auto;\n}\n.activity-feed[data-v-09b0a70d]::-webkit-scrollbar {\r\n  width: 4px;\n}\n.activity-feed[data-v-09b0a70d]::-webkit-scrollbar-track {\r\n  background: var(--denr-light);\r\n  border-radius: 2px;\n}\n.activity-feed[data-v-09b0a70d]::-webkit-scrollbar-thumb {\r\n  background: var(--denr-primary);\r\n  border-radius: 2px;\n}\r\n\r\n/* Badge Colors */\n.bg-danger-light[data-v-09b0a70d] {\r\n  background-color: var(--danger-light) !important;\n}\n.text-danger[data-v-09b0a70d] {\r\n  color: #dc3545 !important;\n}\r\n\r\n/* Button Enhancements */\n.btn-outline-denr[data-v-09b0a70d] {\r\n  border-width: 2px;\n}\n.btn-outline-denr[data-v-09b0a70d]:hover {\r\n  transform: translateY(-2px);\r\n  box-shadow: 0 4px 8px rgba(0, 103, 71, 0.2);\n}\r\n\r\n/* Card Header Enhancement */\n.card-header[data-v-09b0a70d] {\r\n  padding: 1rem 1.5rem;\n}\r\n\r\n/* Form Switch Customization */\n.form-switch .form-check-input[data-v-09b0a70d]:checked {\r\n  background-color: var(--denr-primary);\r\n  border-color: var(--denr-primary);\n}\n.form-switch .form-check-input[data-v-09b0a70d]:focus {\r\n  box-shadow: 0 0 0 0.2rem rgba(0, 103, 71, 0.25);\n}\r\n\r\n/* List Group Item Hover */\n.list-group-item[data-v-09b0a70d]:hover {\r\n  background-color: var(--denr-light);\n}\r\n\r\n/* Skill Input Group */\n.input-group .btn[data-v-09b0a70d] {\r\n  padding-left: 1rem;\r\n  padding-right: 1rem;\n}\r\n\r\n/* Smooth Transitions */\n*[data-v-09b0a70d] {\r\n  transition: background-color 0.3s ease, border-color 0.3s ease;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* DENR Color Palette */\n[data-v-09b0a70d]:root {\r\n  --denr-primary: #006747;\r\n  --denr-secondary: #008542;\r\n  --denr-accent: #7ab800;\r\n  --denr-dark: #004d33;\r\n  --denr-light: #e8f5e9;\r\n  --denr-gradient: linear-gradient(\r\n    135deg,\r\n    var(--denr-primary) 0%,\r\n    var(--denr-secondary) 100%\r\n  );\r\n  --danger-light: #f8d7da;\n}\r\n\r\n/* Profile Card Enhancements */\n.profile-card[data-v-09b0a70d] {\r\n  position: relative;\r\n  overflow: hidden;\n}\n.profile-card[data-v-09b0a70d]::before {\r\n  content: \"\";\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  height: 4px;\r\n  background: var(--denr-gradient);\n}\r\n\r\n/* Online Status Indicator */\n.online-status-indicator[data-v-09b0a70d] {\r\n  border: 2px solid white;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n  animation: pulse-data-v-09b0a70d 2s infinite;\n}\n@keyframes pulse-data-v-09b0a70d {\n0% {\r\n    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);\n}\n70% {\r\n    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);\n}\n100% {\r\n    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);\n}\n}\r\n\r\n/* Availability Dot */\n.availability-dot[data-v-09b0a70d] {\r\n  width: 10px;\r\n  height: 10px;\r\n  border-radius: 50%;\r\n  display: inline-block;\n}\n.availability-dot.available[data-v-09b0a70d] {\r\n  background-color: #28a745;\r\n  animation: blink-data-v-09b0a70d 1.5s infinite;\n}\n.availability-dot.unavailable[data-v-09b0a70d] {\r\n  background-color: #6c757d;\n}\n@keyframes blink-data-v-09b0a70d {\n0%,\r\n  100% {\r\n    opacity: 1;\n}\n50% {\r\n    opacity: 0.5;\n}\n}\r\n\r\n/* Technical Icons */\n.technical-icon[data-v-09b0a70d] {\r\n  width: 40px;\r\n  height: 40px;\r\n  background: var(--denr-light);\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  margin: 0 auto;\r\n  color: var(--denr-primary);\r\n  font-size: 1.2rem;\n}\n.cert-icon[data-v-09b0a70d] {\r\n  width: 40px;\r\n  height: 40px;\r\n  background: rgba(255, 193, 7, 0.1);\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: #ffc107;\r\n  font-size: 1.2rem;\n}\r\n\r\n/* Activity Feed */\n.activity-feed[data-v-09b0a70d] {\r\n  position: relative;\r\n  padding-left: 20px;\n}\n.activity-feed[data-v-09b0a70d]::before {\r\n  content: \"\";\r\n  position: absolute;\r\n  left: 9px;\r\n  top: 0;\r\n  bottom: 0;\r\n  width: 2px;\r\n  background-color: var(--denr-light);\n}\n.activity-item[data-v-09b0a70d] {\r\n  position: relative;\r\n  margin-bottom: 1.5rem;\n}\n.activity-icon[data-v-09b0a70d] {\r\n  position: absolute;\r\n  left: -20px;\r\n  width: 18px;\r\n  height: 18px;\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: white;\r\n  font-size: 0.7rem;\n}\n.activity-content[data-v-09b0a70d] {\r\n  margin-left: 10px;\n}\r\n\r\n/* Circular Progress */\n.circular-progress[data-v-09b0a70d] {\r\n  width: 100px;\r\n  height: 100px;\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  position: relative;\n}\n.circular-progress[data-v-09b0a70d]::before {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 80px;\r\n  height: 80px;\r\n  border-radius: 50%;\r\n  background-color: white;\n}\n.progress-value[data-v-09b0a70d] {\r\n  position: relative;\r\n  font-size: 1.5rem;\r\n  font-weight: 600;\r\n  color: var(--denr-primary);\r\n  z-index: 1;\n}\r\n\r\n/* Equipment Proficiency */\n.equipment-item[data-v-09b0a70d] {\r\n  transition: all 0.3s ease;\n}\n.equipment-item[data-v-09b0a70d]:hover {\r\n  transform: translateY(-2px);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n}\r\n\r\n/* Skill Badges */\n.badge[data-v-09b0a70d] {\r\n  transition: all 0.3s ease;\n}\n.badge[data-v-09b0a70d]:hover {\r\n  transform: scale(1.05);\n}\r\n\r\n/* Responsive Design */\n@media (max-width: 768px) {\n.online-status-indicator[data-v-09b0a70d] {\r\n    width: 20px;\r\n    height: 20px;\r\n    font-size: 0.6rem;\n}\n.technical-icon[data-v-09b0a70d] {\r\n    width: 30px;\r\n    height: 30px;\r\n    font-size: 1rem;\n}\n.circular-progress[data-v-09b0a70d] {\r\n    width: 80px;\r\n    height: 80px;\n}\n.circular-progress[data-v-09b0a70d]::before {\r\n    width: 60px;\r\n    height: 60px;\n}\n.progress-value[data-v-09b0a70d] {\r\n    font-size: 1.2rem;\n}\n}\r\n\r\n/* Hover Effects */\n.card[data-v-09b0a70d] {\r\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n}\n.card[data-v-09b0a70d]:hover {\r\n  transform: translateY(-5px);\r\n  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);\n}\r\n\r\n/* Animation for new tab */\n@keyframes slideIn-data-v-09b0a70d {\nfrom {\r\n    opacity: 0;\r\n    transform: translateX(20px);\n}\nto {\r\n    opacity: 1;\r\n    transform: translateX(0);\n}\n}\n.tab-pane[data-v-09b0a70d] {\r\n  animation: slideIn-data-v-09b0a70d 0.3s ease-out;\n}\r\n\r\n/* Enhanced Form Controls */\n.form-control[data-v-09b0a70d]:focus {\r\n  border-color: var(--denr-primary);\r\n  box-shadow: 0 0 0 0.2rem rgba(0, 103, 71, 0.25);\n}\r\n\r\n/* Custom Scrollbar for Activity Feed */\n.activity-feed[data-v-09b0a70d] {\r\n  max-height: 200px;\r\n  overflow-y: auto;\n}\n.activity-feed[data-v-09b0a70d]::-webkit-scrollbar {\r\n  width: 4px;\n}\n.activity-feed[data-v-09b0a70d]::-webkit-scrollbar-track {\r\n  background: var(--denr-light);\r\n  border-radius: 2px;\n}\n.activity-feed[data-v-09b0a70d]::-webkit-scrollbar-thumb {\r\n  background: var(--denr-primary);\r\n  border-radius: 2px;\n}\r\n\r\n/* Badge Colors */\n.bg-danger-light[data-v-09b0a70d] {\r\n  background-color: var(--danger-light) !important;\n}\n.text-danger[data-v-09b0a70d] {\r\n  color: #dc3545 !important;\n}\r\n\r\n/* Button Enhancements */\n.btn-outline-denr[data-v-09b0a70d] {\r\n  border-width: 2px;\n}\n.btn-outline-denr[data-v-09b0a70d]:hover {\r\n  transform: translateY(-2px);\r\n  box-shadow: 0 4px 8px rgba(0, 103, 71, 0.2);\n}\r\n\r\n/* Card Header Enhancement */\n.card-header[data-v-09b0a70d] {\r\n  padding: 1rem 1.5rem;\n}\r\n\r\n/* Form Switch Customization */\n.form-switch .form-check-input[data-v-09b0a70d]:checked {\r\n  background-color: var(--denr-primary);\r\n  border-color: var(--denr-primary);\n}\n.form-switch .form-check-input[data-v-09b0a70d]:focus {\r\n  box-shadow: 0 0 0 0.2rem rgba(0, 103, 71, 0.25);\n}\r\n\r\n/* List Group Item Hover */\n.list-group-item[data-v-09b0a70d]:hover {\r\n  background-color: var(--denr-light);\n}\r\n\r\n/* Skill Input Group */\n.input-group .btn[data-v-09b0a70d] {\r\n  padding-left: 1rem;\r\n  padding-right: 1rem;\n}\r\n\r\n/* Smooth Transitions */\n*[data-v-09b0a70d] {\r\n  transition: background-color 0.3s ease, border-color 0.3s ease;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -44106,13 +43741,11 @@ var render = function () {
                   _vm._s(_vm.user.position || "Technician") + "\n            "
                 ),
               ]),
-              _vm._v(" "),
-              _vm._m(1),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "mt-4" }, [
               _c("div", { staticClass: "d-flex align-items-center mb-3" }, [
-                _vm._m(2),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "flex-grow-1" }, [
                   _c("span", { staticClass: "font-body" }, [
@@ -44131,7 +43764,7 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "d-flex align-items-center mb-3" }, [
-                _vm._m(3),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("div", { staticClass: "flex-grow-1" }, [
                   _c("span", { staticClass: "font-body" }, [
@@ -44141,7 +43774,7 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "d-flex align-items-center mb-3" }, [
-                _vm._m(4),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("div", { staticClass: "flex-grow-1" }, [
                   _c("span", { staticClass: "font-body" }, [
@@ -44151,7 +43784,7 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "d-flex align-items-center mb-3" }, [
-                _vm._m(5),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("div", { staticClass: "flex-grow-1" }, [
                   _c("span", { staticClass: "font-body" }, [
@@ -44166,7 +43799,7 @@ var render = function () {
       _vm._v(" "),
       _c("div", { staticClass: "col-xxl-9" }, [
         _c("div", { staticClass: "card mt-xxl-n5 border-denr" }, [
-          _vm._m(6),
+          _vm._m(5),
           _vm._v(" "),
           _c("div", { staticClass: "card-body p-4" }, [
             _c("div", { staticClass: "tab-content" }, [
@@ -44177,7 +43810,7 @@ var render = function () {
                   attrs: { id: "personalDetails", role: "tabpanel" },
                 },
                 [
-                  _vm._m(7),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c(
                     "form",
@@ -44196,7 +43829,7 @@ var render = function () {
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "col-lg-4" }, [
                           _c("div", { staticClass: "mb-3" }, [
-                            _vm._m(8),
+                            _vm._m(7),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -44205,7 +43838,7 @@ var render = function () {
                                   "input-group input-group-with-icon",
                               },
                               [
-                                _vm._m(9),
+                                _vm._m(8),
                                 _vm._v(" "),
                                 _c("input", {
                                   directives: [
@@ -44244,7 +43877,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("div", { staticClass: "col-lg-2" }, [
                           _c("div", { staticClass: "mb-3" }, [
-                            _vm._m(10),
+                            _vm._m(9),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -44253,7 +43886,7 @@ var render = function () {
                                   "input-group input-group-with-icon",
                               },
                               [
-                                _vm._m(11),
+                                _vm._m(10),
                                 _vm._v(" "),
                                 _c("input", {
                                   directives: [
@@ -44294,7 +43927,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("div", { staticClass: "col-lg-4" }, [
                           _c("div", { staticClass: "mb-3" }, [
-                            _vm._m(12),
+                            _vm._m(11),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -44303,7 +43936,7 @@ var render = function () {
                                   "input-group input-group-with-icon",
                               },
                               [
-                                _vm._m(13),
+                                _vm._m(12),
                                 _vm._v(" "),
                                 _c("input", {
                                   directives: [
@@ -44342,7 +43975,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("div", { staticClass: "col-lg-2" }, [
                           _c("div", { staticClass: "mb-3" }, [
-                            _vm._m(14),
+                            _vm._m(13),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -44351,7 +43984,7 @@ var render = function () {
                                   "input-group input-group-with-icon",
                               },
                               [
-                                _vm._m(15),
+                                _vm._m(14),
                                 _vm._v(" "),
                                 _c("input", {
                                   directives: [
@@ -44386,7 +44019,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("div", { staticClass: "col-lg-6" }, [
                           _c("div", { staticClass: "mb-3" }, [
-                            _vm._m(16),
+                            _vm._m(15),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -44395,7 +44028,7 @@ var render = function () {
                                   "input-group input-group-with-icon",
                               },
                               [
-                                _vm._m(17),
+                                _vm._m(16),
                                 _vm._v(" "),
                                 _c("input", {
                                   directives: [
@@ -44452,7 +44085,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("div", { staticClass: "col-lg-6" }, [
                           _c("div", { staticClass: "mb-3" }, [
-                            _vm._m(18),
+                            _vm._m(17),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -44461,7 +44094,7 @@ var render = function () {
                                   "input-group input-group-with-icon",
                               },
                               [
-                                _vm._m(19),
+                                _vm._m(18),
                                 _vm._v(" "),
                                 _c("input", {
                                   directives: [
@@ -44501,7 +44134,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("div", { staticClass: "col-lg-12" }, [
                           _c("div", { staticClass: "mb-3" }, [
-                            _vm._m(20),
+                            _vm._m(19),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -44510,7 +44143,7 @@ var render = function () {
                                   "input-group input-group-with-icon",
                               },
                               [
-                                _vm._m(21),
+                                _vm._m(20),
                                 _vm._v(" "),
                                 _c("input", {
                                   directives: [
@@ -44545,7 +44178,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("div", { staticClass: "col-lg-12" }, [
                           _c("div", { staticClass: "mb-3" }, [
-                            _vm._m(22),
+                            _vm._m(21),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -44554,7 +44187,7 @@ var render = function () {
                                   "input-group input-group-with-icon",
                               },
                               [
-                                _vm._m(23),
+                                _vm._m(22),
                                 _vm._v(" "),
                                 _c("input", {
                                   staticClass:
@@ -44570,7 +44203,7 @@ var render = function () {
                         _c("div", { staticClass: "col-12 mt-4" }, [
                           _c("div", { staticClass: "card border-denr-light" }, [
                             _c("div", { staticClass: "card-body" }, [
-                              _vm._m(24),
+                              _vm._m(23),
                               _vm._v(" "),
                               _c("div", { staticClass: "form-check mb-3" }, [
                                 _c("input", {
@@ -44639,7 +44272,7 @@ var render = function () {
                                   },
                                 }),
                                 _vm._v(" "),
-                                _vm._m(25),
+                                _vm._m(24),
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "form-check mb-3" }, [
@@ -44706,7 +44339,7 @@ var render = function () {
                                   },
                                 }),
                                 _vm._v(" "),
-                                _vm._m(26),
+                                _vm._m(25),
                               ]),
                             ]),
                           ]),
@@ -44762,7 +44395,7 @@ var render = function () {
                   attrs: { id: "changePassword", role: "tabpanel" },
                 },
                 [
-                  _vm._m(27),
+                  _vm._m(26),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-lg-12" }, [
@@ -44777,7 +44410,7 @@ var render = function () {
                                 on: {
                                   submit: function ($event) {
                                     $event.preventDefault()
-                                    return _vm.updateUserCredentials.apply(
+                                    return _vm.changePassword.apply(
                                       null,
                                       arguments
                                     )
@@ -44788,7 +44421,7 @@ var render = function () {
                                 _c("div", { staticClass: "row g-3" }, [
                                   _c("div", { staticClass: "col-12" }, [
                                     _c("div", { staticClass: "mb-3" }, [
-                                      _vm._m(28),
+                                      _vm._m(27),
                                       _vm._v(" "),
                                       _c(
                                         "div",
@@ -44797,26 +44430,26 @@ var render = function () {
                                             "input-group input-group-with-icon",
                                         },
                                         [
-                                          _vm._m(29),
+                                          _vm._m(28),
                                           _vm._v(" "),
                                           _c("input", {
                                             directives: [
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
-                                                value: _vm.password_form.email,
-                                                expression:
-                                                  "password_form.email",
+                                                value: _vm.password.current,
+                                                expression: "password.current",
                                               },
                                             ],
                                             staticClass:
                                               "form-control form-control-enhanced",
                                             attrs: {
-                                              type: "text",
+                                              type: "password",
                                               id: "oldpasswordInput",
+                                              required: "",
                                             },
                                             domProps: {
-                                              value: _vm.password_form.email,
+                                              value: _vm.password.current,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -44824,13 +44457,34 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.password_form,
-                                                  "email",
+                                                  _vm.password,
+                                                  "current",
                                                   $event.target.value
                                                 )
                                               },
                                             },
                                           }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass:
+                                                "btn btn-outline-denr",
+                                              attrs: { type: "button" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.togglePassword(
+                                                    "oldpasswordInput"
+                                                  )
+                                                },
+                                              },
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "ri-eye-line",
+                                              }),
+                                            ]
+                                          ),
                                         ]
                                       ),
                                     ]),
@@ -44838,7 +44492,7 @@ var render = function () {
                                   _vm._v(" "),
                                   _c("div", { staticClass: "col-lg-6" }, [
                                     _c("div", { staticClass: "mb-3" }, [
-                                      _vm._m(30),
+                                      _vm._m(29),
                                       _vm._v(" "),
                                       _c(
                                         "div",
@@ -44847,17 +44501,15 @@ var render = function () {
                                             "input-group input-group-with-icon",
                                         },
                                         [
-                                          _vm._m(31),
+                                          _vm._m(30),
                                           _vm._v(" "),
                                           _c("input", {
                                             directives: [
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
-                                                value:
-                                                  _vm.password_form.password,
-                                                expression:
-                                                  "password_form.password",
+                                                value: _vm.password.new,
+                                                expression: "password.new",
                                               },
                                             ],
                                             staticClass:
@@ -44865,9 +44517,10 @@ var render = function () {
                                             attrs: {
                                               type: "password",
                                               id: "newpasswordInput",
+                                              required: "",
                                             },
                                             domProps: {
-                                              value: _vm.password_form.password,
+                                              value: _vm.password.new,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -44875,8 +44528,8 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.password_form,
-                                                  "password",
+                                                  _vm.password,
+                                                  "new",
                                                   $event.target.value
                                                 )
                                               },
@@ -44906,13 +44559,13 @@ var render = function () {
                                         ]
                                       ),
                                       _vm._v(" "),
-                                      _vm._m(32),
+                                      _vm._m(31),
                                     ]),
                                   ]),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "col-lg-6" }, [
                                     _c("div", { staticClass: "mb-3" }, [
-                                      _vm._m(33),
+                                      _vm._m(32),
                                       _vm._v(" "),
                                       _c(
                                         "div",
@@ -44921,18 +44574,15 @@ var render = function () {
                                             "input-group input-group-with-icon",
                                         },
                                         [
-                                          _vm._m(34),
+                                          _vm._m(33),
                                           _vm._v(" "),
                                           _c("input", {
                                             directives: [
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
-                                                value:
-                                                  _vm.password_form
-                                                    .confirm_password,
-                                                expression:
-                                                  "password_form.confirm_password",
+                                                value: _vm.password.confirm,
+                                                expression: "password.confirm",
                                               },
                                             ],
                                             staticClass:
@@ -44940,11 +44590,10 @@ var render = function () {
                                             attrs: {
                                               type: "password",
                                               id: "confirmpasswordInput",
+                                              required: "",
                                             },
                                             domProps: {
-                                              value:
-                                                _vm.password_form
-                                                  .confirm_password,
+                                              value: _vm.password.confirm,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -44952,8 +44601,8 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.password_form,
-                                                  "confirm_password",
+                                                  _vm.password,
+                                                  "confirm",
                                                   $event.target.value
                                                 )
                                               },
@@ -45063,15 +44712,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "text-muted mb-0" }, [
-      _c("i", { staticClass: "ri-tools-line me-1" }),
-      _vm._v("Technician\n            "),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "icon-denr p-2 rounded-circle me-3" }, [
       _c("i", { staticClass: "ri-mail-line fs-5" }),
     ])
@@ -45157,6 +44797,10 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("span", { staticClass: "d-none d-md-inline" }, [
                     _vm._v("Security"),
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "badge bg-white text-denr ms-2" }, [
+                    _vm._v("Protected"),
                   ]),
                 ]
               ),
@@ -45452,7 +45096,9 @@ var staticRenderFns = [
       { staticClass: "form-label", attrs: { for: "oldpasswordInput" } },
       [
         _c("i", { staticClass: "ri-lock-line me-1" }),
-        _vm._v("Email Address\n                              "),
+        _vm._v(
+          "Current\n                                Password\n                              "
+        ),
       ]
     )
   },
@@ -46769,815 +46415,572 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "card mb-5 section-spacing",
-        attrs: { id: "submitTicket" },
-      },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("form", { attrs: { action: "#", method: "POST" } }, [
-            _c("div", { staticClass: "row mb-4" }, [
-              _c("div", { staticClass: "col-md-6 mb-3" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-label required-field",
-                    attrs: { for: "ticketType" },
-                  },
-                  [_vm._v("Ticket Type")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group-icon" }, [
-                  _c("i", { staticClass: "fas fa-cog input-icon" }),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.ticket_type,
-                          expression: "formData.ticket_type",
-                        },
-                      ],
-                      staticClass: "form-select form-control-icon",
-                      attrs: { name: "ticketType" },
-                      on: {
-                        change: [
-                          function ($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function (o) {
-                                return o.selected
-                              })
-                              .map(function (o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.formData,
-                              "ticket_type",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                          _vm.getDataTicketCategory,
-                        ],
-                      },
-                    },
-                    [
-                      _c(
-                        "option",
-                        { attrs: { value: "", selected: "", disabled: "" } },
-                        [_vm._v("Select issue type")]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.tickettypes, function (ticket) {
-                        return _c(
-                          "option",
-                          { key: ticket.id, domProps: { value: ticket.id } },
-                          [
-                            _vm._v(
-                              "\n                  " +
-                                _vm._s(ticket.ticket_type) +
-                                "\n                "
-                            ),
-                          ]
-                        )
-                      }),
-                    ],
-                    2
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6 mb-3" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-label required-field",
-                    attrs: { for: "ticketType" },
-                  },
-                  [_vm._v("Ticket Category")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group-icon" }, [
-                  _c("i", { staticClass: "fas fa-cog input-icon" }),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.category,
-                          expression: "formData.category",
-                        },
-                      ],
-                      staticClass: "form-select form-control-icon",
-                      attrs: {
-                        name: "ticketType",
-                        disabled: !_vm.formData.ticket_type,
-                      },
-                      on: {
-                        change: function ($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function (o) {
-                              return o.selected
-                            })
-                            .map(function (o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.formData,
-                            "category",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        },
-                      },
-                    },
-                    [
-                      _c(
-                        "option",
-                        { attrs: { value: "", selected: "", disabled: "" } },
-                        [
-                          _vm._v(
-                            "\n                  Select Ticket Category\n                "
-                          ),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.categories, function (category) {
-                        return _c(
-                          "option",
-                          {
-                            key: category.id,
-                            domProps: { value: category.id },
-                          },
-                          [
-                            _vm._v(
-                              "\n                  " +
-                                _vm._s(category.ticket_category) +
-                                "\n                "
-                            ),
-                          ]
-                        )
-                      }),
-                    ],
-                    2
-                  ),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "row mb-4" }, [
-              _c("div", { staticClass: "col-md-6 mb-3" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-label required-field",
-                    attrs: { for: "office" },
-                  },
-                  [_vm._v("Head Office")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group-icon" }, [
-                  _c("i", { staticClass: "fas fa-building input-icon" }),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.head_office,
-                          expression: "formData.head_office",
-                        },
-                      ],
-                      staticClass: "form-select form-control-icon",
-                      attrs: { id: "office" },
-                      on: {
-                        change: [
-                          function ($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function (o) {
-                                return o.selected
-                              })
-                              .map(function (o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.formData,
-                              "head_office",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                          _vm.fetchOffices,
-                        ],
-                      },
-                    },
-                    [
-                      _c(
-                        "option",
-                        { attrs: { value: "", selected: "", disabled: "" } },
-                        [
-                          _vm._v(
-                            "\n                  Select your Head Office\n                "
-                          ),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.headOffices, function (head) {
-                        return _c(
-                          "option",
-                          { key: head.id, domProps: { value: head.id } },
-                          [
-                            _vm._v(
-                              "\n                  " +
-                                _vm._s(head.head_of_office) +
-                                "\n                "
-                            ),
-                          ]
-                        )
-                      }),
-                    ],
-                    2
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6 mb-3" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-label required-field",
-                    attrs: { for: "office" },
-                  },
-                  [_vm._v("Office")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group-icon" }, [
-                  _c("i", { staticClass: "fas fa-building input-icon" }),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.office,
-                          expression: "formData.office",
-                        },
-                      ],
-                      staticClass: "form-select form-control-icon",
-                      attrs: {
-                        id: "office",
-                        disabled: !_vm.formData.head_office,
-                      },
-                      on: {
-                        change: function ($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function (o) {
-                              return o.selected
-                            })
-                            .map(function (o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.formData,
-                            "office",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        },
-                      },
-                    },
-                    _vm._l(_vm.offices, function (office) {
-                      return _c(
-                        "option",
-                        { key: office.id, domProps: { value: office.id } },
-                        [
-                          _vm._v(
-                            "\n                  " +
-                              _vm._s(office.office) +
-                              "\n                "
-                          ),
-                        ]
-                      )
-                    }),
-                    0
-                  ),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _vm._m(4),
-            _vm._v(" "),
-            _vm._m(5),
-          ]),
-        ]),
-      ]
-    ),
-    _vm._v(" "),
-    _vm._m(6),
-    _vm._v(" "),
-    _vm._m(7),
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h4", { staticClass: "section-title mb-0" }, [
-        _c("i", { staticClass: "fas fa-ticket-alt me-2 text-denr" }),
-        _vm._v("\n        New Helpdesk Ticket\n      "),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mb-4" }, [
-      _c("div", { staticClass: "col-md-3 mb-3" }, [
-        _c(
-          "label",
-          { staticClass: "form-label required-field", attrs: { for: "name" } },
-          [_vm._v("Firstname")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group-icon" }, [
-          _c("i", { staticClass: "fas fa-user input-icon" }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control form-control-icon",
-            attrs: {
-              type: "text",
-              id: "name",
-              name: "name",
-              placeholder: "Enter your full name",
-              required: "",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 mb-3" }, [
-        _c(
-          "label",
-          { staticClass: "form-label required-field", attrs: { for: "name" } },
-          [_vm._v("Middle Initial")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group-icon" }, [
-          _c("i", { staticClass: "fas fa-user input-icon" }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control form-control-icon",
-            attrs: {
-              type: "text",
-              id: "name",
-              name: "name",
-              placeholder: "Enter your full name",
-              required: "",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 mb-3" }, [
-        _c(
-          "label",
-          { staticClass: "form-label required-field", attrs: { for: "name" } },
-          [_vm._v("Lastname")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group-icon" }, [
-          _c("i", { staticClass: "fas fa-user input-icon" }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control form-control-icon",
-            attrs: {
-              type: "text",
-              id: "name",
-              name: "name",
-              placeholder: "Enter your full name",
-              required: "",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 mb-3" }, [
-        _c(
-          "label",
-          { staticClass: "form-label required-field", attrs: { for: "name" } },
-          [_vm._v("Extension")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group-icon" }, [
-          _c("i", { staticClass: "fas fa-user input-icon" }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control form-control-icon",
-            attrs: {
-              type: "text",
-              id: "name",
-              name: "name",
-              placeholder: "Enter your full name",
-              required: "",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 mb-3" }, [
-        _c(
-          "label",
-          { staticClass: "form-label required-field", attrs: { for: "email" } },
-          [_vm._v("Email Address")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group-icon" }, [
-          _c("i", { staticClass: "fas fa-envelope input-icon" }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control form-control-icon",
-            attrs: {
-              type: "email",
-              id: "email",
-              name: "email",
-              placeholder: "name@denr.gov.ph",
-              required: "",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 mb-3" }, [
-        _c(
-          "label",
-          {
-            staticClass: "form-label required-field",
-            attrs: { for: "position" },
-          },
-          [_vm._v("Position")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group-icon" }, [
-          _c("i", { staticClass: "fas fa-briefcase input-icon" }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control form-control-icon",
-            attrs: {
-              type: "text",
-              id: "position",
-              name: "position",
-              placeholder: "Enter your position",
-              required: "",
-            },
-          }),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-4" }, [
-      _c(
-        "label",
-        { staticClass: "form-label required-field", attrs: { for: "concern" } },
-        [_vm._v("Issue Description")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group-icon" }, [
-        _c("i", { staticClass: "fas fa-comment-dots input-icon" }),
-        _vm._v(" "),
-        _c("textarea", {
-          staticClass: "form-control form-control-icon",
-          attrs: {
-            id: "concern",
-            name: "concern",
-            rows: "5",
-            placeholder: "Please describe your ICT concern in detail...",
-            required: "",
-            maxlength: "1000",
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-muted small mt-1" }, [
-        _vm._v("Maximum 1000 characters"),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-4" }, [
-      _c("label", { staticClass: "form-label" }, [
-        _vm._v("Attachments (Optional)"),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "file-upload-area" }, [
-        _c("div", { staticClass: "mb-3" }, [
-          _c("i", { staticClass: "fas fa-cloud-upload-alt fa-3x text-muted" }),
-        ]),
-        _vm._v(" "),
-        _c("h5", [_vm._v("Click to upload files")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-muted small" }, [
-          _vm._v(
-            "\n              Maximum file size: 5MB. Supported formats: JPG, PNG, PDF, DOC\n            "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "file", id: "fileInput", multiple: "" },
-        }),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check mb-4" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "checkbox",
-          id: "agreement",
-          name: "agreement",
-          required: "",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "agreement" } },
-        [
-          _vm._v(
-            "\n            I confirm that the information provided is accurate and I\n            understand that false reports may be subject to appropriate\n            action.\n          "
-          ),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-flex flex-column flex-md-row justify-content-between gap-3",
-      },
-      [
-        _c("div", { staticClass: "d-flex flex-column flex-sm-row gap-2" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-secondary btn-responsive",
-              attrs: { type: "reset" },
-            },
-            [
-              _c("i", { staticClass: "fas fa-eraser me-1" }),
-              _vm._v(" Clear Form\n            "),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "d-flex flex-column flex-sm-row gap-2" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-denr btn-responsive",
-              attrs: { type: "submit" },
-            },
-            [
-              _c("i", { staticClass: "fas fa-paper-plane me-1" }),
-              _vm._v(" Submit Ticket\n            "),
-            ]
-          ),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-denr check-status-btn animate-pulse",
-        attrs: {
-          type: "button",
-          "data-bs-toggle": "modal",
-          "data-bs-target": "#checkStatusModal",
-        },
-      },
-      [
-        _c("i", { staticClass: "fas fa-search me-2" }),
-        _vm._v(" Check Ticket Status\n  "),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade modal-denr",
-        attrs: {
-          id: "checkStatusModal",
-          tabindex: "-1",
-          "aria-labelledby": "checkStatusModalLabel",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c("div", { staticClass: "modal-dialog modal-lg" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c(
-                "h5",
-                {
-                  staticClass: "modal-title",
-                  attrs: { id: "checkStatusModalLabel" },
-                },
-                [
-                  _c("i", { staticClass: "fas fa-search me-2" }),
-                  _vm._v(" Check Ticket Status\n          "),
-                ]
-              ),
-              _vm._v(" "),
-              _c("button", {
-                staticClass: "btn-close close-btn",
-                attrs: {
-                  type: "button",
-                  "data-bs-dismiss": "modal",
-                  "aria-label": "Close",
-                },
-              }),
+    return _c("div", [
+      _c("header", { staticClass: "denr-header" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "d-flex align-items-center" }, [
+            _c("div", { staticClass: "denr-logo" }, [
+              _c("i", { staticClass: "fas fa-tree denr-logo-icon" }),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("div", { staticClass: "text-center mb-4" }, [
-                _c("div", { staticClass: "mb-3" }, [
-                  _c("i", { staticClass: "fas fa-ticket-alt fa-3x text-denr" }),
-                ]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Track Your Ticket Status")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-muted" }, [
-                  _vm._v(
-                    "\n              Enter your email address and ticket number to check the current\n              status of your request.\n            "
-                  ),
-                ]),
-              ]),
+            _c("div", { staticClass: "header-title" }, [
+              _c("h1", [_vm._v("DENR REGION XI")]),
               _vm._v(" "),
-              _c("form", { attrs: { id: "checkStatusForm" } }, [
-                _c("div", { staticClass: "row mb-4" }, [
-                  _c("div", { staticClass: "col-md-6 mb-3" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-label required-field",
-                        attrs: { for: "statusEmail" },
-                      },
-                      [_vm._v("Email Address")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group-icon" }, [
-                      _c("i", { staticClass: "fas fa-envelope input-icon" }),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control form-control-icon",
-                        attrs: {
-                          type: "email",
-                          id: "statusEmail",
-                          name: "statusEmail",
-                          placeholder:
-                            "Enter the email used when submitting ticket",
-                          required: "",
-                        },
-                      }),
-                    ]),
-                    _vm._v(" "),
-                    _c("small", { staticClass: "text-muted" }, [
-                      _vm._v(
-                        "Must match the email used when submitting the ticket"
-                      ),
-                    ]),
+              _c("p", [
+                _vm._v("ICT Service Management System - Ticketing Portal"),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("main", { staticClass: "container my-5" }, [
+        _c("div", { staticClass: "progress-steps" }, [
+          _c("div", { staticClass: "step completed" }, [
+            _c("div", { staticClass: "step-icon" }, [
+              _c("i", { staticClass: "fas fa-info-circle" }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "step-label" }, [
+              _vm._v("Ticket Details"),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "step active" }, [
+            _c("div", { staticClass: "step-icon" }, [_vm._v("2")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "step-label" }, [
+              _vm._v("Submit Request"),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "step" }, [
+            _c("div", { staticClass: "step-icon" }, [_vm._v("3")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "step-label" }, [_vm._v("Confirmation")]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "denr-card mb-5" }, [
+          _c("div", { staticClass: "card-header-custom" }, [
+            _c("h3", [
+              _c("i", { staticClass: "fas fa-ticket-alt me-2" }),
+              _vm._v(" Submit a New ICT Service\n          Request\n        "),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body p-4" }, [
+            _c("form", { attrs: { id: "ticketForm", novalidate: "" } }, [
+              _c("div", { staticClass: "row mb-4" }, [
+                _c("div", { staticClass: "col-md-12 mb-3" }, [
+                  _c("label", { staticClass: "form-label-custom" }, [
+                    _vm._v("Ticket Type "),
+                    _c("span", { staticClass: "required-star" }, [_vm._v("*")]),
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6 mb-3" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-label required-field",
-                        attrs: { for: "ticketNumber" },
-                      },
-                      [_vm._v("Ticket Number")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group-icon" }, [
-                      _c("i", { staticClass: "fas fa-hashtag input-icon" }),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control form-control-icon",
-                        attrs: {
-                          type: "text",
-                          id: "ticketNumber",
-                          name: "ticketNumber",
-                          placeholder: "e.g., DENR-2023-00123",
-                          required: "",
-                        },
-                      }),
-                    ]),
-                    _vm._v(" "),
-                    _c("small", { staticClass: "text-muted" }, [
-                      _vm._v("Format: DENR-YYYY-XXXXX"),
-                    ]),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "d-flex justify-content-center" }, [
                   _c(
-                    "button",
+                    "select",
                     {
-                      staticClass: "btn btn-denr px-5",
-                      attrs: { type: "submit" },
+                      staticClass: "form-select form-control-custom",
+                      attrs: { id: "ticketType", required: "" },
                     },
                     [
-                      _c("i", { staticClass: "fas fa-search me-2" }),
-                      _vm._v(" Check Status\n              "),
+                      _c(
+                        "option",
+                        { attrs: { value: "", selected: "", disabled: "" } },
+                        [_vm._v("Select ticket type")]
+                      ),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "hardware" } }, [
+                        _vm._v("Hardware Issue"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "software" } }, [
+                        _vm._v("Software/Application"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "network" } }, [
+                        _vm._v("Network/Internet"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "account" } }, [
+                        _vm._v("Account Access"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "printer" } }, [
+                        _vm._v("Printer/Peripherals"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "email" } }, [
+                        _vm._v("Email Issue"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "website" } }, [
+                        _vm._v("Website/Portal"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "other" } }, [
+                        _vm._v("Other Concerns"),
+                      ]),
                     ]
                   ),
                 ]),
               ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-footer" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-secondary",
-                  attrs: { type: "button", "data-bs-dismiss": "modal" },
-                },
-                [_vm._v("\n            Close\n          ")]
-              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mb-4" }, [
+                _c("div", { staticClass: "col-md-6 mb-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-label-custom",
+                      attrs: { for: "fullName" },
+                    },
+                    [
+                      _vm._v("Full Name "),
+                      _c("span", { staticClass: "required-star" }, [
+                        _vm._v("*"),
+                      ]),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control form-control-custom",
+                    attrs: {
+                      type: "text",
+                      id: "fullName",
+                      placeholder: "Enter your full name",
+                      required: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6 mb-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-label-custom",
+                      attrs: { for: "position" },
+                    },
+                    [
+                      _vm._v("Position/Designation\n                "),
+                      _c("span", { staticClass: "required-star" }, [
+                        _vm._v("*"),
+                      ]),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control form-control-custom",
+                    attrs: {
+                      type: "text",
+                      id: "position",
+                      placeholder: "Enter your position",
+                      required: "",
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mb-4" }, [
+                _c("div", { staticClass: "col-md-6 mb-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-label-custom",
+                      attrs: { for: "office" },
+                    },
+                    [
+                      _vm._v("Office/Division "),
+                      _c("span", { staticClass: "required-star" }, [
+                        _vm._v("*"),
+                      ]),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-select form-control-custom",
+                      attrs: { id: "office", required: "" },
+                    },
+                    [
+                      _c(
+                        "option",
+                        { attrs: { value: "", selected: "", disabled: "" } },
+                        [
+                          _vm._v(
+                            "\n                  Select office/division\n                "
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "LRMPS" } }, [
+                        _vm._v(
+                          "\n                  Land Resource Management & Planning Services\n                "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "PAS" } }, [
+                        _vm._v("Protected Area Services"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "PAWB" } }, [
+                        _vm._v(
+                          "\n                  Protected Areas & Wildlife Bureau\n                "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "MGB" } }, [
+                        _vm._v("Mines & Geosciences Bureau"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "EMB" } }, [
+                        _vm._v("Environmental Management Bureau"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "RADO" } }, [
+                        _vm._v(
+                          "\n                  Regional Administrative Division Office\n                "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "TED" } }, [
+                        _vm._v("Technical Education Division"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Finance" } }, [
+                        _vm._v("Finance Division"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Legal" } }, [
+                        _vm._v("Legal Division"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "PMD" } }, [
+                        _vm._v("Planning & Management Division"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ICT" } }, [
+                        _vm._v("ICT Unit"),
+                      ]),
+                    ]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6 mb-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-label-custom",
+                      attrs: { for: "email" },
+                    },
+                    [
+                      _vm._v("Email Address "),
+                      _c("span", { staticClass: "required-star" }, [
+                        _vm._v("*"),
+                      ]),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control form-control-custom",
+                    attrs: {
+                      type: "email",
+                      id: "email",
+                      placeholder: "name@denr.gov.ph",
+                      required: "",
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mb-4" }, [
+                _c("div", { staticClass: "col-12 mb-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-label-custom",
+                      attrs: { for: "concernDescription" },
+                    },
+                    [
+                      _vm._v("Description of Concern\n                "),
+                      _c("span", { staticClass: "required-star" }, [
+                        _vm._v("*"),
+                      ]),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    staticClass: "form-control form-control-custom",
+                    attrs: {
+                      id: "concernDescription",
+                      rows: "5",
+                      placeholder:
+                        "Please provide a detailed description of the issue, including error messages, when it started, and steps to reproduce the problem.",
+                      required: "",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-text" }, [
+                    _vm._v(
+                      "\n                Be as specific as possible to help us resolve your issue\n                faster.\n              "
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mb-4" }, [
+                _c("div", { staticClass: "col-12 mb-3" }, [
+                  _c("label", { staticClass: "form-label-custom" }, [
+                    _vm._v("Attach Supporting Files"),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "file-upload-area",
+                      attrs: { id: "dropZone" },
+                    },
+                    [
+                      _c("div", { staticClass: "upload-icon" }, [
+                        _c("i", { staticClass: "fas fa-cloud-upload-alt" }),
+                      ]),
+                      _vm._v(" "),
+                      _c("h5", [
+                        _vm._v("Drag & drop files here or click to browse"),
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-muted" }, [
+                        _vm._v(
+                          "\n                  Supports: JPG, PNG, PDF, DOC up to 10MB\n                "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "d-none",
+                        attrs: {
+                          type: "file",
+                          id: "fileInput",
+                          accept: "image/*,.pdf,.doc,.docx",
+                          multiple: "",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-outline-primary mt-2",
+                          attrs: { type: "button", id: "browseBtn" },
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-folder-open me-2" }),
+                          _vm._v("Browse Files\n                "),
+                        ]
+                      ),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", {
+                    staticClass: "file-preview-container",
+                    attrs: { id: "filePreviewContainer" },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mb-4" }, [
+                _c("div", { staticClass: "col-12" }, [
+                  _c("div", { staticClass: "form-check" }, [
+                    _c("input", {
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "checkbox",
+                        id: "termsAgreement",
+                        required: "",
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "termsAgreement" },
+                      },
+                      [
+                        _vm._v(
+                          "\n                  I acknowledge that this request will be processed according\n                  to DENR ICT Service policies and I agree to provide accurate\n                  information.\n                "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]),
               _vm._v(" "),
               _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-denr",
-                  attrs: { type: "button", onclick: "printTicketStatus()" },
-                },
+                "div",
+                { staticClass: "d-flex justify-content-between mt-4" },
                 [
-                  _c("i", { staticClass: "fas fa-print me-2" }),
-                  _vm._v(" Print Status\n          "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-denr-secondary",
+                      attrs: { type: "button", id: "clearBtn" },
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-eraser me-2" }),
+                      _vm._v("Clear Form\n            "),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-denr",
+                      attrs: { type: "submit", id: "submitBtn" },
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-paper-plane me-2" }),
+                      _vm._v("Submit Ticket Request\n            "),
+                    ]
+                  ),
                 ]
               ),
             ]),
           ]),
         ]),
-      ]
-    )
+        _vm._v(" "),
+        _c("div", { staticClass: "denr-card" }, [
+          _c("div", { staticClass: "card-body p-4" }, [
+            _c("h5", { staticClass: "mb-3" }, [
+              _c("i", { staticClass: "fas fa-info-circle text-primary me-2" }),
+              _vm._v("What happens\n          after submission?\n        "),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-3 mb-3" }, [
+                _c("div", { staticClass: "text-center p-3" }, [
+                  _c("div", { staticClass: "mb-3" }, [
+                    _c("i", {
+                      staticClass: "fas fa-envelope fa-2x text-primary",
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("h6", [_vm._v("Confirmation Email")]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "small text-muted" }, [
+                    _vm._v(
+                      "\n                You'll receive a ticket number and confirmation email\n              "
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3 mb-3" }, [
+                _c("div", { staticClass: "text-center p-3" }, [
+                  _c("div", { staticClass: "mb-3" }, [
+                    _c("i", {
+                      staticClass: "fas fa-user-cog fa-2x text-primary",
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("h6", [_vm._v("Ticket Assignment")]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "small text-muted" }, [
+                    _vm._v(
+                      "\n                Your ticket will be assigned to an ICT technician\n              "
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3 mb-3" }, [
+                _c("div", { staticClass: "text-center p-3" }, [
+                  _c("div", { staticClass: "mb-3" }, [
+                    _c("i", { staticClass: "fas fa-tools fa-2x text-primary" }),
+                  ]),
+                  _vm._v(" "),
+                  _c("h6", [_vm._v("Resolution Process")]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "small text-muted" }, [
+                    _vm._v(
+                      "\n                ICT staff will work on resolving your issue\n              "
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3 mb-3" }, [
+                _c("div", { staticClass: "text-center p-3" }, [
+                  _c("div", { staticClass: "mb-3" }, [
+                    _c("i", {
+                      staticClass: "fas fa-check-circle fa-2x text-success",
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("h6", [_vm._v("Ticket Closure")]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "small text-muted" }, [
+                    _vm._v(
+                      "\n                You'll be notified when your ticket is resolved\n              "
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "alert alert-info mt-3" }, [
+              _c("i", { staticClass: "fas fa-phone-alt me-2" }),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Need urgent assistance?")]),
+              _vm._v(" Contact the ICT Help Desk\n          at "),
+              _c("strong", [_vm._v("(082) 123-4567")]),
+              _vm._v(" or email\n          "),
+              _c("strong", [_vm._v("ict.support@denrxi.gov.ph")]),
+            ]),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "denr-footer" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-8" }, [
+              _c("p", [
+                _c("i", { staticClass: "fas fa-code me-2" }),
+                _vm._v(
+                  "Developed by: Planning and\n            Management Division - Regional ICT Unit\n          "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c("i", { staticClass: "fas fa-shield-alt me-2" }),
+                _vm._v(
+                  "DENR Region XI - Department\n            of Environment and Natural Resources\n          "
+                ),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 text-md-end" }, [
+              _c("p", [
+                _c("i", { staticClass: "fas fa-code-branch me-2" }),
+                _vm._v("Version 2.0.1"),
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c("i", { staticClass: "far fa-copyright me-2" }),
+                _vm._v("2023 All Rights Reserved"),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+    ])
   },
 ]
 render._withStripped = true

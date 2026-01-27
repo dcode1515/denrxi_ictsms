@@ -13,7 +13,7 @@
                 <div>
                   <h5 class="card-title mb-0 text-white">
                     <i class="ri-building-3-line me-2"></i>
-                    DENR - Manage Head of Office List
+                    DENR - Manage Ticket Category List
                   </h5>
                   <p class="text-white-50 mb-0 small">
                     <i class="ri-list-check me-1"></i>
@@ -29,7 +29,7 @@
                 @click="openModal('add')"
               >
                 <i class="ri-add-circle-line me-1"></i>
-                Create Head of Office
+                Create Ticket Category
               </button>
             </div>
           </div>
@@ -46,7 +46,7 @@
                 <select
                   class="form-control form-control"
                   v-model="perPage"
-                  @change="getDataOfficeHead"
+                  @change="getDataTicketCategory"
                 >
                   <option value="5">5 per page</option>
                   <option value="10">10 per page</option>
@@ -62,7 +62,7 @@
                 </span>
                 <input
                   v-model="searchQuery"
-                  @input="getDataOfficeHead"
+                  @input="getDataTicketCategory"
                   type="text"
                   class="form-control"
                   placeholder="Search head of office..."
@@ -91,8 +91,12 @@
                   </th>
 
                   <th>
-                    <i class="ri-user-line me-1"></i>
-                    Head of Office
+                    <i class="ri-ticket-line me-1"></i>
+                    Ticket Type
+                  </th>
+                  <th>
+                    <i class="ri-folder-2-line me-1"></i>
+                    Ticket Category
                   </th>
                   <th>
                     <i class="ri-leaf-line me-1"></i>
@@ -109,49 +113,64 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(office, index) in offices.data" :key="office.id">
+                <tr
+                  v-for="(category, index) in categories.data"
+                  :key="category.id"
+                >
                   <td class="ps-4">
                     {{
-                      (offices.current_page - 1) * offices.per_page + index + 1
+                      (categories.current_page - 1) * categories.per_page +
+                      index +
+                      1
                     }}
                   </td>
 
                   <td>
                     <div class="d-flex align-items-center">
                       <div>
-                        <strong>{{ office.head_of_office }}</strong>
+                        <strong>{{ category.ticket_type.ticket_type }}</strong>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <span :class="getStatusClass(office.status)">
-                      <i :class="getStatusIcon(office.status)" class="me-1"></i>
-                      {{ office.status }}
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <strong>{{ category.ticket_category }}</strong>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span :class="getStatusClass(category.status)">
+                      <i
+                        :class="getStatusIcon(category.status)"
+                        class="me-1"
+                      ></i>
+                      {{ category.status }}
                     </span>
                   </td>
                   <td>
                     <i class="ri-time-line me-1 text-muted"></i>
-                    {{ formatDate(office.created_at) }}
+                    {{ formatDate(category.created_at) }}
                   </td>
                   <td class="text-center">
                     <div class="btn-group" role="group">
                       <button
                         class="btn btn-sm btn-outline-primary"
-                        @click="openModal('edit', office)"
+                        @click="openModal('edit', category)"
                         title="Edit"
                       >
                         <i class="ri-edit-line"></i>
                       </button>
                       <button
                         class="btn btn-sm btn-outline-info"
-                        @click="viewDetails(office)"
+                        @click="viewDetails(category)"
                         title="View"
                       >
                         <i class="ri-eye-line"></i>
                       </button>
                       <button
                         class="btn btn-sm btn-outline-danger"
-                        @click="confirmDelete(office)"
+                        @click="confirmDelete(category)"
                         title="Delete"
                       >
                         <i class="ri-delete-bin-line"></i>
@@ -159,7 +178,7 @@
                     </div>
                   </td>
                 </tr>
-                <tr v-if="offices.data.length === 0">
+                <tr v-if="categories.data.length === 0">
                   <td colspan="6" class="text-center py-5">
                     <div class="text-muted">
                       <i class="ri-search-line display-5"></i>
@@ -169,10 +188,9 @@
                 </tr>
               </tbody>
             </table>
-
             <div
               class="modal fade zoomIn"
-              id="modalHeadOffice"
+              id="modalTicketcategory"
               tabindex="-1"
               aria-labelledby="exampleModalLabel"
               aria-hidden="true"
@@ -196,7 +214,32 @@
                   <div class="modal-body p-4">
                     <div class="mb-4">
                       <label class="form-label fw-medium mb-2">
-                        Head of Office Name
+                        Ticket Type
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <span class="input-group-text bg-light">
+                          <i class="ri-user-3-line"></i>
+                        </span>
+                        <select
+                          v-model="formData.ticket_type"
+                          class="form-control"
+                          :disabled="modalMode === 'view'"
+                        >
+                          <option value="" disabled selected>
+                            Select an Ticket Type
+                          </option>
+                          <option
+                            v-for="tickettype in tickettypes"
+                            :key="tickettype.id"
+                            :value="tickettype.id"
+                          >
+                            {{ tickettype.ticket_type }}
+                          </option>
+                        </select>
+                      </div>
+                      <label class="form-label fw-medium mb-2">
+                        Ticket Category
                         <span class="text-danger">*</span>
                       </label>
                       <div class="input-group">
@@ -206,8 +249,8 @@
                         <input
                           type="text"
                           class="form-control"
-                          v-model="formData.head_of_office"
-                          placeholder="Enter Head of Office Name"
+                          v-model="formData.ticket_category"
+                          placeholder="Enter Ticket Category"
                           :disabled="modalMode === 'view'"
                         />
                       </div>
@@ -285,13 +328,13 @@
         </div>
 
         <!-- Pagination -->
-        <div v-if="offices.total > 0" class="card-footer bg-white">
+        <div v-if="categories.total > 0" class="card-footer bg-white">
           <div class="row align-items-center">
             <div class="col-md-6">
               <span class="text-muted small">
                 <i class="ri-file-list-line me-1"></i>
-                Showing {{ offices.from }} to {{ offices.to }} of
-                {{ offices.total }} entries
+                Showing {{ categories.from }} to {{ categories.to }} of
+                {{ categories.total }} entries
               </span>
             </div>
             <div class="col-md-6">
@@ -299,7 +342,7 @@
                 <ul class="pagination pagination-sm mb-0">
                   <li
                     class="page-item"
-                    :class="{ disabled: offices.current_page === 1 }"
+                    :class="{ disabled: categories.current_page === 1 }"
                   >
                     <button
                       class="page-link"
@@ -311,11 +354,11 @@
                   </li>
                   <li
                     class="page-item"
-                    :class="{ disabled: offices.current_page === 1 }"
+                    :class="{ disabled: categories.current_page === 1 }"
                   >
                     <button
                       class="page-link"
-                      @click="changePage(offices.current_page - 1)"
+                      @click="changePage(categories.current_page - 1)"
                       title="Previous"
                     >
                       <i class="ri-arrow-left-s-line"></i>
@@ -326,7 +369,7 @@
                     v-for="page in pages"
                     :key="page"
                     class="page-item"
-                    :class="{ active: page === offices.current_page }"
+                    :class="{ active: page === categories.current_page }"
                   >
                     <button class="page-link" @click="changePage(page)">
                       {{ page }}
@@ -336,12 +379,13 @@
                   <li
                     class="page-item"
                     :class="{
-                      disabled: offices.current_page === offices.last_page,
+                      disabled:
+                        categories.current_page === categories.last_page,
                     }"
                   >
                     <button
                       class="page-link"
-                      @click="changePage(offices.current_page + 1)"
+                      @click="changePage(categories.current_page + 1)"
                       title="Next"
                     >
                       <i class="ri-arrow-right-s-line"></i>
@@ -350,12 +394,13 @@
                   <li
                     class="page-item"
                     :class="{
-                      disabled: offices.current_page === offices.last_page,
+                      disabled:
+                        categories.current_page === categories.last_page,
                     }"
                   >
                     <button
                       class="page-link"
-                      @click="changePage(offices.last_page)"
+                      @click="changePage(categories.last_page)"
                       title="Last"
                     >
                       <i class="ri-skip-forward-line"></i>
@@ -377,7 +422,8 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
-      offices: {
+      tickettypes: [],
+      categories: {
         data: [],
         current_page: 1,
         from: 1,
@@ -388,11 +434,12 @@ export default {
       },
       formData: {
         id: "",
-        head_of_office: "",
+        ticket_category: "",
+        ticket_type: "",
         status: "active",
       },
       modalMode: "add",
-      modalTitle: "Add Head of Office",
+      modalTitle: "Add Ticket Category",
       searchQuery: "",
       perPage: 10,
       loading: false,
@@ -402,8 +449,8 @@ export default {
   computed: {
     pages() {
       const pages = [];
-      const total = this.offices.last_page;
-      const current = this.offices.current_page;
+      const total = this.categories.last_page;
+      const current = this.categories.current_page;
       const maxVisible = 5;
 
       if (total <= maxVisible) {
@@ -424,32 +471,83 @@ export default {
   },
 
   methods: {
-    async getDataOfficeHead() {
+    async submitForm() {
+      this.loading = true;
+      try {
+        let response;
+
+        if (this.modalMode === "add") {
+          response = await axios.post(
+            "/denrxi_ictsms/api/store/ticket/category",
+            this.formData
+          );
+        } else {
+          response = await axios.put(
+            `/denrxi_ictsms/api/update/ticket/category/${this.formData.id}`,
+            this.formData
+          );
+        }
+
+        await Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: response.data.message || "Operation completed successfully",
+          confirmButtonColor: "#198754",
+          confirmButtonText: "OK",
+        });
+
+        $("#modalTicketcategory").modal("hide");
+        (this.formData.ticket_type = ""),
+          (this.formData.ticket_category = ""),
+          this.getDataTicketCategory();
+      } catch (error) {
+        if (error.response?.status === 409) {
+          this.showError("This Ticket Category already exists");
+        } else if (error.response?.data?.errors) {
+          const errors = error.response.data.errors;
+          const errorMessage = Object.values(errors).flat().join(", ");
+          this.showError(errorMessage);
+        } else {
+          this.showError("Something went wrong. Please try again.");
+        }
+      } finally {
+        this.loading = false;
+      }
+    },
+    async getDataTicket() {
+      try {
+        const response = await fetch("/denrxi_ictsms/api/get/data/type"); // Replace with your actual endpoint
+        if (!response.ok) throw new Error("Network response was not ok");
+        this.tickettypes = await response.json(); // Assign fetched data to chairmanships
+      } catch (error) {
+        console.error("There was a problem fetching the ticket types:", error);
+      }
+    },
+    async getDataTicketCategory() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/data/office/head",
+          "/denrxi_ictsms/api/get/data/ticket/category",
           {
             params: {
-              page: this.offices.current_page,
+              page: this.categories.current_page,
               per_page: this.perPage,
               search: this.searchQuery,
             },
           }
         );
 
-        this.offices = response.data.data;
+        this.categories = response.data.data;
       } catch (error) {
         this.showError("Failed to load data. Please try again.");
       }
     },
 
     changePage(page) {
-      if (page >= 1 && page <= this.offices.last_page) {
-        this.offices.current_page = page;
-        this.getDataOfficeHead();
+      if (page >= 1 && page <= this.categories.last_page) {
+        this.categories.current_page = page;
+        this.getDataTicketCategory();
       }
     },
-
     formatDate(dateString) {
       if (!dateString) return "";
       const date = new Date(dateString);
@@ -486,89 +584,49 @@ export default {
       }
     },
 
-    openModal(mode, office = null) {
+    openModal(mode, category = null) {
       this.modalMode = mode;
 
       if (mode === "add") {
-        this.modalTitle = "Add New Head of Office";
-        this.formData = { id: "", head_of_office: "", status: "active" };
-      } else if (mode === "edit") {
-        this.modalTitle = "Edit Head of Office";
+        this.modalTitle = "Add Ticket Category";
         this.formData = {
-          id: office.id,
-          head_of_office: office.head_of_office,
-          status: office.status || "active",
+          id: "",
+          ticket_type: "",
+          ticket_category: "",
+          status: "active",
+        };
+      } else if (mode === "edit") {
+        this.modalTitle = "Edit Ticket Category";
+        this.formData = {
+          id: category.id,
+          ticket_type: category.ticket_type.id,
+          ticket_category: category.ticket_category,
+          status: category.status || "active",
         };
       }
 
-      $("#modalHeadOffice").modal("show");
+      $("#modalTicketcategory").modal("show");
     },
     closeModal() {
-      $("#modalHeadOffice").modal("hide");
+      $("#modalTicketcategory").modal("hide");
     },
 
-    viewDetails(office) {
+    viewDetails(category) {
       this.modalMode = "view";
       this.modalTitle = "View Details";
       this.formData = {
-        id: office.id,
-        head_of_office: office.head_of_office,
-        status: office.status || "active",
+        id: category.id,
+        ticket_type: category.ticket_type.id,
+        ticket_category: category.ticket_category,
+        status: category.status || "active",
       };
-      $("#modalHeadOffice").modal("show");
+      $("#modalTicketcategory").modal("show");
     },
 
-    async submitForm() {
-      if (!this.formData.head_of_office.trim()) {
-        this.showError("Please enter head of office name");
-        return;
-      }
-
-      this.loading = true;
-      try {
-        let response;
-
-        if (this.modalMode === "add") {
-          response = await axios.post(
-            "/denrxi_ictsms/api/store/office/head",
-            this.formData
-          );
-        } else {
-          response = await axios.post(
-            `/denrxi_ictsms/api/update/office/head/${this.formData.id}`,
-            this.formData
-          );
-        }
-
-        await Swal.fire({
-          icon: "success",
-          title: "Success",
-          text: response.data.message || "Operation completed successfully",
-          confirmButtonColor: "#198754",
-          confirmButtonText: "OK",
-        });
-
-        $("#modalHeadOffice").modal("hide");
-        this.getDataOfficeHead();
-      } catch (error) {
-        if (error.response?.status === 409) {
-          this.showError("This head of office already exists");
-        } else if (error.response?.data?.errors) {
-          const errors = error.response.data.errors;
-          const errorMessage = Object.values(errors).flat().join(", ");
-          this.showError(errorMessage);
-        } else {
-          this.showError("Something went wrong. Please try again.");
-        }
-      } finally {
-        this.loading = false;
-      }
-    },
-
-    async confirmDelete(office) {
+    async confirmDelete(category) {
       const result = await Swal.fire({
         title: "Delete Record",
-        text: `Are you sure you want to delete "${office.head_of_office}"?`,
+        text: `Are you sure you want to delete "${category.ticket_category}"?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
@@ -581,7 +639,7 @@ export default {
       if (result.isConfirmed) {
         try {
           await axios.delete(
-            `/denrxi_ictsms/api/delete/office/head/${office.id}`
+            `/denrxi_ictsms/api/delete/ticket/category/${category.id}`
           );
 
           await Swal.fire({
@@ -592,7 +650,7 @@ export default {
             timer: 2000,
           });
 
-          this.getDataOfficeHead();
+          this.getDataTicketCategory();
         } catch (error) {
           this.showError("Failed to delete record");
         }
@@ -600,7 +658,7 @@ export default {
     },
 
     refreshData() {
-      this.getDataOfficeHead();
+      this.getDataTicketCategory();
       this.showSuccess("Data refreshed successfully!");
     },
 
@@ -638,7 +696,8 @@ export default {
   },
 
   mounted() {
-    this.getDataOfficeHead();
+    this.getDataTicket();
+    this.getDataTicketCategory();
   },
 };
 </script>

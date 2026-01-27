@@ -122,7 +122,9 @@
                   <td>
                     <div class="d-flex align-items-center">
                       <div>
-                        <strong>{{ office.office_under.head_of_office }}</strong>
+                        <strong>{{
+                          office.office_under.head_of_office
+                        }}</strong>
                       </div>
                     </div>
                   </td>
@@ -134,7 +136,7 @@
                       </div>
                     </div>
                   </td>
-                 
+
                   <td>
                     <span :class="getStatusClass(office.status)">
                       <i :class="getStatusIcon(office.status)" class="me-1"></i>
@@ -181,6 +183,145 @@
                 </tr>
               </tbody>
             </table>
+            <div
+              class="modal fade zoomIn"
+              id="modalOffice"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal">
+                <div class="modal-content border-0">
+                  <div class="modal-header bg-light p-3 bg-primary">
+                    <h5
+                      class="modal-title"
+                      id="exampleModalLabel"
+                      style="color: white"
+                    >
+                      {{ modalTitle }}
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close btn-close-white"
+                      @click="closeModal"
+                    ></button>
+                  </div>
+                  <div class="modal-body p-4">
+                    <div class="mb-4">
+                      <label class="form-label fw-medium mb-2">
+                        Head of Office Name
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <span class="input-group-text bg-light">
+                          <i class="ri-user-3-line"></i>
+                        </span>
+                        <select
+                          v-model="formData.head_of_office"
+                          class="form-control"
+                          :disabled="modalMode === 'view'"
+                        >
+                          <option value="" disabled selected>
+                            Select an Office Head
+                          </option>
+                          <option
+                            v-for="officeHead in officeheads"
+                            :key="officeHead.id"
+                            :value="officeHead.id"
+                          >
+                            {{ officeHead.head_of_office }}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="mb-4">
+                        <label class="form-label fw-medium mb-2">
+                          Office Name
+                          <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                          <span class="input-group-text bg-light">
+                            <i class="ri-building-line"></i>
+                          </span>
+
+                          <input
+                            :disabled="modalMode === 'view'"
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter Office Name"
+                            v-model="formData.office"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div v-if="modalMode === 'edit'" class="mb-3">
+                      <label class="form-label fw-medium mb-2">
+                        <i class="ri-leaf-line me-1"></i>
+                        Status
+                      </label>
+                      <div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            v-model="formData.status"
+                            value="active"
+                            id="active"
+                          />
+                          <label class="form-check-label" for="active">
+                            <i
+                              class="ri-checkbox-circle-line me-1 text-success"
+                            ></i>
+                            Active
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            v-model="formData.status"
+                            value="inactive"
+                            id="inactive"
+                          />
+                          <label class="form-check-label" for="inactive">
+                            <i
+                              class="ri-close-circle-line me-1 text-danger"
+                            ></i>
+                            Inactive
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-light"
+                      @click="closeModal"
+                    >
+                      <i class="ri-close-line me-1"></i>
+                      Cancel
+                    </button>
+                    <button
+                      v-if="modalMode !== 'view'"
+                      type="button"
+                      class="btn btn-primary"
+                      @click="submitForm"
+                      :disabled="loading"
+                    >
+                      <i class="ri-save-line me-1"></i>
+                      <span
+                        v-if="loading"
+                        class="spinner-border spinner-border-sm me-1"
+                      ></span>
+                      {{
+                        modalMode === "add" ? "Save Record" : "Update Record"
+                      }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -263,145 +404,6 @@
                   </li>
                 </ul>
               </nav>
-              <div
-                class="modal fade zoomIn"
-                id="modalOffice"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog modal-dialog-centered modal">
-                  <div class="modal-content border-0">
-                    <div class="modal-header bg-light p-3 bg-primary">
-                      <h5
-                        class="modal-title"
-                        id="exampleModalLabel"
-                        style="color: white"
-                      >
-                        {{ modalTitle }}
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close btn-close-white"
-                        @click="closeModal"
-                      ></button>
-                    </div>
-                    <div class="modal-body p-4">
-                      <div class="mb-4">
-                        <label class="form-label fw-medium mb-2">
-                          Head of Office Name
-                          <span class="text-danger">*</span>
-                        </label>
-                        <div class="input-group">
-                          <span class="input-group-text bg-light">
-                            <i class="ri-user-3-line"></i>
-                          </span>
-                          <select
-                            v-model="formData.head_of_office"
-                            class="form-control"
-                            :disabled="modalMode === 'view'"
-                          >
-                            <option value="" disabled selected>
-                              Select an Office Head
-                            </option>
-                            <option
-                              v-for="officeHead in officeheads"
-                              :key="officeHead.id"
-                              :value="officeHead.id"
-                            >
-                              {{ officeHead.head_of_office }}
-                            </option>
-                          </select>
-                        </div>
-                        <div class="mb-4">
-                          <label class="form-label fw-medium mb-2">
-                            Office Name
-                            <span class="text-danger">*</span>
-                          </label>
-                          <div class="input-group">
-                            <span class="input-group-text bg-light">
-                              <i class="ri-building-line"></i>
-                            </span>
-
-                            <input
-                              :disabled="modalMode === 'view'"
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter Office Name"
-                              v-model="formData.office"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div v-if="modalMode === 'edit'" class="mb-3">
-                        <label class="form-label fw-medium mb-2">
-                          <i class="ri-leaf-line me-1"></i>
-                          Status
-                        </label>
-                        <div>
-                          <div class="form-check form-check-inline">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              v-model="formData.status"
-                              value="active"
-                              id="active"
-                            />
-                            <label class="form-check-label" for="active">
-                              <i
-                                class="ri-checkbox-circle-line me-1 text-success"
-                              ></i>
-                              Active
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              v-model="formData.status"
-                              value="inactive"
-                              id="inactive"
-                            />
-                            <label class="form-check-label" for="inactive">
-                              <i
-                                class="ri-close-circle-line me-1 text-danger"
-                              ></i>
-                              Inactive
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-light"
-                        @click="closeModal"
-                      >
-                        <i class="ri-close-line me-1"></i>
-                        Cancel
-                      </button>
-                      <button
-                        v-if="modalMode !== 'view'"
-                        type="button"
-                        class="btn btn-primary"
-                        @click="submitForm"
-                        :disabled="loading"
-                      >
-                        <i class="ri-save-line me-1"></i>
-                        <span
-                          v-if="loading"
-                          class="spinner-border spinner-border-sm me-1"
-                        ></span>
-                        {{
-                          modalMode === "add" ? "Save Record" : "Update Record"
-                        }}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -476,16 +478,13 @@ export default {
     },
     async getDataOffice() {
       try {
-        const response = await axios.get(
-          "/denrxi_ictsms/api/get/data/office",
-          {
-            params: {
-              page: this.offices.current_page,
-              per_page: this.perPage,
-              search: this.searchQuery,
-            },
-          }
-        );
+        const response = await axios.get("/denrxi_ictsms/api/get/data/office", {
+          params: {
+            page: this.offices.current_page,
+            per_page: this.perPage,
+            search: this.searchQuery,
+          },
+        });
 
         this.offices = response.data.data;
       } catch (error) {
@@ -563,7 +562,7 @@ export default {
       this.modalTitle = "View Details";
       this.formData = {
         id: office.id,
-      head_of_office: office.head_office_id,
+        head_of_office: office.head_office_id,
         office: office.office,
         status: office.status || "active",
       };
@@ -571,8 +570,6 @@ export default {
     },
 
     async submitForm() {
-     
-
       this.loading = true;
       try {
         let response;
@@ -598,9 +595,9 @@ export default {
         });
 
         $("#modalOffice").modal("show");
-        this.formData.head_of_office = "",
-        this.formData.office = "",
-        this.getDataOffice();
+        (this.formData.head_of_office = ""),
+          (this.formData.office = ""),
+          this.getDataOffice();
       } catch (error) {
         if (error.response?.status === 409) {
           this.showError("This head of office already exists");
@@ -631,9 +628,7 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          await axios.delete(
-            `/denrxi_ictsms/api/delete/office/${office.id}`
-          );
+          await axios.delete(`/denrxi_ictsms/api/delete/office/${office.id}`);
 
           await Swal.fire({
             icon: "success",
@@ -654,8 +649,6 @@ export default {
       this.getDataOffice();
       this.showSuccess("Data refreshed successfully!");
     },
-
-   
 
     showError(message) {
       Swal.fire({

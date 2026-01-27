@@ -92,7 +92,7 @@
 
                   <th>
                     <i class="ri-user-line me-1"></i>
-                    Head of Office
+                    Ticket Type
                   </th>
                   <th>
                     <i class="ri-leaf-line me-1"></i>
@@ -169,6 +169,117 @@
                 </tr>
               </tbody>
             </table>
+            <div
+              class="modal fade zoomIn"
+              id="modalTickettype"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal">
+                <div class="modal-content border-0">
+                  <div class="modal-header bg-light p-3 bg-primary">
+                    <h5
+                      class="modal-title"
+                      id="exampleModalLabel"
+                      style="color: white"
+                    >
+                      {{ modalTitle }}
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close btn-close-white"
+                      @click="closeModal"
+                    ></button>
+                  </div>
+                  <div class="modal-body p-4">
+                    <div class="mb-4">
+                      <label class="form-label fw-medium mb-2">
+                        Ticket Type
+                        <span class="text-danger">*</span>
+                      </label>
+                      <div class="input-group">
+                        <span class="input-group-text bg-light">
+                          <i class="ri-user-3-line"></i>
+                        </span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="formData.ticket_type"
+                          placeholder="Enter Ticket Type"
+                          :disabled="modalMode === 'view'"
+                        />
+                      </div>
+                    </div>
+
+                    <div v-if="modalMode === 'edit'" class="mb-3">
+                      <label class="form-label fw-medium mb-2">
+                        <i class="ri-leaf-line me-1"></i>
+                        Status
+                      </label>
+                      <div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            v-model="formData.status"
+                            value="active"
+                            id="active"
+                          />
+                          <label class="form-check-label" for="active">
+                            <i
+                              class="ri-checkbox-circle-line me-1 text-success"
+                            ></i>
+                            Active
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            v-model="formData.status"
+                            value="inactive"
+                            id="inactive"
+                          />
+                          <label class="form-check-label" for="inactive">
+                            <i
+                              class="ri-close-circle-line me-1 text-danger"
+                            ></i>
+                            Inactive
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-light"
+                      @click="closeModal"
+                    >
+                      <i class="ri-close-line me-1"></i>
+                      Cancel
+                    </button>
+                    <button
+                      v-if="modalMode !== 'view'"
+                      type="button"
+                      class="btn btn-primary"
+                      @click="submitForm"
+                      :disabled="loading"
+                    >
+                      <i class="ri-save-line me-1"></i>
+                      <span
+                        v-if="loading"
+                        class="spinner-border spinner-border-sm me-1"
+                      ></span>
+                      {{
+                        modalMode === "add" ? "Save Record" : "Update Record"
+                      }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -251,117 +362,6 @@
                   </li>
                 </ul>
               </nav>
-              <div
-                class="modal fade zoomIn"
-                id="modalTickettype"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog modal-dialog-centered modal">
-                  <div class="modal-content border-0">
-                    <div class="modal-header bg-light p-3 bg-primary">
-                      <h5
-                        class="modal-title"
-                        id="exampleModalLabel"
-                        style="color: white"
-                      >
-                        {{ modalTitle }}
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close btn-close-white"
-                        @click="closeModal"
-                      ></button>
-                    </div>
-                    <div class="modal-body p-4">
-                      <div class="mb-4">
-                        <label class="form-label fw-medium mb-2">
-                          Ticket Type
-                          <span class="text-danger">*</span>
-                        </label>
-                        <div class="input-group">
-                          <span class="input-group-text bg-light">
-                            <i class="ri-user-3-line"></i>
-                          </span>
-                          <input
-                            type="text"
-                            class="form-control"
-                            v-model="formData.ticket_type"
-                            placeholder="Enter Ticket Type"
-                            :disabled="modalMode === 'view'"
-                          />
-                        </div>
-                      </div>
-
-                      <div v-if="modalMode === 'edit'" class="mb-3">
-                        <label class="form-label fw-medium mb-2">
-                          <i class="ri-leaf-line me-1"></i>
-                          Status
-                        </label>
-                        <div>
-                          <div class="form-check form-check-inline">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              v-model="formData.status"
-                              value="active"
-                              id="active"
-                            />
-                            <label class="form-check-label" for="active">
-                              <i
-                                class="ri-checkbox-circle-line me-1 text-success"
-                              ></i>
-                              Active
-                            </label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              v-model="formData.status"
-                              value="inactive"
-                              id="inactive"
-                            />
-                            <label class="form-check-label" for="inactive">
-                              <i
-                                class="ri-close-circle-line me-1 text-danger"
-                              ></i>
-                              Inactive
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-light"
-                        @click="closeModal"
-                      >
-                        <i class="ri-close-line me-1"></i>
-                        Cancel
-                      </button>
-                      <button
-                        v-if="modalMode !== 'view'"
-                        type="button"
-                        class="btn btn-primary"
-                        @click="submitForm"
-                        :disabled="loading"
-                      >
-                        <i class="ri-save-line me-1"></i>
-                        <span
-                          v-if="loading"
-                          class="spinner-border spinner-border-sm me-1"
-                        ></span>
-                        {{
-                          modalMode === "add" ? "Save Record" : "Update Record"
-                        }}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -547,10 +547,9 @@ export default {
           confirmButtonText: "OK",
         });
 
-      $("#modalTickettype").modal("show");
-       
-        this.formData.ticket_type = "",
-        this.getDataTickettype();
+        $("#modalTickettype").modal("show");
+
+        (this.formData.ticket_type = ""), this.getDataTickettype();
       } catch (error) {
         if (error.response?.status === 409) {
           this.showError("This Ticket Type is already exists");

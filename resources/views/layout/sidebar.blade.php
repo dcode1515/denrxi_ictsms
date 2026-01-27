@@ -61,7 +61,10 @@
                                      <li class="nav-item">
                                         <a href="{{route('ticket.type')}}" class="nav-link" data-key="t-chat"> Ticket Type </a>
                                     </li>
-                                    
+                                     <li class="nav-item">
+                                        <a href="{{route('ticket.category')}}" class="nav-link" data-key="t-chat"> Ticket Category </a>
+                                    </li>
+
                                 </ul>
                             </div>
                         </li>
