@@ -29,6 +29,7 @@ Vue.component('Register', require('./components/Auth/Register.vue').default);
 Vue.component('Usermanagement', require('./components/Admin/Usermanagement.vue').default);
 Vue.component('Profile', require('./components/Auth/Profile.vue').default);
 Vue.component('Ticketcategory', require('./components/Admin/Ticketcategory.vue').default);
+Vue.component('Ticketrequest', require('./components/Helpdesk/Ticketrequest.vue').default);
 
 
 

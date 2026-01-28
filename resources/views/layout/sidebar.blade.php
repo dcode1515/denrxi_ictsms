@@ -117,7 +117,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="apps-chat.html">
+                            <a class="nav-link menu-link" href="{{route('ticket')}}">
                                 <i class="ri-headphone-line"></i> <span data-key="t-chat">Ticket Request</span>
                             </a>
                         </li>
