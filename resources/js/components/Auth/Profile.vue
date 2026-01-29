@@ -894,8 +894,6 @@ export default {
       // Step 4: Show loading state
       this.updating = true;
 
-      
-
       try {
         const formData = new FormData();
         Object.keys(this.password_form).forEach((key) => {

@@ -9,6 +9,7 @@ use App\Models\HeadOffice;
 use App\Models\Office;
 use App\Models\Ticket;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 
 class TicketController extends Controller
@@ -110,6 +111,30 @@ class TicketController extends Controller
             $request->middle_initial,
             $request->lastname
         );
+
+        if ($request->hasFile('attachment')) {
+                            $file = $request->file('attachment');
+                            $ext = $file->extension();
+                            $now = Carbon::now();
+                            $name = str_replace(' ', '_', strtoupper($ticket->firstname . '_' . $ticket->middle_initial . '_' . $ticket->lastname));
+                            $contact = $ticket->helpdesk_no;
+                            $fileName = $now->year . '-' . $name . '-' . $contact . '.' . $ext;
+
+                            // Ensure the directory exists
+                            $directory = public_path('attachment/ticket/' . $ticket->helpdesk_no);
+                            if (!file_exists($directory)) {
+                                mkdir($directory, 0777, true);
+                            }
+
+                            // Delete old photo if exists
+                            if ($ticket->attachment && file_exists($directory . '/' . $ticket->attachment)) {
+                                unlink($directory . '/' . $ticket->attachment);
+                            }
+
+                            // Move the file to the desired location
+                            $file->move($directory, $fileName);
+                            $ticket->attachment = $fileName;
+                        }
 
         
         $ticket->save();

@@ -29,6 +29,8 @@ class Ticket extends Model
         'office_id',
         'issue_concern',
         'attachment',
+        'date_acted',
+        'resolution',
         'token',
         'status',
         'created_at',
@@ -66,6 +68,10 @@ class Ticket extends Model
     public function headOffice()
     {
         return $this->belongsTo(HeadOffice::class, 'head_office_id');
+    }
+     public function technician()
+    {
+        return $this->belongsTo(User::class, 'receive_technician_id');
     }
       
 }

@@ -84,15 +84,10 @@ Route::post('/api/update/profile/{id}', [App\Http\Controllers\Auth\AuthControlle
 Route::post('/api/update/user/credential/{id}', [App\Http\Controllers\Auth\AuthController::class, 'update_user_credentials']);
 Route::get('/ticket', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'ticket'])->name('ticket');
 Route::get('/api/get/all/ticket/request', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'getDataAllRequest']);
-// Ticket Types
-Route::get('/ticket-types', function () {
-    return \App\Models\TicketType::select('id','ticket_type')->get();
-});
+Route::post('/api/get/data/receive/{id}', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'receive_tickets']);
+Route::post('/api/get/update/ticket/request/{id}', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'update_status_tickets']);
+Route::get('/api/get/all/resolved/ticket', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'getDataAllResolvedTicket']);
 
-// Offices
-Route::get('/offices', function () {
-    return \App\Models\Office::select('id','office')->get();
-});
 
 
 /*End Technician  Routes*/
