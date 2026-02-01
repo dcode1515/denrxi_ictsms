@@ -19,6 +19,10 @@ class TicketController extends Controller
     public function ticket(){
         return view('ticket.ticket');
     }
+     public function ticket_status(){
+        return view('ticket.ticket_status');
+    }
+    
     public function TicketType()
     {
         $tickettypes = TicketType::orderBy('created_at', 'asc')

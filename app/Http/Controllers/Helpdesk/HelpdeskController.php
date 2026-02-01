@@ -8,6 +8,11 @@ use App\Models\Ticket;
 use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator; // Correct import for Laravel Validator
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReceiveTicketNotif;
+use App\Mail\UpdateTicketNotif;
+use PDF;
+
 
 class HelpdeskController extends Controller
 {
@@ -105,6 +110,18 @@ class HelpdeskController extends Controller
         $ticket->receive_technician_id = Auth::id();
         $ticket->save();
 
+        $ticket_request = trim(
+            $ticket->firstname . ' ' .
+            ($ticket->middle_initial ? $ticket->middle_initial . '. ' : '') .
+            $ticket->lastname
+        );
+
+         
+
+            if ($ticket && $ticket->email) {
+                Mail::to($ticket->email)->send(new ReceiveTicketNotif($ticket, $ticket_request));
+            }
+
         // Get current user info
         $currentUser = Auth::user();
 
@@ -181,6 +198,17 @@ public function update_status_tickets(Request $request,$id) {
       
         $ticket->save();
 
+        $ticket_request = trim(
+            $ticket->firstname . ' ' .
+            ($ticket->middle_initial ? $ticket->middle_initial . '. ' : '') .
+            $ticket->lastname
+        );
+
+        if ($ticket && $ticket->email) {
+                Mail::to($ticket->email)->send(new UpdateTicketNotif($ticket, $ticket_request));
+        }
+
+
         // Get current user info
         $currentUser = Auth::user();
 
@@ -245,4 +273,27 @@ public function update_status_tickets(Request $request,$id) {
                 'data' => $resolveds
             ]);
 }
+    public function print_forms($id){
+
+      // Validate that $id is numeric
+            if (!is_numeric($id)) {
+                return abort(400, 'Invalid ticket ID.');
+            }
+
+            // Attempt to find ticket with relationships
+            $ticket = Ticket::with(['ticketType', 'ticketCategory', 'technician', 'office'])->find($id);
+
+            // If ticket not found, abort with 404
+            if (!$ticket) {
+                return abort(404, 'Ticket not found.');
+            }
+
+            // Generate PDF using folio size
+            $pdf = PDF::loadView('helpdesk.print_form', compact('ticket'))
+                    ->setPaper([0, 0, 612, 936], 'portrait'); // Folio: 8.5 x 13 inch
+
+            // Stream PDF to browser
+            return $pdf->stream('ticket_' . $ticket->helpdesk_no . '.pdf');
+        
+    }
 }

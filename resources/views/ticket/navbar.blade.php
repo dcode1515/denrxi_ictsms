@@ -60,7 +60,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-enhanced nav-status" href="#" data-bs-toggle="modal" data-bs-target="#checkStatusModal">
+                    <!-- <a class="nav-link nav-link-enhanced nav-status" href="{{route('ticket.status')}}" data-bs-toggle="modal" data-bs-target="#checkStatusModal"> -->
+                    <a class="nav-link nav-link-enhanced nav-status" href="{{route('ticket.status')}}">
                         <div class="nav-icon">
                             <i class="fas fa-search"></i>
                         </div>
