@@ -334,7 +334,7 @@ public function getDataAllUnResolvedTicket(Request $request){
             }
 
             // Attempt to find ticket with relationships
-            $ticket = Ticket::with(['ticketType', 'ticketCategory', 'technician', 'office'])->find($id);
+            $ticket = Ticket::with(['ticketType', 'ticketCategory', 'technician', 'office','rate'])->find($id);
 
             // If ticket not found, abort with 404
             if (!$ticket) {

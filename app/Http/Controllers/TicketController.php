@@ -192,7 +192,8 @@ class TicketController extends Controller
             'ticketCategory',
             'office',
             'headOffice',
-            'technician'
+            'technician',
+            'rate'
         ]);
 
         // Filter by email if provided

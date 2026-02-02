@@ -18,12 +18,8 @@
                   </label>
                   <div class="form-group-icon">
                     <i class="fas fa-envelope input-icon"></i>
-                    <input
-                      type="email"
-                      class="form-control form-control-icon"
-                      placeholder="Enter your email address"
-                      v-model.trim="formData.email"
-                    />
+                    <input type="email" class="form-control form-control-icon" placeholder="Enter your email address"
+                      v-model.trim="formData.email" />
                   </div>
                 </div>
 
@@ -34,12 +30,8 @@
                   </label>
                   <div class="form-group-icon">
                     <i class="fas fa-ticket-alt input-icon"></i>
-                    <input
-                      type="text"
-                      class="form-control form-control-icon"
-                      placeholder="DENR-XI-2023-00123"
-                      v-model.trim="formData.ticket_number"
-                    />
+                    <input type="text" class="form-control form-control-icon" placeholder="DENR-XI-2023-00123"
+                      v-model.trim="formData.ticket_number" />
                   </div>
                 </div>
               </div>
@@ -57,19 +49,13 @@
               </div>
 
               <!-- Buttons -->
-              <div
-                class="d-grid gap-2 d-md-flex justify-content-md-center mt-4"
-              >
+              <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
                 <button class="btn btn-denr" type="submit" :disabled="loading">
                   <i class="fas fa-search me-2"></i>
                   {{ loading ? "Searching..." : "Search Ticket Status" }}
                 </button>
 
-                <button
-                  class="btn btn-outline-denr"
-                  type="button"
-                  @click="clearForm"
-                >
+                <button class="btn btn-outline-denr" type="button" @click="clearForm">
                   <i class="fas fa-eraser me-2"></i> Clear Form
                 </button>
               </div>
@@ -88,9 +74,7 @@
         <div v-if="displayMode && ticket" class="mt-4">
           <div class="card shadow-sm border-0">
             <!-- Header -->
-            <div
-              class="card-header d-flex justify-content-between align-items-center bg-light"
-            >
+            <div class="card-header d-flex justify-content-between align-items-center bg-light">
               <div>
                 <h5 class="mb-0 fw-bold">
                   <i class="fas fa-ticket-alt me-2 text-danger"></i>
@@ -101,10 +85,7 @@
                 </small>
               </div>
 
-              <span
-                class="badge px-3 py-2"
-                :class="statusBadgeClass(getStatus())"
-              >
+              <span class="badge px-3 py-2" :class="statusBadgeClass(getStatus())">
                 {{ getStatus() }}
               </span>
             </div>
@@ -197,104 +178,80 @@
                     </p>
                   </div>
                 </div>
-            
-                <div class="col-12">
-                  <div class="info-box bg-light">
-                    <h6 class="fw-bold mb-3">
-                      <i class="fas fa-tools me-2"></i>Feedback Technician
-                    </h6>
 
-                    <!-- Rating -->
-                    <div class="mb-3">
-                      <label class="form-label fw-semibold"
-                        >Service Rating</label
-                      >
+                <template v-if="ticket.rate == null">
+                  <!-- FEEDBACK FORM -->
+                  <div class="col-12">
+                    <div class="info-box bg-light">
+                      <h6 class="fw-bold mb-3">
+                        <i class="fas fa-tools me-2"></i>Feedback Technician
+                      </h6>
 
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="techFeedback"
-                          value="E"
-                          v-model="feedback.rating"
-                          id="ratingExcellent"
-                        />
-                        <label class="form-check-label" for="ratingExcellent">
-                          ⭐ Excellent
-                        </label>
+                      <!-- Rating -->
+                      <div class="mb-3">
+                        <label class="form-label fw-semibold">Service Rating</label>
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" value="E" v-model="feedback.rating" />
+                          <label class="form-check-label">⭐ Excellent</label>
+                        </div>
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" value="VS" v-model="feedback.rating" />
+                          <label class="form-check-label">👍 Very Satisfactory</label>
+                        </div>
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" value="S" v-model="feedback.rating" />
+                          <label class="form-check-label">🙂 Satisfactory</label>
+                        </div>
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" value="BS" v-model="feedback.rating" />
+                          <label class="form-check-label">👎 Below Satisfactory</label>
+                        </div>
                       </div>
 
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="techFeedback"
-                          value="VS"
-                          v-model="feedback.rating"
-                          id="ratingVerySatisfactory"
-                        />
-                        <label
-                          class="form-check-label"
-                          for="ratingVerySatisfactory"
-                        >
-                          👍 Very Satisfactory
-                        </label>
+                      <!-- Remarks -->
+                      <div class="mb-3">
+                        <label class="form-label fw-semibold">Remarks</label>
+                        <textarea class="form-control" rows="3" v-model="feedback.remarks"></textarea>
                       </div>
 
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="techFeedback"
-                          value="S"
-                          v-model="feedback.rating"
-                          id="ratingSatisfactory"
-                        />
-                        <label
-                          class="form-check-label"
-                          for="ratingSatisfactory"
-                        >
-                          🙂 Satisfactory
-                        </label>
-                      </div>
-
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="techFeedback"
-                          value="BS"
-                          v-model="feedback.rating"
-                          id="ratingBelowSatisfactory"
-                        />
-                        <label
-                          class="form-check-label"
-                          for="ratingBelowSatisfactory"
-                        >
-                          👎 Below Satisfactory
-                        </label>
-                      </div>
+                      <button class="btn btn-info" @click="submitFeedback">
+                        Submit Feedback
+                      </button>
                     </div>
-
-                    <!-- Remarks -->
-                    <div class="mb-3">
-                      <label class="form-label fw-semibold">Remarks</label>
-                      <textarea
-                        class="form-control"
-                        rows="3"
-                        placeholder="Write your feedback here..."
-                        v-model="feedback.remarks"
-                      ></textarea>
-                    </div>
-                    <button
-                      type="button"
-                      class="btn btn-info"
-                      @click="submitFeedback"
-                    >
-                      Submit Feedback
-                    </button>
                   </div>
-                </div>
+                </template>
+
+                <template v-else>
+                  <!-- DISPLAY SAVED DATA -->
+                  <div class="col-12">
+                    <div class="info-box bg-light">
+                      <h6 class="fw-bold mb-3">
+                        <i class="fas fa-tools me-2"></i>Technician Feedback
+                      </h6>
+
+                      <p>
+                         <template v-if="ticket.rate && ticket.rate.rate === 'E'">⭐ Excellent</template>
+                          <template v-else-if="ticket.rate && ticket.rate.rate === 'VS'">⭐ Very
+                            Satisfactory</template>
+                          <template v-else-if="ticket.rate && ticket.rate.rate === 'S'">⭐ Satisfactory</template>
+                          <template v-else-if="ticket.rate && ticket.rate.rate === 'BS'">⭐ Below
+                            Satisfactory</template>
+                          <template v-else>No Data Encoded</template>
+                      </p>
+
+                      <p>
+                        <strong>Remarks:</strong><br />
+                        {{ ticket.rate.feedback_remarks || "No remarks provided" }}
+                      </p>
+                    </div>
+                  </div>
+                </template>
+
+
               </div>
             </div>
           </div>
@@ -563,8 +520,8 @@ export default {
     getCreatedDate() {
       return this.formatDate(
         this.ticket.created_at ||
-          this.ticket.date_created ||
-          this.ticket.created_date
+        this.ticket.date_created ||
+        this.ticket.created_date
       );
     },
 
@@ -625,6 +582,7 @@ export default {
 .form-group-icon {
   position: relative;
 }
+
 .input-icon {
   position: absolute;
   top: 50%;
@@ -632,9 +590,11 @@ export default {
   transform: translateY(-50%);
   color: #999;
 }
+
 .form-control-icon {
   padding-left: 40px;
 }
+
 .info-box {
   border: 1px solid #e5e5e5;
   border-radius: 8px;
@@ -643,42 +603,52 @@ export default {
   transition: all 0.3s ease;
   height: 100%;
 }
+
 .info-box:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .card-header h4 {
   font-weight: 600;
 }
+
 .badge {
   font-size: 0.9rem;
   font-weight: 500;
 }
+
 .section-title {
   color: #2c3e50;
   font-weight: 600;
 }
+
 .btn-denr {
   background-color: #228b22;
   border-color: #228b22;
   color: white;
 }
+
 .btn-denr:hover {
   background-color: #1e7a1e;
   border-color: #1e7a1e;
 }
+
 .btn-outline-denr {
   color: #228b22;
   border-color: #228b22;
 }
+
 .btn-outline-denr:hover {
   background-color: #228b22;
   color: white;
 }
+
 .alert-light {
   background-color: #f8f9fa;
   border-left: 4px solid #6c757d;
 }
+
 pre {
   font-size: 12px;
   background: #f8f9fa;

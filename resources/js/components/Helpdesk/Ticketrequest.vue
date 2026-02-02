@@ -27,86 +27,43 @@
 
         <div class="card-body border-bottom">
           <div class="card-header bg-denr-gradient border-bottom-0">
-            <ul
-              class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0"
-              role="tablist"
-            >
+            <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
               <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  data-bs-toggle="tab"
-                  href="#allTickets"
-                  role="tab"
-                  aria-controls="allTickets"
-                  aria-selected="true"
-                >
+                <a class="nav-link active" data-bs-toggle="tab" href="#allTickets" role="tab" aria-controls="allTickets"
+                  aria-selected="true">
                   <i class="ri-list-check-2 me-2"></i>
                   <span class="d-none d-md-inline">All Request Tickets</span>
-                  <span
-                    class="badge bg-primary rounded-pill ms-1 d-none d-md-inline"
-                    >24</span
-                  >
+                  <span class="badge bg-primary rounded-pill ms-1 d-none d-md-inline">24</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  data-bs-toggle="tab"
-                  href="#resolvedTickets"
-                  role="tab"
-                  aria-controls="resolvedTickets"
-                  aria-selected="false"
-                >
+                <a class="nav-link" data-bs-toggle="tab" href="#resolvedTickets" role="tab"
+                  aria-controls="resolvedTickets" aria-selected="false">
                   <i class="ri-checkbox-circle-line me-2 text-success"></i>
                   <span class="d-none d-md-inline">Resolved Tickets</span>
-                  <span
-                    class="badge bg-success rounded-pill ms-1 d-none d-md-inline"
-                    >18</span
-                  >
+                  <span class="badge bg-success rounded-pill ms-1 d-none d-md-inline">18</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  data-bs-toggle="tab"
-                  href="#unresolvedTickets"
-                  role="tab"
-                  aria-controls="unresolvedTickets"
-                  aria-selected="false"
-                >
+                <a class="nav-link" data-bs-toggle="tab" href="#unresolvedTickets" role="tab"
+                  aria-controls="unresolvedTickets" aria-selected="false">
                   <i class="ri-alarm-warning-line me-2 text-warning"></i>
                   <span class="d-none d-md-inline">Unresolved Tickets</span>
-                  <span
-                    class="badge bg-warning rounded-pill ms-1 d-none d-md-inline"
-                    >4</span
-                  >
+                  <span class="badge bg-warning rounded-pill ms-1 d-none d-md-inline">4</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  data-bs-toggle="tab"
-                  href="#feedbackTickets"
-                  role="tab"
-                  aria-controls="feedbackTickets"
-                  aria-selected="false"
-                >
+                <a class="nav-link" data-bs-toggle="tab" href="#feedbackTickets" role="tab"
+                  aria-controls="feedbackTickets" aria-selected="false">
                   <i class="ri-chat-feedback-line me-2 text-info"></i>
                   <span class="d-none d-md-inline">Feedback Tickets</span>
-                  <span
-                    class="badge bg-info rounded-pill ms-1 d-none d-md-inline"
-                    >2</span
-                  >
+                  <span class="badge bg-info rounded-pill ms-1 d-none d-md-inline">2</span>
                 </a>
               </li>
             </ul>
 
             <div class="tab-content pt-4">
-              <div
-                class="tab-pane fade show active"
-                id="allTickets"
-                role="tabpanel"
-              >
+              <div class="tab-pane fade show active" id="allTickets" role="tabpanel">
                 <br />
                 <h5>All Ticket Request</h5>
                 <br />
@@ -118,11 +75,7 @@
                         <span class="input-group-text bg-light">
                           <i class="ri-list-settings-line"></i>
                         </span>
-                        <select
-                          class="form-control form-control"
-                          v-model="perPage"
-                          @change="getDataAllRequest"
-                        >
+                        <select class="form-control form-control" v-model="perPage" @change="getDataAllRequest">
                           <option value="5">5 per page</option>
                           <option value="10">10 per page</option>
                           <option value="20">20 per page</option>
@@ -136,31 +89,20 @@
                         <span class="input-group-text bg-light">
                           <i class="ri-search-line"></i>
                         </span>
-                        <input
-                          v-model="searchQuery"
-                          @input="getDataAllRequest"
-                          type="text"
-                          class="form-control"
-                          placeholder="Search Anything..."
-                        />
+                        <input v-model="searchQuery" @input="getDataAllRequest" type="text" class="form-control"
+                          placeholder="Search Anything..." />
                       </div>
                     </div>
                     <div class="col-md-2">
                       <div class="input-group input-group">
-                        <button
-                          type="button"
-                          class="btn btn-info"
-                          @click="refreshData"
-                        >
+                        <button type="button" class="btn btn-info" @click="refreshData">
                           <i class="ri-refresh-line"></i> Refresh Data
                         </button>
                       </div>
                     </div>
                   </div>
-                  <table
-                    class="table table-bordered table-hover table-striped align-middle mb-0"
-                    style="font-size: 0.875rem"
-                  >
+                  <table class="table table-bordered table-hover table-striped align-middle mb-0"
+                    style="font-size: 0.875rem">
                     <thead class="table-light">
                       <tr>
                         <th width="50" class="text-center">#</th>
@@ -193,10 +135,7 @@
                       </tr>
                     </thead>
                     <tbody v-if="tickets.data && tickets.data.length > 0">
-                      <tr
-                        v-for="(ticket, index) in tickets.data"
-                        :key="ticket.id"
-                      >
+                      <tr v-for="(ticket, index) in tickets.data" :key="ticket.id">
                         <td class="text-center fw-bold">
                           {{
                             (tickets.current_page - 1) * tickets.per_page +
@@ -240,10 +179,7 @@
                         </td>
 
                         <td class="text-center">
-                          <span
-                            class="badge"
-                            :class="statusClass(ticket.status)"
-                          >
+                          <span class="badge" :class="statusClass(ticket.status)">
                             {{ ticket.status }}
                           </span>
                         </td>
@@ -251,40 +187,27 @@
                           <div class="btn-group" role="group">
                             <!-- View Button -->
                             <!-- Replace the existing View button in your table: -->
-                            <button
-                              class="btn btn-sm btn-outline-primary"
-                              @click="viewTicket(ticket)"
-                              data-bs-toggle="modal"
-                              data-bs-target="#viewTicketModal"
-                            >
+                            <button class="btn btn-sm btn-outline-primary" @click="viewTicket(ticket)"
+                              data-bs-toggle="modal" data-bs-target="#viewTicketModal">
                               <i class="ri-eye-line"></i>
                             </button>
 
                             <!-- Receive Button -->
                             <template v-if="ticket.status === 'Pending'">
-                              <button
-                                class="btn btn-sm btn-outline-success"
-                                @click="receiveTicket(ticket)"
-                              >
+                              <button class="btn btn-sm btn-outline-success" @click="receiveTicket(ticket)">
                                 <i class="ri-check-line"></i>
                               </button>
                             </template>
+
                             <template v-if="ticket.status === 'In-Progress'">
-                              <button
-                                class="btn btn-sm btn-outline-success"
-                                @click="updateTicket(ticket)"
-                                data-bs-toggle="modal"
-                                data-bs-target="#updateTicketModal"
-                              >
+                              <button class="btn btn-sm btn-outline-success" @click="updateTicket(ticket)"
+                                data-bs-toggle="modal" data-bs-target="#updateTicketModal">
                                 <i class="ri-check-line"></i>
                               </button>
                             </template>
 
                             <!-- Cancel Button -->
-                            <button
-                              class="btn btn-sm btn-outline-danger"
-                              @click="cancelItem(ticket)"
-                            >
+                            <button class="btn btn-sm btn-outline-danger" @click="cancelItem(ticket)">
                               <i class="ri-close-line"></i>
                             </button>
                           </div>
@@ -296,41 +219,22 @@
                     <tbody v-else>
                       <tr>
                         <td colspan="11" class="text-center py-5">
-                          <i
-                            class="ri-file-text-line fs-3 text-muted d-block mb-2"
-                          ></i>
-                          <span class="text-muted"
-                            >No ticket requests found.</span
-                          >
+                          <i class="ri-file-text-line fs-3 text-muted d-block mb-2"></i>
+                          <span class="text-muted">No ticket requests found.</span>
                         </td>
                       </tr>
                     </tbody>
                   </table>
 
-                  <div
-                    class="modal fade zoomIn"
-                    id="updateTicketModal"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
+                  <div class="modal fade zoomIn" id="updateTicketModal" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                       <div class="modal-content">
-                        <div
-                          class="modal-header p-3"
-                          style="background-color: #198754"
-                        >
-                          <h5
-                            class="modal-title text-white"
-                            id="exampleModalLabel"
-                          >
+                        <div class="modal-header p-3" style="background-color: #198754">
+                          <h5 class="modal-title text-white" id="exampleModalLabel">
                             Update Ticket Request
                           </h5>
-                          <button
-                            type="button"
-                            class="btn-close btn-close-white"
-                            @click="closeModal"
-                          ></button>
+                          <button type="button" class="btn-close btn-close-white" @click="closeModal"></button>
                         </div>
 
                         <div class="modal-body p-0">
@@ -338,29 +242,15 @@
                             <div class="row align-items-center">
                               <div class="col-md-6">
                                 <div class="d-flex align-items-center">
-                                  <div
-                                    class="bg-white rounded p-2 me-3 shadow-sm"
-                                    style="border: 2px solid #006747"
-                                  >
-                                    <i
-                                      class="ri-user-settings-line fs-4"
-                                      style="color: #006747"
-                                    ></i>
+                                  <div class="bg-white rounded p-2 me-3 shadow-sm" style="border: 2px solid #006747">
+                                    <i class="ri-user-settings-line fs-4" style="color: #006747"></i>
                                   </div>
                                   <div>
-                                    <small class="text-muted d-block"
-                                      >TICKET NUMBER</small
-                                    >
-                                    <h4
-                                      class="mb-0 fw-bold"
-                                      style="color: #006747"
-                                    >
+                                    <small class="text-muted d-block">TICKET NUMBER</small>
+                                    <h4 class="mb-0 fw-bold" style="color: #006747">
                                       {{ selectedUpdatedTicket.helpdesk_no }}
                                     </h4>
-                                    <h4
-                                      class="mb-0 fw-bold"
-                                      style="color: #006747"
-                                    >
+                                    <h4 class="mb-0 fw-bold" style="color: #006747">
                                       {{ selectedUpdatedTicket.firstname }}
                                       {{
                                         selectedUpdatedTicket.middle_initial
@@ -373,13 +263,9 @@
                                 </div>
                               </div>
                               <div class="col-md-6">
-                                <div
-                                  class="d-flex align-items-center justify-content-end"
-                                >
+                                <div class="d-flex align-items-center justify-content-end">
                                   <div class="text-end">
-                                    <small class="text-muted d-block"
-                                      >Date Received</small
-                                    >
+                                    <small class="text-muted d-block">Date Received</small>
                                     <span class="fw-bold">{{
                                       formatDate(
                                         selectedUpdatedTicket.date_receive
@@ -401,43 +287,31 @@
                                     Technician
                                   </label>
                                   <div class="d-flex align-items-center">
-                                    <div
-                                      class="bg-light rounded p-2 me-3 shadow-sm"
-                                      style="border: 1px solid #dee2e6"
-                                    >
-                                      <img
-                                        v-if="
-                                          selectedUpdatedTicket.technician &&
-                                          selectedUpdatedTicket.technician
-                                            .firstname &&
-                                          selectedUpdatedTicket.technician
-                                            .lastname &&
-                                          selectedUpdatedTicket.technician.photo
-                                        "
-                                        :src="`/denrxi_ictsms/public/user/profile/${selectedUpdatedTicket.technician.firstname}_${selectedUpdatedTicket.technician.lastname}/${selectedUpdatedTicket.technician.photo}`"
+                                    <div class="bg-light rounded p-2 me-3 shadow-sm" style="border: 1px solid #dee2e6">
+                                      <img v-if="
+                                        selectedUpdatedTicket.technician &&
+                                        selectedUpdatedTicket.technician
+                                          .firstname &&
+                                        selectedUpdatedTicket.technician
+                                          .lastname &&
+                                        selectedUpdatedTicket.technician.photo
+                                      " :src="`/denrxi_ictsms/public/user/profile/${selectedUpdatedTicket.technician.firstname}_${selectedUpdatedTicket.technician.lastname}/${selectedUpdatedTicket.technician.photo}`"
                                         class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow"
-                                        alt="user-profile-image"
-                                      />
+                                        alt="user-profile-image" />
                                       <!-- Add a fallback when conditions aren't met -->
-                                      <img
-                                        v-else
-                                        :src="`https://ui-avatars.com/api/?name=${encodeURIComponent(
-                                          getTechnicianFullName(
-                                            selectedUpdatedTicket.technician ||
-                                              {}
-                                          )
-                                        )}&background=random&color=fff`"
+                                      <img v-else :src="`https://ui-avatars.com/api/?name=${encodeURIComponent(
+                                        getTechnicianFullName(
+                                          selectedUpdatedTicket.technician ||
+                                          {}
+                                        )
+                                      )}&background=random&color=fff`"
                                         class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow"
-                                        alt="user-profile-image"
-                                      />
+                                        alt="user-profile-image" />
                                     </div>
 
                                     <!-- Technician name display -->
                                     <div>
-                                      <h6
-                                        class="mb-1"
-                                        v-if="selectedUpdatedTicket.technician"
-                                      >
+                                      <h6 class="mb-1" v-if="selectedUpdatedTicket.technician">
                                         {{
                                           getTechnicianFullName(
                                             selectedUpdatedTicket.technician
@@ -447,10 +321,7 @@
                                       <h6 class="mb-1 text-muted" v-else>
                                         No Technician Assigned
                                       </h6>
-                                      <small
-                                        class="text-muted"
-                                        v-if="selectedUpdatedTicket.technician"
-                                      >
+                                      <small class="text-muted" v-if="selectedUpdatedTicket.technician">
                                         Technician
                                       </small>
                                     </div>
@@ -459,13 +330,8 @@
                               </div>
 
                               <div class="mb-3">
-                                <label class="small text-muted mb-2 d-block"
-                                  >Select New Status</label
-                                >
-                                <select
-                                  class="form-control"
-                                  v-model="formData.status"
-                                >
+                                <label class="small text-muted mb-2 d-block">Select New Status</label>
+                                <select class="form-control" v-model="formData.status">
                                   <option value="">-- Select Status --</option>
                                   <option value="Resolved">✅ Resolved</option>
                                   <option value="Unresolved">
@@ -487,16 +353,10 @@
                                 <i class="ri-chat-3-line me-1"></i>Resolution
                                 Notes / Remarks
                               </label>
-                              <textarea
-                                v-model="formData.resolution"
-                                class="form-control"
-                                rows="4"
+                              <textarea v-model="formData.resolution" class="form-control" rows="4"
                                 placeholder="Enter resolution details, steps taken, or any important remarks..."
-                                style="resize: none"
-                              ></textarea>
-                              <div
-                                class="d-flex justify-content-between align-items-center mt-2"
-                              >
+                                style="resize: none"></textarea>
+                              <div class="d-flex justify-content-between align-items-center mt-2">
                                 <small class="text-muted">
                                   <i class="ri-information-line me-1"></i>
                                   Add detailed notes about the resolution or
@@ -507,22 +367,13 @@
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-light"
-                            @click="closeModal"
-                          >
+                          <button type="button" class="btn btn-light" @click="closeModal">
                             <i class="ri-close-line me-1"></i>
                             Cancel
                           </button>
-                          <button
-                            type="button"
-                            class="btn text-white"
-                            style="background-color: #006747"
-                            @click="
-                              updateTicketRequest(selectedUpdatedTicket.id)
-                            "
-                          >
+                          <button type="button" class="btn text-white" style="background-color: #006747" @click="
+                            updateTicketRequest(selectedUpdatedTicket.id)
+                            ">
                             <i class="ri-save-line me-1"></i>
                             Update Ticket Request
                           </button>
@@ -543,78 +394,42 @@
                       <div class="col-md-6">
                         <nav class="float-end">
                           <ul class="pagination pagination-sm mb-0">
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled: tickets.current_page === 1,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePage(1)"
-                                title="First"
-                              >
+                            <li class="page-item" :class="{
+                              disabled: tickets.current_page === 1,
+                            }">
+                              <button class="page-link" @click="changePage(1)" title="First">
                                 <i class="ri-skip-back-line"></i>
                               </button>
                             </li>
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled: tickets.current_page === 1,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePage(tickets.current_page - 1)"
-                                title="Previous"
-                              >
+                            <li class="page-item" :class="{
+                              disabled: tickets.current_page === 1,
+                            }">
+                              <button class="page-link" @click="changePage(tickets.current_page - 1)" title="Previous">
                                 <i class="ri-arrow-left-s-line"></i>
                               </button>
                             </li>
 
-                            <li
-                              v-for="page in pages"
-                              :key="page"
-                              class="page-item"
-                              :class="{
-                                active: page === tickets.current_page,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePage(page)"
-                              >
+                            <li v-for="page in pages" :key="page" class="page-item" :class="{
+                              active: page === tickets.current_page,
+                            }">
+                              <button class="page-link" @click="changePage(page)">
                                 {{ page }}
                               </button>
                             </li>
 
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled:
-                                  tickets.current_page === tickets.last_page,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePage(tickets.current_page + 1)"
-                                title="Next"
-                              >
+                            <li class="page-item" :class="{
+                              disabled:
+                                tickets.current_page === tickets.last_page,
+                            }">
+                              <button class="page-link" @click="changePage(tickets.current_page + 1)" title="Next">
                                 <i class="ri-arrow-right-s-line"></i>
                               </button>
                             </li>
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled:
-                                  tickets.current_page === tickets.last_page,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePage(tickets.last_page)"
-                                title="Last"
-                              >
+                            <li class="page-item" :class="{
+                              disabled:
+                                tickets.current_page === tickets.last_page,
+                            }">
+                              <button class="page-link" @click="changePage(tickets.last_page)" title="Last">
                                 <i class="ri-skip-forward-line"></i>
                               </button>
                             </li>
@@ -623,25 +438,15 @@
 
                         <!-- View Ticket Modal -->
 
-                        <div
-                          class="modal fade zoomIn"
-                          id="viewTicketModal"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true"
-                        >
-                          <div
-                            class="modal-dialog modal-lg modal-dialog-centered"
-                          >
+                        <div class="modal fade zoomIn" id="viewTicketModal" tabindex="-1"
+                          aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content border-0 shadow">
                               <!-- Modal Header -->
                               <div class="modal-header bg-primary text-white">
                                 <div class="d-flex align-items-center w-100">
                                   <div>
-                                    <h5
-                                      class="modal-title mb-0"
-                                      style="color: white"
-                                    >
+                                    <h5 class="modal-title mb-0" style="color: white">
                                       Ticket Details
                                     </h5>
                                     <p class="mb-0 small text-white-50">
@@ -650,12 +455,8 @@
                                     </p>
                                   </div>
                                 </div>
-                                <button
-                                  type="button"
-                                  class="btn-close btn-close-white"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                ></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
                               </div>
 
                               <!-- Modal Body -->
@@ -664,18 +465,12 @@
                                 <div class="border-bottom p-4">
                                   <div class="row">
                                     <div class="col-md-6">
-                                      <div
-                                        class="d-flex align-items-center mb-3"
-                                      >
+                                      <div class="d-flex align-items-center mb-3">
                                         <div class="bg-light rounded p-2 me-3">
-                                          <i
-                                            class="ri-ticket-line text-primary"
-                                          ></i>
+                                          <i class="ri-ticket-line text-primary"></i>
                                         </div>
                                         <div>
-                                          <small class="text-muted d-block"
-                                            >Ticket ID</small
-                                          >
+                                          <small class="text-muted d-block">Ticket ID</small>
                                           <span class="fw-bold fs-5">{{
                                             selectedTicket.helpdesk_no || "N/A"
                                           }}</span>
@@ -685,19 +480,15 @@
                                     <div class="col-md-6">
                                       <div class="d-flex align-items-center">
                                         <div class="bg-light rounded">
-                                          <i
-                                            class="ri-calendar-line text-primary"
-                                          ></i>
+                                          <i class="ri-calendar-line text-primary"></i>
                                         </div>
                                         <div>
-                                          <small class="text-muted d-block"
-                                            >Date Created</small
-                                          >
+                                          <small class="text-muted d-block">Date Created</small>
                                           <span class="fw-bold">{{
                                             selectedTicket.date_created
                                               ? formatDate(
-                                                  selectedTicket.date_created
-                                                )
+                                                selectedTicket.date_created
+                                              )
                                               : "N/A"
                                           }}</span>
                                         </div>
@@ -712,8 +503,7 @@
                                   <div class="card border-0 shadow-sm mb-4">
                                     <div class="card-header bg-light">
                                       <h6 class="mb-0">
-                                        <i class="ri-information-line me-2"></i
-                                        >Basic Information
+                                        <i class="ri-information-line me-2"></i>Basic Information
                                       </h6>
                                     </div>
                                     <div class="card-body">
@@ -721,18 +511,11 @@
                                         <!-- Requester Info -->
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-user-line me-1"></i
-                                            >Requester
+                                            <i class="ri-user-line me-1"></i>Requester
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-primary bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-user-3-line text-primary"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-primary bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-user-3-line text-primary"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -742,7 +525,7 @@
                                                 {{
                                                   selectedTicket.middle_initial
                                                     ? selectedTicket.middle_initial +
-                                                      "."
+                                                    "."
                                                     : ""
                                                 }}
                                                 {{
@@ -753,7 +536,7 @@
                                                 {{
                                                   selectedTicket.office
                                                     ? selectedTicket.office
-                                                        .office
+                                                      .office
                                                     : "N/A"
                                                 }}
                                               </small>
@@ -764,18 +547,11 @@
                                         <!-- Contact Info -->
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Contact Information
+                                            <i class="ri-phone-line me-1"></i>Contact Information
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -788,35 +564,22 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Subject
+                                            <i class="ri-phone-line me-1"></i>Subject
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
-                                              <p
-                                                class="mb-0 fw-bold"
-                                                v-if="
-                                                  selectedTicket.ticket_category
-                                                "
-                                              >
+                                              <p class="mb-0 fw-bold" v-if="
+                                                selectedTicket.ticket_category
+                                              ">
                                                 {{
                                                   selectedTicket.ticket_category
                                                     .ticket_category
                                                 }}
                                               </p>
-                                              <p
-                                                class="mb-0 fw-bold text-muted"
-                                                v-else
-                                              >
+                                              <p class="mb-0 fw-bold text-muted" v-else>
                                                 N/A
                                               </p>
                                             </div>
@@ -824,35 +587,22 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Category
+                                            <i class="ri-phone-line me-1"></i>Category
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
-                                              <p
-                                                class="mb-0 fw-bold"
-                                                v-if="
-                                                  selectedTicket.ticket_type
-                                                "
-                                              >
+                                              <p class="mb-0 fw-bold" v-if="
+                                                selectedTicket.ticket_type
+                                              ">
                                                 {{
                                                   selectedTicket.ticket_type
                                                     .ticket_type
                                                 }}
                                               </p>
-                                              <p
-                                                class="mb-0 fw-bold text-muted"
-                                                v-else
-                                              >
+                                              <p class="mb-0 fw-bold text-muted" v-else>
                                                 N/A
                                               </p>
                                             </div>
@@ -860,18 +610,11 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Status
+                                            <i class="ri-phone-line me-1"></i>Status
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -884,18 +627,11 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Issues/Concern
+                                            <i class="ri-phone-line me-1"></i>Issues/Concern
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -911,22 +647,15 @@
                                     </div>
                                   </div>
 
-                                  <div
-                                    class="card border-0 shadow-sm mb-4"
-                                    v-if="selectedTicket.description"
-                                  >
+                                  <div class="card border-0 shadow-sm mb-4" v-if="selectedTicket.description">
                                     <div class="card-header bg-light">
                                       <h6 class="mb-0">
-                                        <i class="ri-file-text-line me-2"></i
-                                        >Description
+                                        <i class="ri-file-text-line me-2"></i>Description
                                       </h6>
                                     </div>
                                     <div class="card-body">
                                       <div class="bg-light rounded p-3">
-                                        <p
-                                          class="mb-0"
-                                          style="white-space: pre-line"
-                                        >
+                                        <p class="mb-0" style="white-space: pre-line">
                                           {{ selectedTicket.description }}
                                         </p>
                                       </div>
@@ -934,38 +663,26 @@
                                   </div>
 
                                   <!-- Attachments Card -->
-                                  <div
-                                    class="card border-0 shadow-sm"
-                                    v-if="
-                                      selectedTicket.attachments &&
-                                      selectedTicket.attachments.length > 0
-                                    "
-                                  >
+                                  <div class="card border-0 shadow-sm" v-if="
+                                    selectedTicket.attachments &&
+                                    selectedTicket.attachments.length > 0
+                                  ">
                                     <div class="card-header bg-light">
                                       <h6 class="mb-0">
-                                        <i class="ri-attachment-line me-2"></i
-                                        >Attachments
+                                        <i class="ri-attachment-line me-2"></i>Attachments
                                       </h6>
                                     </div>
                                     <div class="card-body">
                                       <div class="row g-2">
-                                        <div
-                                          class="col-auto"
-                                          v-for="(
-                                            attachment, index
-                                          ) in selectedTicket.attachments"
-                                          :key="index"
-                                        >
-                                          <div
-                                            class="border rounded p-2 d-flex align-items-center"
-                                          >
+                                        <div class="col-auto" v-for="(
+attachment, index
+                                          ) in selectedTicket.attachments" :key="index">
+                                          <div class="border rounded p-2 d-flex align-items-center">
                                             <i class="ri-file-line me-2"></i>
                                             <span class="small">{{
                                               attachment.name
                                             }}</span>
-                                            <button
-                                              class="btn btn-sm btn-link ms-2"
-                                            >
+                                            <button class="btn btn-sm btn-link ms-2">
                                               <i class="ri-download-line"></i>
                                             </button>
                                           </div>
@@ -975,10 +692,7 @@
                                   </div>
 
                                   <!-- No Data Message -->
-                                  <div
-                                    v-if="!selectedTicket.id"
-                                    class="text-center py-5"
-                                  >
+                                  <div v-if="!selectedTicket.id" class="text-center py-5">
                                     <div class="text-muted mb-3">
                                       <i class="ri-inbox-line fs-1"></i>
                                     </div>
@@ -989,9 +703,7 @@
 
                               <!-- Modal Footer -->
                               <div class="modal-footer border-top">
-                                <div
-                                  class="w-100 d-flex justify-content-between align-items-center"
-                                >
+                                <div class="w-100 d-flex justify-content-between align-items-center">
                                   <div>
                                     <small class="text-muted">
                                       <i class="ri-time-line me-1"></i>
@@ -999,18 +711,14 @@
                                       {{
                                         selectedTicket.updated_at
                                           ? formatDate(
-                                              selectedTicket.updated_at
-                                            )
+                                            selectedTicket.updated_at
+                                          )
                                           : "N/A"
                                       }}
                                     </small>
                                   </div>
                                   <div>
-                                    <button
-                                      type="button"
-                                      class="btn btn-secondary me-2"
-                                      data-bs-dismiss="modal"
-                                    >
+                                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">
                                       <i class="ri-close-line me-1"></i>Close
                                     </button>
                                   </div>
@@ -1037,11 +745,7 @@
                         <span class="input-group-text bg-light">
                           <i class="ri-list-settings-line"></i>
                         </span>
-                        <select
-                          class="form-control form-control"
-                          v-model="perPage"
-                          @change="getDataAllResolved"
-                        >
+                        <select class="form-control form-control" v-model="perPage" @change="getDataAllResolved">
                           <option value="5">5 per page</option>
                           <option value="10">10 per page</option>
                           <option value="20">20 per page</option>
@@ -1055,31 +759,20 @@
                         <span class="input-group-text bg-light">
                           <i class="ri-search-line"></i>
                         </span>
-                        <input
-                          v-model="searchQuery"
-                          @input="getDataAllResolved"
-                          type="text"
-                          class="form-control"
-                          placeholder="Search Anything..."
-                        />
+                        <input v-model="searchQuery" @input="getDataAllResolved" type="text" class="form-control"
+                          placeholder="Search Anything..." />
                       </div>
                     </div>
                     <div class="col-md-2">
                       <div class="input-group input-group">
-                        <button
-                          type="button"
-                          class="btn btn-info"
-                          @click="refreshDataResolved"
-                        >
+                        <button type="button" class="btn btn-info" @click="refreshDataResolved">
                           <i class="ri-refresh-line"></i> Refresh Data
                         </button>
                       </div>
                     </div>
                   </div>
-                  <table
-                    class="table table-bordered table-hover table-striped align-middle mb-0"
-                    style="font-size: 0.875rem"
-                  >
+                  <table class="table table-bordered table-hover table-striped align-middle mb-0"
+                    style="font-size: 0.875rem">
                     <thead class="table-light">
                       <tr>
                         <th width="50" class="text-center">#</th>
@@ -1114,10 +807,7 @@
                       </tr>
                     </thead>
                     <tbody v-if="resolveds.data && resolveds.data.length > 0">
-                      <tr
-                        v-for="(resolved, index) in resolveds.data"
-                        :key="resolved.id"
-                      >
+                      <tr v-for="(resolved, index) in resolveds.data" :key="resolved.id">
                         <td class="text-center fw-bold">
                           {{
                             (resolveds.current_page - 1) * resolveds.per_page +
@@ -1161,28 +851,20 @@
                         </td>
 
                         <td class="text-center">
-                          <span
-                            class="badge"
-                            :class="statusClass(resolved.status)"
-                          >
+                          <span class="badge" :class="statusClass(resolved.status)">
                             {{ resolved.status }}
                           </span>
                         </td>
                         <td class="text-center">
                           <div class="btn-group" role="group">
                             <!-- View Info Button -->
-                            <button
-                              class="btn btn-sm btn-outline-primary"
-                              @click="viewTicket(resolved)"
-                              data-bs-toggle="modal"
-                              data-bs-target="#viewTicketModal"
-                              title="View Information"
-                            >
+                            <button class="btn btn-sm btn-outline-primary" @click="viewTicket(resolved)"
+                              data-bs-toggle="modal" data-bs-target="#viewTicketModal" title="View Information">
                               <i class="ri-information-line me-1"></i> View
                             </button>
 
                             <!-- Print Form Button -->
-                           
+
                           </div>
                         </td>
                       </tr>
@@ -1192,12 +874,8 @@
                     <tbody v-else>
                       <tr>
                         <td colspan="11" class="text-center py-5">
-                          <i
-                            class="ri-file-text-line fs-3 text-muted d-block mb-2"
-                          ></i>
-                          <span class="text-muted"
-                            >No ticket requests found.</span
-                          >
+                          <i class="ri-file-text-line fs-3 text-muted d-block mb-2"></i>
+                          <span class="text-muted">No ticket requests found.</span>
                         </td>
                       </tr>
                     </tbody>
@@ -1215,84 +893,48 @@
                       <div class="col-md-6">
                         <nav class="float-end">
                           <ul class="pagination pagination-sm mb-0">
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled: resolveds.current_page === 1,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePageResolved(1)"
-                                title="First"
-                              >
+                            <li class="page-item" :class="{
+                              disabled: resolveds.current_page === 1,
+                            }">
+                              <button class="page-link" @click="changePageResolved(1)" title="First">
                                 <i class="ri-skip-back-line"></i>
                               </button>
                             </li>
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled: resolveds.current_page === 1,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="
-                                  changePageResolved(resolveds.current_page - 1)
-                                "
-                                title="Previous"
-                              >
+                            <li class="page-item" :class="{
+                              disabled: resolveds.current_page === 1,
+                            }">
+                              <button class="page-link" @click="
+                                changePageResolved(resolveds.current_page - 1)
+                                " title="Previous">
                                 <i class="ri-arrow-left-s-line"></i>
                               </button>
                             </li>
 
-                            <li
-                              v-for="page in pages"
-                              :key="page"
-                              class="page-item"
-                              :class="{
-                                active: page === resolveds.current_page,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePageResolved(page)"
-                              >
+                            <li v-for="page in pages" :key="page" class="page-item" :class="{
+                              active: page === resolveds.current_page,
+                            }">
+                              <button class="page-link" @click="changePageResolved(page)">
                                 {{ page }}
                               </button>
                             </li>
 
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled:
-                                  resolveds.current_page ===
-                                  resolveds.last_page,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="
-                                  changePageResolved(resolveds.current_page + 1)
-                                "
-                                title="Next"
-                              >
+                            <li class="page-item" :class="{
+                              disabled:
+                                resolveds.current_page ===
+                                resolveds.last_page,
+                            }">
+                              <button class="page-link" @click="
+                                changePageResolved(resolveds.current_page + 1)
+                                " title="Next">
                                 <i class="ri-arrow-right-s-line"></i>
                               </button>
                             </li>
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled:
-                                  resolveds.current_page ===
-                                  resolveds.last_page,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePageResolved(resolveds.last_page)"
-                                title="Last"
-                              >
+                            <li class="page-item" :class="{
+                              disabled:
+                                resolveds.current_page ===
+                                resolveds.last_page,
+                            }">
+                              <button class="page-link" @click="changePageResolved(resolveds.last_page)" title="Last">
                                 <i class="ri-skip-forward-line"></i>
                               </button>
                             </li>
@@ -1301,25 +943,15 @@
 
                         <!-- View Ticket Modal -->
 
-                        <div
-                          class="modal fade zoomIn"
-                          id="viewTicketModal"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true"
-                        >
-                          <div
-                            class="modal-dialog modal-lg modal-dialog-centered"
-                          >
+                        <div class="modal fade zoomIn" id="viewTicketModal" tabindex="-1"
+                          aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content border-0 shadow">
                               <!-- Modal Header -->
                               <div class="modal-header bg-primary text-white">
                                 <div class="d-flex align-items-center w-100">
                                   <div>
-                                    <h5
-                                      class="modal-title mb-0"
-                                      style="color: white"
-                                    >
+                                    <h5 class="modal-title mb-0" style="color: white">
                                       Ticket Details
                                     </h5>
                                     <p class="mb-0 small text-white-50">
@@ -1328,12 +960,8 @@
                                     </p>
                                   </div>
                                 </div>
-                                <button
-                                  type="button"
-                                  class="btn-close btn-close-white"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                ></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
                               </div>
 
                               <!-- Modal Body -->
@@ -1342,18 +970,12 @@
                                 <div class="border-bottom p-4">
                                   <div class="row">
                                     <div class="col-md-6">
-                                      <div
-                                        class="d-flex align-items-center mb-3"
-                                      >
+                                      <div class="d-flex align-items-center mb-3">
                                         <div class="bg-light rounded p-2 me-3">
-                                          <i
-                                            class="ri-ticket-line text-primary"
-                                          ></i>
+                                          <i class="ri-ticket-line text-primary"></i>
                                         </div>
                                         <div>
-                                          <small class="text-muted d-block"
-                                            >Ticket ID</small
-                                          >
+                                          <small class="text-muted d-block">Ticket ID</small>
                                           <span class="fw-bold fs-5">{{
                                             selectedTicket.helpdesk_no || "N/A"
                                           }}</span>
@@ -1363,19 +985,15 @@
                                     <div class="col-md-6">
                                       <div class="d-flex align-items-center">
                                         <div class="bg-light rounded">
-                                          <i
-                                            class="ri-calendar-line text-primary"
-                                          ></i>
+                                          <i class="ri-calendar-line text-primary"></i>
                                         </div>
                                         <div>
-                                          <small class="text-muted d-block"
-                                            >Date Created</small
-                                          >
+                                          <small class="text-muted d-block">Date Created</small>
                                           <span class="fw-bold">{{
                                             selectedTicket.date_created
                                               ? formatDate(
-                                                  selectedTicket.date_created
-                                                )
+                                                selectedTicket.date_created
+                                              )
                                               : "N/A"
                                           }}</span>
                                         </div>
@@ -1390,8 +1008,7 @@
                                   <div class="card border-0 shadow-sm mb-4">
                                     <div class="card-header bg-light">
                                       <h6 class="mb-0">
-                                        <i class="ri-information-line me-2"></i
-                                        >Basic Information
+                                        <i class="ri-information-line me-2"></i>Basic Information
                                       </h6>
                                     </div>
                                     <div class="card-body">
@@ -1399,18 +1016,11 @@
                                         <!-- Requester Info -->
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-user-line me-1"></i
-                                            >Requester
+                                            <i class="ri-user-line me-1"></i>Requester
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-primary bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-user-3-line text-primary"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-primary bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-user-3-line text-primary"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -1420,7 +1030,7 @@
                                                 {{
                                                   selectedTicket.middle_initial
                                                     ? selectedTicket.middle_initial +
-                                                      "."
+                                                    "."
                                                     : ""
                                                 }}
                                                 {{
@@ -1431,7 +1041,7 @@
                                                 {{
                                                   selectedTicket.office
                                                     ? selectedTicket.office
-                                                        .office
+                                                      .office
                                                     : "N/A"
                                                 }}
                                               </small>
@@ -1442,18 +1052,11 @@
                                         <!-- Contact Info -->
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Contact Information
+                                            <i class="ri-phone-line me-1"></i>Contact Information
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -1466,35 +1069,22 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Subject
+                                            <i class="ri-phone-line me-1"></i>Subject
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
-                                              <p
-                                                class="mb-0 fw-bold"
-                                                v-if="
-                                                  selectedTicket.ticket_category
-                                                "
-                                              >
+                                              <p class="mb-0 fw-bold" v-if="
+                                                selectedTicket.ticket_category
+                                              ">
                                                 {{
                                                   selectedTicket.ticket_category
                                                     .ticket_category
                                                 }}
                                               </p>
-                                              <p
-                                                class="mb-0 fw-bold text-muted"
-                                                v-else
-                                              >
+                                              <p class="mb-0 fw-bold text-muted" v-else>
                                                 N/A
                                               </p>
                                             </div>
@@ -1502,35 +1092,22 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Category
+                                            <i class="ri-phone-line me-1"></i>Category
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
-                                              <p
-                                                class="mb-0 fw-bold"
-                                                v-if="
-                                                  selectedTicket.ticket_type
-                                                "
-                                              >
+                                              <p class="mb-0 fw-bold" v-if="
+                                                selectedTicket.ticket_type
+                                              ">
                                                 {{
                                                   selectedTicket.ticket_type
                                                     .ticket_type
                                                 }}
                                               </p>
-                                              <p
-                                                class="mb-0 fw-bold text-muted"
-                                                v-else
-                                              >
+                                              <p class="mb-0 fw-bold text-muted" v-else>
                                                 N/A
                                               </p>
                                             </div>
@@ -1538,18 +1115,11 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Status
+                                            <i class="ri-phone-line me-1"></i>Status
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -1562,18 +1132,11 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Issues/Concern
+                                            <i class="ri-phone-line me-1"></i>Issues/Concern
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -1589,22 +1152,15 @@
                                     </div>
                                   </div>
 
-                                  <div
-                                    class="card border-0 shadow-sm mb-4"
-                                    v-if="selectedTicket.description"
-                                  >
+                                  <div class="card border-0 shadow-sm mb-4" v-if="selectedTicket.description">
                                     <div class="card-header bg-light">
                                       <h6 class="mb-0">
-                                        <i class="ri-file-text-line me-2"></i
-                                        >Description
+                                        <i class="ri-file-text-line me-2"></i>Description
                                       </h6>
                                     </div>
                                     <div class="card-body">
                                       <div class="bg-light rounded p-3">
-                                        <p
-                                          class="mb-0"
-                                          style="white-space: pre-line"
-                                        >
+                                        <p class="mb-0" style="white-space: pre-line">
                                           {{ selectedTicket.description }}
                                         </p>
                                       </div>
@@ -1612,38 +1168,26 @@
                                   </div>
 
                                   <!-- Attachments Card -->
-                                  <div
-                                    class="card border-0 shadow-sm"
-                                    v-if="
-                                      selectedTicket.attachments &&
-                                      selectedTicket.attachments.length > 0
-                                    "
-                                  >
+                                  <div class="card border-0 shadow-sm" v-if="
+                                    selectedTicket.attachments &&
+                                    selectedTicket.attachments.length > 0
+                                  ">
                                     <div class="card-header bg-light">
                                       <h6 class="mb-0">
-                                        <i class="ri-attachment-line me-2"></i
-                                        >Attachments
+                                        <i class="ri-attachment-line me-2"></i>Attachments
                                       </h6>
                                     </div>
                                     <div class="card-body">
                                       <div class="row g-2">
-                                        <div
-                                          class="col-auto"
-                                          v-for="(
-                                            attachment, index
-                                          ) in selectedTicket.attachments"
-                                          :key="index"
-                                        >
-                                          <div
-                                            class="border rounded p-2 d-flex align-items-center"
-                                          >
+                                        <div class="col-auto" v-for="(
+attachment, index
+                                          ) in selectedTicket.attachments" :key="index">
+                                          <div class="border rounded p-2 d-flex align-items-center">
                                             <i class="ri-file-line me-2"></i>
                                             <span class="small">{{
                                               attachment.name
                                             }}</span>
-                                            <button
-                                              class="btn btn-sm btn-link ms-2"
-                                            >
+                                            <button class="btn btn-sm btn-link ms-2">
                                               <i class="ri-download-line"></i>
                                             </button>
                                           </div>
@@ -1653,10 +1197,7 @@
                                   </div>
 
                                   <!-- No Data Message -->
-                                  <div
-                                    v-if="!selectedTicket.id"
-                                    class="text-center py-5"
-                                  >
+                                  <div v-if="!selectedTicket.id" class="text-center py-5">
                                     <div class="text-muted mb-3">
                                       <i class="ri-inbox-line fs-1"></i>
                                     </div>
@@ -1667,9 +1208,7 @@
 
                               <!-- Modal Footer -->
                               <div class="modal-footer border-top">
-                                <div
-                                  class="w-100 d-flex justify-content-between align-items-center"
-                                >
+                                <div class="w-100 d-flex justify-content-between align-items-center">
                                   <div>
                                     <small class="text-muted">
                                       <i class="ri-time-line me-1"></i>
@@ -1677,18 +1216,14 @@
                                       {{
                                         selectedTicket.updated_at
                                           ? formatDate(
-                                              selectedTicket.updated_at
-                                            )
+                                            selectedTicket.updated_at
+                                          )
                                           : "N/A"
                                       }}
                                     </small>
                                   </div>
                                   <div>
-                                    <button
-                                      type="button"
-                                      class="btn btn-secondary me-2"
-                                      data-bs-dismiss="modal"
-                                    >
+                                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">
                                       <i class="ri-close-line me-1"></i>Close
                                     </button>
                                   </div>
@@ -1714,11 +1249,7 @@
                         <span class="input-group-text bg-light">
                           <i class="ri-list-settings-line"></i>
                         </span>
-                        <select
-                          class="form-control form-control"
-                          v-model="perPage"
-                          @change="getDataAllUnResolved"
-                        >
+                        <select class="form-control form-control" v-model="perPage" @change="getDataAllUnResolved">
                           <option value="5">5 per page</option>
                           <option value="10">10 per page</option>
                           <option value="20">20 per page</option>
@@ -1732,32 +1263,21 @@
                         <span class="input-group-text bg-light">
                           <i class="ri-search-line"></i>
                         </span>
-                        <input
-                          v-model="searchQuery"
-                          @input="getDataAllUnResolved"
-                          type="text"
-                          class="form-control"
-                          placeholder="Search Anything..."
-                        />
+                        <input v-model="searchQuery" @input="getDataAllUnResolved" type="text" class="form-control"
+                          placeholder="Search Anything..." />
                       </div>
                     </div>
                     <div class="col-md-2">
                       <div class="input-group input-group">
-                        <button
-                          type="button"
-                          class="btn btn-info"
-                          @click="refreshDataUnResolved"
-                        >
+                        <button type="button" class="btn btn-info" @click="refreshDataUnResolved">
                           <i class="ri-refresh-line"></i> Refresh Data
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <table
-                    class="table table-bordered table-hover table-striped align-middle mb-0"
-                    style="font-size: 0.875rem"
-                  >
+                  <table class="table table-bordered table-hover table-striped align-middle mb-0"
+                    style="font-size: 0.875rem">
                     <thead class="table-light">
                       <tr>
                         <th width="50" class="text-center">#</th>
@@ -1791,17 +1311,12 @@
                         <th width="80" class="text-center">Actions</th>
                       </tr>
                     </thead>
-                    <tbody
-                      v-if="unresolveds.data && unresolveds.data.length > 0"
-                    >
-                      <tr
-                        v-for="(unresolved, index) in unresolveds.data"
-                        :key="unresolved.id"
-                      >
+                    <tbody v-if="unresolveds.data && unresolveds.data.length > 0">
+                      <tr v-for="(unresolved, index) in unresolveds.data" :key="unresolved.id">
                         <td class="text-center fw-bold">
                           {{
                             (unresolveds.current_page - 1) *
-                              unresolveds.per_page +
+                            unresolveds.per_page +
                             index +
                             1
                           }}
@@ -1842,28 +1357,20 @@
                         </td>
 
                         <td class="text-center">
-                          <span
-                            class="badge"
-                            :class="statusClass(unresolved.status)"
-                          >
+                          <span class="badge" :class="statusClass(unresolved.status)">
                             {{ unresolved.status }}
                           </span>
                         </td>
                         <td class="text-center">
                           <div class="btn-group" role="group">
                             <!-- View Info Button -->
-                            <button
-                              class="btn btn-sm btn-outline-primary"
-                              @click="viewTicket(unresolved)"
-                              data-bs-toggle="modal"
-                              data-bs-target="#viewTicketModal"
-                              title="View Information"
-                            >
-                              <i class="ri-information-line me-1"></i> View 
+                            <button class="btn btn-sm btn-outline-primary" @click="viewTicket(unresolved)"
+                              data-bs-toggle="modal" data-bs-target="#viewTicketModal" title="View Information">
+                              <i class="ri-information-line me-1"></i> View
                             </button>
 
-                        
-                           
+
+
                           </div>
                         </td>
                       </tr>
@@ -1873,21 +1380,14 @@
                     <tbody v-else>
                       <tr>
                         <td colspan="11" class="text-center py-5">
-                          <i
-                            class="ri-file-text-line fs-3 text-muted d-block mb-2"
-                          ></i>
-                          <span class="text-muted"
-                            >No Unresolved Tickets Found.</span
-                          >
+                          <i class="ri-file-text-line fs-3 text-muted d-block mb-2"></i>
+                          <span class="text-muted">No Unresolved Tickets Found.</span>
                         </td>
                       </tr>
                     </tbody>
                   </table>
 
-                  <div
-                    v-if="unresolveds.total > 0"
-                    class="card-footer bg-white"
-                  >
+                  <div v-if="unresolveds.total > 0" class="card-footer bg-white">
                     <div class="row align-items-center">
                       <div class="col-md-6">
                         <span class="text-muted small">
@@ -1900,90 +1400,54 @@
                       <div class="col-md-6">
                         <nav class="float-end">
                           <ul class="pagination pagination-sm mb-0">
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled: unresolveds.current_page === 1,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePageUnResolveds(1)"
-                                title="First"
-                              >
+                            <li class="page-item" :class="{
+                              disabled: unresolveds.current_page === 1,
+                            }">
+                              <button class="page-link" @click="changePageUnResolveds(1)" title="First">
                                 <i class="ri-skip-back-line"></i>
                               </button>
                             </li>
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled: unresolveds.current_page === 1,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="
-                                  changePageUnResolveds(
-                                    unresolveds.current_page - 1
-                                  )
-                                "
-                                title="Previous"
-                              >
+                            <li class="page-item" :class="{
+                              disabled: unresolveds.current_page === 1,
+                            }">
+                              <button class="page-link" @click="
+                                changePageUnResolveds(
+                                  unresolveds.current_page - 1
+                                )
+                                " title="Previous">
                                 <i class="ri-arrow-left-s-line"></i>
                               </button>
                             </li>
 
-                            <li
-                              v-for="page in pages"
-                              :key="page"
-                              class="page-item"
-                              :class="{
-                                active: page === unresolveds.current_page,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="changePageUnResolveds(page)"
-                              >
+                            <li v-for="page in pages" :key="page" class="page-item" :class="{
+                              active: page === unresolveds.current_page,
+                            }">
+                              <button class="page-link" @click="changePageUnResolveds(page)">
                                 {{ page }}
                               </button>
                             </li>
 
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled:
-                                  unresolveds.current_page ===
-                                  unresolveds.last_page,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="
-                                  changePageUnResolveds(
-                                    unresolveds.current_page + 1
-                                  )
-                                "
-                                title="Next"
-                              >
+                            <li class="page-item" :class="{
+                              disabled:
+                                unresolveds.current_page ===
+                                unresolveds.last_page,
+                            }">
+                              <button class="page-link" @click="
+                                changePageUnResolveds(
+                                  unresolveds.current_page + 1
+                                )
+                                " title="Next">
                                 <i class="ri-arrow-right-s-line"></i>
                               </button>
                             </li>
-                            <li
-                              class="page-item"
-                              :class="{
-                                disabled:
-                                  unresolveds.current_page ===
-                                  unresolveds.last_page,
-                              }"
-                            >
-                              <button
-                                class="page-link"
-                                @click="
-                                  changePageUnResolveds(unresolveds.last_page)
-                                "
-                                title="Last"
-                              >
+                            <li class="page-item" :class="{
+                              disabled:
+                                unresolveds.current_page ===
+                                unresolveds.last_page,
+                            }">
+                              <button class="page-link" @click="
+                                changePageUnResolveds(unresolveds.last_page)
+                                " title="Last">
                                 <i class="ri-skip-forward-line"></i>
                               </button>
                             </li>
@@ -1992,25 +1456,15 @@
 
                         <!-- View Ticket Modal -->
 
-                        <div
-                          class="modal fade zoomIn"
-                          id="viewTicketModal"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true"
-                        >
-                          <div
-                            class="modal-dialog modal-lg modal-dialog-centered"
-                          >
+                        <div class="modal fade zoomIn" id="viewTicketModal" tabindex="-1"
+                          aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content border-0 shadow">
                               <!-- Modal Header -->
                               <div class="modal-header bg-primary text-white">
                                 <div class="d-flex align-items-center w-100">
                                   <div>
-                                    <h5
-                                      class="modal-title mb-0"
-                                      style="color: white"
-                                    >
+                                    <h5 class="modal-title mb-0" style="color: white">
                                       Ticket Details
                                     </h5>
                                     <p class="mb-0 small text-white-50">
@@ -2019,12 +1473,8 @@
                                     </p>
                                   </div>
                                 </div>
-                                <button
-                                  type="button"
-                                  class="btn-close btn-close-white"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                ></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
                               </div>
 
                               <!-- Modal Body -->
@@ -2033,18 +1483,12 @@
                                 <div class="border-bottom p-4">
                                   <div class="row">
                                     <div class="col-md-6">
-                                      <div
-                                        class="d-flex align-items-center mb-3"
-                                      >
+                                      <div class="d-flex align-items-center mb-3">
                                         <div class="bg-light rounded p-2 me-3">
-                                          <i
-                                            class="ri-ticket-line text-primary"
-                                          ></i>
+                                          <i class="ri-ticket-line text-primary"></i>
                                         </div>
                                         <div>
-                                          <small class="text-muted d-block"
-                                            >Ticket ID</small
-                                          >
+                                          <small class="text-muted d-block">Ticket ID</small>
                                           <span class="fw-bold fs-5">{{
                                             selectedTicket.helpdesk_no || "N/A"
                                           }}</span>
@@ -2054,19 +1498,15 @@
                                     <div class="col-md-6">
                                       <div class="d-flex align-items-center">
                                         <div class="bg-light rounded">
-                                          <i
-                                            class="ri-calendar-line text-primary"
-                                          ></i>
+                                          <i class="ri-calendar-line text-primary"></i>
                                         </div>
                                         <div>
-                                          <small class="text-muted d-block"
-                                            >Date Created</small
-                                          >
+                                          <small class="text-muted d-block">Date Created</small>
                                           <span class="fw-bold">{{
                                             selectedTicket.date_created
                                               ? formatDate(
-                                                  selectedTicket.date_created
-                                                )
+                                                selectedTicket.date_created
+                                              )
                                               : "N/A"
                                           }}</span>
                                         </div>
@@ -2081,8 +1521,7 @@
                                   <div class="card border-0 shadow-sm mb-4">
                                     <div class="card-header bg-light">
                                       <h6 class="mb-0">
-                                        <i class="ri-information-line me-2"></i
-                                        >Basic Information
+                                        <i class="ri-information-line me-2"></i>Basic Information
                                       </h6>
                                     </div>
                                     <div class="card-body">
@@ -2090,18 +1529,11 @@
                                         <!-- Requester Info -->
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-user-line me-1"></i
-                                            >Requester
+                                            <i class="ri-user-line me-1"></i>Requester
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-primary bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-user-3-line text-primary"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-primary bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-user-3-line text-primary"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -2111,7 +1543,7 @@
                                                 {{
                                                   selectedTicket.middle_initial
                                                     ? selectedTicket.middle_initial +
-                                                      "."
+                                                    "."
                                                     : ""
                                                 }}
                                                 {{
@@ -2122,7 +1554,7 @@
                                                 {{
                                                   selectedTicket.office
                                                     ? selectedTicket.office
-                                                        .office
+                                                      .office
                                                     : "N/A"
                                                 }}
                                               </small>
@@ -2133,18 +1565,11 @@
                                         <!-- Contact Info -->
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Contact Information
+                                            <i class="ri-phone-line me-1"></i>Contact Information
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -2157,35 +1582,22 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Subject
+                                            <i class="ri-phone-line me-1"></i>Subject
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
-                                              <p
-                                                class="mb-0 fw-bold"
-                                                v-if="
-                                                  selectedTicket.ticket_category
-                                                "
-                                              >
+                                              <p class="mb-0 fw-bold" v-if="
+                                                selectedTicket.ticket_category
+                                              ">
                                                 {{
                                                   selectedTicket.ticket_category
                                                     .ticket_category
                                                 }}
                                               </p>
-                                              <p
-                                                class="mb-0 fw-bold text-muted"
-                                                v-else
-                                              >
+                                              <p class="mb-0 fw-bold text-muted" v-else>
                                                 N/A
                                               </p>
                                             </div>
@@ -2193,35 +1605,22 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Category
+                                            <i class="ri-phone-line me-1"></i>Category
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
-                                              <p
-                                                class="mb-0 fw-bold"
-                                                v-if="
-                                                  selectedTicket.ticket_type
-                                                "
-                                              >
+                                              <p class="mb-0 fw-bold" v-if="
+                                                selectedTicket.ticket_type
+                                              ">
                                                 {{
                                                   selectedTicket.ticket_type
                                                     .ticket_type
                                                 }}
                                               </p>
-                                              <p
-                                                class="mb-0 fw-bold text-muted"
-                                                v-else
-                                              >
+                                              <p class="mb-0 fw-bold text-muted" v-else>
                                                 N/A
                                               </p>
                                             </div>
@@ -2229,18 +1628,11 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Status
+                                            <i class="ri-phone-line me-1"></i>Status
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -2253,18 +1645,11 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label class="small text-muted mb-1">
-                                            <i class="ri-phone-line me-1"></i
-                                            >Issues/Concern
+                                            <i class="ri-phone-line me-1"></i>Issues/Concern
                                           </label>
-                                          <div
-                                            class="d-flex align-items-center"
-                                          >
-                                            <div
-                                              class="bg-success bg-opacity-10 rounded-circle p-2 me-3"
-                                            >
-                                              <i
-                                                class="ri-mail-line text-success"
-                                              ></i>
+                                          <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3">
+                                              <i class="ri-mail-line text-success"></i>
                                             </div>
                                             <div>
                                               <p class="mb-0 fw-bold">
@@ -2280,22 +1665,15 @@
                                     </div>
                                   </div>
 
-                                  <div
-                                    class="card border-0 shadow-sm mb-4"
-                                    v-if="selectedTicket.description"
-                                  >
+                                  <div class="card border-0 shadow-sm mb-4" v-if="selectedTicket.description">
                                     <div class="card-header bg-light">
                                       <h6 class="mb-0">
-                                        <i class="ri-file-text-line me-2"></i
-                                        >Description
+                                        <i class="ri-file-text-line me-2"></i>Description
                                       </h6>
                                     </div>
                                     <div class="card-body">
                                       <div class="bg-light rounded p-3">
-                                        <p
-                                          class="mb-0"
-                                          style="white-space: pre-line"
-                                        >
+                                        <p class="mb-0" style="white-space: pre-line">
                                           {{ selectedTicket.description }}
                                         </p>
                                       </div>
@@ -2303,38 +1681,26 @@
                                   </div>
 
                                   <!-- Attachments Card -->
-                                  <div
-                                    class="card border-0 shadow-sm"
-                                    v-if="
-                                      selectedTicket.attachments &&
-                                      selectedTicket.attachments.length > 0
-                                    "
-                                  >
+                                  <div class="card border-0 shadow-sm" v-if="
+                                    selectedTicket.attachments &&
+                                    selectedTicket.attachments.length > 0
+                                  ">
                                     <div class="card-header bg-light">
                                       <h6 class="mb-0">
-                                        <i class="ri-attachment-line me-2"></i
-                                        >Attachments
+                                        <i class="ri-attachment-line me-2"></i>Attachments
                                       </h6>
                                     </div>
                                     <div class="card-body">
                                       <div class="row g-2">
-                                        <div
-                                          class="col-auto"
-                                          v-for="(
-                                            attachment, index
-                                          ) in selectedTicket.attachments"
-                                          :key="index"
-                                        >
-                                          <div
-                                            class="border rounded p-2 d-flex align-items-center"
-                                          >
+                                        <div class="col-auto" v-for="(
+attachment, index
+                                          ) in selectedTicket.attachments" :key="index">
+                                          <div class="border rounded p-2 d-flex align-items-center">
                                             <i class="ri-file-line me-2"></i>
                                             <span class="small">{{
                                               attachment.name
                                             }}</span>
-                                            <button
-                                              class="btn btn-sm btn-link ms-2"
-                                            >
+                                            <button class="btn btn-sm btn-link ms-2">
                                               <i class="ri-download-line"></i>
                                             </button>
                                           </div>
@@ -2344,10 +1710,7 @@
                                   </div>
 
                                   <!-- No Data Message -->
-                                  <div
-                                    v-if="!selectedTicket.id"
-                                    class="text-center py-5"
-                                  >
+                                  <div v-if="!selectedTicket.id" class="text-center py-5">
                                     <div class="text-muted mb-3">
                                       <i class="ri-inbox-line fs-1"></i>
                                     </div>
@@ -2358,9 +1721,7 @@
 
                               <!-- Modal Footer -->
                               <div class="modal-footer border-top">
-                                <div
-                                  class="w-100 d-flex justify-content-between align-items-center"
-                                >
+                                <div class="w-100 d-flex justify-content-between align-items-center">
                                   <div>
                                     <small class="text-muted">
                                       <i class="ri-time-line me-1"></i>
@@ -2368,18 +1729,14 @@
                                       {{
                                         selectedTicket.updated_at
                                           ? formatDate(
-                                              selectedTicket.updated_at
-                                            )
+                                            selectedTicket.updated_at
+                                          )
                                           : "N/A"
                                       }}
                                     </small>
                                   </div>
                                   <div>
-                                    <button
-                                      type="button"
-                                      class="btn btn-secondary me-2"
-                                      data-bs-dismiss="modal"
-                                    >
+                                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">
                                       <i class="ri-close-line me-1"></i>Close
                                     </button>
                                   </div>
@@ -2404,11 +1761,7 @@
                       <span class="input-group-text bg-light">
                         <i class="ri-list-settings-line"></i>
                       </span>
-                      <select
-                        class="form-control form-control"
-                        v-model="perPage"
-                        @change="getDataAllUnResolved"
-                      >
+                      <select class="form-control form-control" v-model="perPage" @change="getDataAllUnResolved">
                         <option value="5">5 per page</option>
                         <option value="10">10 per page</option>
                         <option value="20">20 per page</option>
@@ -2422,51 +1775,39 @@
                       <span class="input-group-text bg-light">
                         <i class="ri-search-line"></i>
                       </span>
-                      <input
-                        v-model="searchQuery"
-                        @input="getDataAllFeedbacks"
-                        type="text"
-                        class="form-control"
-                        placeholder="Search Anything..."
-                      />
+                      <input v-model="searchQuery" @input="getDataAllFeedbacks" type="text" class="form-control"
+                        placeholder="Search Anything..." />
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="input-group input-group">
-                      <button
-                        type="button"
-                        class="btn btn-info"
-                        @click="refreshDataFeedbacks"
-                      >
+                      <button type="button" class="btn btn-info" @click="refreshDataFeedbacks">
                         <i class="ri-refresh-line"></i> Refresh Data
                       </button>
                     </div>
                   </div>
                 </div>
                 <div class="table-responsive">
-                  <table
-                    class="table table-bordered table-hover table-striped align-middle mb-0"
-                    style="font-size: 0.875rem"
-                  >
+                  <table class="table table-bordered table-hover table-striped align-middle mb-0"
+                    style="font-size: 0.875rem">
                     <thead class="table-info">
                       <tr>
-                        <th width="50" class="text-center">#</th>
-                        <th width="200" class="text-center">Helpdesk #</th>
-                        <th width="130">Category</th>
-                        <th width="250">Subject</th>
-                        <th width="200" class="text-center">Requester</th>
-                        <th width="180" class="text-center">Date Acted</th>
-                        <th width="100" class="text-center">Rating</th>
-                        <th>Feedback</th>
-                          <th>Date Feedback</th>
-                        <th width="80" class="text-center">Actions</th>
+                        <th class="text-center" style="width: 40px;">#</th>
+                        <th class="text-center" style="width: 140px;">Helpdesk #</th>
+                        <th style="width: 120px;">Category</th>
+                        <th style="width: 220px;">Subject</th>
+                        <th class="text-center" style="width: 180px;">Email</th>
+                        <th class="text-center" style="width: 160px;">Requester</th>
+                        <th class="text-center" style="width: 150px;">Date Acted</th>
+                        <th class="text-center" style="width: 120px;">Rating</th>
+                        <th style="width: 220px;">Feedback</th>
+                        <th class="text-center" style="width: 150px;">Date Feedback</th>
+                        <th class="text-center" style="width: 80px;">Actions</th>
                       </tr>
+
                     </thead>
                     <tbody v-if="feedbacks.data && feedbacks.data.length > 0">
-                      <tr
-                        v-for="(feedback, index) in feedbacks.data"
-                        :key="feedback.id"
-                      >
+                      <tr v-for="(feedback, index) in feedbacks.data" :key="feedback.id">
                         <td class="text-center fw-bold">
                           {{
                             (feedbacks.current_page - 1) * feedbacks.per_page +
@@ -2478,17 +1819,23 @@
                         <td>{{ feedback.ticket_type.ticket_type }}</td>
 
                         <td>{{ feedback.ticket_category.ticket_category }}</td>
+                        <td>{{ feedback.email }}</td>
                         <td>
                           {{ feedback.firstname }}
                           {{ feedback.middle_initial }}. {{ feedback.lastname }}
                         </td>
-                        <td>{{ feedback.date_acted }}</td>
+
+
+                        <td>{{ formatDate(feedback.date_acted) }}</td>
                         <td>
-                          {{
-                            feedback.rate
-                              ? feedback.rate.rate
-                              : "No Data Encoded"
-                          }}
+
+                          <template v-if="feedback.rate && feedback.rate.rate === 'E'">⭐ Excellent</template>
+                          <template v-else-if="feedback.rate && feedback.rate.rate === 'VS'">⭐ Very
+                            Satisfactory</template>
+                          <template v-else-if="feedback.rate && feedback.rate.rate === 'S'">⭐ Satisfactory</template>
+                          <template v-else-if="feedback.rate && feedback.rate.rate === 'BS'">⭐ Below
+                            Satisfactory</template>
+                          <template v-else>No Data Encoded</template>
                         </td>
 
                         <td>
@@ -2498,7 +1845,8 @@
                               : "No Data Encoded"
                           }}
                         </td>
-                         <td>
+
+                        <td>
                           {{
                             feedback.rate
                               ? feedback.rate.date_feedback
@@ -2506,20 +1854,79 @@
                           }}
                         </td>
                         <td class="text-center">
-                          <button
-                              class="btn btn-sm btn-outline-success"
-                              @click="printTicketForm(feedback.id)"
-                              title="Print Form"
-                            >
-                              <i class="ri-printer-line me-1"></i> Print
-                            </button>
+                          <button class="btn btn-sm btn-outline-success" @click="printTicketForm(feedback.id)"
+                            title="Print Form">
+                            <i class="ri-printer-line me-1"></i> Print
+                          </button>
                         </td>
-                      
-                       
+
+
                       </tr>
-                      <!-- More feedback tickets -->
+
                     </tbody>
                   </table>
+                  <div v-if="feedbacks.total > 0" class="card-footer bg-white">
+                    <div class="row align-items-center">
+                      <div class="col-md-6">
+                        <span class="text-muted small">
+                          <i class="ri-file-list-line me-1"></i>
+                          Showing {{ feedbacks.from }} to {{ feedbacks.to }} of
+                          {{ feedbacks.total }} entries
+                        </span>
+                      </div>
+                      <div class="col-md-6">
+                        <nav class="float-end">
+                          <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item" :class="{
+                              disabled: feedbacks.current_page === 1,
+                            }">
+                              <button class="page-link" @click="changePageFeedback(1)" title="First">
+                                <i class="ri-skip-back-line"></i>
+                              </button>
+                            </li>
+                            <li class="page-item" :class="{
+                              disabled: feedbacks.current_page === 1,
+                            }">
+                              <button class="page-link" @click="
+                                changePageFeedback(feedbacks.current_page - 1)
+                                " title="Previous">
+                                <i class="ri-arrow-left-s-line"></i>
+                              </button>
+                            </li>
+
+                            <li v-for="page in pages" :key="page" class="page-item" :class="{
+                              active: page === feedbacks.current_page,
+                            }">
+                              <button class="page-link" @click="changePageFeedback(page)">
+                                {{ page }}
+                              </button>
+                            </li>
+
+                            <li class="page-item" :class="{
+                              disabled:
+                                feedbacks.current_page ===
+                                feedbacks.last_page,
+                            }">
+                              <button class="page-link" @click="
+                                changePageFeedback(feedbacks.current_page + 1)
+                                " title="Next">
+                                <i class="ri-arrow-right-s-line"></i>
+                              </button>
+                            </li>
+                            <li class="page-item" :class="{
+                              disabled:
+                                feedbacks.current_page ===
+                                feedbacks.last_page,
+                            }">
+                              <button class="page-link" @click="changePageFeedback(feedbacks.last_page)" title="Last">
+                                <i class="ri-skip-forward-line"></i>
+                              </button>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2608,15 +2015,13 @@ export default {
           </p>
           <p>
             <strong>Requester:</strong>
-            ${ticket.firstname} ${ticket.middle_initial || ""} ${
-            ticket.lastname
-          }
+            ${ticket.firstname} ${ticket.middle_initial || ""} ${ticket.lastname
+            }
           </p>
-          ${
-            ticket.subject
+          ${ticket.subject
               ? `<p><strong>Subject:</strong> ${ticket.subject}</p>`
               : ""
-          }
+            }
         </div>
       `,
           icon: "question",
@@ -2662,15 +2067,13 @@ export default {
             <div class="text-center">
               <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
               <h5>Successfully Assigned</h5>
-              <p>Ticket <strong>${
-                ticket.helpdesk_no
-              }</strong> is now assigned to you.</p>
+              <p>Ticket <strong>${ticket.helpdesk_no
+                }</strong> is now assigned to you.</p>
               <div class="mt-3">
                 <p class="text-muted mb-1">
                   <i class="fas fa-user-check me-2"></i>
-                  Received by: <strong>${
-                    response.data.received_by || "You"
-                  }</strong>
+                  Received by: <strong>${response.data.received_by || "You"
+                }</strong>
                 </p>
                 <p class="text-muted">
                   <i class="fas fa-clock me-2"></i>
@@ -2706,22 +2109,19 @@ export default {
                   This ticket has already been assigned to another technician.
                 </p>
                 <div class="alert alert-warning">
-                  <p class="mb-1"><strong>Assigned To:</strong> ${
-                    data.received_by
+                  <p class="mb-1"><strong>Assigned To:</strong> ${data.received_by
                   }</p>
                   <p class="mb-1"><strong>Assigned On:</strong> ${new Date(
                     data.received_at
                   ).toLocaleString()}</p>
-                  ${
-                    data.technician_email
-                      ? `<p class="mb-0"><strong>Email:</strong> ${data.technician_email}</p>`
-                      : ""
+                  ${data.technician_email
+                    ? `<p class="mb-0"><strong>Email:</strong> ${data.technician_email}</p>`
+                    : ""
                   }
                 </div>
                 <p class="text-muted mt-2 small">
                   <i class="fas fa-info-circle me-1"></i>
-                  Current status: <span class="badge bg-secondary">${
-                    data.current_status
+                  Current status: <span class="badge bg-secondary">${data.current_status
                   }</span>
                 </p>
               </div>
@@ -2818,9 +2218,8 @@ export default {
           <div class="d-flex align-items-center mb-3">
             <div>
               <small class="text-muted">TICKET NUMBER</small>
-              <h5 class="mb-1 fw-bold" style="color: #006747">${
-                this.selectedUpdatedTicket.helpdesk_no
-              }</h5>
+              <h5 class="mb-1 fw-bold" style="color: #006747">${this.selectedUpdatedTicket.helpdesk_no
+          }</h5>
             
             </div>
           </div>
@@ -2830,9 +2229,8 @@ export default {
               <p class="mb-2">
                 <strong><i class="ri-user-line me-1"></i>Requester:</strong><br>
                 <span class="text-dark">
-                  ${this.selectedUpdatedTicket.firstname} ${
-          this.selectedUpdatedTicket.middle_initial || ""
-        } ${this.selectedUpdatedTicket.lastname}
+                  ${this.selectedUpdatedTicket.firstname} ${this.selectedUpdatedTicket.middle_initial || ""
+          } ${this.selectedUpdatedTicket.lastname}
                 </span>
               </p>
             </div>
@@ -2840,8 +2238,8 @@ export default {
               <p class="mb-2">
                 <strong><i class="ri-calendar-line me-1"></i>Date Received:</strong><br>
                 <span class="text-dark">${this.formatDate(
-                  this.selectedUpdatedTicket.date_receive
-                )}</span>
+            this.selectedUpdatedTicket.date_receive
+          )}</span>
               </p>
             </div>
           </div>
@@ -2852,13 +2250,12 @@ export default {
           <div class="d-flex align-items-center justify-content-between">
             <div class="text-center">
               <p class="small text-muted mb-1">Current Status</p>
-              <span class="badge ${
-                this.selectedUpdatedTicket.status === "Resolved"
-                  ? "bg-success"
-                  : this.selectedUpdatedTicket.status === "Unresolved"
-                  ? "bg-danger"
-                  : "bg-warning"
-              } px-3 py-2 fs-6">
+              <span class="badge ${this.selectedUpdatedTicket.status === "Resolved"
+            ? "bg-success"
+            : this.selectedUpdatedTicket.status === "Unresolved"
+              ? "bg-danger"
+              : "bg-warning"
+          } px-3 py-2 fs-6">
                 ${this.selectedUpdatedTicket.status}
               </span>
             </div>
@@ -2867,17 +2264,15 @@ export default {
             </div>
             <div class="text-center">
               <p class="small text-muted mb-1">New Status</p>
-              <span class="badge ${
-                status === "Resolved" ? "bg-success" : "bg-danger"
-              } px-3 py-2 fs-6">
+              <span class="badge ${status === "Resolved" ? "bg-success" : "bg-danger"
+          } px-3 py-2 fs-6">
                 ${status}
               </span>
             </div>
           </div>
         </div>
 
-        ${
-          resolution
+        ${resolution
             ? `
         <div class="resolution-section">
           <h6 class="border-bottom pb-2 mb-3 fw-bold">
@@ -2896,7 +2291,7 @@ export default {
         </div>
         `
             : ""
-        }
+          }
       </div>
     `;
 
@@ -2983,9 +2378,8 @@ export default {
                       <small>Requester</small>
                     </p>
                     <p class="fw-bold">
-                      ${this.selectedUpdatedTicket.firstname} ${
-                this.selectedUpdatedTicket.middle_initial || ""
-              } ${this.selectedUpdatedTicket.lastname}
+                      ${this.selectedUpdatedTicket.firstname} ${this.selectedUpdatedTicket.middle_initial || ""
+                } ${this.selectedUpdatedTicket.lastname}
                     </p>
                   </div>
                   <div class="col-6">
@@ -3002,16 +2396,14 @@ export default {
                     <i class="ri-clipboard-line me-1"></i>
                     <small>New Status</small>
                   </p>
-                  <span class="badge ${
-                    status === "Resolved" ? "bg-success" : "bg-danger"
-                  } px-3 py-2 fs-6">
+                  <span class="badge ${status === "Resolved" ? "bg-success" : "bg-danger"
+                } px-3 py-2 fs-6">
                     <i class="ri-check-line me-1"></i>${status}
                   </span>
                 </div>
                 
-                ${
-                  resolution
-                    ? `
+                ${resolution
+                  ? `
                 <div class="resolution-notes">
                   <p class="mb-1 text-muted">
                     <i class="ri-sticky-note-line me-1"></i>
@@ -3022,7 +2414,7 @@ export default {
                   </div>
                 </div>
                 `
-                    : ""
+                  : ""
                 }
               </div>
             </div>
@@ -3090,11 +2482,9 @@ export default {
                 <i class="ri-search-eye-line fs-1 text-danger mb-3"></i>
                 <p class="mb-2">The ticket you're trying to update no longer exists.</p>
                 <div class="alert alert-warning mt-3">
-                  <p class="mb-1"><strong>Ticket Number:</strong> ${
-                    this.selectedUpdatedTicket.helpdesk_no
+                  <p class="mb-1"><strong>Ticket Number:</strong> ${this.selectedUpdatedTicket.helpdesk_no
                   }</p>
-                  <p class="mb-0"><strong>Status:</strong> ${
-                    data.error || "Not found"
+                  <p class="mb-0"><strong>Status:</strong> ${data.error || "Not found"
                   }</p>
                 </div>
               </div>
@@ -3109,13 +2499,11 @@ export default {
                 html: `
               <div class="text-center">
                 <i class="ri-close-circle-fill fs-1 text-danger mb-3"></i>
-                <p class="mb-3">${
-                  data.error ||
+                <p class="mb-3">${data.error ||
                   "Something went wrong while updating the ticket."
-                }</p>
+                  }</p>
                 <div class="alert alert-light border">
-                  <p class="mb-1"><small class="text-muted">Ticket:</small> ${
-                    this.selectedUpdatedTicket.helpdesk_no
+                  <p class="mb-1"><small class="text-muted">Ticket:</small> ${this.selectedUpdatedTicket.helpdesk_no
                   }</p>
                   <p class="mb-0"><small class="text-muted">Attempted:</small> ${new Date().toLocaleTimeString()}</p>
                 </div>
@@ -3163,8 +2551,7 @@ export default {
               <i class="ri-bug-line fs-1 text-danger mb-3"></i>
               <p class="mb-3">Something went wrong while updating the ticket.</p>
               <div class="alert alert-light border small">
-                <p class="mb-1"><strong>Error:</strong> ${
-                  error.message || "Unknown error"
+                <p class="mb-1"><strong>Error:</strong> ${error.message || "Unknown error"
                 }</p>
                 <p class="mb-0"><strong>Time:</strong> ${new Date().toLocaleTimeString()}</p>
               </div>
@@ -3363,6 +2750,12 @@ export default {
       if (page >= 1 && page <= this.unresolveds.last_page) {
         this.unresolveds.current_page = page;
         this.getDataAllUnResolved();
+      }
+    },
+    changePageFeedback(page) {
+      if (page >= 1 && page <= this.feedbacks.last_page) {
+        this.feedbacks.current_page = page;
+        this.getDataAllFeedbacks();
       }
     },
     showError(message) {

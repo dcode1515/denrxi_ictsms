@@ -297,7 +297,7 @@
 
   <div class="inline-group" style="margin-top: 20px;">
     <span class="field-label">Rate the technician.</span>
-    <span class="line-input" style="width: 80px;"></span>
+    <span class="line-input" style="width: 80px;">{{$ticket->rate->rate}}</span>
   </div>
 
   <div class="rating-explanation">

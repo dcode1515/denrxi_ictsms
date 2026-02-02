@@ -14213,599 +14213,6 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -15460,6 +14867,12 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
         this.getDataAllUnResolved();
       }
     },
+    changePageFeedback: function changePageFeedback(page) {
+      if (page >= 1 && page <= this.feedbacks.last_page) {
+        this.feedbacks.current_page = page;
+        this.getDataAllFeedbacks();
+      }
+    },
     showError: function showError(message) {
       sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
         icon: "error",
@@ -15585,49 +14998,6 @@ function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present,
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -53717,7 +53087,7 @@ var render = function () {
                                 [
                                   _c("i", { staticClass: "ri-refresh-line" }),
                                   _vm._v(
-                                    " Refresh Data\n                      "
+                                    " Refresh Data\n                        "
                                   ),
                                 ]
                               ),
@@ -53748,14 +53118,14 @@ var render = function () {
                                         { staticClass: "text-center fw-bold" },
                                         [
                                           _vm._v(
-                                            "\n                        " +
+                                            "\n                          " +
                                               _vm._s(
                                                 (_vm.tickets.current_page - 1) *
                                                   _vm.tickets.per_page +
                                                   index +
                                                   1
                                               ) +
-                                              "\n                      "
+                                              "\n                        "
                                           ),
                                         ]
                                       ),
@@ -53770,74 +53140,74 @@ var render = function () {
                                       _vm._v(" "),
                                       _c("td", [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               ticket.ticket_category
                                                 .ticket_category
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(ticket.firstname) +
                                             " " +
                                             _vm._s(ticket.middle_initial) +
-                                            ".\n                        " +
+                                            ".\n                          " +
                                             _vm._s(ticket.lastname) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(ticket.office.office) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               _vm.formatDate(
                                                 ticket.date_created
                                               )
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               ticket.ticket_type.ticket_type
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       ticket.technician
                                         ? _c("td", [
                                             _vm._v(
-                                              "\n                        " +
+                                              "\n                          " +
                                                 _vm._s(
                                                   ticket.technician.firstname
                                                 ) +
-                                                "\n                        " +
+                                                "\n                          " +
                                                 _vm._s(
                                                   ticket.technician
                                                     .middle_initial
                                                 ) +
-                                                ".\n                        " +
+                                                ".\n                          " +
                                                 _vm._s(
                                                   ticket.technician.lastname
                                                 ) +
-                                                "\n                      "
+                                                "\n                        "
                                             ),
                                           ])
                                         : _c("td", [
@@ -53846,7 +53216,7 @@ var render = function () {
                                               { staticStyle: { color: "red" } },
                                               [
                                                 _vm._v(
-                                                  "\n                          No assigned technician for this ticket\n                        "
+                                                  "\n                            No assigned technician for this ticket\n                          "
                                                 ),
                                               ]
                                             ),
@@ -53863,9 +53233,9 @@ var render = function () {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                          " +
+                                              "\n                            " +
                                                 _vm._s(ticket.status) +
-                                                "\n                        "
+                                                "\n                          "
                                             ),
                                           ]
                                         ),
@@ -54033,7 +53403,7 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                          Update Ticket Request\n                        "
+                                          "\n                            Update Ticket Request\n                          "
                                         ),
                                       ]
                                     ),
@@ -54093,13 +53463,13 @@ var render = function () {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                    " +
+                                                          "\n                                      " +
                                                             _vm._s(
                                                               _vm
                                                                 .selectedUpdatedTicket
                                                                 .helpdesk_no
                                                             ) +
-                                                            "\n                                  "
+                                                            "\n                                    "
                                                         ),
                                                       ]
                                                     ),
@@ -54115,13 +53485,13 @@ var render = function () {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                    " +
+                                                          "\n                                      " +
                                                             _vm._s(
                                                               _vm
                                                                 .selectedUpdatedTicket
                                                                 .firstname
                                                             ) +
-                                                            "\n                                    " +
+                                                            "\n                                      " +
                                                             _vm._s(
                                                               _vm
                                                                 .selectedUpdatedTicket
@@ -54133,7 +53503,7 @@ var render = function () {
                                                                 .selectedUpdatedTicket
                                                                 .lastname
                                                             ) +
-                                                            "\n                                  "
+                                                            "\n                                    "
                                                         ),
                                                       ]
                                                     ),
@@ -54302,7 +53672,7 @@ var render = function () {
                                                           },
                                                           [
                                                             _vm._v(
-                                                              "\n                                      " +
+                                                              "\n                                        " +
                                                                 _vm._s(
                                                                   _vm.getTechnicianFullName(
                                                                     _vm
@@ -54310,7 +53680,7 @@ var render = function () {
                                                                       .technician
                                                                   )
                                                                 ) +
-                                                                "\n                                    "
+                                                                "\n                                      "
                                                             ),
                                                           ]
                                                         )
@@ -54322,7 +53692,7 @@ var render = function () {
                                                           },
                                                           [
                                                             _vm._v(
-                                                              "\n                                      No Technician Assigned\n                                    "
+                                                              "\n                                        No Technician Assigned\n                                      "
                                                             ),
                                                           ]
                                                         ),
@@ -54337,7 +53707,7 @@ var render = function () {
                                                           },
                                                           [
                                                             _vm._v(
-                                                              "\n                                      Technician\n                                    "
+                                                              "\n                                        Technician\n                                      "
                                                             ),
                                                           ]
                                                         )
@@ -54419,7 +53789,7 @@ var render = function () {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                                  ❌ Unresolved\n                                "
+                                                  "\n                                    ❌ Unresolved\n                                  "
                                                 ),
                                               ]
                                             ),
@@ -54484,7 +53854,7 @@ var render = function () {
                                         staticClass: "ri-close-line me-1",
                                       }),
                                       _vm._v(
-                                        "\n                          Cancel\n                        "
+                                        "\n                            Cancel\n                          "
                                       ),
                                     ]
                                   ),
@@ -54510,7 +53880,7 @@ var render = function () {
                                         staticClass: "ri-save-line me-1",
                                       }),
                                       _vm._v(
-                                        "\n                          Update Ticket Request\n                        "
+                                        "\n                            Update Ticket Request\n                          "
                                       ),
                                     ]
                                   ),
@@ -54536,13 +53906,13 @@ var render = function () {
                                         staticClass: "ri-file-list-line me-1",
                                       }),
                                       _vm._v(
-                                        "\n                        Showing " +
+                                        "\n                          Showing " +
                                           _vm._s(_vm.tickets.from) +
                                           " to " +
                                           _vm._s(_vm.tickets.to) +
-                                          " of\n                        " +
+                                          " of\n                          " +
                                           _vm._s(_vm.tickets.total) +
-                                          " entries\n                      "
+                                          " entries\n                        "
                                       ),
                                     ]
                                   ),
@@ -54649,9 +54019,9 @@ var render = function () {
                                                 },
                                                 [
                                                   _vm._v(
-                                                    "\n                              " +
+                                                    "\n                                " +
                                                       _vm._s(page) +
-                                                      "\n                            "
+                                                      "\n                              "
                                                   ),
                                                 ]
                                               ),
@@ -54956,14 +54326,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .firstname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                              " +
+                                                                                      "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -54974,14 +54344,14 @@ var render = function () {
                                                                                               "."
                                                                                           : ""
                                                                                       ) +
-                                                                                      "\n                                              " +
+                                                                                      "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .lastname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -54996,7 +54366,7 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -55007,7 +54377,7 @@ var render = function () {
                                                                                               .office
                                                                                           : "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -55055,14 +54425,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .email ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -55113,14 +54483,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              " +
+                                                                                        "\n                                                " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_category
                                                                                               .ticket_category
                                                                                           ) +
-                                                                                          "\n                                            "
+                                                                                          "\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -55132,7 +54502,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              N/A\n                                            "
+                                                                                        "\n                                                N/A\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -55183,14 +54553,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              " +
+                                                                                        "\n                                                " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_type
                                                                                               .ticket_type
                                                                                           ) +
-                                                                                          "\n                                            "
+                                                                                          "\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -55202,7 +54572,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              N/A\n                                            "
+                                                                                        "\n                                                N/A\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -55250,14 +54620,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .status ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -55305,14 +54675,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .issue_concern ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -55367,13 +54737,13 @@ var render = function () {
                                                                         },
                                                                         [
                                                                           _vm._v(
-                                                                            "\n                                        " +
+                                                                            "\n                                          " +
                                                                               _vm._s(
                                                                                 _vm
                                                                                   .selectedTicket
                                                                                   .description
                                                                               ) +
-                                                                              "\n                                      "
+                                                                              "\n                                        "
                                                                           ),
                                                                         ]
                                                                       ),
@@ -55536,7 +54906,7 @@ var render = function () {
                                                                 "ri-time-line me-1",
                                                             }),
                                                             _vm._v(
-                                                              "\n                                    Last updated:\n                                    " +
+                                                              "\n                                      Last updated:\n                                      " +
                                                                 _vm._s(
                                                                   _vm
                                                                     .selectedTicket
@@ -55548,7 +54918,7 @@ var render = function () {
                                                                       )
                                                                     : "N/A"
                                                                 ) +
-                                                                "\n                                  "
+                                                                "\n                                    "
                                                             ),
                                                           ]
                                                         ),
@@ -55709,7 +55079,7 @@ var render = function () {
                                 [
                                   _c("i", { staticClass: "ri-refresh-line" }),
                                   _vm._v(
-                                    " Refresh Data\n                      "
+                                    " Refresh Data\n                        "
                                   ),
                                 ]
                               ),
@@ -55740,7 +55110,7 @@ var render = function () {
                                         { staticClass: "text-center fw-bold" },
                                         [
                                           _vm._v(
-                                            "\n                        " +
+                                            "\n                          " +
                                               _vm._s(
                                                 (_vm.resolveds.current_page -
                                                   1) *
@@ -55748,7 +55118,7 @@ var render = function () {
                                                   index +
                                                   1
                                               ) +
-                                              "\n                      "
+                                              "\n                        "
                                           ),
                                         ]
                                       ),
@@ -55763,79 +55133,79 @@ var render = function () {
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(resolved.firstname) +
-                                            "\n                        " +
+                                            "\n                          " +
                                             _vm._s(resolved.middle_initial) +
-                                            ".\n                        " +
+                                            ".\n                          " +
                                             _vm._s(resolved.lastname) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(resolved.office.office) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               _vm.formatDate(
                                                 resolved.date_receive
                                               )
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               _vm.formatDate(
                                                 resolved.date_acted
                                               )
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       resolved.technician
                                         ? _c("td", [
                                             _vm._v(
-                                              "\n                        " +
+                                              "\n                          " +
                                                 _vm._s(
                                                   resolved.technician.firstname
                                                 ) +
-                                                "\n                        " +
+                                                "\n                          " +
                                                 _vm._s(
                                                   resolved.technician
                                                     .middle_initial
                                                 ) +
-                                                ".\n                        " +
+                                                ".\n                          " +
                                                 _vm._s(
                                                   resolved.technician.lastname
                                                 ) +
-                                                "\n                      "
+                                                "\n                        "
                                             ),
                                           ])
                                         : _vm._e(),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               _vm.calculateWorkingDays(
                                                 resolved.date_receive,
                                                 resolved.date_acted
                                               )
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
@@ -55850,9 +55220,9 @@ var render = function () {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                          " +
+                                              "\n                            " +
                                                 _vm._s(resolved.status) +
-                                                "\n                        "
+                                                "\n                          "
                                             ),
                                           ]
                                         ),
@@ -55891,7 +55261,7 @@ var render = function () {
                                                     "ri-information-line me-1",
                                                 }),
                                                 _vm._v(
-                                                  " View\n                          "
+                                                  " View\n                            "
                                                 ),
                                               ]
                                             ),
@@ -55922,13 +55292,13 @@ var render = function () {
                                         staticClass: "ri-file-list-line me-1",
                                       }),
                                       _vm._v(
-                                        "\n                        Showing " +
+                                        "\n                          Showing " +
                                           _vm._s(_vm.resolveds.from) +
                                           " to " +
                                           _vm._s(_vm.resolveds.to) +
-                                          " of\n                        " +
+                                          " of\n                          " +
                                           _vm._s(_vm.resolveds.total) +
-                                          " entries\n                      "
+                                          " entries\n                        "
                                       ),
                                     ]
                                   ),
@@ -56039,9 +55409,9 @@ var render = function () {
                                                 },
                                                 [
                                                   _vm._v(
-                                                    "\n                              " +
+                                                    "\n                                " +
                                                       _vm._s(page) +
-                                                      "\n                            "
+                                                      "\n                              "
                                                   ),
                                                 ]
                                               ),
@@ -56346,14 +55716,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .firstname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                              " +
+                                                                                      "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -56364,14 +55734,14 @@ var render = function () {
                                                                                               "."
                                                                                           : ""
                                                                                       ) +
-                                                                                      "\n                                              " +
+                                                                                      "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .lastname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -56386,7 +55756,7 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -56397,7 +55767,7 @@ var render = function () {
                                                                                               .office
                                                                                           : "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -56445,14 +55815,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .email ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -56503,14 +55873,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              " +
+                                                                                        "\n                                                " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_category
                                                                                               .ticket_category
                                                                                           ) +
-                                                                                          "\n                                            "
+                                                                                          "\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -56522,7 +55892,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              N/A\n                                            "
+                                                                                        "\n                                                N/A\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -56573,14 +55943,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              " +
+                                                                                        "\n                                                " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_type
                                                                                               .ticket_type
                                                                                           ) +
-                                                                                          "\n                                            "
+                                                                                          "\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -56592,7 +55962,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              N/A\n                                            "
+                                                                                        "\n                                                N/A\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -56640,14 +56010,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .status ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -56695,14 +56065,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .issue_concern ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -56757,13 +56127,13 @@ var render = function () {
                                                                         },
                                                                         [
                                                                           _vm._v(
-                                                                            "\n                                        " +
+                                                                            "\n                                          " +
                                                                               _vm._s(
                                                                                 _vm
                                                                                   .selectedTicket
                                                                                   .description
                                                                               ) +
-                                                                              "\n                                      "
+                                                                              "\n                                        "
                                                                           ),
                                                                         ]
                                                                       ),
@@ -56926,7 +56296,7 @@ var render = function () {
                                                                 "ri-time-line me-1",
                                                             }),
                                                             _vm._v(
-                                                              "\n                                    Last updated:\n                                    " +
+                                                              "\n                                      Last updated:\n                                      " +
                                                                 _vm._s(
                                                                   _vm
                                                                     .selectedTicket
@@ -56938,7 +56308,7 @@ var render = function () {
                                                                       )
                                                                     : "N/A"
                                                                 ) +
-                                                                "\n                                  "
+                                                                "\n                                    "
                                                             ),
                                                           ]
                                                         ),
@@ -57097,7 +56467,7 @@ var render = function () {
                                 [
                                   _c("i", { staticClass: "ri-refresh-line" }),
                                   _vm._v(
-                                    " Refresh Data\n                      "
+                                    " Refresh Data\n                        "
                                   ),
                                 ]
                               ),
@@ -57129,7 +56499,7 @@ var render = function () {
                                         { staticClass: "text-center fw-bold" },
                                         [
                                           _vm._v(
-                                            "\n                        " +
+                                            "\n                          " +
                                               _vm._s(
                                                 (_vm.unresolveds.current_page -
                                                   1) *
@@ -57137,7 +56507,7 @@ var render = function () {
                                                   index +
                                                   1
                                               ) +
-                                              "\n                      "
+                                              "\n                        "
                                           ),
                                         ]
                                       ),
@@ -57156,80 +56526,80 @@ var render = function () {
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(unresolved.firstname) +
-                                            "\n                        " +
+                                            "\n                          " +
                                             _vm._s(unresolved.middle_initial) +
-                                            ".\n                        " +
+                                            ".\n                          " +
                                             _vm._s(unresolved.lastname) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(unresolved.office.office) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               _vm.formatDate(
                                                 unresolved.date_receive
                                               )
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               _vm.formatDate(
                                                 unresolved.date_acted
                                               )
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       unresolved.technician
                                         ? _c("td", [
                                             _vm._v(
-                                              "\n                        " +
+                                              "\n                          " +
                                                 _vm._s(
                                                   unresolved.technician
                                                     .firstname
                                                 ) +
-                                                "\n                        " +
+                                                "\n                          " +
                                                 _vm._s(
                                                   unresolved.technician
                                                     .middle_initial
                                                 ) +
-                                                ".\n                        " +
+                                                ".\n                          " +
                                                 _vm._s(
                                                   unresolved.technician.lastname
                                                 ) +
-                                                "\n                      "
+                                                "\n                        "
                                             ),
                                           ])
                                         : _vm._e(),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               _vm.calculateWorkingDays(
                                                 unresolved.date_receive,
                                                 unresolved.date_acted
                                               )
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
@@ -57244,9 +56614,9 @@ var render = function () {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                          " +
+                                              "\n                            " +
                                                 _vm._s(unresolved.status) +
-                                                "\n                        "
+                                                "\n                          "
                                             ),
                                           ]
                                         ),
@@ -57285,7 +56655,7 @@ var render = function () {
                                                     "ri-information-line me-1",
                                                 }),
                                                 _vm._v(
-                                                  " View \n                          "
+                                                  " View\n                            "
                                                 ),
                                               ]
                                             ),
@@ -57316,13 +56686,13 @@ var render = function () {
                                         staticClass: "ri-file-list-line me-1",
                                       }),
                                       _vm._v(
-                                        "\n                        Showing " +
+                                        "\n                          Showing " +
                                           _vm._s(_vm.unresolveds.from) +
-                                          " to\n                        " +
+                                          " to\n                          " +
                                           _vm._s(_vm.unresolveds.to) +
-                                          " of\n                        " +
+                                          " of\n                          " +
                                           _vm._s(_vm.unresolveds.total) +
-                                          " entries\n                      "
+                                          " entries\n                        "
                                       ),
                                     ]
                                   ),
@@ -57433,9 +56803,9 @@ var render = function () {
                                                 },
                                                 [
                                                   _vm._v(
-                                                    "\n                              " +
+                                                    "\n                                " +
                                                       _vm._s(page) +
-                                                      "\n                            "
+                                                      "\n                              "
                                                   ),
                                                 ]
                                               ),
@@ -57740,14 +57110,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .firstname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                              " +
+                                                                                      "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -57758,14 +57128,14 @@ var render = function () {
                                                                                               "."
                                                                                           : ""
                                                                                       ) +
-                                                                                      "\n                                              " +
+                                                                                      "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .lastname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -57780,7 +57150,7 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -57791,7 +57161,7 @@ var render = function () {
                                                                                               .office
                                                                                           : "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -57839,14 +57209,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .email ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -57897,14 +57267,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              " +
+                                                                                        "\n                                                " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_category
                                                                                               .ticket_category
                                                                                           ) +
-                                                                                          "\n                                            "
+                                                                                          "\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -57916,7 +57286,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              N/A\n                                            "
+                                                                                        "\n                                                N/A\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -57967,14 +57337,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              " +
+                                                                                        "\n                                                " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_type
                                                                                               .ticket_type
                                                                                           ) +
-                                                                                          "\n                                            "
+                                                                                          "\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -57986,7 +57356,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                              N/A\n                                            "
+                                                                                        "\n                                                N/A\n                                              "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -58034,14 +57404,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .status ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -58089,14 +57459,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                              " +
+                                                                                    "\n                                                " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .issue_concern ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                            "
+                                                                                      "\n                                              "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -58151,13 +57521,13 @@ var render = function () {
                                                                         },
                                                                         [
                                                                           _vm._v(
-                                                                            "\n                                        " +
+                                                                            "\n                                          " +
                                                                               _vm._s(
                                                                                 _vm
                                                                                   .selectedTicket
                                                                                   .description
                                                                               ) +
-                                                                              "\n                                      "
+                                                                              "\n                                        "
                                                                           ),
                                                                         ]
                                                                       ),
@@ -58320,7 +57690,7 @@ var render = function () {
                                                                 "ri-time-line me-1",
                                                             }),
                                                             _vm._v(
-                                                              "\n                                    Last updated:\n                                    " +
+                                                              "\n                                      Last updated:\n                                      " +
                                                                 _vm._s(
                                                                   _vm
                                                                     .selectedTicket
@@ -58332,7 +57702,7 @@ var render = function () {
                                                                       )
                                                                     : "N/A"
                                                                 ) +
-                                                                "\n                                  "
+                                                                "\n                                    "
                                                             ),
                                                           ]
                                                         ),
@@ -58475,7 +57845,7 @@ var render = function () {
                             },
                             [
                               _c("i", { staticClass: "ri-refresh-line" }),
-                              _vm._v(" Refresh Data\n                    "),
+                              _vm._v(" Refresh Data\n                      "),
                             ]
                           ),
                         ]),
@@ -58505,7 +57875,7 @@ var render = function () {
                                         { staticClass: "text-center fw-bold" },
                                         [
                                           _vm._v(
-                                            "\n                        " +
+                                            "\n                          " +
                                               _vm._s(
                                                 (_vm.feedbacks.current_page -
                                                   1) *
@@ -58513,7 +57883,7 @@ var render = function () {
                                                   index +
                                                   1
                                               ) +
-                                              "\n                      "
+                                              "\n                        "
                                           ),
                                         ]
                                       ),
@@ -58540,54 +57910,78 @@ var render = function () {
                                       ]),
                                       _vm._v(" "),
                                       _c("td", [
+                                        _vm._v(_vm._s(feedback.email)),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(feedback.firstname) +
-                                            "\n                        " +
+                                            "\n                          " +
                                             _vm._s(feedback.middle_initial) +
                                             ". " +
                                             _vm._s(feedback.lastname) +
-                                            "\n                      "
-                                        ),
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("td", [
-                                        _vm._v(_vm._s(feedback.date_acted)),
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("td", [
-                                        _vm._v(
-                                          "\n                        " +
-                                            _vm._s(
-                                              feedback.rate
-                                                ? feedback.rate.rate
-                                                : "No Data Encoded"
-                                            ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", [
                                         _vm._v(
-                                          "\n                        " +
+                                          _vm._s(
+                                            _vm.formatDate(feedback.date_acted)
+                                          )
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        [
+                                          feedback.rate &&
+                                          feedback.rate.rate === "E"
+                                            ? [_vm._v("⭐ Excellent")]
+                                            : feedback.rate &&
+                                              feedback.rate.rate === "VS"
+                                            ? [
+                                                _vm._v(
+                                                  "⭐ Very\n                            Satisfactory"
+                                                ),
+                                              ]
+                                            : feedback.rate &&
+                                              feedback.rate.rate === "S"
+                                            ? [_vm._v("⭐ Satisfactory")]
+                                            : feedback.rate &&
+                                              feedback.rate.rate === "BS"
+                                            ? [
+                                                _vm._v(
+                                                  "⭐ Below\n                            Satisfactory"
+                                                ),
+                                              ]
+                                            : [_vm._v("No Data Encoded")],
+                                        ],
+                                        2
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          "\n                          " +
                                             _vm._s(
                                               feedback.rate
                                                 ? feedback.rate.feedback_remarks
                                                 : "No Data Encoded"
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                          " +
                                             _vm._s(
                                               feedback.rate
                                                 ? feedback.rate.date_feedback
                                                 : "No Data Encoded"
                                             ) +
-                                            "\n                      "
+                                            "\n                        "
                                         ),
                                       ]),
                                       _vm._v(" "),
@@ -58625,6 +58019,226 @@ var render = function () {
                             : _vm._e(),
                         ]
                       ),
+                      _vm._v(" "),
+                      _vm.feedbacks.total > 0
+                        ? _c("div", { staticClass: "card-footer bg-white" }, [
+                            _c(
+                              "div",
+                              { staticClass: "row align-items-center" },
+                              [
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _c(
+                                    "span",
+                                    { staticClass: "text-muted small" },
+                                    [
+                                      _c("i", {
+                                        staticClass: "ri-file-list-line me-1",
+                                      }),
+                                      _vm._v(
+                                        "\n                          Showing " +
+                                          _vm._s(_vm.feedbacks.from) +
+                                          " to " +
+                                          _vm._s(_vm.feedbacks.to) +
+                                          " of\n                          " +
+                                          _vm._s(_vm.feedbacks.total) +
+                                          " entries\n                        "
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _c("nav", { staticClass: "float-end" }, [
+                                    _c(
+                                      "ul",
+                                      {
+                                        staticClass:
+                                          "pagination pagination-sm mb-0",
+                                      },
+                                      [
+                                        _c(
+                                          "li",
+                                          {
+                                            staticClass: "page-item",
+                                            class: {
+                                              disabled:
+                                                _vm.feedbacks.current_page ===
+                                                1,
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "page-link",
+                                                attrs: { title: "First" },
+                                                on: {
+                                                  click: function ($event) {
+                                                    return _vm.changePageFeedback(
+                                                      1
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "ri-skip-back-line",
+                                                }),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          {
+                                            staticClass: "page-item",
+                                            class: {
+                                              disabled:
+                                                _vm.feedbacks.current_page ===
+                                                1,
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "page-link",
+                                                attrs: { title: "Previous" },
+                                                on: {
+                                                  click: function ($event) {
+                                                    return _vm.changePageFeedback(
+                                                      _vm.feedbacks
+                                                        .current_page - 1
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "ri-arrow-left-s-line",
+                                                }),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.pages, function (page) {
+                                          return _c(
+                                            "li",
+                                            {
+                                              key: page,
+                                              staticClass: "page-item",
+                                              class: {
+                                                active:
+                                                  page ===
+                                                  _vm.feedbacks.current_page,
+                                              },
+                                            },
+                                            [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass: "page-link",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.changePageFeedback(
+                                                        page
+                                                      )
+                                                    },
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                " +
+                                                      _vm._s(page) +
+                                                      "\n                              "
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          {
+                                            staticClass: "page-item",
+                                            class: {
+                                              disabled:
+                                                _vm.feedbacks.current_page ===
+                                                _vm.feedbacks.last_page,
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "page-link",
+                                                attrs: { title: "Next" },
+                                                on: {
+                                                  click: function ($event) {
+                                                    return _vm.changePageFeedback(
+                                                      _vm.feedbacks
+                                                        .current_page + 1
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "ri-arrow-right-s-line",
+                                                }),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          {
+                                            staticClass: "page-item",
+                                            class: {
+                                              disabled:
+                                                _vm.feedbacks.current_page ===
+                                                _vm.feedbacks.last_page,
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "page-link",
+                                                attrs: { title: "Last" },
+                                                on: {
+                                                  click: function ($event) {
+                                                    return _vm.changePageFeedback(
+                                                      _vm.feedbacks.last_page
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "ri-skip-forward-line",
+                                                }),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                      ],
+                                      2
+                                    ),
+                                  ]),
+                                ]),
+                              ]
+                            ),
+                          ])
+                        : _vm._e(),
                     ]),
                   ]
                 ),
@@ -58653,14 +58267,14 @@ var staticRenderFns = [
               _c("h5", { staticClass: "card-title mb-0 text-white" }, [
                 _c("i", { staticClass: "ri-building-3-line me-2" }),
                 _vm._v(
-                  "\n                  DENR - Manage All Ticket Request\n                "
+                  "\n                    DENR - Manage All Ticket Request\n                  "
                 ),
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "text-white-50 mb-0 small" }, [
                 _c("i", { staticClass: "ri-list-check me-1" }),
                 _vm._v(
-                  "\n                  Department of Environment and Natural Resources XI\n                "
+                  "\n                    Department of Environment and Natural Resources XI\n                  "
                 ),
               ]),
             ]),
@@ -58843,42 +58457,42 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { width: "5%" } }, [
           _c("i", { staticClass: "ri-ticket-line me-1" }),
-          _vm._v(" Helpdesk #\n                      "),
+          _vm._v(" Helpdesk #\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "150" } }, [
           _c("i", { staticClass: "ri-calendar-line me-1" }),
-          _vm._v("Subject\n                      "),
+          _vm._v("Subject\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "150" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Requester\n                      "),
+          _vm._v(" Requester\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "250" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Office\n                      "),
+          _vm._v(" Office\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "200" } }, [
           _c("i", { staticClass: "ri-calendar-line me-1" }),
-          _vm._v(" Date Created\n                      "),
+          _vm._v(" Date Created\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Category\n                      "),
+          _vm._v(" Category\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Technician Assign\n                      "),
+          _vm._v(" Technician Assign\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "100" } }, [
           _c("i", { staticClass: "ri-information-line me-1" }),
-          _vm._v(" Status\n                      "),
+          _vm._v(" Status\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "80" } }, [
@@ -58928,7 +58542,7 @@ var staticRenderFns = [
     return _c("label", { staticClass: "small text-muted mb-2 d-block" }, [
       _c("i", { staticClass: "ri-user-star-line me-1" }),
       _vm._v(
-        "Assign\n                                  Technician\n                                "
+        "Assign\n                                    Technician\n                                  "
       ),
     ])
   },
@@ -58939,7 +58553,7 @@ var staticRenderFns = [
     return _c("small", { staticClass: "text-muted mt-1 d-block" }, [
       _c("i", { staticClass: "ri-information-line me-1" }),
       _vm._v(
-        "\n                                Changing status will update the ticket\n                                workflow\n                              "
+        "\n                                  Changing status will update the ticket\n                                  workflow\n                                "
       ),
     ])
   },
@@ -58950,7 +58564,7 @@ var staticRenderFns = [
     return _c("label", { staticClass: "small text-muted mb-2 d-block" }, [
       _c("i", { staticClass: "ri-chat-3-line me-1" }),
       _vm._v(
-        "Resolution\n                              Notes / Remarks\n                            "
+        "Resolution\n                                Notes / Remarks\n                              "
       ),
     ])
   },
@@ -58965,7 +58579,7 @@ var staticRenderFns = [
         _c("small", { staticClass: "text-muted" }, [
           _c("i", { staticClass: "ri-information-line me-1" }),
           _vm._v(
-            "\n                                Add detailed notes about the resolution or\n                                status change\n                              "
+            "\n                                  Add detailed notes about the resolution or\n                                  status change\n                                "
           ),
         ]),
       ]
@@ -58986,7 +58600,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                                    Ticket Details\n                                  "
+                "\n                                      Ticket Details\n                                    "
               ),
             ]
           ),
@@ -58994,7 +58608,7 @@ var staticRenderFns = [
           _c("p", { staticClass: "mb-0 small text-white-50" }, [
             _c("i", { staticClass: "ri-information-line me-1" }),
             _vm._v(
-              "\n                                    Complete ticket information\n                                  "
+              "\n                                      Complete ticket information\n                                    "
             ),
           ]),
         ]),
@@ -59033,7 +58647,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-information-line me-2" }),
-        _vm._v("Basic Information\n                                    "),
+        _vm._v("Basic Information\n                                      "),
       ]),
     ])
   },
@@ -59043,7 +58657,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-user-line me-1" }),
-      _vm._v("Requester\n                                        "),
+      _vm._v("Requester\n                                          "),
     ])
   },
   function () {
@@ -59062,7 +58676,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Contact Information\n                                        "),
+      _vm._v("Contact Information\n                                          "),
     ])
   },
   function () {
@@ -59081,7 +58695,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Subject\n                                        "),
+      _vm._v("Subject\n                                          "),
     ])
   },
   function () {
@@ -59100,7 +58714,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Category\n                                        "),
+      _vm._v("Category\n                                          "),
     ])
   },
   function () {
@@ -59119,7 +58733,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Status\n                                        "),
+      _vm._v("Status\n                                          "),
     ])
   },
   function () {
@@ -59138,7 +58752,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Issues/Concern\n                                        "),
+      _vm._v("Issues/Concern\n                                          "),
     ])
   },
   function () {
@@ -59158,7 +58772,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-file-text-line me-2" }),
-        _vm._v("Description\n                                    "),
+        _vm._v("Description\n                                      "),
       ]),
     ])
   },
@@ -59169,7 +58783,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-attachment-line me-2" }),
-        _vm._v("Attachments\n                                    "),
+        _vm._v("Attachments\n                                      "),
       ]),
     ])
   },
@@ -59202,7 +58816,7 @@ var staticRenderFns = [
         },
         [
           _c("i", { staticClass: "ri-close-line me-1" }),
-          _vm._v("Close\n                                  "),
+          _vm._v("Close\n                                    "),
         ]
       ),
     ])
@@ -59235,44 +58849,44 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { width: "5%" } }, [
           _c("i", { staticClass: "ri-ticket-line me-1" }),
-          _vm._v(" Helpdesk #\n                      "),
+          _vm._v(" Helpdesk #\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "150" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Requester\n                      "),
+          _vm._v(" Requester\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "250" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Office\n                      "),
+          _vm._v(" Office\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Date Received\n                      "),
+          _vm._v(" Date Received\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Date Acted\n                      "),
+          _vm._v(" Date Acted\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Technician Assign\n                      "),
+          _vm._v(" Technician Assign\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "50" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
           _vm._v(
-            " Actual Turn Around\n                        Time\n                      "
+            " Actual Turn Around\n                          Time\n                        "
           ),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "100" } }, [
           _c("i", { staticClass: "ri-information-line me-1" }),
-          _vm._v(" Status\n                      "),
+          _vm._v(" Status\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "80" } }, [
@@ -59312,7 +58926,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                                    Ticket Details\n                                  "
+                "\n                                      Ticket Details\n                                    "
               ),
             ]
           ),
@@ -59320,7 +58934,7 @@ var staticRenderFns = [
           _c("p", { staticClass: "mb-0 small text-white-50" }, [
             _c("i", { staticClass: "ri-information-line me-1" }),
             _vm._v(
-              "\n                                    Complete ticket information\n                                  "
+              "\n                                      Complete ticket information\n                                    "
             ),
           ]),
         ]),
@@ -59359,7 +58973,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-information-line me-2" }),
-        _vm._v("Basic Information\n                                    "),
+        _vm._v("Basic Information\n                                      "),
       ]),
     ])
   },
@@ -59369,7 +58983,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-user-line me-1" }),
-      _vm._v("Requester\n                                        "),
+      _vm._v("Requester\n                                          "),
     ])
   },
   function () {
@@ -59388,7 +59002,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Contact Information\n                                        "),
+      _vm._v("Contact Information\n                                          "),
     ])
   },
   function () {
@@ -59407,7 +59021,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Subject\n                                        "),
+      _vm._v("Subject\n                                          "),
     ])
   },
   function () {
@@ -59426,7 +59040,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Category\n                                        "),
+      _vm._v("Category\n                                          "),
     ])
   },
   function () {
@@ -59445,7 +59059,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Status\n                                        "),
+      _vm._v("Status\n                                          "),
     ])
   },
   function () {
@@ -59464,7 +59078,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Issues/Concern\n                                        "),
+      _vm._v("Issues/Concern\n                                          "),
     ])
   },
   function () {
@@ -59484,7 +59098,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-file-text-line me-2" }),
-        _vm._v("Description\n                                    "),
+        _vm._v("Description\n                                      "),
       ]),
     ])
   },
@@ -59495,7 +59109,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-attachment-line me-2" }),
-        _vm._v("Attachments\n                                    "),
+        _vm._v("Attachments\n                                      "),
       ]),
     ])
   },
@@ -59528,7 +59142,7 @@ var staticRenderFns = [
         },
         [
           _c("i", { staticClass: "ri-close-line me-1" }),
-          _vm._v("Close\n                                  "),
+          _vm._v("Close\n                                    "),
         ]
       ),
     ])
@@ -59561,44 +59175,44 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { width: "5%" } }, [
           _c("i", { staticClass: "ri-ticket-line me-1" }),
-          _vm._v(" Helpdesk #\n                      "),
+          _vm._v(" Helpdesk #\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "150" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Requester\n                      "),
+          _vm._v(" Requester\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "250" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Office\n                      "),
+          _vm._v(" Office\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Date Received\n                      "),
+          _vm._v(" Date Received\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Date Acted\n                      "),
+          _vm._v(" Date Acted\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Technician Assign\n                      "),
+          _vm._v(" Technician Assign\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "50" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
           _vm._v(
-            " Actual Turn Around\n                        Time\n                      "
+            " Actual Turn Around\n                          Time\n                        "
           ),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "100" } }, [
           _c("i", { staticClass: "ri-information-line me-1" }),
-          _vm._v(" Status\n                      "),
+          _vm._v(" Status\n                        "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "80" } }, [
@@ -59638,7 +59252,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                                    Ticket Details\n                                  "
+                "\n                                      Ticket Details\n                                    "
               ),
             ]
           ),
@@ -59646,7 +59260,7 @@ var staticRenderFns = [
           _c("p", { staticClass: "mb-0 small text-white-50" }, [
             _c("i", { staticClass: "ri-information-line me-1" }),
             _vm._v(
-              "\n                                    Complete ticket information\n                                  "
+              "\n                                      Complete ticket information\n                                    "
             ),
           ]),
         ]),
@@ -59685,7 +59299,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-information-line me-2" }),
-        _vm._v("Basic Information\n                                    "),
+        _vm._v("Basic Information\n                                      "),
       ]),
     ])
   },
@@ -59695,7 +59309,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-user-line me-1" }),
-      _vm._v("Requester\n                                        "),
+      _vm._v("Requester\n                                          "),
     ])
   },
   function () {
@@ -59714,7 +59328,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Contact Information\n                                        "),
+      _vm._v("Contact Information\n                                          "),
     ])
   },
   function () {
@@ -59733,7 +59347,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Subject\n                                        "),
+      _vm._v("Subject\n                                          "),
     ])
   },
   function () {
@@ -59752,7 +59366,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Category\n                                        "),
+      _vm._v("Category\n                                          "),
     ])
   },
   function () {
@@ -59771,7 +59385,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Status\n                                        "),
+      _vm._v("Status\n                                          "),
     ])
   },
   function () {
@@ -59790,7 +59404,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Issues/Concern\n                                        "),
+      _vm._v("Issues/Concern\n                                          "),
     ])
   },
   function () {
@@ -59810,7 +59424,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-file-text-line me-2" }),
-        _vm._v("Description\n                                    "),
+        _vm._v("Description\n                                      "),
       ]),
     ])
   },
@@ -59821,7 +59435,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-attachment-line me-2" }),
-        _vm._v("Attachments\n                                    "),
+        _vm._v("Attachments\n                                      "),
       ]),
     ])
   },
@@ -59854,7 +59468,7 @@ var staticRenderFns = [
         },
         [
           _c("i", { staticClass: "ri-close-line me-1" }),
-          _vm._v("Close\n                                  "),
+          _vm._v("Close\n                                    "),
         ]
       ),
     ])
@@ -59881,37 +59495,59 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "table-info" }, [
       _c("tr", [
-        _c("th", { staticClass: "text-center", attrs: { width: "50" } }, [
-          _vm._v("#"),
-        ]),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "40px" } },
+          [_vm._v("#")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "text-center", attrs: { width: "200" } }, [
-          _vm._v("Helpdesk #"),
-        ]),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "140px" } },
+          [_vm._v("Helpdesk #")]
+        ),
         _vm._v(" "),
-        _c("th", { attrs: { width: "130" } }, [_vm._v("Category")]),
+        _c("th", { staticStyle: { width: "120px" } }, [_vm._v("Category")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "250" } }, [_vm._v("Subject")]),
+        _c("th", { staticStyle: { width: "220px" } }, [_vm._v("Subject")]),
         _vm._v(" "),
-        _c("th", { staticClass: "text-center", attrs: { width: "200" } }, [
-          _vm._v("Requester"),
-        ]),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "180px" } },
+          [_vm._v("Email")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "text-center", attrs: { width: "180" } }, [
-          _vm._v("Date Acted"),
-        ]),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "160px" } },
+          [_vm._v("Requester")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "text-center", attrs: { width: "100" } }, [
-          _vm._v("Rating"),
-        ]),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "150px" } },
+          [_vm._v("Date Acted")]
+        ),
         _vm._v(" "),
-        _c("th", [_vm._v("Feedback")]),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "120px" } },
+          [_vm._v("Rating")]
+        ),
         _vm._v(" "),
-        _c("th", [_vm._v("Date Feedback")]),
+        _c("th", { staticStyle: { width: "220px" } }, [_vm._v("Feedback")]),
         _vm._v(" "),
-        _c("th", { staticClass: "text-center", attrs: { width: "80" } }, [
-          _vm._v("Actions"),
-        ]),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "150px" } },
+          [_vm._v("Date Feedback")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "80px" } },
+          [_vm._v("Actions")]
+        ),
       ]),
     ])
   },
@@ -60169,360 +59805,394 @@ var render = function () {
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "row g-4" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "info-box" }, [
-                        _vm._m(3),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-1" }, [
-                          _c("strong", [_vm._v("Name:")]),
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.ticket.firstname) +
-                              "\n                    " +
-                              _vm._s(_vm.ticket.middle_initial) +
-                              "\n                    " +
-                              _vm._s(_vm.ticket.lastname) +
-                              "\n                  "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-1" }, [
-                          _c("strong", [_vm._v("Email:")]),
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.getEmail()) +
-                              "\n                  "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-1" }, [
-                          _c("strong", [_vm._v("Office:")]),
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.ticket.office.office) +
-                              "\n                  "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-1" }, [
-                          _c("strong", [_vm._v("Category:")]),
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.ticket.ticket_type.ticket_type) +
-                              "\n                  "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-0" }, [
-                          _c("strong", [_vm._v("Subject:")]),
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(
-                                _vm.ticket.ticket_category.ticket_category
-                              ) +
-                              "\n                  "
-                          ),
-                        ]),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "info-box" }, [
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _vm._m(5),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "text-muted" }, [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.ticket.issue_concern || "N/A") +
-                              "\n                  "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("hr"),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12" }, [
-                      _c("div", { staticClass: "info-box bg-light" }, [
-                        _vm._m(6),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-1" }, [
-                          _c("strong", [_vm._v("Name:")]),
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.ticket.technician.firstname) +
-                              "\n                    " +
-                              _vm._s(_vm.ticket.technician.middle_initial) +
-                              ".\n                    " +
-                              _vm._s(_vm.ticket.technician.lastname) +
-                              "\n                  "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _vm.ticket.resolution
-                          ? _c("p", { staticClass: "mt-2 mb-0" }, [
-                              _c("strong", [_vm._v("Resolution:")]),
-                              _c("br"),
-                              _vm._v(
-                                "\n                    " +
-                                  _vm._s(_vm.ticket.resolution) +
-                                  "\n                  "
-                              ),
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-1" }, [
-                          _c("strong", [_vm._v("Date Received:")]),
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.formatDate(_vm.ticket.date_receive)) +
-                              "\n                  "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-0" }, [
-                          _c("strong", [_vm._v("Date Acted:")]),
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.formatDate(_vm.ticket.date_acted)) +
-                              "\n                  "
-                          ),
-                        ]),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12" }, [
-                      _c("div", { staticClass: "info-box bg-light" }, [
-                        _vm._m(7),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mb-3" }, [
-                          _c(
-                            "label",
-                            { staticClass: "form-label fw-semibold" },
-                            [_vm._v("Service Rating")]
-                          ),
+                  _c(
+                    "div",
+                    { staticClass: "row g-4" },
+                    [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("div", { staticClass: "info-box" }, [
+                          _vm._m(3),
                           _vm._v(" "),
-                          _c("div", { staticClass: "form-check" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.feedback.rating,
-                                  expression: "feedback.rating",
-                                },
-                              ],
-                              staticClass: "form-check-input",
-                              attrs: {
-                                type: "radio",
-                                name: "techFeedback",
-                                value: "E",
-                                id: "ratingExcellent",
-                              },
-                              domProps: {
-                                checked: _vm._q(_vm.feedback.rating, "E"),
-                              },
-                              on: {
-                                change: function ($event) {
-                                  return _vm.$set(_vm.feedback, "rating", "E")
-                                },
-                              },
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "label",
-                              {
-                                staticClass: "form-check-label",
-                                attrs: { for: "ratingExcellent" },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                        ⭐ Excellent\n                      "
-                                ),
-                              ]
-                            ),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-check" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.feedback.rating,
-                                  expression: "feedback.rating",
-                                },
-                              ],
-                              staticClass: "form-check-input",
-                              attrs: {
-                                type: "radio",
-                                name: "techFeedback",
-                                value: "VS",
-                                id: "ratingVerySatisfactory",
-                              },
-                              domProps: {
-                                checked: _vm._q(_vm.feedback.rating, "VS"),
-                              },
-                              on: {
-                                change: function ($event) {
-                                  return _vm.$set(_vm.feedback, "rating", "VS")
-                                },
-                              },
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "label",
-                              {
-                                staticClass: "form-check-label",
-                                attrs: { for: "ratingVerySatisfactory" },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                        👍 Very Satisfactory\n                      "
-                                ),
-                              ]
-                            ),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-check" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.feedback.rating,
-                                  expression: "feedback.rating",
-                                },
-                              ],
-                              staticClass: "form-check-input",
-                              attrs: {
-                                type: "radio",
-                                name: "techFeedback",
-                                value: "S",
-                                id: "ratingSatisfactory",
-                              },
-                              domProps: {
-                                checked: _vm._q(_vm.feedback.rating, "S"),
-                              },
-                              on: {
-                                change: function ($event) {
-                                  return _vm.$set(_vm.feedback, "rating", "S")
-                                },
-                              },
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "label",
-                              {
-                                staticClass: "form-check-label",
-                                attrs: { for: "ratingSatisfactory" },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                        🙂 Satisfactory\n                      "
-                                ),
-                              ]
-                            ),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-check" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.feedback.rating,
-                                  expression: "feedback.rating",
-                                },
-                              ],
-                              staticClass: "form-check-input",
-                              attrs: {
-                                type: "radio",
-                                name: "techFeedback",
-                                value: "BS",
-                                id: "ratingBelowSatisfactory",
-                              },
-                              domProps: {
-                                checked: _vm._q(_vm.feedback.rating, "BS"),
-                              },
-                              on: {
-                                change: function ($event) {
-                                  return _vm.$set(_vm.feedback, "rating", "BS")
-                                },
-                              },
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "label",
-                              {
-                                staticClass: "form-check-label",
-                                attrs: { for: "ratingBelowSatisfactory" },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                        👎 Below Satisfactory\n                      "
-                                ),
-                              ]
-                            ),
-                          ]),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mb-3" }, [
-                          _c(
-                            "label",
-                            { staticClass: "form-label fw-semibold" },
-                            [_vm._v("Remarks")]
-                          ),
-                          _vm._v(" "),
-                          _c("textarea", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.feedback.remarks,
-                                expression: "feedback.remarks",
-                              },
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              rows: "3",
-                              placeholder: "Write your feedback here...",
-                            },
-                            domProps: { value: _vm.feedback.remarks },
-                            on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.feedback,
-                                  "remarks",
-                                  $event.target.value
-                                )
-                              },
-                            },
-                          }),
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-info",
-                            attrs: { type: "button" },
-                            on: { click: _vm.submitFeedback },
-                          },
-                          [
+                          _c("p", { staticClass: "mb-1" }, [
+                            _c("strong", [_vm._v("Name:")]),
                             _vm._v(
-                              "\n                    Submit Feedback\n                  "
+                              "\n                    " +
+                                _vm._s(_vm.ticket.firstname) +
+                                "\n                    " +
+                                _vm._s(_vm.ticket.middle_initial) +
+                                "\n                    " +
+                                _vm._s(_vm.ticket.lastname) +
+                                "\n                  "
                             ),
-                          ]
-                        ),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "mb-1" }, [
+                            _c("strong", [_vm._v("Email:")]),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.getEmail()) +
+                                "\n                  "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "mb-1" }, [
+                            _c("strong", [_vm._v("Office:")]),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.ticket.office.office) +
+                                "\n                  "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "mb-1" }, [
+                            _c("strong", [_vm._v("Category:")]),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.ticket.ticket_type.ticket_type) +
+                                "\n                  "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "mb-0" }, [
+                            _c("strong", [_vm._v("Subject:")]),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(
+                                  _vm.ticket.ticket_category.ticket_category
+                                ) +
+                                "\n                  "
+                            ),
+                          ]),
+                        ]),
                       ]),
-                    ]),
-                  ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("div", { staticClass: "info-box" }, [
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-muted" }, [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.ticket.issue_concern || "N/A") +
+                                "\n                  "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("hr"),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12" }, [
+                        _c("div", { staticClass: "info-box bg-light" }, [
+                          _vm._m(6),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "mb-1" }, [
+                            _c("strong", [_vm._v("Name:")]),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.ticket.technician.firstname) +
+                                "\n                    " +
+                                _vm._s(_vm.ticket.technician.middle_initial) +
+                                ".\n                    " +
+                                _vm._s(_vm.ticket.technician.lastname) +
+                                "\n                  "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _vm.ticket.resolution
+                            ? _c("p", { staticClass: "mt-2 mb-0" }, [
+                                _c("strong", [_vm._v("Resolution:")]),
+                                _c("br"),
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(_vm.ticket.resolution) +
+                                    "\n                  "
+                                ),
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "mb-1" }, [
+                            _c("strong", [_vm._v("Date Received:")]),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(
+                                  _vm.formatDate(_vm.ticket.date_receive)
+                                ) +
+                                "\n                  "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "mb-0" }, [
+                            _c("strong", [_vm._v("Date Acted:")]),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.formatDate(_vm.ticket.date_acted)) +
+                                "\n                  "
+                            ),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _vm.ticket.rate == null
+                        ? [
+                            _c("div", { staticClass: "col-12" }, [
+                              _c("div", { staticClass: "info-box bg-light" }, [
+                                _vm._m(7),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "mb-3" }, [
+                                  _c(
+                                    "label",
+                                    { staticClass: "form-label fw-semibold" },
+                                    [_vm._v("Service Rating")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "form-check" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.feedback.rating,
+                                          expression: "feedback.rating",
+                                        },
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "radio", value: "E" },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.feedback.rating,
+                                          "E"
+                                        ),
+                                      },
+                                      on: {
+                                        change: function ($event) {
+                                          return _vm.$set(
+                                            _vm.feedback,
+                                            "rating",
+                                            "E"
+                                          )
+                                        },
+                                      },
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      { staticClass: "form-check-label" },
+                                      [_vm._v("⭐ Excellent")]
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "form-check" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.feedback.rating,
+                                          expression: "feedback.rating",
+                                        },
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "radio", value: "VS" },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.feedback.rating,
+                                          "VS"
+                                        ),
+                                      },
+                                      on: {
+                                        change: function ($event) {
+                                          return _vm.$set(
+                                            _vm.feedback,
+                                            "rating",
+                                            "VS"
+                                          )
+                                        },
+                                      },
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      { staticClass: "form-check-label" },
+                                      [_vm._v("👍 Very Satisfactory")]
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "form-check" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.feedback.rating,
+                                          expression: "feedback.rating",
+                                        },
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "radio", value: "S" },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.feedback.rating,
+                                          "S"
+                                        ),
+                                      },
+                                      on: {
+                                        change: function ($event) {
+                                          return _vm.$set(
+                                            _vm.feedback,
+                                            "rating",
+                                            "S"
+                                          )
+                                        },
+                                      },
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      { staticClass: "form-check-label" },
+                                      [_vm._v("🙂 Satisfactory")]
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "form-check" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.feedback.rating,
+                                          expression: "feedback.rating",
+                                        },
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: { type: "radio", value: "BS" },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.feedback.rating,
+                                          "BS"
+                                        ),
+                                      },
+                                      on: {
+                                        change: function ($event) {
+                                          return _vm.$set(
+                                            _vm.feedback,
+                                            "rating",
+                                            "BS"
+                                          )
+                                        },
+                                      },
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      { staticClass: "form-check-label" },
+                                      [_vm._v("👎 Below Satisfactory")]
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "mb-3" }, [
+                                  _c(
+                                    "label",
+                                    { staticClass: "form-label fw-semibold" },
+                                    [_vm._v("Remarks")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("textarea", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.feedback.remarks,
+                                        expression: "feedback.remarks",
+                                      },
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { rows: "3" },
+                                    domProps: { value: _vm.feedback.remarks },
+                                    on: {
+                                      input: function ($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.feedback,
+                                          "remarks",
+                                          $event.target.value
+                                        )
+                                      },
+                                    },
+                                  }),
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-info",
+                                    on: { click: _vm.submitFeedback },
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                      Submit Feedback\n                    "
+                                    ),
+                                  ]
+                                ),
+                              ]),
+                            ]),
+                          ]
+                        : [
+                            _c("div", { staticClass: "col-12" }, [
+                              _c("div", { staticClass: "info-box bg-light" }, [
+                                _vm._m(8),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  [
+                                    _vm.ticket.rate &&
+                                    _vm.ticket.rate.rate === "E"
+                                      ? [_vm._v("⭐ Excellent")]
+                                      : _vm.ticket.rate &&
+                                        _vm.ticket.rate.rate === "VS"
+                                      ? [
+                                          _vm._v(
+                                            "⭐ Very\n                          Satisfactory"
+                                          ),
+                                        ]
+                                      : _vm.ticket.rate &&
+                                        _vm.ticket.rate.rate === "S"
+                                      ? [_vm._v("⭐ Satisfactory")]
+                                      : _vm.ticket.rate &&
+                                        _vm.ticket.rate.rate === "BS"
+                                      ? [
+                                          _vm._v(
+                                            "⭐ Below\n                          Satisfactory"
+                                          ),
+                                        ]
+                                      : [_vm._v("No Data Encoded")],
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _c("strong", [_vm._v("Remarks:")]),
+                                  _c("br"),
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(
+                                        _vm.ticket.rate.feedback_remarks ||
+                                          "No remarks provided"
+                                      ) +
+                                      "\n                    "
+                                  ),
+                                ]),
+                              ]),
+                            ]),
+                          ],
+                    ],
+                    2
+                  ),
                 ]),
               ]),
             ])
@@ -60601,7 +60271,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h6", { staticClass: "fw-bold mb-3" }, [
       _c("i", { staticClass: "fas fa-tools me-2" }),
-      _vm._v("Feedback Technician\n                  "),
+      _vm._v("Feedback Technician\n                    "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "fw-bold mb-3" }, [
+      _c("i", { staticClass: "fas fa-tools me-2" }),
+      _vm._v("Technician Feedback\n                    "),
     ])
   },
 ]
