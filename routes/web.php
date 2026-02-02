@@ -37,8 +37,11 @@ Route::get('/api/ticket/categories/{tickettypeID}', [App\Http\Controllers\Ticket
 Route::get('/api/ticket/head-offices', [App\Http\Controllers\TicketController::class, 'headOffices']);
 Route::get('/api/ticket/offices/{headOfficeId}', [App\Http\Controllers\TicketController::class, 'officesByHeadOffice']);
 Route::post('/api/store/request/ticket', [App\Http\Controllers\TicketController::class, 'store_ticket']);
-Route::get('/ticket-success/{id}', [App\Http\Controllers\TicketController::class, 'ticket_success']);
 Route::get('/ticket/status', [App\Http\Controllers\TicketController::class, 'ticket_status'])->name('ticket.status');
+Route::get('/ticket-success/{id}', [App\Http\Controllers\TicketController::class, 'ticket_success']);
+Route::post('/api/ticket-status', [App\Http\Controllers\TicketController::class, 'ticket_status_track']);
+Route::post('/api/store/feedback', [App\Http\Controllers\TicketController::class, 'store_feedback']);
+
 
 
 /*End Ticket Routes*/
@@ -88,7 +91,9 @@ Route::get('/api/get/all/ticket/request', [App\Http\Controllers\Helpdesk\Helpdes
 Route::post('/api/get/data/receive/{id}', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'receive_tickets']);
 Route::post('/api/get/update/ticket/request/{id}', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'update_status_tickets']);
 Route::get('/api/get/all/resolved/ticket', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'getDataAllResolvedTicket']);
+Route::get('/api/get/all/unresolved/ticket', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'getDataAllUnResolvedTicket']);
 Route::get('/print/forms/{id}', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'print_forms']);
+Route::get('/api/get/all/feedback', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'getDataAllFeedback']);
 
 
 

@@ -13602,6 +13602,1210 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -14071,6 +15275,14 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
       this.getDataAllResolved();
       this.showSuccess("Data refreshed successfully!");
     },
+    refreshDataFeedbacks: function refreshDataFeedbacks() {
+      this.getDataAllFeedbacks();
+      this.showSuccess("Data refreshed successfully!");
+    },
+    refreshDataUnResolved: function refreshDataUnResolved() {
+      this.getDataAllUnResolved();
+      this.showSuccess("Data refreshed successfully!");
+    },
     showSuccess: function showSuccess(message) {
       sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
         icon: "success",
@@ -14168,6 +15380,68 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
         }, _callee4, null, [[0, 2]]);
       }))();
     },
+    getDataAllUnResolved: function getDataAllUnResolved() {
+      var _this5 = this;
+      return _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+        var response, _t7;
+        return _regenerator().w(function (_context5) {
+          while (1) switch (_context5.p = _context5.n) {
+            case 0:
+              _context5.p = 0;
+              _context5.n = 1;
+              return axios.get("/denrxi_ictsms/api/get/all/unresolved/ticket", {
+                params: {
+                  page: _this5.unresolveds.current_page,
+                  per_page: _this5.perPage,
+                  search: _this5.searchQuery
+                }
+              });
+            case 1:
+              response = _context5.v;
+              _this5.unresolveds = response.data.data;
+              _context5.n = 3;
+              break;
+            case 2:
+              _context5.p = 2;
+              _t7 = _context5.v;
+              _this5.showError("Failed to load data. Please try again.");
+            case 3:
+              return _context5.a(2);
+          }
+        }, _callee5, null, [[0, 2]]);
+      }))();
+    },
+    getDataAllFeedbacks: function getDataAllFeedbacks() {
+      var _this6 = this;
+      return _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
+        var response, _t8;
+        return _regenerator().w(function (_context6) {
+          while (1) switch (_context6.p = _context6.n) {
+            case 0:
+              _context6.p = 0;
+              _context6.n = 1;
+              return axios.get("/denrxi_ictsms/api/get/all/feedback", {
+                params: {
+                  page: _this6.feedbacks.current_page,
+                  per_page: _this6.perPage,
+                  search: _this6.searchQuery
+                }
+              });
+            case 1:
+              response = _context6.v;
+              _this6.feedbacks = response.data.data;
+              _context6.n = 3;
+              break;
+            case 2:
+              _context6.p = 2;
+              _t8 = _context6.v;
+              _this6.showError("Failed to load data. Please try again.");
+            case 3:
+              return _context6.a(2);
+          }
+        }, _callee6, null, [[0, 2]]);
+      }))();
+    },
     changePage: function changePage(page) {
       if (page >= 1 && page <= this.tickets.last_page) {
         this.tickets.current_page = page;
@@ -14178,6 +15452,12 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
       if (page >= 1 && page <= this.resolveds.last_page) {
         this.resolveds.current_page = page;
         this.getDataAllResolved();
+      }
+    },
+    changePageUnResolveds: function changePageUnResolveds(page) {
+      if (page >= 1 && page <= this.unresolveds.last_page) {
+        this.unresolveds.current_page = page;
+        this.getDataAllUnResolved();
       }
     },
     showError: function showError(message) {
@@ -14205,7 +15485,25 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
         per_page: 10,
         total: 0
       },
+      feedbacks: {
+        data: [],
+        current_page: 1,
+        from: 1,
+        to: 1,
+        last_page: 1,
+        per_page: 10,
+        total: 0
+      },
       resolveds: {
+        data: [],
+        current_page: 1,
+        from: 1,
+        to: 1,
+        last_page: 1,
+        per_page: 10,
+        total: 0
+      },
+      unresolveds: {
         data: [],
         current_page: 1,
         from: 1,
@@ -14261,6 +15559,8 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
   mounted: function mounted() {
     this.getDataAllRequest();
     this.getDataAllResolved();
+    this.getDataAllUnResolved();
+    this.getDataAllFeedbacks();
   }
 });
 
@@ -14277,6 +15577,243 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14355,7 +15892,299 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "TicketStatusSearch",
+  data: function data() {
+    return {
+      feedback: {
+        rating: "",
+        remarks: ""
+      },
+      formData: {
+        email: "",
+        ticket_number: ""
+      },
+      loading: false,
+      errorMessage: "",
+      successMessage: "",
+      ticket: null,
+      displayMode: true // Set to false in production
+    };
+  },
+  methods: {
+    submitFeedback: function submitFeedback() {
+      var _this = this;
+      return _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+        var payload, response, message, _t;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.p = _context.n) {
+            case 0:
+              if (_this.feedback.rating) {
+                _context.n = 1;
+                break;
+              }
+              sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+                icon: "warning",
+                title: "Rating Required",
+                text: "Please select a service rating for the technician.",
+                confirmButtonText: "OK"
+              });
+              return _context.a(2);
+            case 1:
+              if (!(!_this.ticket || !_this.ticket.id)) {
+                _context.n = 2;
+                break;
+              }
+              sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+                icon: "error",
+                title: "Invalid Ticket",
+                text: "Ticket information is missing.",
+                confirmButtonText: "OK"
+              });
+              return _context.a(2);
+            case 2:
+              _context.p = 2;
+              payload = {
+                ticket_id: _this.ticket.id,
+                rate: _this.feedback.rating,
+                feedback_remarks: _this.feedback.remarks
+              };
+              _context.n = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/denrxi_ictsms/api/store/feedback", payload);
+            case 3:
+              response = _context.v;
+              if (response.data.success) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+                  icon: "success",
+                  title: "Feedback Successfully Submitted 🎉",
+                  html: "\n      <p class=\"mb-2\">\n        Thank you for taking the time to share your feedback.\n      </p>\n      <p class=\"text-muted mb-3\">\n        Your response helps us improve the quality of our technical services.\n      </p>\n      <a \n        href=\"/denrxi_ictsms/ticket/status\" \n        class=\"swal2-confirm swal2-styled\"\n        style=\"text-decoration:none;\"\n      >\n        Back to Search Ticket\n      </a>\n    ",
+                  showConfirmButton: false,
+                  allowOutsideClick: false
+                });
+              } else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+                  icon: "error",
+                  title: "Submission Failed",
+                  text: response.data.message || "Unable to submit feedback."
+                });
+              }
+              _context.n = 5;
+              break;
+            case 4:
+              _context.p = 4;
+              _t = _context.v;
+              console.error(_t);
+
+              // Default message
+              message = "Something went wrong while submitting feedback."; // Handle backend validation / conflict message
+              if (_t.response && _t.response.data && _t.response.data.message) {
+                message = _t.response.data.message;
+              }
+              sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+                icon: "warning",
+                title: "Feedback Not Allowed",
+                text: message,
+                confirmButtonText: "OK"
+              });
+            case 5:
+              return _context.a(2);
+          }
+        }, _callee, null, [[2, 4]]);
+      }))();
+    },
+    validateForm: function validateForm() {
+      this.errorMessage = "";
+      this.successMessage = "";
+      if (!this.formData.email || !this.formData.ticket_number) {
+        this.errorMessage = "Email and Ticket Number are required.";
+        return false;
+      }
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(this.formData.email)) {
+        this.errorMessage = "Please enter a valid email address.";
+        return false;
+      }
+      return true;
+    },
+    searchTicket: function searchTicket() {
+      var _this2 = this;
+      return _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+        var endpoints, response, lastError, _i, _endpoints, endpoint, _t2, _t3;
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.p = _context2.n) {
+            case 0:
+              if (_this2.validateForm()) {
+                _context2.n = 1;
+                break;
+              }
+              return _context2.a(2);
+            case 1:
+              _this2.loading = true;
+              _this2.ticket = null;
+              _this2.errorMessage = "";
+              _this2.successMessage = "";
+              _context2.p = 2;
+              console.log("Sending request with data:", _this2.formData);
+
+              // Try with different endpoints if needed
+              endpoints = ["/denrxi_ictsms/api/ticket-status"];
+              response = null;
+              lastError = null; // Try each endpoint
+              _i = 0, _endpoints = endpoints;
+            case 3:
+              if (!(_i < _endpoints.length)) {
+                _context2.n = 8;
+                break;
+              }
+              endpoint = _endpoints[_i];
+              _context2.p = 4;
+              console.log("Trying endpoint: ".concat(endpoint));
+              _context2.n = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().post(endpoint, _this2.formData, {
+                timeout: 10000,
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json"
+                }
+              });
+            case 5:
+              response = _context2.v;
+              console.log("Success from endpoint: ".concat(endpoint), response.data);
+              return _context2.a(3, 8);
+            case 6:
+              _context2.p = 6;
+              _t2 = _context2.v;
+              lastError = _t2;
+              console.log("Failed from endpoint: ".concat(endpoint), _t2.message);
+              return _context2.a(3, 7);
+            case 7:
+              _i++;
+              _context2.n = 3;
+              break;
+            case 8:
+              if (response) {
+                _context2.n = 9;
+                break;
+              }
+              throw lastError || new Error("No response from server");
+            case 9:
+              console.log("Full API Response:", response);
+              console.log("Response data:", response.data);
+
+              // Handle different response structures
+              if (response.data) {
+                // Check if data is in nested property
+                if (response.data.success) {
+                  if (response.data.data) {
+                    _this2.ticket = response.data.data;
+                  } else if (response.data.ticket) {
+                    _this2.ticket = response.data.ticket;
+                  } else if (Array.isArray(response.data) && response.data.length > 0) {
+                    _this2.ticket = response.data[0]; // Take first if array
+                  } else {
+                    _this2.ticket = response.data;
+                  }
+                } else if (response.data.error) {
+                  _this2.errorMessage = response.data.message || response.data.error || "No ticket found.";
+                } else {
+                  // Direct data
+                  _this2.ticket = response.data;
+                }
+              }
+              if (_this2.ticket) {
+                console.log("Ticket data set:", _this2.ticket);
+                _this2.successMessage = "Ticket found successfully!";
+              } else {
+                _this2.errorMessage = "No ticket found with the provided details.";
+              }
+              _context2.n = 11;
+              break;
+            case 10:
+              _context2.p = 10;
+              _t3 = _context2.v;
+              console.error("API Error Details:", _t3);
+              if (_t3.response) {
+                // Server responded with error
+                console.error("Status:", _t3.response.status);
+                console.error("Data:", _t3.response.data);
+                if (_t3.response.status === 404) {
+                  _this2.errorMessage = "Ticket not found. Please check your email and ticket number.";
+                } else if (_t3.response.status === 400) {
+                  _this2.errorMessage = _t3.response.data.message || "Invalid request. Please check your input.";
+                } else if (_t3.response.status === 500) {
+                  _this2.errorMessage = "Server error. Please try again later.";
+                } else if (_t3.response.data && _t3.response.data.message) {
+                  _this2.errorMessage = _t3.response.data.message;
+                } else {
+                  _this2.errorMessage = "Server error (".concat(_t3.response.status, "). Please try again.");
+                }
+              } else if (_t3.request) {
+                // Request was made but no response
+                console.error("No response received:", _t3.request);
+                _this2.errorMessage = "No response from server. Please check your network connection.";
+              } else {
+                // Other errors
+                console.error("Error:", _t3.message);
+                _this2.errorMessage = "Something went wrong. Please try again.";
+              }
+            case 11:
+              _context2.p = 11;
+              _this2.loading = false;
+              return _context2.f(11);
+            case 12:
+              return _context2.a(2);
+          }
+        }, _callee2, null, [[4, 6], [2, 10, 11, 12]]);
+      }))();
+    },
+    // Helper methods for flexible data access
+    getTicketNumber: function getTicketNumber() {
+      return this.ticket.helpdesk_no || this.ticket.ticket_number || this.ticket.id || this.ticket.code || "N/A";
+    },
+    getCreatedDate: function getCreatedDate() {
+      return this.formatDate(this.ticket.created_at || this.ticket.date_created || this.ticket.created_date);
+    },
+    getStatus: function getStatus() {
+      return this.ticket.status || this.ticket.ticket_status || "Unknown";
+    },
+    getEmail: function getEmail() {
+      return this.ticket.email || this.ticket.requester_email || this.formData.email;
+    },
+    formatDate: function formatDate(dateString) {
+      if (!dateString) return "N/A";
+      try {
+        var date = new Date(dateString);
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+      } catch (e) {
+        return dateString;
+      }
+    },
+    clearForm: function clearForm() {
+      this.formData.email = "";
+      this.formData.ticket_number = "";
+      this.errorMessage = "";
+      this.successMessage = "";
+      this.ticket = null;
+    },
+    statusBadgeClass: function statusBadgeClass(status) {
+      if (!status) return "bg-secondary";
+      var s = status.toLowerCase();
+      if (s.includes("open") || s.includes("pending")) return "bg-warning";
+      if (s.includes("progress") || s.includes("processing")) return "bg-primary";
+      if (s.includes("close") || s.includes("resolve") || s.includes("completed")) return "bg-success";
+      if (s.includes("cancel") || s.includes("reject")) return "bg-danger";
+      return "bg-secondary";
+    }
+  }
+});
 
 /***/ },
 
@@ -19092,6 +20921,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-f6e851ce] {\r\n  border-radius: 10px;\n}\n.card-header[data-v-f6e851ce] {\r\n  border-radius: 10px 10px 0 0 !important;\r\n  padding: 1.2rem 1.5rem;\n}\n.table th[data-v-f6e851ce] {\r\n  background-color: #f8fafc;\r\n  font-weight: 600;\r\n  padding: 1rem;\r\n  border-bottom: 2px solid #e9ecef;\n}\n.table td[data-v-f6e851ce] {\r\n  padding: 1rem;\r\n  vertical-align: middle;\n}\n.badge[data-v-f6e851ce] {\r\n  padding: 0.35rem 0.7rem;\r\n  border-radius: 6px;\r\n  font-weight: 500;\n}\n.btn-group .btn[data-v-f6e851ce] {\r\n  border-radius: 6px;\r\n  margin: 0 2px;\n}\n.btn-outline-primary[data-v-f6e851ce] {\r\n  border-color: #198754;\r\n  color: #198754;\n}\n.btn-outline-primary[data-v-f6e851ce]:hover {\r\n  background-color: #198754;\r\n  color: white;\n}\n.page-link[data-v-f6e851ce] {\r\n  color: #198754;\r\n  border: 1px solid #dee2e6;\n}\n.page-item.active .page-link[data-v-f6e851ce] {\r\n  background-color: #198754;\r\n  border-color: #198754;\r\n  color: white;\n}\n.page-link[data-v-f6e851ce]:hover {\r\n  color: #146c43;\r\n  background-color: #e9ecef;\n}\n.modal-content[data-v-f6e851ce] {\r\n  border-radius: 10px;\n}\n.input-group-text[data-v-f6e851ce] {\r\n  background-color: #f8f9fa;\r\n  border-color: #dee2e6;\n}\n.form-check-input[data-v-f6e851ce]:checked {\r\n  background-color: #198754;\r\n  border-color: #198754;\n}\n.bg-primary[data-v-f6e851ce] {\r\n  background-color: #198754 !important;\n}\n.text-primary[data-v-f6e851ce] {\r\n  color: #198754 !important;\n}\r\n\r\n/* Excel-like Table Styling */\n.table[data-v-f6e851ce] {\r\n  border-collapse: separate;\r\n  border-spacing: 0;\r\n  border: 1px solid #dee2e6;\n}\n.table thead th[data-v-f6e851ce] {\r\n  background-color: #f8f9fa;\r\n  border-bottom: 2px solid #dee2e6;\r\n  font-weight: 600;\r\n  color: #495057;\r\n  text-transform: uppercase;\r\n  font-size: 0.8rem;\r\n  letter-spacing: 0.5px;\r\n  padding: 12px 8px;\r\n  white-space: nowrap;\n}\n.table tbody td[data-v-f6e851ce] {\r\n  padding: 10px 8px;\r\n  vertical-align: middle;\r\n  border-top: 1px solid #dee2e6;\r\n  border-right: 1px solid #f0f0f0;\n}\n.table tbody tr[data-v-f6e851ce]:hover {\r\n  background-color: #f8fafc;\n}\n.table-striped tbody tr[data-v-f6e851ce]:nth-of-type(odd) {\r\n  background-color: rgba(0, 0, 0, 0.02);\n}\n.table-bordered[data-v-f6e851ce] {\r\n  border: 2px solid #dee2e6;\n}\n.table-bordered th[data-v-f6e851ce],\r\n.table-bordered td[data-v-f6e851ce] {\r\n  border: 1px solid #dee2e6;\n}\r\n\r\n/* Tab-specific header colors */\n.table-success thead th[data-v-f6e851ce] {\r\n  background-color: #d1e7dd;\r\n  color: #0f5132;\n}\n.table-warning thead th[data-v-f6e851ce] {\r\n  background-color: #fff3cd;\r\n  color: #856404;\n}\n.table-info thead th[data-v-f6e851ce] {\r\n  background-color: #cff4fc;\r\n  color: #055160;\n}\r\n\r\n/* Badge styling */\n.badge[data-v-f6e851ce] {\r\n  font-weight: 500;\r\n  padding: 4px 8px;\r\n  font-size: 0.75rem;\n}\r\n\r\n/* Action buttons */\n.btn-sm[data-v-f6e851ce] {\r\n  padding: 4px 8px;\r\n  font-size: 0.75rem;\n}\r\n\r\n/* Pagination styling */\n.btn-group .btn[data-v-f6e851ce] {\r\n  border-radius: 0;\n}\n.btn-group .btn[data-v-f6e851ce]:first-child {\r\n  border-top-left-radius: 4px;\r\n  border-bottom-left-radius: 4px;\n}\n.btn-group .btn[data-v-f6e851ce]:last-child {\r\n  border-top-right-radius: 4px;\r\n  border-bottom-right-radius: 4px;\n}\r\n\r\n/* Excel-like grid lines */\n.table tbody td[data-v-f6e851ce] {\r\n  border-right: 1px solid #f0f0f0;\n}\n.table tbody td[data-v-f6e851ce]:last-child {\r\n  border-right: 1px solid #dee2e6;\n}\r\n\r\n/* Column header with sort indicators */\n.table thead th.sortable[data-v-f6e851ce] {\r\n  cursor: pointer;\r\n  position: relative;\r\n  padding-right: 20px;\n}\n.table thead th.sortable[data-v-f6e851ce]:after {\r\n  content: \"↕\";\r\n  position: absolute;\r\n  right: 8px;\r\n  opacity: 0.5;\r\n  font-size: 12px;\n}\r\n\r\n/* Zebra striping for better readability */\n.table tbody tr[data-v-f6e851ce]:nth-child(even) {\r\n  background-color: #f9f9f9;\n}\n.table tbody tr[data-v-f6e851ce]:hover {\r\n  background-color: #e8f4ff;\n}\r\n\r\n/* Frozen column effect (optional) */\n.table-fixed thead th[data-v-f6e851ce]:first-child,\r\n.table-fixed tbody td[data-v-f6e851ce]:first-child {\r\n  position: sticky;\r\n  left: 0;\r\n  background-color: white;\r\n  z-index: 10;\r\n  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1);\n}\r\n\r\n/* Flat Modal Styling */\n.modal-content[data-v-f6e851ce] {\r\n  border-radius: 12px;\r\n  border: none;\r\n  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);\n}\n.modal-header[data-v-f6e851ce] {\r\n  border-radius: 12px 12px 0 0;\r\n  padding: 1.5rem;\n}\n.modal-body[data-v-f6e851ce] {\r\n  padding: 0;\n}\n.modal-footer[data-v-f6e851ce] {\r\n  padding: 1rem 1.5rem;\n}\r\n\r\n/* Card styling inside modal */\n.card[data-v-f6e851ce] {\r\n  border: 1px solid #e9ecef;\r\n  border-radius: 8px;\n}\n.card-header[data-v-f6e851ce] {\r\n  background-color: #f8f9fa;\r\n  border-bottom: 1px solid #e9ecef;\r\n  padding: 0.75rem 1rem;\n}\r\n\r\n/* Badge enhancements */\n.badge[data-v-f6e851ce] {\r\n  font-weight: 500;\r\n  letter-spacing: 0.3px;\n}\r\n\r\n/* Icon containers */\n.bg-light[data-v-f6e851ce] {\r\n  background-color: #f8f9fa !important;\n}\n.bg-primary.bg-opacity-10[data-v-f6e851ce] {\r\n  background-color: rgba(25, 135, 84, 0.1) !important;\n}\n.bg-success.bg-opacity-10[data-v-f6e851ce] {\r\n  background-color: rgba(25, 135, 84, 0.1) !important;\n}\n.bg-info.bg-opacity-10[data-v-f6e851ce] {\r\n  background-color: rgba(13, 202, 240, 0.1) !important;\n}\n.bg-warning.bg-opacity-10[data-v-f6e851ce] {\r\n  background-color: rgba(255, 193, 7, 0.1) !important;\n}\n.bg-danger.bg-opacity-10[data-v-f6e851ce] {\r\n  background-color: rgba(220, 53, 69, 0.1) !important;\n}\r\n\r\n/* Hover effects */\n.btn-outline-primary[data-v-f6e851ce]:hover {\r\n  transform: translateY(-1px);\r\n  transition: all 0.2s ease;\n}\r\n\r\n/* Responsive adjustments */\n@media (max-width: 768px) {\n.modal-dialog[data-v-f6e851ce] {\r\n    margin: 0.5rem;\n}\n.modal-body[data-v-f6e851ce] {\r\n    padding: 1rem;\n}\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ },
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css&"
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.form-group-icon[data-v-c24e6756] {\r\n  position: relative;\n}\n.input-icon[data-v-c24e6756] {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 12px;\r\n  transform: translateY(-50%);\r\n  color: #999;\n}\n.form-control-icon[data-v-c24e6756] {\r\n  padding-left: 40px;\n}\n.info-box[data-v-c24e6756] {\r\n  border: 1px solid #e5e5e5;\r\n  border-radius: 8px;\r\n  padding: 15px;\r\n  background: #fafafa;\r\n  transition: all 0.3s ease;\r\n  height: 100%;\n}\n.info-box[data-v-c24e6756]:hover {\r\n  transform: translateY(-2px);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n}\n.card-header h4[data-v-c24e6756] {\r\n  font-weight: 600;\n}\n.badge[data-v-c24e6756] {\r\n  font-size: 0.9rem;\r\n  font-weight: 500;\n}\n.section-title[data-v-c24e6756] {\r\n  color: #2c3e50;\r\n  font-weight: 600;\n}\n.btn-denr[data-v-c24e6756] {\r\n  background-color: #228b22;\r\n  border-color: #228b22;\r\n  color: white;\n}\n.btn-denr[data-v-c24e6756]:hover {\r\n  background-color: #1e7a1e;\r\n  border-color: #1e7a1e;\n}\n.btn-outline-denr[data-v-c24e6756] {\r\n  color: #228b22;\r\n  border-color: #228b22;\n}\n.btn-outline-denr[data-v-c24e6756]:hover {\r\n  background-color: #228b22;\r\n  color: white;\n}\n.alert-light[data-v-c24e6756] {\r\n  background-color: #f8f9fa;\r\n  border-left: 4px solid #6c757d;\n}\npre[data-v-c24e6756] {\r\n  font-size: 12px;\r\n  background: #f8f9fa;\r\n  padding: 10px;\r\n  border-radius: 4px;\r\n  max-height: 300px;\r\n  overflow-y: auto;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -36881,6 +38734,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ },
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css&"
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_style_index_0_id_c24e6756_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_style_index_0_id_c24e6756_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_style_index_0_id_c24e6756_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ },
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js"
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -51706,9 +53589,13 @@ var render = function () {
                     attrs: { id: "allTickets", role: "tabpanel" },
                   },
                   [
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("h5", [_vm._v("All Ticket Request")]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
                     _c("div", { staticClass: "table-responsive" }, [
-                      _c("br"),
-                      _vm._v(" "),
                       _c("div", { staticClass: "row g-3 align-items-center" }, [
                         _c("div", { staticClass: "col-md-3" }, [
                           _c(
@@ -51830,7 +53717,7 @@ var render = function () {
                                 [
                                   _c("i", { staticClass: "ri-refresh-line" }),
                                   _vm._v(
-                                    " Refresh Data\n                        "
+                                    " Refresh Data\n                      "
                                   ),
                                 ]
                               ),
@@ -51861,14 +53748,14 @@ var render = function () {
                                         { staticClass: "text-center fw-bold" },
                                         [
                                           _vm._v(
-                                            "\n                          " +
+                                            "\n                        " +
                                               _vm._s(
                                                 (_vm.tickets.current_page - 1) *
                                                   _vm.tickets.per_page +
                                                   index +
                                                   1
                                               ) +
-                                              "\n                        "
+                                              "\n                      "
                                           ),
                                         ]
                                       ),
@@ -51883,74 +53770,74 @@ var render = function () {
                                       _vm._v(" "),
                                       _c("td", [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(
                                               ticket.ticket_category
                                                 .ticket_category
                                             ) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(ticket.firstname) +
                                             " " +
                                             _vm._s(ticket.middle_initial) +
-                                            ".\n                          " +
+                                            ".\n                        " +
                                             _vm._s(ticket.lastname) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(ticket.office.office) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(
                                               _vm.formatDate(
                                                 ticket.date_created
                                               )
                                             ) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(
                                               ticket.ticket_type.ticket_type
                                             ) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       ticket.technician
                                         ? _c("td", [
                                             _vm._v(
-                                              "\n                          " +
+                                              "\n                        " +
                                                 _vm._s(
                                                   ticket.technician.firstname
                                                 ) +
-                                                "\n                          " +
+                                                "\n                        " +
                                                 _vm._s(
                                                   ticket.technician
                                                     .middle_initial
                                                 ) +
-                                                ".\n                          " +
+                                                ".\n                        " +
                                                 _vm._s(
                                                   ticket.technician.lastname
                                                 ) +
-                                                "\n                        "
+                                                "\n                      "
                                             ),
                                           ])
                                         : _c("td", [
@@ -51959,7 +53846,7 @@ var render = function () {
                                               { staticStyle: { color: "red" } },
                                               [
                                                 _vm._v(
-                                                  "\n                            No assigned technician for this ticket\n                          "
+                                                  "\n                          No assigned technician for this ticket\n                        "
                                                 ),
                                               ]
                                             ),
@@ -51976,9 +53863,9 @@ var render = function () {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                            " +
+                                              "\n                          " +
                                                 _vm._s(ticket.status) +
-                                                "\n                          "
+                                                "\n                        "
                                             ),
                                           ]
                                         ),
@@ -52146,7 +54033,7 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                            Update Ticket Request\n                          "
+                                          "\n                          Update Ticket Request\n                        "
                                         ),
                                       ]
                                     ),
@@ -52206,13 +54093,13 @@ var render = function () {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                      " +
+                                                          "\n                                    " +
                                                             _vm._s(
                                                               _vm
                                                                 .selectedUpdatedTicket
                                                                 .helpdesk_no
                                                             ) +
-                                                            "\n                                    "
+                                                            "\n                                  "
                                                         ),
                                                       ]
                                                     ),
@@ -52228,13 +54115,13 @@ var render = function () {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                      " +
+                                                          "\n                                    " +
                                                             _vm._s(
                                                               _vm
                                                                 .selectedUpdatedTicket
                                                                 .firstname
                                                             ) +
-                                                            "\n                                      " +
+                                                            "\n                                    " +
                                                             _vm._s(
                                                               _vm
                                                                 .selectedUpdatedTicket
@@ -52246,7 +54133,7 @@ var render = function () {
                                                                 .selectedUpdatedTicket
                                                                 .lastname
                                                             ) +
-                                                            "\n                                    "
+                                                            "\n                                  "
                                                         ),
                                                       ]
                                                     ),
@@ -52415,7 +54302,7 @@ var render = function () {
                                                           },
                                                           [
                                                             _vm._v(
-                                                              "\n                                        " +
+                                                              "\n                                      " +
                                                                 _vm._s(
                                                                   _vm.getTechnicianFullName(
                                                                     _vm
@@ -52423,7 +54310,7 @@ var render = function () {
                                                                       .technician
                                                                   )
                                                                 ) +
-                                                                "\n                                      "
+                                                                "\n                                    "
                                                             ),
                                                           ]
                                                         )
@@ -52435,7 +54322,7 @@ var render = function () {
                                                           },
                                                           [
                                                             _vm._v(
-                                                              "\n                                        No Technician Assigned\n                                      "
+                                                              "\n                                      No Technician Assigned\n                                    "
                                                             ),
                                                           ]
                                                         ),
@@ -52450,7 +54337,7 @@ var render = function () {
                                                           },
                                                           [
                                                             _vm._v(
-                                                              "\n                                        Technician\n                                      "
+                                                              "\n                                      Technician\n                                    "
                                                             ),
                                                           ]
                                                         )
@@ -52532,7 +54419,7 @@ var render = function () {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                                    ❌ Unresolved\n                                  "
+                                                  "\n                                  ❌ Unresolved\n                                "
                                                 ),
                                               ]
                                             ),
@@ -52597,7 +54484,7 @@ var render = function () {
                                         staticClass: "ri-close-line me-1",
                                       }),
                                       _vm._v(
-                                        "\n                            Cancel\n                          "
+                                        "\n                          Cancel\n                        "
                                       ),
                                     ]
                                   ),
@@ -52623,7 +54510,7 @@ var render = function () {
                                         staticClass: "ri-save-line me-1",
                                       }),
                                       _vm._v(
-                                        "\n                            Update Ticket Request\n                          "
+                                        "\n                          Update Ticket Request\n                        "
                                       ),
                                     ]
                                   ),
@@ -52649,13 +54536,13 @@ var render = function () {
                                         staticClass: "ri-file-list-line me-1",
                                       }),
                                       _vm._v(
-                                        "\n                          Showing " +
+                                        "\n                        Showing " +
                                           _vm._s(_vm.tickets.from) +
                                           " to " +
                                           _vm._s(_vm.tickets.to) +
-                                          " of\n                          " +
+                                          " of\n                        " +
                                           _vm._s(_vm.tickets.total) +
-                                          " entries\n                        "
+                                          " entries\n                      "
                                       ),
                                     ]
                                   ),
@@ -52762,9 +54649,9 @@ var render = function () {
                                                 },
                                                 [
                                                   _vm._v(
-                                                    "\n                                " +
+                                                    "\n                              " +
                                                       _vm._s(page) +
-                                                      "\n                              "
+                                                      "\n                            "
                                                   ),
                                                 ]
                                               ),
@@ -53069,14 +54956,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .firstname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                                " +
+                                                                                      "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -53087,14 +54974,14 @@ var render = function () {
                                                                                               "."
                                                                                           : ""
                                                                                       ) +
-                                                                                      "\n                                                " +
+                                                                                      "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .lastname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -53109,7 +54996,7 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -53120,7 +55007,7 @@ var render = function () {
                                                                                               .office
                                                                                           : "N/A"
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -53168,14 +55055,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .email ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -53226,14 +55113,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                                " +
+                                                                                        "\n                                              " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_category
                                                                                               .ticket_category
                                                                                           ) +
-                                                                                          "\n                                              "
+                                                                                          "\n                                            "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -53245,7 +55132,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                                N/A\n                                              "
+                                                                                        "\n                                              N/A\n                                            "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -53296,14 +55183,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                                " +
+                                                                                        "\n                                              " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_type
                                                                                               .ticket_type
                                                                                           ) +
-                                                                                          "\n                                              "
+                                                                                          "\n                                            "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -53315,7 +55202,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                                N/A\n                                              "
+                                                                                        "\n                                              N/A\n                                            "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -53363,14 +55250,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .status ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -53418,14 +55305,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .issue_concern ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -53480,13 +55367,13 @@ var render = function () {
                                                                         },
                                                                         [
                                                                           _vm._v(
-                                                                            "\n                                          " +
+                                                                            "\n                                        " +
                                                                               _vm._s(
                                                                                 _vm
                                                                                   .selectedTicket
                                                                                   .description
                                                                               ) +
-                                                                              "\n                                        "
+                                                                              "\n                                      "
                                                                           ),
                                                                         ]
                                                                       ),
@@ -53649,7 +55536,7 @@ var render = function () {
                                                                 "ri-time-line me-1",
                                                             }),
                                                             _vm._v(
-                                                              "\n                                      Last updated:\n                                      " +
+                                                              "\n                                    Last updated:\n                                    " +
                                                                 _vm._s(
                                                                   _vm
                                                                     .selectedTicket
@@ -53661,7 +55548,7 @@ var render = function () {
                                                                       )
                                                                     : "N/A"
                                                                 ) +
-                                                                "\n                                    "
+                                                                "\n                                  "
                                                             ),
                                                           ]
                                                         ),
@@ -53694,9 +55581,13 @@ var render = function () {
                     attrs: { id: "resolvedTickets", role: "tabpanel" },
                   },
                   [
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("h5", [_vm._v("Resovled Ticket")]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
                     _c("div", { staticClass: "table-responsive" }, [
-                      _c("br"),
-                      _vm._v(" "),
                       _c("div", { staticClass: "row g-3 align-items-center" }, [
                         _c("div", { staticClass: "col-md-3" }, [
                           _c(
@@ -53818,7 +55709,7 @@ var render = function () {
                                 [
                                   _c("i", { staticClass: "ri-refresh-line" }),
                                   _vm._v(
-                                    " Refresh Data\n                        "
+                                    " Refresh Data\n                      "
                                   ),
                                 ]
                               ),
@@ -53849,7 +55740,7 @@ var render = function () {
                                         { staticClass: "text-center fw-bold" },
                                         [
                                           _vm._v(
-                                            "\n                          " +
+                                            "\n                        " +
                                               _vm._s(
                                                 (_vm.resolveds.current_page -
                                                   1) *
@@ -53857,7 +55748,7 @@ var render = function () {
                                                   index +
                                                   1
                                               ) +
-                                              "\n                        "
+                                              "\n                      "
                                           ),
                                         ]
                                       ),
@@ -53872,79 +55763,79 @@ var render = function () {
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(resolved.firstname) +
-                                            "\n                          " +
+                                            "\n                        " +
                                             _vm._s(resolved.middle_initial) +
-                                            ".\n                          " +
+                                            ".\n                        " +
                                             _vm._s(resolved.lastname) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(resolved.office.office) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(
                                               _vm.formatDate(
                                                 resolved.date_receive
                                               )
                                             ) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(
                                               _vm.formatDate(
                                                 resolved.date_acted
                                               )
                                             ) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
                                       resolved.technician
                                         ? _c("td", [
                                             _vm._v(
-                                              "\n                          " +
+                                              "\n                        " +
                                                 _vm._s(
                                                   resolved.technician.firstname
                                                 ) +
-                                                "\n                          " +
+                                                "\n                        " +
                                                 _vm._s(
                                                   resolved.technician
                                                     .middle_initial
                                                 ) +
-                                                ".\n                          " +
+                                                ".\n                        " +
                                                 _vm._s(
                                                   resolved.technician.lastname
                                                 ) +
-                                                "\n                        "
+                                                "\n                      "
                                             ),
                                           ])
                                         : _vm._e(),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(
-                                          "\n                          " +
+                                          "\n                        " +
                                             _vm._s(
                                               _vm.calculateWorkingDays(
                                                 resolved.date_receive,
                                                 resolved.date_acted
                                               )
                                             ) +
-                                            "\n                        "
+                                            "\n                      "
                                         ),
                                       ]),
                                       _vm._v(" "),
@@ -53959,9 +55850,9 @@ var render = function () {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                            " +
+                                              "\n                          " +
                                                 _vm._s(resolved.status) +
-                                                "\n                          "
+                                                "\n                        "
                                             ),
                                           ]
                                         ),
@@ -54000,32 +55891,7 @@ var render = function () {
                                                     "ri-information-line me-1",
                                                 }),
                                                 _vm._v(
-                                                  " View Info\n                            "
-                                                ),
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass:
-                                                  "btn btn-sm btn-outline-success",
-                                                attrs: { title: "Print Form" },
-                                                on: {
-                                                  click: function ($event) {
-                                                    return _vm.printTicketForm(
-                                                      resolved.id
-                                                    )
-                                                  },
-                                                },
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass:
-                                                    "ri-printer-line me-1",
-                                                }),
-                                                _vm._v(
-                                                  " Print\n                            "
+                                                  " View\n                          "
                                                 ),
                                               ]
                                             ),
@@ -54056,13 +55922,13 @@ var render = function () {
                                         staticClass: "ri-file-list-line me-1",
                                       }),
                                       _vm._v(
-                                        "\n                          Showing " +
+                                        "\n                        Showing " +
                                           _vm._s(_vm.resolveds.from) +
                                           " to " +
                                           _vm._s(_vm.resolveds.to) +
-                                          " of\n                          " +
+                                          " of\n                        " +
                                           _vm._s(_vm.resolveds.total) +
-                                          " entries\n                        "
+                                          " entries\n                      "
                                       ),
                                     ]
                                   ),
@@ -54173,9 +56039,9 @@ var render = function () {
                                                 },
                                                 [
                                                   _vm._v(
-                                                    "\n                                " +
+                                                    "\n                              " +
                                                       _vm._s(page) +
-                                                      "\n                              "
+                                                      "\n                            "
                                                   ),
                                                 ]
                                               ),
@@ -54480,14 +56346,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .firstname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                                " +
+                                                                                      "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -54498,14 +56364,14 @@ var render = function () {
                                                                                               "."
                                                                                           : ""
                                                                                       ) +
-                                                                                      "\n                                                " +
+                                                                                      "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .lastname ||
                                                                                           ""
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -54520,7 +56386,7 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
@@ -54531,7 +56397,7 @@ var render = function () {
                                                                                               .office
                                                                                           : "N/A"
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -54579,14 +56445,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .email ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -54637,14 +56503,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                                " +
+                                                                                        "\n                                              " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_category
                                                                                               .ticket_category
                                                                                           ) +
-                                                                                          "\n                                              "
+                                                                                          "\n                                            "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -54656,7 +56522,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                                N/A\n                                              "
+                                                                                        "\n                                              N/A\n                                            "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -54707,14 +56573,14 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                                " +
+                                                                                        "\n                                              " +
                                                                                           _vm._s(
                                                                                             _vm
                                                                                               .selectedTicket
                                                                                               .ticket_type
                                                                                               .ticket_type
                                                                                           ) +
-                                                                                          "\n                                              "
+                                                                                          "\n                                            "
                                                                                       ),
                                                                                     ]
                                                                                   )
@@ -54726,7 +56592,7 @@ var render = function () {
                                                                                     },
                                                                                     [
                                                                                       _vm._v(
-                                                                                        "\n                                                N/A\n                                              "
+                                                                                        "\n                                              N/A\n                                            "
                                                                                       ),
                                                                                     ]
                                                                                   ),
@@ -54774,14 +56640,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .status ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -54829,14 +56695,14 @@ var render = function () {
                                                                                 },
                                                                                 [
                                                                                   _vm._v(
-                                                                                    "\n                                                " +
+                                                                                    "\n                                              " +
                                                                                       _vm._s(
                                                                                         _vm
                                                                                           .selectedTicket
                                                                                           .issue_concern ||
                                                                                           "N/A"
                                                                                       ) +
-                                                                                      "\n                                              "
+                                                                                      "\n                                            "
                                                                                   ),
                                                                                 ]
                                                                               ),
@@ -54891,13 +56757,13 @@ var render = function () {
                                                                         },
                                                                         [
                                                                           _vm._v(
-                                                                            "\n                                          " +
+                                                                            "\n                                        " +
                                                                               _vm._s(
                                                                                 _vm
                                                                                   .selectedTicket
                                                                                   .description
                                                                               ) +
-                                                                              "\n                                        "
+                                                                              "\n                                      "
                                                                           ),
                                                                         ]
                                                                       ),
@@ -55060,7 +56926,7 @@ var render = function () {
                                                                 "ri-time-line me-1",
                                                             }),
                                                             _vm._v(
-                                                              "\n                                      Last updated:\n                                      " +
+                                                              "\n                                    Last updated:\n                                    " +
                                                                 _vm._s(
                                                                   _vm
                                                                     .selectedTicket
@@ -55072,7 +56938,7 @@ var render = function () {
                                                                       )
                                                                     : "N/A"
                                                                 ) +
-                                                                "\n                                    "
+                                                                "\n                                  "
                                                             ),
                                                           ]
                                                         ),
@@ -55098,9 +56964,1670 @@ var render = function () {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(57),
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane fade",
+                    attrs: { id: "unresolvedTickets", role: "tabpanel" },
+                  },
+                  [
+                    _c("h5", [_vm._v("Unresolved Tickets")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "table-responsive" }, [
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row g-3 align-items-center" }, [
+                        _c("div", { staticClass: "col-md-3" }, [
+                          _c(
+                            "div",
+                            { staticClass: "input-group input-group" },
+                            [
+                              _vm._m(57),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.perPage,
+                                      expression: "perPage",
+                                    },
+                                  ],
+                                  staticClass: "form-control form-control",
+                                  on: {
+                                    change: [
+                                      function ($event) {
+                                        var $$selectedVal =
+                                          Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function (o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function (o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                        _vm.perPage = $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      },
+                                      _vm.getDataAllUnResolved,
+                                    ],
+                                  },
+                                },
+                                [
+                                  _c("option", { attrs: { value: "5" } }, [
+                                    _vm._v("5 per page"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "10" } }, [
+                                    _vm._v("10 per page"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "20" } }, [
+                                    _vm._v("20 per page"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "50" } }, [
+                                    _vm._v("50 per page"),
+                                  ]),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "input-group input-group" },
+                            [
+                              _vm._m(58),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.searchQuery,
+                                    expression: "searchQuery",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Search Anything...",
+                                },
+                                domProps: { value: _vm.searchQuery },
+                                on: {
+                                  input: [
+                                    function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.searchQuery = $event.target.value
+                                    },
+                                    _vm.getDataAllUnResolved,
+                                  ],
+                                },
+                              }),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-2" }, [
+                          _c(
+                            "div",
+                            { staticClass: "input-group input-group" },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-info",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.refreshDataUnResolved },
+                                },
+                                [
+                                  _c("i", { staticClass: "ri-refresh-line" }),
+                                  _vm._v(
+                                    " Refresh Data\n                      "
+                                  ),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "table",
+                        {
+                          staticClass:
+                            "table table-bordered table-hover table-striped align-middle mb-0",
+                          staticStyle: { "font-size": "0.875rem" },
+                        },
+                        [
+                          _vm._m(59),
+                          _vm._v(" "),
+                          _vm.unresolveds.data &&
+                          _vm.unresolveds.data.length > 0
+                            ? _c(
+                                "tbody",
+                                _vm._l(
+                                  _vm.unresolveds.data,
+                                  function (unresolved, index) {
+                                    return _c("tr", { key: unresolved.id }, [
+                                      _c(
+                                        "td",
+                                        { staticClass: "text-center fw-bold" },
+                                        [
+                                          _vm._v(
+                                            "\n                        " +
+                                              _vm._s(
+                                                (_vm.unresolveds.current_page -
+                                                  1) *
+                                                  _vm.unresolveds.per_page +
+                                                  index +
+                                                  1
+                                              ) +
+                                              "\n                      "
+                                          ),
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "span",
+                                          { staticClass: "badge bg-secondary" },
+                                          [
+                                            _vm._v(
+                                              _vm._s(unresolved.helpdesk_no)
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(unresolved.firstname) +
+                                            "\n                        " +
+                                            _vm._s(unresolved.middle_initial) +
+                                            ".\n                        " +
+                                            _vm._s(unresolved.lastname) +
+                                            "\n                      "
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(unresolved.office.office) +
+                                            "\n                      "
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(
+                                              _vm.formatDate(
+                                                unresolved.date_receive
+                                              )
+                                            ) +
+                                            "\n                      "
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(
+                                              _vm.formatDate(
+                                                unresolved.date_acted
+                                              )
+                                            ) +
+                                            "\n                      "
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      unresolved.technician
+                                        ? _c("td", [
+                                            _vm._v(
+                                              "\n                        " +
+                                                _vm._s(
+                                                  unresolved.technician
+                                                    .firstname
+                                                ) +
+                                                "\n                        " +
+                                                _vm._s(
+                                                  unresolved.technician
+                                                    .middle_initial
+                                                ) +
+                                                ".\n                        " +
+                                                _vm._s(
+                                                  unresolved.technician.lastname
+                                                ) +
+                                                "\n                      "
+                                            ),
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(
+                                              _vm.calculateWorkingDays(
+                                                unresolved.date_receive,
+                                                unresolved.date_acted
+                                              )
+                                            ) +
+                                            "\n                      "
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass: "badge",
+                                            class: _vm.statusClass(
+                                              unresolved.status
+                                            ),
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                          " +
+                                                _vm._s(unresolved.status) +
+                                                "\n                        "
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass: "btn-group",
+                                            attrs: { role: "group" },
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-sm btn-outline-primary",
+                                                attrs: {
+                                                  "data-bs-toggle": "modal",
+                                                  "data-bs-target":
+                                                    "#viewTicketModal",
+                                                  title: "View Information",
+                                                },
+                                                on: {
+                                                  click: function ($event) {
+                                                    return _vm.viewTicket(
+                                                      unresolved
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "ri-information-line me-1",
+                                                }),
+                                                _vm._v(
+                                                  " View \n                          "
+                                                ),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                    ])
+                                  }
+                                ),
+                                0
+                              )
+                            : _c("tbody", [_vm._m(60)]),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.unresolveds.total > 0
+                        ? _c("div", { staticClass: "card-footer bg-white" }, [
+                            _c(
+                              "div",
+                              { staticClass: "row align-items-center" },
+                              [
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _c(
+                                    "span",
+                                    { staticClass: "text-muted small" },
+                                    [
+                                      _c("i", {
+                                        staticClass: "ri-file-list-line me-1",
+                                      }),
+                                      _vm._v(
+                                        "\n                        Showing " +
+                                          _vm._s(_vm.unresolveds.from) +
+                                          " to\n                        " +
+                                          _vm._s(_vm.unresolveds.to) +
+                                          " of\n                        " +
+                                          _vm._s(_vm.unresolveds.total) +
+                                          " entries\n                      "
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _c("nav", { staticClass: "float-end" }, [
+                                    _c(
+                                      "ul",
+                                      {
+                                        staticClass:
+                                          "pagination pagination-sm mb-0",
+                                      },
+                                      [
+                                        _c(
+                                          "li",
+                                          {
+                                            staticClass: "page-item",
+                                            class: {
+                                              disabled:
+                                                _vm.unresolveds.current_page ===
+                                                1,
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "page-link",
+                                                attrs: { title: "First" },
+                                                on: {
+                                                  click: function ($event) {
+                                                    return _vm.changePageUnResolveds(
+                                                      1
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "ri-skip-back-line",
+                                                }),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          {
+                                            staticClass: "page-item",
+                                            class: {
+                                              disabled:
+                                                _vm.unresolveds.current_page ===
+                                                1,
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "page-link",
+                                                attrs: { title: "Previous" },
+                                                on: {
+                                                  click: function ($event) {
+                                                    return _vm.changePageUnResolveds(
+                                                      _vm.unresolveds
+                                                        .current_page - 1
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "ri-arrow-left-s-line",
+                                                }),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.pages, function (page) {
+                                          return _c(
+                                            "li",
+                                            {
+                                              key: page,
+                                              staticClass: "page-item",
+                                              class: {
+                                                active:
+                                                  page ===
+                                                  _vm.unresolveds.current_page,
+                                              },
+                                            },
+                                            [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass: "page-link",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.changePageUnResolveds(
+                                                        page
+                                                      )
+                                                    },
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                              " +
+                                                      _vm._s(page) +
+                                                      "\n                            "
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          {
+                                            staticClass: "page-item",
+                                            class: {
+                                              disabled:
+                                                _vm.unresolveds.current_page ===
+                                                _vm.unresolveds.last_page,
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "page-link",
+                                                attrs: { title: "Next" },
+                                                on: {
+                                                  click: function ($event) {
+                                                    return _vm.changePageUnResolveds(
+                                                      _vm.unresolveds
+                                                        .current_page + 1
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "ri-arrow-right-s-line",
+                                                }),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          {
+                                            staticClass: "page-item",
+                                            class: {
+                                              disabled:
+                                                _vm.unresolveds.current_page ===
+                                                _vm.unresolveds.last_page,
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "page-link",
+                                                attrs: { title: "Last" },
+                                                on: {
+                                                  click: function ($event) {
+                                                    return _vm.changePageUnResolveds(
+                                                      _vm.unresolveds.last_page
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "ri-skip-forward-line",
+                                                }),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                      ],
+                                      2
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "modal fade zoomIn",
+                                      attrs: {
+                                        id: "viewTicketModal",
+                                        tabindex: "-1",
+                                        "aria-labelledby": "exampleModalLabel",
+                                        "aria-hidden": "true",
+                                      },
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "modal-dialog modal-lg modal-dialog-centered",
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "modal-content border-0 shadow",
+                                            },
+                                            [
+                                              _vm._m(61),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass: "modal-body p-0",
+                                                },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "border-bottom p-4",
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        { staticClass: "row" },
+                                                        [
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "col-md-6",
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "d-flex align-items-center mb-3",
+                                                                },
+                                                                [
+                                                                  _vm._m(62),
+                                                                  _vm._v(" "),
+                                                                  _c("div", [
+                                                                    _c(
+                                                                      "small",
+                                                                      {
+                                                                        staticClass:
+                                                                          "text-muted d-block",
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "Ticket ID"
+                                                                        ),
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "span",
+                                                                      {
+                                                                        staticClass:
+                                                                          "fw-bold fs-5",
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            _vm
+                                                                              .selectedTicket
+                                                                              .helpdesk_no ||
+                                                                              "N/A"
+                                                                          )
+                                                                        ),
+                                                                      ]
+                                                                    ),
+                                                                  ]),
+                                                                ]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "col-md-6",
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "d-flex align-items-center",
+                                                                },
+                                                                [
+                                                                  _vm._m(63),
+                                                                  _vm._v(" "),
+                                                                  _c("div", [
+                                                                    _c(
+                                                                      "small",
+                                                                      {
+                                                                        staticClass:
+                                                                          "text-muted d-block",
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "Date Created"
+                                                                        ),
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "span",
+                                                                      {
+                                                                        staticClass:
+                                                                          "fw-bold",
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            _vm
+                                                                              .selectedTicket
+                                                                              .date_created
+                                                                              ? _vm.formatDate(
+                                                                                  _vm
+                                                                                    .selectedTicket
+                                                                                    .date_created
+                                                                                )
+                                                                              : "N/A"
+                                                                          )
+                                                                        ),
+                                                                      ]
+                                                                    ),
+                                                                  ]),
+                                                                ]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                        ]
+                                                      ),
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
+                                                    { staticClass: "p-4" },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "card border-0 shadow-sm mb-4",
+                                                        },
+                                                        [
+                                                          _vm._m(64),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "card-body",
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "row g-3",
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "div",
+                                                                    {
+                                                                      staticClass:
+                                                                        "col-md-6",
+                                                                    },
+                                                                    [
+                                                                      _vm._m(
+                                                                        65
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "div",
+                                                                        {
+                                                                          staticClass:
+                                                                            "d-flex align-items-center",
+                                                                        },
+                                                                        [
+                                                                          _vm._m(
+                                                                            66
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "div",
+                                                                            [
+                                                                              _c(
+                                                                                "p",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "mb-0 fw-bold",
+                                                                                },
+                                                                                [
+                                                                                  _vm._v(
+                                                                                    "\n                                              " +
+                                                                                      _vm._s(
+                                                                                        _vm
+                                                                                          .selectedTicket
+                                                                                          .firstname ||
+                                                                                          ""
+                                                                                      ) +
+                                                                                      "\n                                              " +
+                                                                                      _vm._s(
+                                                                                        _vm
+                                                                                          .selectedTicket
+                                                                                          .middle_initial
+                                                                                          ? _vm
+                                                                                              .selectedTicket
+                                                                                              .middle_initial +
+                                                                                              "."
+                                                                                          : ""
+                                                                                      ) +
+                                                                                      "\n                                              " +
+                                                                                      _vm._s(
+                                                                                        _vm
+                                                                                          .selectedTicket
+                                                                                          .lastname ||
+                                                                                          ""
+                                                                                      ) +
+                                                                                      "\n                                            "
+                                                                                  ),
+                                                                                ]
+                                                                              ),
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "small",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "text-muted",
+                                                                                },
+                                                                                [
+                                                                                  _vm._v(
+                                                                                    "\n                                              " +
+                                                                                      _vm._s(
+                                                                                        _vm
+                                                                                          .selectedTicket
+                                                                                          .office
+                                                                                          ? _vm
+                                                                                              .selectedTicket
+                                                                                              .office
+                                                                                              .office
+                                                                                          : "N/A"
+                                                                                      ) +
+                                                                                      "\n                                            "
+                                                                                  ),
+                                                                                ]
+                                                                              ),
+                                                                            ]
+                                                                          ),
+                                                                        ]
+                                                                      ),
+                                                                    ]
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "div",
+                                                                    {
+                                                                      staticClass:
+                                                                        "col-md-6",
+                                                                    },
+                                                                    [
+                                                                      _vm._m(
+                                                                        67
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "div",
+                                                                        {
+                                                                          staticClass:
+                                                                            "d-flex align-items-center",
+                                                                        },
+                                                                        [
+                                                                          _vm._m(
+                                                                            68
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "div",
+                                                                            [
+                                                                              _c(
+                                                                                "p",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "mb-0 fw-bold",
+                                                                                },
+                                                                                [
+                                                                                  _vm._v(
+                                                                                    "\n                                              " +
+                                                                                      _vm._s(
+                                                                                        _vm
+                                                                                          .selectedTicket
+                                                                                          .email ||
+                                                                                          "N/A"
+                                                                                      ) +
+                                                                                      "\n                                            "
+                                                                                  ),
+                                                                                ]
+                                                                              ),
+                                                                            ]
+                                                                          ),
+                                                                        ]
+                                                                      ),
+                                                                    ]
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "div",
+                                                                    {
+                                                                      staticClass:
+                                                                        "col-md-6",
+                                                                    },
+                                                                    [
+                                                                      _vm._m(
+                                                                        69
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "div",
+                                                                        {
+                                                                          staticClass:
+                                                                            "d-flex align-items-center",
+                                                                        },
+                                                                        [
+                                                                          _vm._m(
+                                                                            70
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "div",
+                                                                            [
+                                                                              _vm
+                                                                                .selectedTicket
+                                                                                .ticket_category
+                                                                                ? _c(
+                                                                                    "p",
+                                                                                    {
+                                                                                      staticClass:
+                                                                                        "mb-0 fw-bold",
+                                                                                    },
+                                                                                    [
+                                                                                      _vm._v(
+                                                                                        "\n                                              " +
+                                                                                          _vm._s(
+                                                                                            _vm
+                                                                                              .selectedTicket
+                                                                                              .ticket_category
+                                                                                              .ticket_category
+                                                                                          ) +
+                                                                                          "\n                                            "
+                                                                                      ),
+                                                                                    ]
+                                                                                  )
+                                                                                : _c(
+                                                                                    "p",
+                                                                                    {
+                                                                                      staticClass:
+                                                                                        "mb-0 fw-bold text-muted",
+                                                                                    },
+                                                                                    [
+                                                                                      _vm._v(
+                                                                                        "\n                                              N/A\n                                            "
+                                                                                      ),
+                                                                                    ]
+                                                                                  ),
+                                                                            ]
+                                                                          ),
+                                                                        ]
+                                                                      ),
+                                                                    ]
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "div",
+                                                                    {
+                                                                      staticClass:
+                                                                        "col-md-6",
+                                                                    },
+                                                                    [
+                                                                      _vm._m(
+                                                                        71
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "div",
+                                                                        {
+                                                                          staticClass:
+                                                                            "d-flex align-items-center",
+                                                                        },
+                                                                        [
+                                                                          _vm._m(
+                                                                            72
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "div",
+                                                                            [
+                                                                              _vm
+                                                                                .selectedTicket
+                                                                                .ticket_type
+                                                                                ? _c(
+                                                                                    "p",
+                                                                                    {
+                                                                                      staticClass:
+                                                                                        "mb-0 fw-bold",
+                                                                                    },
+                                                                                    [
+                                                                                      _vm._v(
+                                                                                        "\n                                              " +
+                                                                                          _vm._s(
+                                                                                            _vm
+                                                                                              .selectedTicket
+                                                                                              .ticket_type
+                                                                                              .ticket_type
+                                                                                          ) +
+                                                                                          "\n                                            "
+                                                                                      ),
+                                                                                    ]
+                                                                                  )
+                                                                                : _c(
+                                                                                    "p",
+                                                                                    {
+                                                                                      staticClass:
+                                                                                        "mb-0 fw-bold text-muted",
+                                                                                    },
+                                                                                    [
+                                                                                      _vm._v(
+                                                                                        "\n                                              N/A\n                                            "
+                                                                                      ),
+                                                                                    ]
+                                                                                  ),
+                                                                            ]
+                                                                          ),
+                                                                        ]
+                                                                      ),
+                                                                    ]
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "div",
+                                                                    {
+                                                                      staticClass:
+                                                                        "col-md-6",
+                                                                    },
+                                                                    [
+                                                                      _vm._m(
+                                                                        73
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "div",
+                                                                        {
+                                                                          staticClass:
+                                                                            "d-flex align-items-center",
+                                                                        },
+                                                                        [
+                                                                          _vm._m(
+                                                                            74
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "div",
+                                                                            [
+                                                                              _c(
+                                                                                "p",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "mb-0 fw-bold",
+                                                                                },
+                                                                                [
+                                                                                  _vm._v(
+                                                                                    "\n                                              " +
+                                                                                      _vm._s(
+                                                                                        _vm
+                                                                                          .selectedTicket
+                                                                                          .status ||
+                                                                                          "N/A"
+                                                                                      ) +
+                                                                                      "\n                                            "
+                                                                                  ),
+                                                                                ]
+                                                                              ),
+                                                                            ]
+                                                                          ),
+                                                                        ]
+                                                                      ),
+                                                                    ]
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "div",
+                                                                    {
+                                                                      staticClass:
+                                                                        "col-md-6",
+                                                                    },
+                                                                    [
+                                                                      _vm._m(
+                                                                        75
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "div",
+                                                                        {
+                                                                          staticClass:
+                                                                            "d-flex align-items-center",
+                                                                        },
+                                                                        [
+                                                                          _vm._m(
+                                                                            76
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "div",
+                                                                            [
+                                                                              _c(
+                                                                                "p",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "mb-0 fw-bold",
+                                                                                },
+                                                                                [
+                                                                                  _vm._v(
+                                                                                    "\n                                              " +
+                                                                                      _vm._s(
+                                                                                        _vm
+                                                                                          .selectedTicket
+                                                                                          .issue_concern ||
+                                                                                          "N/A"
+                                                                                      ) +
+                                                                                      "\n                                            "
+                                                                                  ),
+                                                                                ]
+                                                                              ),
+                                                                            ]
+                                                                          ),
+                                                                        ]
+                                                                      ),
+                                                                    ]
+                                                                  ),
+                                                                ]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _vm.selectedTicket
+                                                        .description
+                                                        ? _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "card border-0 shadow-sm mb-4",
+                                                            },
+                                                            [
+                                                              _vm._m(77),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "card-body",
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "div",
+                                                                    {
+                                                                      staticClass:
+                                                                        "bg-light rounded p-3",
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "p",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mb-0",
+                                                                          staticStyle:
+                                                                            {
+                                                                              "white-space":
+                                                                                "pre-line",
+                                                                            },
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            "\n                                        " +
+                                                                              _vm._s(
+                                                                                _vm
+                                                                                  .selectedTicket
+                                                                                  .description
+                                                                              ) +
+                                                                              "\n                                      "
+                                                                          ),
+                                                                        ]
+                                                                      ),
+                                                                    ]
+                                                                  ),
+                                                                ]
+                                                              ),
+                                                            ]
+                                                          )
+                                                        : _vm._e(),
+                                                      _vm._v(" "),
+                                                      _vm.selectedTicket
+                                                        .attachments &&
+                                                      _vm.selectedTicket
+                                                        .attachments.length > 0
+                                                        ? _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "card border-0 shadow-sm",
+                                                            },
+                                                            [
+                                                              _vm._m(78),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "card-body",
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "div",
+                                                                    {
+                                                                      staticClass:
+                                                                        "row g-2",
+                                                                    },
+                                                                    _vm._l(
+                                                                      _vm
+                                                                        .selectedTicket
+                                                                        .attachments,
+                                                                      function (
+                                                                        attachment,
+                                                                        index
+                                                                      ) {
+                                                                        return _c(
+                                                                          "div",
+                                                                          {
+                                                                            key: index,
+                                                                            staticClass:
+                                                                              "col-auto",
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "div",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "border rounded p-2 d-flex align-items-center",
+                                                                              },
+                                                                              [
+                                                                                _c(
+                                                                                  "i",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "ri-file-line me-2",
+                                                                                  }
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "span",
+                                                                                  {
+                                                                                    staticClass:
+                                                                                      "small",
+                                                                                  },
+                                                                                  [
+                                                                                    _vm._v(
+                                                                                      _vm._s(
+                                                                                        attachment.name
+                                                                                      )
+                                                                                    ),
+                                                                                  ]
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _vm._m(
+                                                                                  79,
+                                                                                  true
+                                                                                ),
+                                                                              ]
+                                                                            ),
+                                                                          ]
+                                                                        )
+                                                                      }
+                                                                    ),
+                                                                    0
+                                                                  ),
+                                                                ]
+                                                              ),
+                                                            ]
+                                                          )
+                                                        : _vm._e(),
+                                                      _vm._v(" "),
+                                                      !_vm.selectedTicket.id
+                                                        ? _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "text-center py-5",
+                                                            },
+                                                            [
+                                                              _vm._m(80),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "p",
+                                                                {
+                                                                  staticClass:
+                                                                    "mb-0",
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "No ticket selected"
+                                                                  ),
+                                                                ]
+                                                              ),
+                                                            ]
+                                                          )
+                                                        : _vm._e(),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "modal-footer border-top",
+                                                },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "w-100 d-flex justify-content-between align-items-center",
+                                                    },
+                                                    [
+                                                      _c("div", [
+                                                        _c(
+                                                          "small",
+                                                          {
+                                                            staticClass:
+                                                              "text-muted",
+                                                          },
+                                                          [
+                                                            _c("i", {
+                                                              staticClass:
+                                                                "ri-time-line me-1",
+                                                            }),
+                                                            _vm._v(
+                                                              "\n                                    Last updated:\n                                    " +
+                                                                _vm._s(
+                                                                  _vm
+                                                                    .selectedTicket
+                                                                    .updated_at
+                                                                    ? _vm.formatDate(
+                                                                        _vm
+                                                                          .selectedTicket
+                                                                          .updated_at
+                                                                      )
+                                                                    : "N/A"
+                                                                ) +
+                                                                "\n                                  "
+                                                            ),
+                                                          ]
+                                                        ),
+                                                      ]),
+                                                      _vm._v(" "),
+                                                      _vm._m(81),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                              ]
+                            ),
+                          ])
+                        : _vm._e(),
+                    ]),
+                  ]
+                ),
                 _vm._v(" "),
-                _vm._m(58),
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane fade",
+                    attrs: { id: "feedbackTickets", role: "tabpanel" },
+                  },
+                  [
+                    _c("h5", [_vm._v("Feedbacks")]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row g-3 align-items-center" }, [
+                      _c("div", { staticClass: "col-md-3" }, [
+                        _c("div", { staticClass: "input-group input-group" }, [
+                          _vm._m(82),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.perPage,
+                                  expression: "perPage",
+                                },
+                              ],
+                              staticClass: "form-control form-control",
+                              on: {
+                                change: [
+                                  function ($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call(
+                                        $event.target.options,
+                                        function (o) {
+                                          return o.selected
+                                        }
+                                      )
+                                      .map(function (o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.perPage = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  },
+                                  _vm.getDataAllUnResolved,
+                                ],
+                              },
+                            },
+                            [
+                              _c("option", { attrs: { value: "5" } }, [
+                                _vm._v("5 per page"),
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "10" } }, [
+                                _vm._v("10 per page"),
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "20" } }, [
+                                _vm._v("20 per page"),
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "50" } }, [
+                                _vm._v("50 per page"),
+                              ]),
+                            ]
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("div", { staticClass: "input-group input-group" }, [
+                          _vm._m(83),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.searchQuery,
+                                expression: "searchQuery",
+                              },
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Search Anything...",
+                            },
+                            domProps: { value: _vm.searchQuery },
+                            on: {
+                              input: [
+                                function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.searchQuery = $event.target.value
+                                },
+                                _vm.getDataAllFeedbacks,
+                              ],
+                            },
+                          }),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-2" }, [
+                        _c("div", { staticClass: "input-group input-group" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-info",
+                              attrs: { type: "button" },
+                              on: { click: _vm.refreshDataFeedbacks },
+                            },
+                            [
+                              _c("i", { staticClass: "ri-refresh-line" }),
+                              _vm._v(" Refresh Data\n                    "),
+                            ]
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "table-responsive" }, [
+                      _c(
+                        "table",
+                        {
+                          staticClass:
+                            "table table-bordered table-hover table-striped align-middle mb-0",
+                          staticStyle: { "font-size": "0.875rem" },
+                        },
+                        [
+                          _vm._m(84),
+                          _vm._v(" "),
+                          _vm.feedbacks.data && _vm.feedbacks.data.length > 0
+                            ? _c(
+                                "tbody",
+                                _vm._l(
+                                  _vm.feedbacks.data,
+                                  function (feedback, index) {
+                                    return _c("tr", { key: feedback.id }, [
+                                      _c(
+                                        "td",
+                                        { staticClass: "text-center fw-bold" },
+                                        [
+                                          _vm._v(
+                                            "\n                        " +
+                                              _vm._s(
+                                                (_vm.feedbacks.current_page -
+                                                  1) *
+                                                  _vm.feedbacks.per_page +
+                                                  index +
+                                                  1
+                                              ) +
+                                              "\n                      "
+                                          ),
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(_vm._s(feedback.helpdesk_no)),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          _vm._s(
+                                            feedback.ticket_type.ticket_type
+                                          )
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          _vm._s(
+                                            feedback.ticket_category
+                                              .ticket_category
+                                          )
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(feedback.firstname) +
+                                            "\n                        " +
+                                            _vm._s(feedback.middle_initial) +
+                                            ". " +
+                                            _vm._s(feedback.lastname) +
+                                            "\n                      "
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(_vm._s(feedback.date_acted)),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(
+                                              feedback.rate
+                                                ? feedback.rate.rate
+                                                : "No Data Encoded"
+                                            ) +
+                                            "\n                      "
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(
+                                              feedback.rate
+                                                ? feedback.rate.feedback_remarks
+                                                : "No Data Encoded"
+                                            ) +
+                                            "\n                      "
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(
+                                              feedback.rate
+                                                ? feedback.rate.date_feedback
+                                                : "No Data Encoded"
+                                            ) +
+                                            "\n                      "
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-sm btn-outline-success",
+                                            attrs: { title: "Print Form" },
+                                            on: {
+                                              click: function ($event) {
+                                                return _vm.printTicketForm(
+                                                  feedback.id
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass:
+                                                "ri-printer-line me-1",
+                                            }),
+                                            _vm._v(
+                                              " Print\n                          "
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                    ])
+                                  }
+                                ),
+                                0
+                              )
+                            : _vm._e(),
+                        ]
+                      ),
+                    ]),
+                  ]
+                ),
               ]),
             ]
           ),
@@ -55126,14 +58653,14 @@ var staticRenderFns = [
               _c("h5", { staticClass: "card-title mb-0 text-white" }, [
                 _c("i", { staticClass: "ri-building-3-line me-2" }),
                 _vm._v(
-                  "\n                    DENR - Manage All Ticket Request\n                  "
+                  "\n                  DENR - Manage All Ticket Request\n                "
                 ),
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "text-white-50 mb-0 small" }, [
                 _c("i", { staticClass: "ri-list-check me-1" }),
                 _vm._v(
-                  "\n                    Department of Environment and Natural Resources XI\n                  "
+                  "\n                  Department of Environment and Natural Resources XI\n                "
                 ),
               ]),
             ]),
@@ -55316,42 +58843,42 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { width: "5%" } }, [
           _c("i", { staticClass: "ri-ticket-line me-1" }),
-          _vm._v(" Helpdesk #\n                        "),
+          _vm._v(" Helpdesk #\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "150" } }, [
           _c("i", { staticClass: "ri-calendar-line me-1" }),
-          _vm._v("Subject\n                        "),
+          _vm._v("Subject\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "150" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Requester\n                        "),
+          _vm._v(" Requester\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "250" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Office\n                        "),
+          _vm._v(" Office\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "200" } }, [
           _c("i", { staticClass: "ri-calendar-line me-1" }),
-          _vm._v(" Date Created\n                        "),
+          _vm._v(" Date Created\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Category\n                        "),
+          _vm._v(" Category\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Technician Assign\n                        "),
+          _vm._v(" Technician Assign\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "100" } }, [
           _c("i", { staticClass: "ri-information-line me-1" }),
-          _vm._v(" Status\n                        "),
+          _vm._v(" Status\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "80" } }, [
@@ -55401,7 +58928,7 @@ var staticRenderFns = [
     return _c("label", { staticClass: "small text-muted mb-2 d-block" }, [
       _c("i", { staticClass: "ri-user-star-line me-1" }),
       _vm._v(
-        "Assign\n                                    Technician\n                                  "
+        "Assign\n                                  Technician\n                                "
       ),
     ])
   },
@@ -55412,7 +58939,7 @@ var staticRenderFns = [
     return _c("small", { staticClass: "text-muted mt-1 d-block" }, [
       _c("i", { staticClass: "ri-information-line me-1" }),
       _vm._v(
-        "\n                                  Changing status will update the ticket\n                                  workflow\n                                "
+        "\n                                Changing status will update the ticket\n                                workflow\n                              "
       ),
     ])
   },
@@ -55423,7 +58950,7 @@ var staticRenderFns = [
     return _c("label", { staticClass: "small text-muted mb-2 d-block" }, [
       _c("i", { staticClass: "ri-chat-3-line me-1" }),
       _vm._v(
-        "Resolution\n                                Notes / Remarks\n                              "
+        "Resolution\n                              Notes / Remarks\n                            "
       ),
     ])
   },
@@ -55438,7 +58965,7 @@ var staticRenderFns = [
         _c("small", { staticClass: "text-muted" }, [
           _c("i", { staticClass: "ri-information-line me-1" }),
           _vm._v(
-            "\n                                  Add detailed notes about the resolution or\n                                  status change\n                                "
+            "\n                                Add detailed notes about the resolution or\n                                status change\n                              "
           ),
         ]),
       ]
@@ -55459,7 +58986,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                                      Ticket Details\n                                    "
+                "\n                                    Ticket Details\n                                  "
               ),
             ]
           ),
@@ -55467,7 +58994,7 @@ var staticRenderFns = [
           _c("p", { staticClass: "mb-0 small text-white-50" }, [
             _c("i", { staticClass: "ri-information-line me-1" }),
             _vm._v(
-              "\n                                      Complete ticket information\n                                    "
+              "\n                                    Complete ticket information\n                                  "
             ),
           ]),
         ]),
@@ -55506,7 +59033,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-information-line me-2" }),
-        _vm._v("Basic Information\n                                      "),
+        _vm._v("Basic Information\n                                    "),
       ]),
     ])
   },
@@ -55516,7 +59043,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-user-line me-1" }),
-      _vm._v("Requester\n                                          "),
+      _vm._v("Requester\n                                        "),
     ])
   },
   function () {
@@ -55535,7 +59062,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Contact Information\n                                          "),
+      _vm._v("Contact Information\n                                        "),
     ])
   },
   function () {
@@ -55554,7 +59081,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Subject\n                                          "),
+      _vm._v("Subject\n                                        "),
     ])
   },
   function () {
@@ -55573,7 +59100,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Category\n                                          "),
+      _vm._v("Category\n                                        "),
     ])
   },
   function () {
@@ -55592,7 +59119,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Status\n                                          "),
+      _vm._v("Status\n                                        "),
     ])
   },
   function () {
@@ -55611,7 +59138,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Issues/Concern\n                                          "),
+      _vm._v("Issues/Concern\n                                        "),
     ])
   },
   function () {
@@ -55631,7 +59158,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-file-text-line me-2" }),
-        _vm._v("Description\n                                      "),
+        _vm._v("Description\n                                    "),
       ]),
     ])
   },
@@ -55642,7 +59169,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-attachment-line me-2" }),
-        _vm._v("Attachments\n                                      "),
+        _vm._v("Attachments\n                                    "),
       ]),
     ])
   },
@@ -55675,7 +59202,7 @@ var staticRenderFns = [
         },
         [
           _c("i", { staticClass: "ri-close-line me-1" }),
-          _vm._v("Close\n                                    "),
+          _vm._v("Close\n                                  "),
         ]
       ),
     ])
@@ -55708,44 +59235,44 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { width: "5%" } }, [
           _c("i", { staticClass: "ri-ticket-line me-1" }),
-          _vm._v(" Helpdesk #\n                        "),
+          _vm._v(" Helpdesk #\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "150" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Requester\n                        "),
+          _vm._v(" Requester\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "250" } }, [
           _c("i", { staticClass: "ri-user-line me-1" }),
-          _vm._v(" Office\n                        "),
+          _vm._v(" Office\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Date Received\n                        "),
+          _vm._v(" Date Received\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Date Acted\n                        "),
+          _vm._v(" Date Acted\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
-          _vm._v(" Technician Assign\n                        "),
+          _vm._v(" Technician Assign\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "50" } }, [
           _c("i", { staticClass: "ri-folder-line me-1" }),
           _vm._v(
-            " Actual Turn Around\n                          Time\n                        "
+            " Actual Turn Around\n                        Time\n                      "
           ),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "100" } }, [
           _c("i", { staticClass: "ri-information-line me-1" }),
-          _vm._v(" Status\n                        "),
+          _vm._v(" Status\n                      "),
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { width: "80" } }, [
@@ -55785,7 +59312,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                                      Ticket Details\n                                    "
+                "\n                                    Ticket Details\n                                  "
               ),
             ]
           ),
@@ -55793,7 +59320,7 @@ var staticRenderFns = [
           _c("p", { staticClass: "mb-0 small text-white-50" }, [
             _c("i", { staticClass: "ri-information-line me-1" }),
             _vm._v(
-              "\n                                      Complete ticket information\n                                    "
+              "\n                                    Complete ticket information\n                                  "
             ),
           ]),
         ]),
@@ -55832,7 +59359,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-information-line me-2" }),
-        _vm._v("Basic Information\n                                      "),
+        _vm._v("Basic Information\n                                    "),
       ]),
     ])
   },
@@ -55842,7 +59369,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-user-line me-1" }),
-      _vm._v("Requester\n                                          "),
+      _vm._v("Requester\n                                        "),
     ])
   },
   function () {
@@ -55861,7 +59388,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Contact Information\n                                          "),
+      _vm._v("Contact Information\n                                        "),
     ])
   },
   function () {
@@ -55880,7 +59407,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Subject\n                                          "),
+      _vm._v("Subject\n                                        "),
     ])
   },
   function () {
@@ -55899,7 +59426,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Category\n                                          "),
+      _vm._v("Category\n                                        "),
     ])
   },
   function () {
@@ -55918,7 +59445,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Status\n                                          "),
+      _vm._v("Status\n                                        "),
     ])
   },
   function () {
@@ -55937,7 +59464,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "small text-muted mb-1" }, [
       _c("i", { staticClass: "ri-phone-line me-1" }),
-      _vm._v("Issues/Concern\n                                          "),
+      _vm._v("Issues/Concern\n                                        "),
     ])
   },
   function () {
@@ -55957,7 +59484,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-file-text-line me-2" }),
-        _vm._v("Description\n                                      "),
+        _vm._v("Description\n                                    "),
       ]),
     ])
   },
@@ -55968,7 +59495,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header bg-light" }, [
       _c("h6", { staticClass: "mb-0" }, [
         _c("i", { staticClass: "ri-attachment-line me-2" }),
-        _vm._v("Attachments\n                                      "),
+        _vm._v("Attachments\n                                    "),
       ]),
     ])
   },
@@ -56001,7 +59528,7 @@ var staticRenderFns = [
         },
         [
           _c("i", { staticClass: "ri-close-line me-1" }),
-          _vm._v("Close\n                                    "),
+          _vm._v("Close\n                                  "),
         ]
       ),
     ])
@@ -56010,106 +59537,166 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "tab-pane fade",
-        attrs: { id: "unresolvedTickets", role: "tabpanel" },
-      },
-      [
-        _c("div", { staticClass: "table-responsive" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "table table-bordered table-hover table-striped align-middle mb-0",
-              staticStyle: { "font-size": "0.875rem" },
-            },
-            [
-              _c("thead", { staticClass: "table-warning" }, [
-                _c("tr", [
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "50" } },
-                    [_vm._v("#")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "120" } },
-                    [_vm._v("Ticket ID")]
-                  ),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Subject")]),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "120" } },
-                    [_vm._v("Requester")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "120" } },
-                    [_vm._v("Date Created")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "100" } },
-                    [_vm._v("Priority")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "100" } },
-                    [_vm._v("Days Open")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "80" } },
-                    [_vm._v("Actions")]
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", { staticClass: "text-center fw-bold" }, [
-                    _vm._v("1"),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c("span", { staticClass: "badge bg-danger" }),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c("span", { staticClass: "badge bg-warning" }),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "button",
-                      { staticClass: "btn btn-sm btn-outline-warning" },
-                      [_c("i", { staticClass: "ri-eye-line" })]
-                    ),
-                  ]),
-                ]),
-              ]),
-            ]
+    return _c("span", { staticClass: "input-group-text bg-light" }, [
+      _c("i", { staticClass: "ri-list-settings-line" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "input-group-text bg-light" }, [
+      _c("i", { staticClass: "ri-search-line" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-light" }, [
+      _c("tr", [
+        _c("th", { staticClass: "text-center", attrs: { width: "50" } }, [
+          _vm._v("#"),
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "5%" } }, [
+          _c("i", { staticClass: "ri-ticket-line me-1" }),
+          _vm._v(" Helpdesk #\n                      "),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "150" } }, [
+          _c("i", { staticClass: "ri-user-line me-1" }),
+          _vm._v(" Requester\n                      "),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "250" } }, [
+          _c("i", { staticClass: "ri-user-line me-1" }),
+          _vm._v(" Office\n                      "),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
+          _c("i", { staticClass: "ri-folder-line me-1" }),
+          _vm._v(" Date Received\n                      "),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
+          _c("i", { staticClass: "ri-folder-line me-1" }),
+          _vm._v(" Date Acted\n                      "),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "120" } }, [
+          _c("i", { staticClass: "ri-folder-line me-1" }),
+          _vm._v(" Technician Assign\n                      "),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "50" } }, [
+          _c("i", { staticClass: "ri-folder-line me-1" }),
+          _vm._v(
+            " Actual Turn Around\n                        Time\n                      "
           ),
         ]),
-      ]
-    )
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "100" } }, [
+          _c("i", { staticClass: "ri-information-line me-1" }),
+          _vm._v(" Status\n                      "),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "80" } }, [
+          _vm._v("Actions"),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { staticClass: "text-center py-5", attrs: { colspan: "11" } }, [
+        _c("i", {
+          staticClass: "ri-file-text-line fs-3 text-muted d-block mb-2",
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "text-muted" }, [
+          _vm._v("No Unresolved Tickets Found."),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header bg-primary text-white" }, [
+      _c("div", { staticClass: "d-flex align-items-center w-100" }, [
+        _c("div", [
+          _c(
+            "h5",
+            {
+              staticClass: "modal-title mb-0",
+              staticStyle: { color: "white" },
+            },
+            [
+              _vm._v(
+                "\n                                    Ticket Details\n                                  "
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c("p", { staticClass: "mb-0 small text-white-50" }, [
+            _c("i", { staticClass: "ri-information-line me-1" }),
+            _vm._v(
+              "\n                                    Complete ticket information\n                                  "
+            ),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close btn-close-white",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "bg-light rounded p-2 me-3" }, [
+      _c("i", { staticClass: "ri-ticket-line text-primary" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "bg-light rounded" }, [
+      _c("i", { staticClass: "ri-calendar-line text-primary" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header bg-light" }, [
+      _c("h6", { staticClass: "mb-0" }, [
+        _c("i", { staticClass: "ri-information-line me-2" }),
+        _vm._v("Basic Information\n                                    "),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "small text-muted mb-1" }, [
+      _c("i", { staticClass: "ri-user-line me-1" }),
+      _vm._v("Requester\n                                        "),
+    ])
   },
   function () {
     var _vm = this
@@ -56117,98 +59704,216 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass: "tab-pane fade",
-        attrs: { id: "feedbackTickets", role: "tabpanel" },
-      },
-      [
-        _c("div", { staticClass: "table-responsive" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "table table-bordered table-hover table-striped align-middle mb-0",
-              staticStyle: { "font-size": "0.875rem" },
-            },
-            [
-              _c("thead", { staticClass: "table-info" }, [
-                _c("tr", [
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "50" } },
-                    [_vm._v("#")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "120" } },
-                    [_vm._v("Ticket ID")]
-                  ),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Subject")]),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "120" } },
-                    [_vm._v("Requester")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "120" } },
-                    [_vm._v("Date Resolved")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "100" } },
-                    [_vm._v("Rating")]
-                  ),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Feedback")]),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    { staticClass: "text-center", attrs: { width: "80" } },
-                    [_vm._v("Actions")]
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", { staticClass: "text-center fw-bold" }),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c("span", { staticClass: "badge bg-success" }, [
-                      _c("i", { staticClass: "ri-star-fill" }),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "button",
-                      { staticClass: "btn btn-sm btn-outline-info" },
-                      [_c("i", { staticClass: "ri-eye-line" })]
-                    ),
-                  ]),
-                ]),
-              ]),
-            ]
-          ),
-        ]),
-      ]
+      { staticClass: "bg-primary bg-opacity-10 rounded-circle p-2 me-3" },
+      [_c("i", { staticClass: "ri-user-3-line text-primary" })]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "small text-muted mb-1" }, [
+      _c("i", { staticClass: "ri-phone-line me-1" }),
+      _vm._v("Contact Information\n                                        "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "bg-success bg-opacity-10 rounded-circle p-2 me-3" },
+      [_c("i", { staticClass: "ri-mail-line text-success" })]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "small text-muted mb-1" }, [
+      _c("i", { staticClass: "ri-phone-line me-1" }),
+      _vm._v("Subject\n                                        "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "bg-success bg-opacity-10 rounded-circle p-2 me-3" },
+      [_c("i", { staticClass: "ri-mail-line text-success" })]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "small text-muted mb-1" }, [
+      _c("i", { staticClass: "ri-phone-line me-1" }),
+      _vm._v("Category\n                                        "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "bg-success bg-opacity-10 rounded-circle p-2 me-3" },
+      [_c("i", { staticClass: "ri-mail-line text-success" })]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "small text-muted mb-1" }, [
+      _c("i", { staticClass: "ri-phone-line me-1" }),
+      _vm._v("Status\n                                        "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "bg-success bg-opacity-10 rounded-circle p-2 me-3" },
+      [_c("i", { staticClass: "ri-mail-line text-success" })]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "small text-muted mb-1" }, [
+      _c("i", { staticClass: "ri-phone-line me-1" }),
+      _vm._v("Issues/Concern\n                                        "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "bg-success bg-opacity-10 rounded-circle p-2 me-3" },
+      [_c("i", { staticClass: "ri-mail-line text-success" })]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header bg-light" }, [
+      _c("h6", { staticClass: "mb-0" }, [
+        _c("i", { staticClass: "ri-file-text-line me-2" }),
+        _vm._v("Description\n                                    "),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header bg-light" }, [
+      _c("h6", { staticClass: "mb-0" }, [
+        _c("i", { staticClass: "ri-attachment-line me-2" }),
+        _vm._v("Attachments\n                                    "),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", { staticClass: "btn btn-sm btn-link ms-2" }, [
+      _c("i", { staticClass: "ri-download-line" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-muted mb-3" }, [
+      _c("i", { staticClass: "ri-inbox-line fs-1" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary me-2",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [
+          _c("i", { staticClass: "ri-close-line me-1" }),
+          _vm._v("Close\n                                  "),
+        ]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "input-group-text bg-light" }, [
+      _c("i", { staticClass: "ri-list-settings-line" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "input-group-text bg-light" }, [
+      _c("i", { staticClass: "ri-search-line" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-info" }, [
+      _c("tr", [
+        _c("th", { staticClass: "text-center", attrs: { width: "50" } }, [
+          _vm._v("#"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "200" } }, [
+          _vm._v("Helpdesk #"),
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "130" } }, [_vm._v("Category")]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "250" } }, [_vm._v("Subject")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "200" } }, [
+          _vm._v("Requester"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "180" } }, [
+          _vm._v("Date Acted"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "100" } }, [
+          _vm._v("Rating"),
+        ]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Feedback")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date Feedback")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { width: "80" } }, [
+          _vm._v("Actions"),
+        ]),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
@@ -56217,10 +59922,10 @@ render._withStripped = true
 
 /***/ },
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&"
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756& ***!
-  \********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&scoped=true&"
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56233,100 +59938,131 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-lg-8" }, [
-          _c("div", { staticClass: "card mb-4" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _c("h3", { staticClass: "section-title mb-0" }, [
-                _vm._v("Search Ticket"),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("form", { attrs: { id: "ticketSearchForm" } }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-lg-8" }, [
+        _c("div", { staticClass: "card mb-4" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function ($event) {
+                    $event.preventDefault()
+                    return _vm.searchTicket.apply(null, arguments)
+                  },
+                },
+              },
+              [
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-md-6 mb-3" }, [
-                    _c(
-                      "label",
-                      { staticClass: "form-label", attrs: { for: "email" } },
-                      [
-                        _vm._v("Email Address "),
-                        _c("span", { staticClass: "required-field" }),
-                      ]
-                    ),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group-icon" }, [
                       _c("i", { staticClass: "fas fa-envelope input-icon" }),
                       _vm._v(" "),
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.formData.email,
+                            expression: "formData.email",
+                            modifiers: { trim: true },
+                          },
+                        ],
                         staticClass: "form-control form-control-icon",
                         attrs: {
                           type: "email",
-                          id: "email",
                           placeholder: "Enter your email address",
-                          required: "",
+                        },
+                        domProps: { value: _vm.formData.email },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "email",
+                              $event.target.value.trim()
+                            )
+                          },
+                          blur: function ($event) {
+                            return _vm.$forceUpdate()
+                          },
                         },
                       }),
-                    ]),
-                    _vm._v(" "),
-                    _c("small", { staticClass: "form-text text-muted" }, [
-                      _vm._v("The email you used when submitting the ticket"),
                     ]),
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-6 mb-3" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-label",
-                        attrs: { for: "ticketNumber" },
-                      },
-                      [
-                        _vm._v("Ticket Number "),
-                        _c("span", { staticClass: "required-field" }),
-                      ]
-                    ),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group-icon" }, [
                       _c("i", { staticClass: "fas fa-ticket-alt input-icon" }),
                       _vm._v(" "),
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.formData.ticket_number,
+                            expression: "formData.ticket_number",
+                            modifiers: { trim: true },
+                          },
+                        ],
                         staticClass: "form-control form-control-icon",
                         attrs: {
                           type: "text",
-                          id: "ticketNumber",
-                          placeholder: "e.g., DENR-XI-2023-00123",
-                          required: "",
+                          placeholder: "DENR-XI-2023-00123",
+                        },
+                        domProps: { value: _vm.formData.ticket_number },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "ticket_number",
+                              $event.target.value.trim()
+                            )
+                          },
+                          blur: function ($event) {
+                            return _vm.$forceUpdate()
+                          },
                         },
                       }),
-                    ]),
-                    _vm._v(" "),
-                    _c("small", { staticClass: "form-text text-muted" }, [
-                      _vm._v("Your unique ticket reference number"),
                     ]),
                   ]),
                 ]),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "alert alert-danger d-none",
-                    attrs: { id: "errorMessage", role: "alert" },
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-exclamation-circle me-2" }),
-                    _vm._v(" "),
-                    _c("span", { attrs: { id: "errorText" } }),
-                  ]
-                ),
+                _vm.errorMessage
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _c("i", {
+                        staticClass: "fas fa-exclamation-circle me-2",
+                      }),
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(_vm.errorMessage) +
+                          "\n            "
+                      ),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.successMessage && !_vm.ticket
+                  ? _c("div", { staticClass: "alert alert-success" }, [
+                      _c("i", { staticClass: "fas fa-check-circle me-2" }),
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(_vm.successMessage) +
+                          "\n            "
+                      ),
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -56338,13 +60074,19 @@ var staticRenderFns = [
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-denr btn-responsive",
-                        attrs: { type: "submit" },
+                        staticClass: "btn btn-denr",
+                        attrs: { type: "submit", disabled: _vm.loading },
                       },
                       [
                         _c("i", { staticClass: "fas fa-search me-2" }),
                         _vm._v(
-                          " Search Ticket Status\n                                "
+                          "\n                " +
+                            _vm._s(
+                              _vm.loading
+                                ? "Searching..."
+                                : "Search Ticket Status"
+                            ) +
+                            "\n              "
                         ),
                       ]
                     ),
@@ -56352,68 +60094,514 @@ var staticRenderFns = [
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-outline-denr btn-responsive",
-                        attrs: { type: "button", id: "clearBtn" },
+                        staticClass: "btn btn-outline-denr",
+                        attrs: { type: "button" },
+                        on: { click: _vm.clearForm },
                       },
                       [
                         _c("i", { staticClass: "fas fa-eraser me-2" }),
-                        _vm._v(" Clear Form\n                                "),
+                        _vm._v(" Clear Form\n              "),
                       ]
                     ),
                   ]
                 ),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "loading-spinner",
-                  attrs: { id: "loadingSpinner" },
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "spinner-border text-denr",
-                      attrs: { role: "status" },
-                    },
-                    [
-                      _c("span", { staticClass: "visually-hidden" }, [
-                        _vm._v("Loading..."),
-                      ]),
-                    ]
-                  ),
+              ]
+            ),
+            _vm._v(" "),
+            _vm.loading
+              ? _c("div", { staticClass: "loading-spinner text-center mt-4" }, [
+                  _c("div", { staticClass: "spinner-border text-denr" }),
                   _vm._v(" "),
                   _c("p", { staticClass: "mt-3" }, [
                     _vm._v("Searching for ticket information..."),
                   ]),
-                ]
-              ),
-            ]),
+                ])
+              : _vm._e(),
           ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "results-container",
-              attrs: { id: "resultsContainer" },
-            },
-            [
-              _c("div", { staticClass: "card" }, [
-                _c("div", { staticClass: "card-header" }, [
-                  _c("h3", { staticClass: "section-title mb-0" }, [
-                    _vm._v("Ticket Status Details"),
-                  ]),
-                ]),
+        ]),
+        _vm._v(" "),
+        _vm.displayMode && _vm.ticket
+          ? _c("div", { staticClass: "mt-4" }, [
+              _c("div", { staticClass: "card shadow-sm border-0" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card-header d-flex justify-content-between align-items-center bg-light",
+                  },
+                  [
+                    _c("div", [
+                      _c("h5", { staticClass: "mb-0 fw-bold" }, [
+                        _c("i", {
+                          staticClass: "fas fa-ticket-alt me-2 text-danger",
+                        }),
+                        _vm._v(
+                          "\n                Ticket #" +
+                            _vm._s(_vm.getTicketNumber()) +
+                            "\n              "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("small", { staticClass: "text-muted" }, [
+                        _vm._v(
+                          "\n                Created: " +
+                            _vm._s(_vm.getCreatedDate()) +
+                            "\n              "
+                        ),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "badge px-3 py-2",
+                        class: _vm.statusBadgeClass(_vm.getStatus()),
+                      },
+                      [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(_vm.getStatus()) +
+                            "\n            "
+                        ),
+                      ]
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
-                  _c("div", { attrs: { id: "ticketResults" } }),
+                  _c("div", { staticClass: "row g-4" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "info-box" }, [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("strong", [_vm._v("Name:")]),
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.ticket.firstname) +
+                              "\n                    " +
+                              _vm._s(_vm.ticket.middle_initial) +
+                              "\n                    " +
+                              _vm._s(_vm.ticket.lastname) +
+                              "\n                  "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("strong", [_vm._v("Email:")]),
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.getEmail()) +
+                              "\n                  "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("strong", [_vm._v("Office:")]),
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.ticket.office.office) +
+                              "\n                  "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("strong", [_vm._v("Category:")]),
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.ticket.ticket_type.ticket_type) +
+                              "\n                  "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-0" }, [
+                          _c("strong", [_vm._v("Subject:")]),
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(
+                                _vm.ticket.ticket_category.ticket_category
+                              ) +
+                              "\n                  "
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "info-box" }, [
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "text-muted" }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.ticket.issue_concern || "N/A") +
+                              "\n                  "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("hr"),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-12" }, [
+                      _c("div", { staticClass: "info-box bg-light" }, [
+                        _vm._m(6),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("strong", [_vm._v("Name:")]),
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.ticket.technician.firstname) +
+                              "\n                    " +
+                              _vm._s(_vm.ticket.technician.middle_initial) +
+                              ".\n                    " +
+                              _vm._s(_vm.ticket.technician.lastname) +
+                              "\n                  "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _vm.ticket.resolution
+                          ? _c("p", { staticClass: "mt-2 mb-0" }, [
+                              _c("strong", [_vm._v("Resolution:")]),
+                              _c("br"),
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(_vm.ticket.resolution) +
+                                  "\n                  "
+                              ),
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("strong", [_vm._v("Date Received:")]),
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.formatDate(_vm.ticket.date_receive)) +
+                              "\n                  "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-0" }, [
+                          _c("strong", [_vm._v("Date Acted:")]),
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.formatDate(_vm.ticket.date_acted)) +
+                              "\n                  "
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-12" }, [
+                      _c("div", { staticClass: "info-box bg-light" }, [
+                        _vm._m(7),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mb-3" }, [
+                          _c(
+                            "label",
+                            { staticClass: "form-label fw-semibold" },
+                            [_vm._v("Service Rating")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-check" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.feedback.rating,
+                                  expression: "feedback.rating",
+                                },
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "radio",
+                                name: "techFeedback",
+                                value: "E",
+                                id: "ratingExcellent",
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.feedback.rating, "E"),
+                              },
+                              on: {
+                                change: function ($event) {
+                                  return _vm.$set(_vm.feedback, "rating", "E")
+                                },
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "ratingExcellent" },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        ⭐ Excellent\n                      "
+                                ),
+                              ]
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-check" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.feedback.rating,
+                                  expression: "feedback.rating",
+                                },
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "radio",
+                                name: "techFeedback",
+                                value: "VS",
+                                id: "ratingVerySatisfactory",
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.feedback.rating, "VS"),
+                              },
+                              on: {
+                                change: function ($event) {
+                                  return _vm.$set(_vm.feedback, "rating", "VS")
+                                },
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "ratingVerySatisfactory" },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        👍 Very Satisfactory\n                      "
+                                ),
+                              ]
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-check" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.feedback.rating,
+                                  expression: "feedback.rating",
+                                },
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "radio",
+                                name: "techFeedback",
+                                value: "S",
+                                id: "ratingSatisfactory",
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.feedback.rating, "S"),
+                              },
+                              on: {
+                                change: function ($event) {
+                                  return _vm.$set(_vm.feedback, "rating", "S")
+                                },
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "ratingSatisfactory" },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        🙂 Satisfactory\n                      "
+                                ),
+                              ]
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-check" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.feedback.rating,
+                                  expression: "feedback.rating",
+                                },
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "radio",
+                                name: "techFeedback",
+                                value: "BS",
+                                id: "ratingBelowSatisfactory",
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.feedback.rating, "BS"),
+                              },
+                              on: {
+                                change: function ($event) {
+                                  return _vm.$set(_vm.feedback, "rating", "BS")
+                                },
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "ratingBelowSatisfactory" },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        👎 Below Satisfactory\n                      "
+                                ),
+                              ]
+                            ),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mb-3" }, [
+                          _c(
+                            "label",
+                            { staticClass: "form-label fw-semibold" },
+                            [_vm._v("Remarks")]
+                          ),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.feedback.remarks,
+                                expression: "feedback.remarks",
+                              },
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              rows: "3",
+                              placeholder: "Write your feedback here...",
+                            },
+                            domProps: { value: _vm.feedback.remarks },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.feedback,
+                                  "remarks",
+                                  $event.target.value
+                                )
+                              },
+                            },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-info",
+                            attrs: { type: "button" },
+                            on: { click: _vm.submitFeedback },
+                          },
+                          [
+                            _vm._v(
+                              "\n                    Submit Feedback\n                  "
+                            ),
+                          ]
+                        ),
+                      ]),
+                    ]),
+                  ]),
                 ]),
               ]),
-            ]
-          ),
-        ]),
+            ])
+          : _vm._e(),
       ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "section-title mb-0" }, [
+        _vm._v("Search Ticket"),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "form-label" }, [
+      _vm._v("\n                  Email Address "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "form-label" }, [
+      _vm._v("\n                  Ticket Number "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "fw-bold mb-3" }, [
+      _c("i", { staticClass: "fas fa-user me-2" }),
+      _vm._v("Requester Information\n                  "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "fw-bold mb-3" }, [
+      _c("i", { staticClass: "fas fa-exclamation-circle me-2" }),
+      _vm._v("Issue\n                    Details\n                  "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "mb-2" }, [
+      _c("strong", [_vm._v("Concern:")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "fw-bold mb-3" }, [
+      _c("i", { staticClass: "fas fa-tools me-2" }),
+      _vm._v("Technician Assigned\n                  "),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "fw-bold mb-3" }, [
+      _c("i", { staticClass: "fas fa-tools me-2" }),
+      _vm._v("Feedback Technician\n                  "),
     ])
   },
 ]
@@ -69565,23 +73753,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Tickettrack_vue_vue_type_template_id_c24e6756___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tickettrack.vue?vue&type=template&id=c24e6756& */ "./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&");
+/* harmony import */ var _Tickettrack_vue_vue_type_template_id_c24e6756_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tickettrack.vue?vue&type=template&id=c24e6756&scoped=true& */ "./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&scoped=true&");
 /* harmony import */ var _Tickettrack_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tickettrack.vue?vue&type=script&lang=js& */ "./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Tickettrack_vue_vue_type_style_index_0_id_c24e6756_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css& */ "./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Tickettrack_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Tickettrack_vue_vue_type_template_id_c24e6756___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Tickettrack_vue_vue_type_template_id_c24e6756___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Tickettrack_vue_vue_type_template_id_c24e6756_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Tickettrack_vue_vue_type_template_id_c24e6756_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  null,
+  "c24e6756",
   null
   
 )
@@ -69610,19 +73800,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ },
 
-/***/ "./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&"
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756& ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css&"
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_style_index_0_id_c24e6756_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=style&index=0&id=c24e6756&scoped=true&lang=css&");
+
+
+/***/ },
+
+/***/ "./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&scoped=true&"
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&scoped=true& ***!
+  \*****************************************************************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_template_id_c24e6756___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_template_id_c24e6756___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_template_id_c24e6756_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_template_id_c24e6756_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_template_id_c24e6756___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Tickettrack.vue?vue&type=template&id=c24e6756& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tickettrack_vue_vue_type_template_id_c24e6756_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Tickettrack.vue?vue&type=template&id=c24e6756&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helpdesk/Tickettrack.vue?vue&type=template&id=c24e6756&scoped=true&");
 
 
 /***/ },

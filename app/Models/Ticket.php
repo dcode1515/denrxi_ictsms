@@ -73,5 +73,10 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class, 'receive_technician_id');
     }
+            public function rate()
+        {
+            return $this->hasOne(Rate::class, 'ticket_id');
+        }
+
       
 }
