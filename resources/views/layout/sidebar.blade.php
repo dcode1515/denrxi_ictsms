@@ -107,7 +107,7 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="">
+                            <a class="nav-link menu-link" href="{{route('helpdesk.dashboard')}}">
                                 <i class="ri-apps-2-line"></i> <span data-key="t-widgets">Dashboard</span>
                             </a>
                         </li>
@@ -122,7 +122,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="widgets.html">
+                            <a class="nav-link menu-link" href="{{route('report.technician')}}">
                                 <i class="ri-file-text-line"></i> <span data-key="t-widgets">Reports</span>
                             </a>
                         </li>

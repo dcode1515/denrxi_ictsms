@@ -94,6 +94,7 @@ Route::get('/api/get/all/resolved/ticket', [App\Http\Controllers\Helpdesk\Helpde
 Route::get('/api/get/all/unresolved/ticket', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'getDataAllUnResolvedTicket']);
 Route::get('/print/forms/{id}', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'print_forms']);
 Route::get('/api/get/all/feedback', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'getDataAllFeedback']);
+Route::get('/report', [App\Http\Controllers\Helpdesk\HelpdeskController::class, 'report'])->name('report.technician');
 
 
 

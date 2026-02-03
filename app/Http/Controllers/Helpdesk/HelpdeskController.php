@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Helpdesk;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\TicketType;
 use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator; // Correct import for Laravel Validator
@@ -12,15 +13,145 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ReceiveTicketNotif;
 use App\Mail\UpdateTicketNotif;
 use PDF;
+use Carbon\Carbon;
+use DB;
 
 
 class HelpdeskController extends Controller
 {
     //
 
-    public function helpdesk(){
-        return view('helpdesk.dashboard');
+    public function helpdesk()
+    {
+        $user = Auth::user();
+        $userOfficeId = $user->office_id ?? null;
+        
+        // Get today's date
+        $today = Carbon::now();
+        $lastWeek = Carbon::now()->subDays(7);
+        
+        // Basic counts
+        $totalTickets = Ticket::count();
+        $previousTotal = Ticket::where('created_at', '<', $lastWeek)->count();
+        $totalPercentage = $previousTotal > 0 ? (($totalTickets - $previousTotal) / $previousTotal) * 100 : 0;
+        
+        $pendingTickets = Ticket::where('status', 'pending')->count();
+        $previousPending = Ticket::where('status', 'pending')
+            ->where('created_at', '<', $lastWeek)
+            ->count();
+        $pendingPercentage = $previousPending > 0 ? (($pendingTickets - $previousPending) / $previousPending) * 100 : 0;
+        
+        $resolvedTickets = Ticket::where('status', 'resolved')->count();
+        $previousResolved = Ticket::where('status', 'resolved')
+            ->where('created_at', '<', $lastWeek)
+            ->count();
+        $resolvedPercentage = $previousResolved > 0 ? (($resolvedTickets - $previousResolved) / $previousResolved) * 100 : 0;
+        
+        $officeTickets = $userOfficeId ? Ticket::where('office_id', $userOfficeId)->count() : 0;
+        $previousOffice = $userOfficeId ? Ticket::where('office_id', $userOfficeId)
+            ->where('created_at', '<', $lastWeek)
+            ->count() : 0;
+        $officePercentage = $previousOffice > 0 ? (($officeTickets - $previousOffice) / $previousOffice) * 100 : 0;
+        
+        // Ticket types with counts
+        $ticketTypes = DB::table('ticket_type_tbl')
+            ->select(
+                'ticket_type_tbl.id',
+                'ticket_type_tbl.ticket_type',
+                DB::raw('COUNT(ticket_tbl.id) as tickets_count')
+            )
+            ->leftJoin('ticket_tbl', 'ticket_type_tbl.id', '=', 'ticket_tbl.ticket_type_id')
+            ->whereNull('ticket_type_tbl.deleted_at')
+            ->groupBy('ticket_type_tbl.id', 'ticket_type_tbl.ticket_type')
+            ->get();
+        
+        $totalTicketsForType = $ticketTypes->sum('tickets_count');
+        
+        // Recent tickets
+        $recentTickets = Ticket::with('office')
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+        
+        // Bar Chart Data - Last 6 months
+        $barMonths = [];
+        $barTicketCounts = [];
+        $barResolvedCounts = [];
+        
+        for ($i = 5; $i >= 0; $i--) {
+            $month = $today->copy()->subMonths($i);
+            $barMonths[] = $month->format('M Y');
+            
+            $total = Ticket::whereMonth('created_at', $month->month)
+                ->whereYear('created_at', $month->year)
+                ->count();
+            $barTicketCounts[] = $total;
+            
+            $resolved = Ticket::whereMonth('created_at', $month->month)
+                ->whereYear('created_at', $month->year)
+                ->where('status', 'resolved')
+                ->count();
+            $barResolvedCounts[] = $resolved;
+        }
+        
+        // Pie Chart Data - Tickets by Status
+        $statuses = Ticket::select('status', DB::raw('COUNT(*) as count'))
+            ->groupBy('status')
+            ->get();
+        
+        $statusLabels = [];
+        $statusData = [];
+        $statusColors = [];
+        
+        foreach ($statuses as $status) {
+            $statusLabels[] = ucfirst($status->status);
+            $statusData[] = $status->count;
+            
+            // Assign colors based on status
+            switch ($status->status) {
+                case 'pending':
+                    $statusColors[] = '#f7b84b'; // Warning
+                    break;
+                case 'in_progress':
+                    $statusColors[] = '#299cdb'; // Info
+                    break;
+                case 'resolved':
+                    $statusColors[] = '#0ab39c'; // Success
+                    break;
+                case 'closed':
+                    $statusColors[] = '#405189'; // Primary
+                    break;
+                case 'cancelled':
+                    $statusColors[] = '#f06548'; // Danger
+                    break;
+                default:
+                    $statusColors[] = '#878a99'; // Secondary
+            }
+        }
+        
+        return view('helpdesk.dashboard', compact(
+            'totalTickets',
+            'totalPercentage',
+            'pendingTickets',
+            'pendingPercentage',
+            'resolvedTickets',
+            'resolvedPercentage',
+            'officeTickets',
+            'officePercentage',
+            'ticketTypes',
+            'recentTickets',
+            'totalTicketsForType',
+            'user',
+            'barMonths',
+            'barTicketCounts',
+            'barResolvedCounts',
+            'statuses',
+            'statusLabels',
+            'statusData',
+            'statusColors'
+        ));
     }
+
 
     public function ticket(){
         return view('helpdesk.ticket');
@@ -402,6 +533,11 @@ public function getDataAllUnResolvedTicket(Request $request){
                 'success' => true,
                 'data' => $feedbacks
             ]);
+}
+
+
+public function report(){
+    return view('helpdesk.report');
 }
 
   

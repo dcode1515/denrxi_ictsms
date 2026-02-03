@@ -204,7 +204,7 @@
                 <a href="#submitTicket" class="btn btn-light me-2 mb-2">
                     <i class="fas fa-plus-circle me-1"></i> Submit New Ticket
                 </a>
-                <a href="#" class="btn btn-outline-light mb-2" data-bs-toggle="modal" data-bs-target="#checkStatusModal">
+                <a href="{{route('ticket.status')}}" class="btn btn-outline-light mb-2">
                     <i class="fas fa-search me-1"></i> Check Ticket Status
                 </a>
             </div>

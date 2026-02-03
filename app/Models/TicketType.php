@@ -21,4 +21,14 @@ class TicketType extends Model
         'deleted_at',
 
       ];
+        public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'ticket_type_id');
+    }
+    
+    // Also add this if you want to get categories
+    public function categories()
+    {
+        return $this->hasMany(TicketCategory::class, 'ticket_type_id');
+    }
 }

@@ -18,18 +18,18 @@
                 <tr>
                     <td style="background:#146c43; color:#ffffff; padding:20px;">
                         <table width="100%" cellpadding="0" cellspacing="0">
-                            <tr>
+                            <!-- <tr>
                                 <td align="left">
                                     <img src="{{ config('app.url') }}/images/logo/denr1.png"
                                          alt="DENR Logo"
                                          height="40"
                                          style="display:block;">
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td>
                                     <h2 style="margin:10px 0 0 0; font-size:20px;">
-                                        🎫 Ticket Acknowledgment
+                                        Ticket Acknowledgment
                                     </h2>
                                 </td>
                             </tr>
@@ -119,8 +119,8 @@
                         <!-- IMPORTANT NOTE -->
                         <h3 style="margin-bottom:5px; color:#d9534f;">Important Note</h3>
                         <p style="background:#f8d7da; border:1px solid #f5c2c7; padding:10px; border-radius:4px;">
-                            For urgent matters requiring immediate attention, please contact the ICT Unit directly at
-                            <strong>(082) 123-4567</strong> during office hours
+                            For urgent matters requiring immediate attention, please contact the Regional ICT Unit directly at
+                            <strong>3532</strong> during office hours
                             (8:00 AM - 5:00 PM, Monday to Friday).
                         </p>
 

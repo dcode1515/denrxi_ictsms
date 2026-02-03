@@ -31,6 +31,7 @@ Vue.component('Profile', require('./components/Auth/Profile.vue').default);
 Vue.component('Ticketcategory', require('./components/Admin/Ticketcategory.vue').default);
 Vue.component('Ticketrequest', require('./components/Helpdesk/Ticketrequest.vue').default);
 Vue.component('Tickettrack', require('./components/Helpdesk/Tickettrack.vue').default);
+Vue.component('Report', require('./components/Helpdesk/Report.vue').default);
 
 
 

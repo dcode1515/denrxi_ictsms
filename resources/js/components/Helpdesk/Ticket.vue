@@ -367,13 +367,16 @@
                   class="d-none"
                 />
               </div>
-              
+
               <!-- File error display -->
-              <div v-if="errors.attachment" class="alert alert-danger alert-sm mt-3">
+              <div
+                v-if="errors.attachment"
+                class="alert alert-danger alert-sm mt-3"
+              >
                 <i class="fas fa-exclamation-circle me-2"></i>
                 {{ errors.attachment }}
               </div>
-              
+
               <!-- Display single file -->
               <div v-if="formData.attachment" class="mt-3">
                 <div class="attachment-preview">
@@ -597,14 +600,14 @@
     </div>
 
     <!-- Check Status Button -->
-    <button
+    <!-- <a
+      :href="'/denrxi_ictsms/ticket/status'"
       type="button"
       class="btn btn-denr check-status-btn animate-pulse"
-      data-bs-toggle="modal"
-      data-bs-target="#checkStatusModal"
+     
     >
       <i class="fas fa-search me-2"></i> Check Ticket Status
-    </button>
+    </a> -->
 
     <!-- Check Status Modal -->
     <div
@@ -781,14 +784,15 @@ export default {
         if (this.currentStep === 3 && this.formData.attachment) {
           const file = this.formData.attachment;
           const maxSize = 5 * 1024 * 1024; // 5MB in bytes
-          
+
           // Check file type
           if (!this.isValidFileType(file)) {
-            this.errors.attachment = "Invalid file type. Only JPG, PNG, PDF, and Word documents are allowed.";
+            this.errors.attachment =
+              "Invalid file type. Only JPG, PNG, PDF, and Word documents are allowed.";
             this.scrollToFirstError();
             return;
           }
-          
+
           // Check file size
           if (file.size > maxSize) {
             this.errors.attachment = "File is too large. Maximum size is 5MB.";
@@ -796,7 +800,7 @@ export default {
             return;
           }
         }
-        
+
         this.errors = {};
         if (this.currentStep < 4) {
           this.currentStep++;
@@ -877,17 +881,19 @@ export default {
               "Please provide more details (minimum 10 characters)";
             isValid = false;
           }
-          
+
           // Validate attachment if it exists
           if (this.formData.attachment) {
             if (!this.isValidFileType(this.formData.attachment)) {
-              this.errors.attachment = "Invalid file type. Only JPG, PNG, PDF, and Word documents are allowed.";
+              this.errors.attachment =
+                "Invalid file type. Only JPG, PNG, PDF, and Word documents are allowed.";
               isValid = false;
             }
-            
+
             const maxSize = 5 * 1024 * 1024; // 5MB in bytes
             if (this.formData.attachment.size > maxSize) {
-              this.errors.attachment = "File is too large. Maximum size is 5MB.";
+              this.errors.attachment =
+                "File is too large. Maximum size is 5MB.";
               isValid = false;
             }
           }
@@ -919,23 +925,26 @@ export default {
       const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return re.test(email);
     },
-    
+
     isValidFileType(file) {
       // Allowed file types
       const allowedTypes = [
-        'image/jpeg',
-        'image/jpg',
-        'image/png',
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        "image/jpeg",
+        "image/jpg",
+        "image/png",
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       ];
-      
+
       // Also check file extension as fallback
-      const fileExtension = file.name.toLowerCase().split('.').pop();
-      const allowedExtensions = ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx'];
-      
-      return allowedTypes.includes(file.type) || allowedExtensions.includes(fileExtension);
+      const fileExtension = file.name.toLowerCase().split(".").pop();
+      const allowedExtensions = ["jpg", "jpeg", "png", "pdf", "doc", "docx"];
+
+      return (
+        allowedTypes.includes(file.type) ||
+        allowedExtensions.includes(fileExtension)
+      );
     },
 
     // Form Submission
@@ -974,8 +983,6 @@ export default {
         );
 
         if (response.data.status === true) {
-        
-         
           window.location.href =
             "/denrxi_ictsms/ticket-success/" + response.data.ticketID;
         } else {
@@ -1076,10 +1083,10 @@ export default {
       };
       this.characterCount = 0;
       this.wordCount = 0;
-      
+
       // Clear file input
       if (this.$refs.fileInput) {
-        this.$refs.fileInput.value = '';
+        this.$refs.fileInput.value = "";
       }
     },
 
@@ -1183,68 +1190,68 @@ export default {
     handleFileUpload(event) {
       if (event.target.files.length > 0) {
         const file = event.target.files[0];
-        
+
         // Validate file type immediately
         if (!this.isValidFileType(file)) {
           // Show error and clear file input
           Swal.fire({
-            icon: 'error',
-            title: 'Invalid File Type',
-            text: 'Only JPG, PNG, PDF, and Word documents are allowed.',
-            confirmButtonColor: '#e74c3c',
+            icon: "error",
+            title: "Invalid File Type",
+            text: "Only JPG, PNG, PDF, and Word documents are allowed.",
+            confirmButtonColor: "#e74c3c",
           });
-          
+
           // Clear the file input
-          event.target.value = '';
+          event.target.value = "";
           this.formData.attachment = null;
           return;
         }
-        
+
         // Validate file size (5MB = 5 * 1024 * 1024 bytes)
         const maxSize = 5 * 1024 * 1024; // 5MB in bytes
         if (file.size > maxSize) {
           Swal.fire({
-            icon: 'error',
-            title: 'File Too Large',
-            text: 'Maximum file size is 5MB.',
-            confirmButtonColor: '#e74c3c',
+            icon: "error",
+            title: "File Too Large",
+            text: "Maximum file size is 5MB.",
+            confirmButtonColor: "#e74c3c",
           });
-          
+
           // Clear the file input
-          event.target.value = '';
+          event.target.value = "";
           this.formData.attachment = null;
           return;
         }
-        
+
         // File is valid, set it
         this.formData.attachment = file;
-        
+
         // Clear any previous attachment errors
         if (this.errors.attachment) {
           this.errors.attachment = null;
         }
       }
     },
-    
+
     removeAttachment() {
       this.formData.attachment = null;
       // Also clear the file input value to allow re-uploading same file
       if (this.$refs.fileInput) {
-        this.$refs.fileInput.value = '';
+        this.$refs.fileInput.value = "";
       }
-      
+
       // Clear attachment error if exists
       if (this.errors.attachment) {
         this.errors.attachment = null;
       }
     },
-    
+
     formatFileSize(bytes) {
-      if (bytes === 0) return '0 Bytes';
+      if (bytes === 0) return "0 Bytes";
       const k = 1024;
-      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const sizes = ["Bytes", "KB", "MB", "GB"];
       const i = Math.floor(Math.log(bytes) / Math.log(k));
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
     },
 
     updateCharacterCount() {
@@ -1789,12 +1796,12 @@ export default {
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .attachment-preview-info {
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .attachment-preview-size {
     margin-left: 0;
   }

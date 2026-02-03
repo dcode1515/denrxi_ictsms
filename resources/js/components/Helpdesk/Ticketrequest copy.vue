@@ -2840,7 +2840,27 @@ export default {
 
       return pages;
     },
-    
+    pages_resolved() {
+      const pages = [];
+      const total = this.resolveds.last_page;
+      const current = this.resolveds.current_page;
+      const maxVisible = 5;
+
+      if (total <= maxVisible) {
+        for (let i = 1; i <= total; i++) pages.push(i);
+      } else {
+        let start = Math.max(1, current - 2);
+        let end = Math.min(total, start + maxVisible - 1);
+
+        if (end - start + 1 < maxVisible) {
+          start = Math.max(1, end - maxVisible + 1);
+        }
+
+        for (let i = start; i <= end; i++) pages.push(i);
+      }
+
+      return pages;
+    },
   },
 
   mounted() {
