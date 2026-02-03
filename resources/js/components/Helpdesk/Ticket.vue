@@ -66,7 +66,7 @@
                     @change="getDataTicketCategory"
                   >
                     <option value="" selected disabled>
-                      Select issue type
+                      Select issue types
                     </option>
                     <option
                       v-for="ticket in tickettypes"

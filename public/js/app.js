@@ -51281,7 +51281,7 @@ var render = function () {
                               },
                               [
                                 _vm._v(
-                                  "\n                    Select issue type\n                  "
+                                  "\n                    Select issue types\n                  "
                                 ),
                               ]
                             ),
