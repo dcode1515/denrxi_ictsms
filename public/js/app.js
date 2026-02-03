@@ -52574,7 +52574,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("h4", { staticClass: "section-title mb-0" }, [
         _c("i", { staticClass: "fas fa-ticket-alt me-2 text-denr" }),
-        _vm._v("\n        New Helpdesk Ticketss\n      "),
+        _vm._v("\n        New Helpdesk Ticket\n      "),
       ]),
     ])
   },
