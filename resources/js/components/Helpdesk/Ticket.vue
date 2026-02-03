@@ -5,7 +5,7 @@
       <div class="card-header">
         <h4 class="section-title mb-0">
           <i class="fas fa-ticket-alt me-2 text-denr"></i>
-          New Helpdesk Ticket
+          New Helpdesk Ticketss
         </h4>
       </div>
       <div class="card-body">
