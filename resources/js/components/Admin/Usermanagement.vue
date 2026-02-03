@@ -601,7 +601,7 @@ export default {
   methods: {
     async getDataSystemModules() {
       try {
-        const response = await fetch("/denrxi_ictsms/api/get/data/module");
+        const response = await fetch("/api/get/data/module");
         if (!response.ok) throw new Error("Network response was not ok");
 
         // Assign to moduled instead of modules
@@ -615,7 +615,7 @@ export default {
     async getDataUserPending() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/data/user/pending",
+          "/api/get/data/user/pending",
           {
             params: {
               page: this.users.current_page,
@@ -726,7 +726,7 @@ export default {
 
         // Removed "add" condition, only keeping edit/update
         response = await axios.put(
-          `/denrxi_ictsms/api/update/user/account/${this.formData.id}`,
+          `/api/update/user/account/${this.formData.id}`,
           this.formData
         );
 
@@ -772,7 +772,7 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          await axios.delete(`/denrxi_ictsms/api/delete/office/${user.id}`);
+          await axios.delete(`/api/delete/office/${user.id}`);
 
           await Swal.fire({
             icon: "success",

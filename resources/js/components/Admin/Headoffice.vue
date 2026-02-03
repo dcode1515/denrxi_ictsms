@@ -427,7 +427,7 @@ export default {
     async getDataOfficeHead() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/data/office/head",
+          "/api/get/data/office/head",
           {
             params: {
               page: this.offices.current_page,
@@ -530,12 +530,12 @@ export default {
 
         if (this.modalMode === "add") {
           response = await axios.post(
-            "/denrxi_ictsms/api/store/office/head",
+            "/api/store/office/head",
             this.formData
           );
         } else {
           response = await axios.post(
-            `/denrxi_ictsms/api/update/office/head/${this.formData.id}`,
+            `/api/update/office/head/${this.formData.id}`,
             this.formData
           );
         }
@@ -581,7 +581,7 @@ export default {
       if (result.isConfirmed) {
         try {
           await axios.delete(
-            `/denrxi_ictsms/api/delete/office/head/${office.id}`
+            `/api/delete/office/head/${office.id}`
           );
 
           await Swal.fire({

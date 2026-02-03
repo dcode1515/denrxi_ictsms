@@ -661,7 +661,7 @@
         <!-- LOGIN LINK -->
         <div class="login-link-container">
           <p>Already have an account?</p>
-          <a href="/denrxi_ictsms/" class="login-link">
+          <a href="/" class="login-link">
             <i class="fas fa-sign-in-alt"></i>
             Sign in to your account
           </a>
@@ -1118,7 +1118,7 @@ export default {
         
         // Redirect after 3 seconds
         setTimeout(() => {
-          window.location.href = '/denrxi_ictsms/';
+          window.location.href = '/';
         }, 3000);
         
       } catch (error) {

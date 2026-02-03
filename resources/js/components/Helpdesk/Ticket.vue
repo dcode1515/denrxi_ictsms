@@ -601,7 +601,7 @@
 
     <!-- Check Status Button -->
     <!-- <a
-      :href="'/denrxi_ictsms/ticket/status'"
+      :href="'/ticket/status'"
       type="button"
       class="btn btn-denr check-status-btn animate-pulse"
      
@@ -973,7 +973,7 @@ export default {
         formData.append("attachment", this.formData.attachment);
 
         const response = await axios.post(
-          "/denrxi_ictsms/api/store/request/ticket",
+          "/api/store/request/ticket",
           formData,
           {
             headers: {
@@ -984,7 +984,7 @@ export default {
 
         if (response.data.status === true) {
           window.location.href =
-            "/denrxi_ictsms/ticket-success/" + response.data.ticketID;
+            "/ticket-success/" + response.data.ticketID;
         } else {
           throw new Error(response.data.message || "Submission failed");
         }
@@ -1263,7 +1263,7 @@ export default {
     // API Calls
     fetchHeadOffices() {
       axios
-        .get("/denrxi_ictsms/api/ticket/head-offices")
+        .get("/api/ticket/head-offices")
         .then((response) => {
           this.headOffices = response.data.data;
         })
@@ -1279,7 +1279,7 @@ export default {
       if (!this.formData.head_office) return;
 
       axios
-        .get(`/denrxi_ictsms/api/ticket/offices/${this.formData.head_office}`)
+        .get(`/api/ticket/offices/${this.formData.head_office}`)
         .then((response) => {
           this.offices = response.data.data;
         })
@@ -1290,7 +1290,7 @@ export default {
 
     getDataTicketTypes() {
       axios
-        .get("/denrxi_ictsms/api/ticket/type")
+        .get("/api/ticket/type")
         .then((response) => {
           this.tickettypes = response.data.data;
         })
@@ -1307,7 +1307,7 @@ export default {
 
       axios
         .get(
-          `/denrxi_ictsms/api/ticket/categories/${this.formData.ticket_type}`
+          `/api/ticket/categories/${this.formData.ticket_type}`
         )
         .then((response) => {
           this.categories = response.data.data;

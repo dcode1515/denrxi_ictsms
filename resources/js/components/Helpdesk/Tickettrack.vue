@@ -317,7 +317,7 @@ export default {
         };
 
         const response = await axios.post(
-          "/denrxi_ictsms/api/store/feedback",
+          "/api/store/feedback",
           payload
         );
 
@@ -333,7 +333,7 @@ export default {
         Your response helps us improve the quality of our technical services.
       </p>
       <a 
-        href="/denrxi_ictsms/ticket/status" 
+        href="/ticket/status" 
         class="swal2-confirm swal2-styled"
         style="text-decoration:none;"
       >
@@ -404,7 +404,7 @@ export default {
         console.log("Sending request with data:", this.formData);
 
         // Try with different endpoints if needed
-        const endpoints = ["/denrxi_ictsms/api/ticket-status"];
+        const endpoints = ["/api/ticket-status"];
 
         let response = null;
         let lastError = null;

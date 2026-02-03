@@ -426,7 +426,7 @@ export default {
     async getDataTickettype() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/data/ticket/type",
+          "/api/get/data/ticket/type",
           {
             params: {
               page: this.tickets.current_page,
@@ -529,12 +529,12 @@ export default {
 
         if (this.modalMode === "add") {
           response = await axios.post(
-            "/denrxi_ictsms/api/store/ticket/type",
+            "/api/store/ticket/type",
             this.formData
           );
         } else {
           response = await axios.post(
-            `/denrxi_ictsms/api/update/ticket/type/${this.formData.id}`,
+            `/api/update/ticket/type/${this.formData.id}`,
             this.formData
           );
         }
@@ -581,7 +581,7 @@ export default {
       if (result.isConfirmed) {
         try {
           await axios.delete(
-            `/denrxi_ictsms/api/delete/ticket/type/${ticket.id}`
+            `/api/delete/ticket/type/${ticket.id}`
           );
 
           await Swal.fire({

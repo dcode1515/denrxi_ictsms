@@ -367,7 +367,7 @@
     <div class="already-have-account">
       <p>
         Already have an account?
-        <a href="/denrxi_ictsms/" class="login-link">
+        <a href="/" class="login-link">
           <i class="fas fa-sign-in-alt"></i> Login here
         </a>
       </p>
@@ -459,7 +459,7 @@ export default {
   methods: {
     fetchHeadOffices() {
       axios
-        .get("/denrxi_ictsms/api/head-offices")
+        .get("/api/head-offices")
         .then((response) => {
           this.headOffices = response.data.data;
         })
@@ -474,7 +474,7 @@ export default {
       if (!this.formData.head_office) return;
 
       axios
-        .get(`/denrxi_ictsms/api/offices/${this.formData.head_office}`)
+        .get(`/api/offices/${this.formData.head_office}`)
         .then((response) => {
           this.offices = response.data.data;
         })
@@ -682,7 +682,7 @@ export default {
         };
 
         const response = await axios.post(
-          "/denrxi_ictsms/api/post/register",
+          "/api/post/register",
           registrationData,
           {
             headers: {
@@ -774,7 +774,7 @@ export default {
     },
 
     redirectToLogin() {
-      window.location.href = "/denrxi_ictsms/";
+      window.location.href = "/";
     },
     resetForm() {
       this.formData = {

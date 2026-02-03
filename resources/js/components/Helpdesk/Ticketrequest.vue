@@ -295,7 +295,7 @@
                                         selectedUpdatedTicket.technician
                                           .lastname &&
                                         selectedUpdatedTicket.technician.photo
-                                      " :src="`/denrxi_ictsms/public/user/profile/${selectedUpdatedTicket.technician.firstname}_${selectedUpdatedTicket.technician.lastname}/${selectedUpdatedTicket.technician.photo}`"
+                                      " :src="`/public/user/profile/${selectedUpdatedTicket.technician.firstname}_${selectedUpdatedTicket.technician.lastname}/${selectedUpdatedTicket.technician.photo}`"
                                         class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow"
                                         alt="user-profile-image" />
                                       <!-- Add a fallback when conditions aren't met -->
@@ -1942,7 +1942,7 @@ import Swal from "sweetalert2";
 export default {
   methods: {
     printTicketForm(id) {
-      const url = "/denrxi_ictsms/print/forms/" + id;
+      const url = "/print/forms/" + id;
       window.open(url, "_blank"); // opens in a new tab
     },
 
@@ -2051,7 +2051,7 @@ export default {
         try {
           // 👉 call API
           const response = await axios.post(
-            `/denrxi_ictsms/api/get/data/receive/${ticket.id}`
+            `/api/get/data/receive/${ticket.id}`
           );
 
           // Close loading modal first
@@ -2087,7 +2087,7 @@ export default {
             });
 
             // 👉 redirect after clicking OK
-            window.location.href = "/denrxi_ictsms/ticket";
+            window.location.href = "/ticket";
           }
         } catch (error) {
           // Close loading modal
@@ -2343,7 +2343,7 @@ export default {
         try {
           // 👉 call API to update ticket
           const response = await axios.post(
-            `/denrxi_ictsms/api/get/update/ticket/request/${id}`,
+            `/api/get/update/ticket/request/${id}`,
             formData
           );
 
@@ -2665,7 +2665,7 @@ export default {
     async getDataAllRequest() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/all/ticket/request",
+          "/api/get/all/ticket/request",
           {
             params: {
               page: this.tickets.current_page,
@@ -2683,7 +2683,7 @@ export default {
     async getDataAllResolved() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/all/resolved/ticket",
+          "/api/get/all/resolved/ticket",
           {
             params: {
               page: this.resolveds.current_page,
@@ -2701,7 +2701,7 @@ export default {
     async getDataAllUnResolved() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/all/unresolved/ticket",
+          "/api/get/all/unresolved/ticket",
           {
             params: {
               page: this.unresolveds.current_page,
@@ -2719,7 +2719,7 @@ export default {
     async getDataAllFeedbacks() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/all/feedback",
+          "/api/get/all/feedback",
           {
             params: {
               page: this.feedbacks.current_page,

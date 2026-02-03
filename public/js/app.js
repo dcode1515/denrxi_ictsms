@@ -5520,7 +5520,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 0:
               _context.p = 0;
               _context.n = 1;
-              return axios.get("/denrxi_ictsms/api/get/data/office/head", {
+              return axios.get("/api/get/data/office/head", {
                 params: {
                   page: _this.offices.current_page,
                   per_page: _this.perPage,
@@ -5635,14 +5635,14 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 break;
               }
               _context2.n = 3;
-              return axios.post("/denrxi_ictsms/api/store/office/head", _this2.formData);
+              return axios.post("/api/store/office/head", _this2.formData);
             case 3:
               response = _context2.v;
               _context2.n = 6;
               break;
             case 4:
               _context2.n = 5;
-              return axios.post("/denrxi_ictsms/api/update/office/head/".concat(_this2.formData.id), _this2.formData);
+              return axios.post("/api/update/office/head/".concat(_this2.formData.id), _this2.formData);
             case 5:
               response = _context2.v;
             case 6:
@@ -5708,7 +5708,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               }
               _context3.p = 2;
               _context3.n = 3;
-              return axios["delete"]("/denrxi_ictsms/api/delete/office/head/".concat(office.id));
+              return axios["delete"]("/api/delete/office/head/".concat(office.id));
             case 3:
               _context3.n = 4;
               return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -6260,7 +6260,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 0:
               _context.p = 0;
               _context.n = 1;
-              return fetch("/denrxi_ictsms/api/get/office/head");
+              return fetch("/api/get/office/head");
             case 1:
               response = _context.v;
               if (response.ok) {
@@ -6294,7 +6294,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 0:
               _context2.p = 0;
               _context2.n = 1;
-              return axios.get("/denrxi_ictsms/api/get/data/office", {
+              return axios.get("/api/get/data/office", {
                 params: {
                   page: _this2.offices.current_page,
                   per_page: _this2.perPage,
@@ -6404,14 +6404,14 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 break;
               }
               _context3.n = 2;
-              return axios.post("/denrxi_ictsms/api/store/office", _this3.formData);
+              return axios.post("/api/store/office", _this3.formData);
             case 2:
               response = _context3.v;
               _context3.n = 5;
               break;
             case 3:
               _context3.n = 4;
-              return axios.post("/denrxi_ictsms/api/update/office/".concat(_this3.formData.id), _this3.formData);
+              return axios.post("/api/update/office/".concat(_this3.formData.id), _this3.formData);
             case 4:
               response = _context3.v;
             case 5:
@@ -6477,7 +6477,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               }
               _context4.p = 2;
               _context4.n = 3;
-              return axios["delete"]("/denrxi_ictsms/api/delete/office/".concat(office.id));
+              return axios["delete"]("/api/delete/office/".concat(office.id));
             case 3:
               _context4.n = 4;
               return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -7036,14 +7036,14 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 break;
               }
               _context.n = 2;
-              return axios.post("/denrxi_ictsms/api/store/ticket/category", _this.formData);
+              return axios.post("/api/store/ticket/category", _this.formData);
             case 2:
               response = _context.v;
               _context.n = 5;
               break;
             case 3:
               _context.n = 4;
-              return axios.put("/denrxi_ictsms/api/update/ticket/category/".concat(_this.formData.id), _this.formData);
+              return axios.put("/api/update/ticket/category/".concat(_this.formData.id), _this.formData);
             case 4:
               response = _context.v;
             case 5:
@@ -7091,7 +7091,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 0:
               _context2.p = 0;
               _context2.n = 1;
-              return fetch("/denrxi_ictsms/api/get/data/type");
+              return fetch("/api/get/data/type");
             case 1:
               response = _context2.v;
               if (response.ok) {
@@ -7125,7 +7125,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 0:
               _context3.p = 0;
               _context3.n = 1;
-              return axios.get("/denrxi_ictsms/api/get/data/ticket/category", {
+              return axios.get("/api/get/data/ticket/category", {
                 params: {
                   page: _this3.categories.current_page,
                   per_page: _this3.perPage,
@@ -7249,7 +7249,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               }
               _context4.p = 2;
               _context4.n = 3;
-              return axios["delete"]("/denrxi_ictsms/api/delete/ticket/category/".concat(category.id));
+              return axios["delete"]("/api/delete/ticket/category/".concat(category.id));
             case 3:
               _context4.n = 4;
               return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -7758,7 +7758,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 0:
               _context.p = 0;
               _context.n = 1;
-              return axios.get("/denrxi_ictsms/api/get/data/ticket/type", {
+              return axios.get("/api/get/data/ticket/type", {
                 params: {
                   page: _this.tickets.current_page,
                   per_page: _this.perPage,
@@ -7873,14 +7873,14 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 break;
               }
               _context2.n = 3;
-              return axios.post("/denrxi_ictsms/api/store/ticket/type", _this2.formData);
+              return axios.post("/api/store/ticket/type", _this2.formData);
             case 3:
               response = _context2.v;
               _context2.n = 6;
               break;
             case 4:
               _context2.n = 5;
-              return axios.post("/denrxi_ictsms/api/update/ticket/type/".concat(_this2.formData.id), _this2.formData);
+              return axios.post("/api/update/ticket/type/".concat(_this2.formData.id), _this2.formData);
             case 5:
               response = _context2.v;
             case 6:
@@ -7946,7 +7946,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               }
               _context3.p = 2;
               _context3.n = 3;
-              return axios["delete"]("/denrxi_ictsms/api/delete/ticket/type/".concat(ticket.id));
+              return axios["delete"]("/api/delete/ticket/type/".concat(ticket.id));
             case 3:
               _context3.n = 4;
               return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -8631,7 +8631,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 0:
               _context.p = 0;
               _context.n = 1;
-              return fetch("/denrxi_ictsms/api/get/data/module");
+              return fetch("/api/get/data/module");
             case 1:
               response = _context.v;
               if (response.ok) {
@@ -8666,7 +8666,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
             case 0:
               _context2.p = 0;
               _context2.n = 1;
-              return axios.get("/denrxi_ictsms/api/get/data/user/pending", {
+              return axios.get("/api/get/data/user/pending", {
                 params: {
                   page: _this2.users.current_page,
                   per_page: _this2.perPage,
@@ -8774,7 +8774,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               _this3.loading = true;
               _context3.p = 1;
               _context3.n = 2;
-              return axios.put("/denrxi_ictsms/api/update/user/account/".concat(_this3.formData.id), _this3.formData);
+              return axios.put("/api/update/user/account/".concat(_this3.formData.id), _this3.formData);
             case 2:
               response = _context3.v;
               _context3.n = 3;
@@ -8838,7 +8838,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               }
               _context4.p = 2;
               _context4.n = 3;
-              return axios["delete"]("/denrxi_ictsms/api/delete/office/".concat(user.id));
+              return axios["delete"]("/api/delete/office/".concat(user.id));
             case 3:
               _context4.n = 4;
               return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -9041,7 +9041,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               _this.fieldErrors = {};
               _context.p = 1;
               _context.n = 2;
-              return axios.post("/denrxi_ictsms/api/post/login", {
+              return axios.post("/api/post/login", {
                 email_address: _this.email_address,
                 password: _this.password
               });
@@ -9732,7 +9732,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       console.log("User data:", this.user);
       if (!this.user || !this.user.photo) {
         console.log("No photo found, using default");
-        return "/denrxi_ictsms/public/images/logo/6342684.png";
+        return "/public/images/logo/6342684.png";
       }
 
       // Debug: log photo info
@@ -9749,7 +9749,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       var photoName = this.user.photo;
 
       // Construct URL (without /public)
-      var photoUrl = "/denrxi_ictsms/public/user/profile/".concat(firstName, "_").concat(lastName, "/").concat(photoName);
+      var photoUrl = "/public/user/profile/".concat(firstName, "_").concat(lastName, "/").concat(photoName);
       console.log("Generated photo URL:", photoUrl);
       return photoUrl;
     },
@@ -9793,7 +9793,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 }
               });
               _context.n = 4;
-              return axios.post("/denrxi_ictsms/api/update/profile/".concat(_this.user.id), formData);
+              return axios.post("/api/update/profile/".concat(_this.user.id), formData);
             case 4:
               response = _context.v;
               if (!response.data.success) {
@@ -9815,7 +9815,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               }).then(function (result) {
                 // Redirect to profile page when user clicks "Okay, Got It!"
                 if (result.isConfirmed) {
-                  window.location.href = "/denrxi_ictsms/profile/".concat(_this.user.id);
+                  window.location.href = "/profile/".concat(_this.user.id);
                 }
               });
             case 5:
@@ -9976,7 +9976,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 }
               });
               _context2.n = 8;
-              return axios.post("/denrxi_ictsms/api/update/user/credential/".concat(_this2.user.id), formData);
+              return axios.post("/api/update/user/credential/".concat(_this2.user.id), formData);
             case 8:
               response = _context2.v;
               if (!response.data.success) {
@@ -10010,7 +10010,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 // User chose to log in again
                 localStorage.clear();
                 sessionStorage.clear();
-                window.location.href = "/denrxi_ictsms";
+                window.location.href = "";
               } else if (result.isDenied) {
                 // User chose to remain logged in
                 // Optionally refresh the page to ensure new credentials are active
@@ -10599,7 +10599,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
   methods: {
     fetchHeadOffices: function fetchHeadOffices() {
       var _this = this;
-      axios.get("/denrxi_ictsms/api/head-offices").then(function (response) {
+      axios.get("/api/head-offices").then(function (response) {
         _this.headOffices = response.data.data;
       })["catch"](function (error) {
         console.error(error);
@@ -10610,7 +10610,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       this.formData.office = "";
       this.offices = [];
       if (!this.formData.head_office) return;
-      axios.get("/denrxi_ictsms/api/offices/".concat(this.formData.head_office)).then(function (response) {
+      axios.get("/api/offices/".concat(this.formData.head_office)).then(function (response) {
         _this2.offices = response.data.data;
       })["catch"](function (error) {
         console.error(error);
@@ -10789,7 +10789,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 terms: _this3.formData.terms
               };
               _context.n = 3;
-              return axios.post("/denrxi_ictsms/api/post/register", registrationData, {
+              return axios.post("/api/post/register", registrationData, {
                 headers: {
                   "Content-Type": "application/json",
                   Accept: "application/json"
@@ -10877,7 +10877,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       }
     },
     redirectToLogin: function redirectToLogin() {
-      window.location.href = "/denrxi_ictsms/";
+      window.location.href = "/";
     },
     resetForm: function resetForm() {
       this.formData = {
@@ -11933,7 +11933,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               formData.append("agree_terms", _this.formData.agree_terms ? "1" : "0");
               formData.append("attachment", _this.formData.attachment);
               _context.n = 3;
-              return axios.post("/denrxi_ictsms/api/store/request/ticket", formData, {
+              return axios.post("/api/store/request/ticket", formData, {
                 headers: {
                   "Content-Type": "multipart/form-data"
                 }
@@ -11944,7 +11944,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 _context.n = 4;
                 break;
               }
-              window.location.href = "/denrxi_ictsms/ticket-success/" + response.data.ticketID;
+              window.location.href = "/ticket-success/" + response.data.ticketID;
               _context.n = 5;
               break;
             case 4:
@@ -12192,7 +12192,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     // API Calls
     fetchHeadOffices: function fetchHeadOffices() {
       var _this2 = this;
-      axios.get("/denrxi_ictsms/api/ticket/head-offices").then(function (response) {
+      axios.get("/api/ticket/head-offices").then(function (response) {
         _this2.headOffices = response.data.data;
       })["catch"](function (error) {
         console.error(error);
@@ -12203,7 +12203,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       this.formData.office = "";
       this.offices = [];
       if (!this.formData.head_office) return;
-      axios.get("/denrxi_ictsms/api/ticket/offices/".concat(this.formData.head_office)).then(function (response) {
+      axios.get("/api/ticket/offices/".concat(this.formData.head_office)).then(function (response) {
         _this3.offices = response.data.data;
       })["catch"](function (error) {
         console.error(error);
@@ -12211,7 +12211,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     },
     getDataTicketTypes: function getDataTicketTypes() {
       var _this4 = this;
-      axios.get("/denrxi_ictsms/api/ticket/type").then(function (response) {
+      axios.get("/api/ticket/type").then(function (response) {
         _this4.tickettypes = response.data.data;
       })["catch"](function (error) {
         console.error(error);
@@ -12222,7 +12222,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       this.formData.ticket_category = "";
       this.categories = [];
       if (!this.formData.ticket_type) return;
-      axios.get("/denrxi_ictsms/api/ticket/categories/".concat(this.formData.ticket_type)).then(function (response) {
+      axios.get("/api/ticket/categories/".concat(this.formData.ticket_type)).then(function (response) {
         _this5.categories = response.data.data;
       })["catch"](function (error) {
         console.error(error);
@@ -14247,7 +14247,7 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     printTicketForm: function printTicketForm(id) {
-      var url = "/denrxi_ictsms/print/forms/" + id;
+      var url = "/print/forms/" + id;
       window.open(url, "_blank"); // opens in a new tab
     },
     calculateWorkingDays: function calculateWorkingDays(startDate, endDate) {
@@ -14342,7 +14342,7 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
             case 3:
               _context.p = 3;
               _context.n = 4;
-              return axios.post("/denrxi_ictsms/api/get/data/receive/".concat(ticket.id));
+              return axios.post("/api/get/data/receive/".concat(ticket.id));
             case 4:
               response = _context.v;
               // Close loading modal first
@@ -14363,7 +14363,7 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
               });
             case 5:
               // 👉 redirect after clicking OK
-              window.location.href = "/denrxi_ictsms/ticket";
+              window.location.href = "/ticket";
             case 6:
               _context.n = 16;
               break;
@@ -14549,7 +14549,7 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
               };
               _context2.p = 5;
               _context2.n = 6;
-              return axios.post("/denrxi_ictsms/api/get/update/ticket/request/".concat(id), formData);
+              return axios.post("/api/get/update/ticket/request/".concat(id), formData);
             case 6:
               response = _context2.v;
               // Close loading modal
@@ -14763,7 +14763,7 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
             case 0:
               _context3.p = 0;
               _context3.n = 1;
-              return axios.get("/denrxi_ictsms/api/get/all/ticket/request", {
+              return axios.get("/api/get/all/ticket/request", {
                 params: {
                   page: _this3.tickets.current_page,
                   per_page: _this3.perPage,
@@ -14794,7 +14794,7 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
             case 0:
               _context4.p = 0;
               _context4.n = 1;
-              return axios.get("/denrxi_ictsms/api/get/all/resolved/ticket", {
+              return axios.get("/api/get/all/resolved/ticket", {
                 params: {
                   page: _this4.resolveds.current_page,
                   per_page: _this4.perPage,
@@ -14825,7 +14825,7 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
             case 0:
               _context5.p = 0;
               _context5.n = 1;
-              return axios.get("/denrxi_ictsms/api/get/all/unresolved/ticket", {
+              return axios.get("/api/get/all/unresolved/ticket", {
                 params: {
                   page: _this5.unresolveds.current_page,
                   per_page: _this5.perPage,
@@ -14856,7 +14856,7 @@ function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
             case 0:
               _context6.p = 0;
               _context6.n = 1;
-              return axios.get("/denrxi_ictsms/api/get/all/feedback", {
+              return axios.get("/api/get/all/feedback", {
                 params: {
                   page: _this6.feedbacks.current_page,
                   per_page: _this6.perPage,
@@ -15334,14 +15334,14 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
                 feedback_remarks: _this.feedback.remarks
               };
               _context.n = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/denrxi_ictsms/api/store/feedback", payload);
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/store/feedback", payload);
             case 3:
               response = _context.v;
               if (response.data.success) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
                   icon: "success",
                   title: "Feedback Successfully Submitted 🎉",
-                  html: "\n      <p class=\"mb-2\">\n        Thank you for taking the time to share your feedback.\n      </p>\n      <p class=\"text-muted mb-3\">\n        Your response helps us improve the quality of our technical services.\n      </p>\n      <a \n        href=\"/denrxi_ictsms/ticket/status\" \n        class=\"swal2-confirm swal2-styled\"\n        style=\"text-decoration:none;\"\n      >\n        Back to Search Ticket\n      </a>\n    ",
+                  html: "\n      <p class=\"mb-2\">\n        Thank you for taking the time to share your feedback.\n      </p>\n      <p class=\"text-muted mb-3\">\n        Your response helps us improve the quality of our technical services.\n      </p>\n      <a \n        href=\"/ticket/status\" \n        class=\"swal2-confirm swal2-styled\"\n        style=\"text-decoration:none;\"\n      >\n        Back to Search Ticket\n      </a>\n    ",
                   showConfirmButton: false,
                   allowOutsideClick: false
                 });
@@ -15411,7 +15411,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               console.log("Sending request with data:", _this2.formData);
 
               // Try with different endpoints if needed
-              endpoints = ["/denrxi_ictsms/api/ticket-status"];
+              endpoints = ["/api/ticket-status"];
               response = null;
               lastError = null; // Try each endpoint
               _i = 0, _endpoints = endpoints;
@@ -48281,10 +48281,7 @@ var render = function () {
       _vm._v("\n    Don't have an account?\n    "),
       _c(
         "a",
-        {
-          staticClass: "register-link",
-          attrs: { href: "/denrxi_ictsms/request/access" },
-        },
+        { staticClass: "register-link", attrs: { href: "/request/access" } },
         [_vm._v("Request Access")]
       ),
     ]),
@@ -51006,14 +51003,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "already-have-account" }, [
       _c("p", [
         _vm._v("\n      Already have an account?\n      "),
-        _c(
-          "a",
-          { staticClass: "login-link", attrs: { href: "/denrxi_ictsms/" } },
-          [
-            _c("i", { staticClass: "fas fa-sign-in-alt" }),
-            _vm._v(" Login here\n      "),
-          ]
-        ),
+        _c("a", { staticClass: "login-link", attrs: { href: "/" } }, [
+          _c("i", { staticClass: "fas fa-sign-in-alt" }),
+          _vm._v(" Login here\n      "),
+        ]),
       ]),
     ])
   },
@@ -53638,7 +53631,7 @@ var render = function () {
                                                               "rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow",
                                                             attrs: {
                                                               src:
-                                                                "/denrxi_ictsms/public/user/profile/" +
+                                                                "/public/user/profile/" +
                                                                 _vm
                                                                   .selectedUpdatedTicket
                                                                   .technician

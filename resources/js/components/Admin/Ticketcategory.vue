@@ -478,12 +478,12 @@ export default {
 
         if (this.modalMode === "add") {
           response = await axios.post(
-            "/denrxi_ictsms/api/store/ticket/category",
+            "/api/store/ticket/category",
             this.formData
           );
         } else {
           response = await axios.put(
-            `/denrxi_ictsms/api/update/ticket/category/${this.formData.id}`,
+            `/api/update/ticket/category/${this.formData.id}`,
             this.formData
           );
         }
@@ -516,7 +516,7 @@ export default {
     },
     async getDataTicket() {
       try {
-        const response = await fetch("/denrxi_ictsms/api/get/data/type"); // Replace with your actual endpoint
+        const response = await fetch("/api/get/data/type"); // Replace with your actual endpoint
         if (!response.ok) throw new Error("Network response was not ok");
         this.tickettypes = await response.json(); // Assign fetched data to chairmanships
       } catch (error) {
@@ -526,7 +526,7 @@ export default {
     async getDataTicketCategory() {
       try {
         const response = await axios.get(
-          "/denrxi_ictsms/api/get/data/ticket/category",
+          "/api/get/data/ticket/category",
           {
             params: {
               page: this.categories.current_page,
@@ -639,7 +639,7 @@ export default {
       if (result.isConfirmed) {
         try {
           await axios.delete(
-            `/denrxi_ictsms/api/delete/ticket/category/${category.id}`
+            `/api/delete/ticket/category/${category.id}`
           );
 
           await Swal.fire({

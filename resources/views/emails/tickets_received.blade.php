@@ -91,7 +91,7 @@
                         <table width="100%" cellpadding="0" cellspacing="0" style="margin:25px 0;">
                             <tr>
                                 <td align="center">
-                                    <a href="localhost/denrxi_ictsms/ticket/track/"
+                                    <a href="https://ictsms.denrxisystems.com/ticket/status/"
                                        style="
                                             background:#0b5ed7;
                                             color:#ffffff;

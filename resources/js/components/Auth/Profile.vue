@@ -626,7 +626,7 @@ export default {
 
       if (!this.user || !this.user.photo) {
         console.log("No photo found, using default");
-        return "/denrxi_ictsms/public/images/logo/6342684.png";
+        return "/public/images/logo/6342684.png";
       }
 
       // Debug: log photo info
@@ -643,7 +643,7 @@ export default {
       const photoName = this.user.photo;
 
       // Construct URL (without /public)
-      const photoUrl = `/denrxi_ictsms/public/user/profile/${firstName}_${lastName}/${photoName}`;
+      const photoUrl = `/public/user/profile/${firstName}_${lastName}/${photoName}`;
 
       console.log("Generated photo URL:", photoUrl);
 
@@ -687,7 +687,7 @@ export default {
         });
 
         const response = await axios.post(
-          `/denrxi_ictsms/api/update/profile/${this.user.id}`,
+          `/api/update/profile/${this.user.id}`,
           formData
         );
 
@@ -715,7 +715,7 @@ export default {
           }).then((result) => {
             // Redirect to profile page when user clicks "Okay, Got It!"
             if (result.isConfirmed) {
-              window.location.href = `/denrxi_ictsms/profile/${this.user.id}`;
+              window.location.href = `/profile/${this.user.id}`;
             }
           });
 
@@ -906,7 +906,7 @@ export default {
         });
 
         const response = await axios.post(
-          `/denrxi_ictsms/api/update/user/credential/${this.user.id}`,
+          `/api/update/user/credential/${this.user.id}`,
           formData
         );
 
@@ -949,7 +949,7 @@ export default {
             // User chose to log in again
             localStorage.clear();
             sessionStorage.clear();
-            window.location.href = "/denrxi_ictsms";
+            window.location.href = "";
           } else if (result.isDenied) {
             // User chose to remain logged in
             // Optionally refresh the page to ensure new credentials are active

@@ -78,7 +78,7 @@
 
     <div class="register-text">
       Don't have an account?
-      <a class="register-link" :href="'/denrxi_ictsms/request/access'">Request Access</a>
+      <a class="register-link" :href="'/request/access'">Request Access</a>
     </div>
     
 
@@ -118,7 +118,7 @@ export default {
       this.fieldErrors = {};
 
       try {
-        const response = await axios.post("/denrxi_ictsms/api/post/login", {
+        const response = await axios.post("/api/post/login", {
           email_address: this.email_address,
           password: this.password,
         });

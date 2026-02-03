@@ -469,7 +469,7 @@ export default {
   methods: {
     async getOfficeHead() {
       try {
-        const response = await fetch("/denrxi_ictsms/api/get/office/head"); // Replace with your actual endpoint
+        const response = await fetch("/api/get/office/head"); // Replace with your actual endpoint
         if (!response.ok) throw new Error("Network response was not ok");
         this.officeheads = await response.json(); // Assign fetched data to chairmanships
       } catch (error) {
@@ -478,7 +478,7 @@ export default {
     },
     async getDataOffice() {
       try {
-        const response = await axios.get("/denrxi_ictsms/api/get/data/office", {
+        const response = await axios.get("/api/get/data/office", {
           params: {
             page: this.offices.current_page,
             per_page: this.perPage,
@@ -576,12 +576,12 @@ export default {
 
         if (this.modalMode === "add") {
           response = await axios.post(
-            "/denrxi_ictsms/api/store/office",
+            "/api/store/office",
             this.formData
           );
         } else {
           response = await axios.post(
-            `/denrxi_ictsms/api/update/office/${this.formData.id}`,
+            `/api/update/office/${this.formData.id}`,
             this.formData
           );
         }
@@ -628,7 +628,7 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          await axios.delete(`/denrxi_ictsms/api/delete/office/${office.id}`);
+          await axios.delete(`/api/delete/office/${office.id}`);
 
           await Swal.fire({
             icon: "success",
