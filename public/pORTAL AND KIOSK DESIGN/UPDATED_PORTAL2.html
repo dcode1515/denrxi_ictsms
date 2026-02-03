@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DENR XI ICT Unit Portal | Enhanced</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CORE VARIABLES & RESET --- */
+        :root {
+            --denr-green: #006400;
+            --neon-green: #39ff14;
+            --tech-cyan: #00f3ff;
+            --glass-bg: rgba(20, 30, 25, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #050a08;
+            --text-light: #e0e0e0;
+            --text-white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Noise Texture Overlay for Cinematic Feel */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--denr-green);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-green);
+        }
+
+        /* --- 2. PARTICLES JS & PRELOADER --- */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: radial-gradient(circle at center, #112b1e 0%, #000000 100%);
+        }
+
+        /* --- 3. NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 5%;
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 4px 30px rgba(0, 255, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo i {
+            color: var(--neon-green);
+            filter: drop-shadow(0 0 5px var(--neon-green));
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--neon-green);
+            transition: var(--transition);
+            box-shadow: 0 0 8px var(--neon-green);
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-green);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .btn-contact {
+            padding: 8px 24px;
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green) !important;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn-contact:hover {
+            background: var(--neon-green);
+            color: #000 !important;
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .btn-contact::before { display: none; }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-white);
+            cursor: pointer;
+        }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--neon-green);
+            border-radius: 20px;
+            color: var(--neon-green);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #b4ffb4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+        }
+
+        .typing-text {
+            color: var(--tech-cyan);
+            border-right: 2px solid var(--tech-cyan);
+            padding-right: 5px;
+            animation: blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            color: #a0a0a0;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--neon-green);
+            color: #000;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(57, 255, 20, 0.7);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: rgba(255,255,255,0.5);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+            40% {transform: translateX(-50%) translateY(-10px);}
+            60% {transform: translateX(-50%) translateY(-5px);}
+        }
+
+        /* --- 5. GENERAL SECTIONS & SCROLL REVEAL --- */
+        section {
+            padding: 6rem 10%;
+            position: relative;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .section-header span {
+            color: var(--neon-green);
+        }
+
+        .line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-green), var(--tech-cyan));
+            margin: 0 auto;
+        }
+
+        /* --- 6. ABOUT SECTION --- */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--neon-green);
+        }
+
+        .about-text p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            flex: 1;
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stat-item h4 {
+            font-size: 1.8rem;
+            color: var(--tech-cyan);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* --- 7. SYSTEMS SECTION (Cards) --- */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .system-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            group: hover;
+        }
+
+        .system-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-green);
+            box-shadow: 0 10px 40px -10px rgba(57, 255, 20, 0.2);
+        }
+
+        .card-img-wrap {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .system-card:hover .card-img-wrap img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-body h3 {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 1.25rem;
+        }
+
+        .card-body p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            box-shadow: 0 0 5px var(--neon-green);
+        }
+
+        .status-text {
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+
+        .arrow-link {
+            color: var(--tech-cyan);
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        /* --- 8. TEAM SECTION --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .team-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .member-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 3px solid rgba(57, 255, 20, 0.3);
+            padding: 5px;
+            position: relative;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: var(--tech-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .socials a {
+            color: #fff;
+            margin: 0 8px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            opacity: 0.6;
+        }
+
+        .socials a:hover {
+            opacity: 1;
+            color: var(--neon-green);
+            transform: translateY(-3px);
+        }
+
+        /* --- 9. FOOTER & MODAL --- */
+        footer {
+            background: #000;
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--neon-green); padding-left: 5px; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-box {
+            background: #112b1e;
+            border: 1px solid var(--neon-green);
+            padding: 3rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: scale(0.8);
+            transition: var(--transition);
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        .modal-overlay.open .modal-box {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover { color: var(--neon-green); }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; color: #ccc; margin-bottom: 5px; font-size: 0.9rem; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-green);
+        }
+
+        /* Back to top */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--neon-green);
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            z-index: 990;
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .about-container { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particles -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-leaf"></i>
+            DENR XI <span style="color:var(--tech-cyan)">ICT</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#systems">Systems</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#" class="btn-contact" id="openModal">Contact Us</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-badge">Official Digital Portal</div>
+        <h1>INNOVATION FOR <br> <span class="typing-text"></span></h1>
+        <p>Streamlining environmental governance through cutting-edge information technology and data-driven solutions in Region XI.</p>
+        <div class="cta-group">
+            <a href="#systems" class="btn btn-primary">
+                View Systems <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#about" class="btn btn-secondary">
+                Learn More
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header reveal">
+            <h2>Who <span>We Are</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-container">
+            <div class="about-text reveal">
+                <h3 style="color: #fff; font-size:1.8rem; margin-bottom:15px;">Empowering Green Governance</h3>
+                <p>The Information and Communications Technology (ICT) Unit of DENR Region XI is the backbone of the department's digital transformation. We bridge the gap between environmental protection and modern technology.</p>
+                <p>Our team works tirelessly to maintain network stability, secure sensitive environmental data, and develop software that improves the delivery of public services.</p>
+                
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <h4>15+</h4>
+                        <small>Web Systems</small>
+                    </div>
+                    <div class="stat-item">
+                        <h4>24/7</h4>
+                        <small>Server Uptime</small>
+                    </div>
+                    <div class="stat-item">
+                        <h4>100+</h4>
+                        <small>Users Supported</small>
+                    </div>
+                </div>
+            </div>
+            <div class="about-card reveal">
+                <i class="fa-solid fa-network-wired" style="font-size: 3rem; color: var(--neon-green); margin-bottom: 20px;"></i>
+                <h3 style="color: #fff; margin-bottom: 10px;">Our Infrastructure</h3>
+                <p>We manage a robust regional area network connecting the Regional Office to Provincial and Community Environment and Natural Resources Offices (PENRO/CENRO).</p>
+                <ul style="list-style: none; margin-top: 15px; color: #ccc;">
+                    <li style="margin-bottom:8px;"><i class="fa-solid fa-check" style="color:var(--tech-cyan); margin-right:10px;"></i> Virtualized Server Environment</li>
+                    <li style="margin-bottom:8px;"><i class="fa-solid fa-check" style="color:var(--tech-cyan); margin-right:10px;"></i> Redundant Data Backup</li>
+                    <li style="margin-bottom:8px;"><i class="fa-solid fa-check" style="color:var(--tech-cyan); margin-right:10px;"></i> Secure Email Gateway</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Systems Section -->
+    <section id="systems">
+        <div class="section-header reveal">
+            <h2>Developed <span>Systems</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="systems-grid">
+            
+            <!-- System 1 -->
+            <div class="system-card reveal">
+                <div class="card-img-wrap">
+                    <div class="card-overlay"></div>
+                    <img src="https://picsum.photos/seed/tech1/400/300" alt="System">
+                </div>
+                <div class="card-body">
+                    <h3>LAMBMIS</h3>
+                    <p>Land Administration and Management Business Information System for efficient land title processing.</p>
+                    <div class="card-footer">
+                        <div><span class="status-dot"></span> <span class="status-text">Active</span></div>
+                        <a href="#" class="arrow-link">Access &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System 2 -->
+            <div class="system-card reveal">
+                <div class="card-img-wrap">
+                    <div class="card-overlay"></div>
+                    <img src="https://picsum.photos/seed/tech2/400/300" alt="System">
+                </div>
+                <div class="card-body">
+                    <h3>Document Tracking</h3>
+                    <p>Real-time routing and monitoring of official documents across regional divisions.</p>
+                    <div class="card-footer">
+                        <div><span class="status-dot"></span> <span class="status-text">Active</span></div>
+                        <a href="#" class="arrow-link">Access &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System 3 -->
+            <div class="system-card reveal">
+                <div class="card-img-wrap">
+                    <div class="card-overlay"></div>
+                    <img src="https://picsum.photos/seed/tech3/400/300" alt="System">
+                </div>
+                <div class="card-body">
+                    <h3>Geo-Spatial Portal</h3>
+                    <p>Interactive mapping for protected areas, mining locations, and tenurial instruments.</p>
+                    <div class="card-footer">
+                        <div><span class="status-dot"></span> <span class="status-text">Beta</span></div>
+                        <a href="#" class="arrow-link">View Map &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System 4 -->
+            <div class="system-card reveal">
+                <div class="card-img-wrap">
+                    <div class="card-overlay"></div>
+                    <img src="https://picsum.photos/seed/tech4/400/300" alt="System">
+                </div>
+                <div class="card-body">
+                    <h3>HRMIS</h3>
+                    <p>Human Resource Management Information System for Leave, Payroll, and Personnel Records.</p>
+                    <div class="card-footer">
+                        <div><span class="status-dot"></span> <span class="status-text">Active</span></div>
+                        <a href="#" class="arrow-link">Login &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System 5 -->
+            <div class="system-card reveal">
+                <div class="card-img-wrap">
+                    <div class="card-overlay"></div>
+                    <img src="https://picsum.photos/seed/tech5/400/300" alt="System">
+                </div>
+                <div class="card-body">
+                    <h3>Nursery DB</h3>
+                    <p>Database for monitoring seedling production in various clonal and community nurseries.</p>
+                    <div class="card-footer">
+                        <div><span class="status-dot"></span> <span class="status-text">Active</span></div>
+                        <a href="#" class="arrow-link">View Data &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System 6 -->
+            <div class="system-card reveal">
+                <div class="card-img-wrap">
+                    <div class="card-overlay"></div>
+                    <img src="https://picsum.photos/seed/tech6/400/300" alt="System">
+                </div>
+                <div class="card-body">
+                    <h3>Legal Case Mgmt</h3>
+                    <p>Tracking system for environmental cases filed from apprehension to court resolution.</p>
+                    <div class="card-footer">
+                        <div><span class="status-dot" style="background:orange; box-shadow:0 0 5px orange"></span> <span class="status-text">Updating</span></div>
+                        <a href="#" class="arrow-link">Details &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="section-header reveal">
+            <h2>The <span>Team</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="team-grid">
+            
+            <div class="team-card reveal">
+                <div class="member-img">
+                    <img src="https://picsum.photos/seed/ict1/200/200" alt="Team">
+                </div>
+                <h3 class="member-name">Engr. Roberto Dias</h3>
+                <span class="member-role">OIC - Chief, ICT</span>
+                <div class="socials">
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-card reveal">
+                <div class="member-img">
+                    <img src="https://picsum.photos/seed/ict2/200/200" alt="Team">
+                </div>
+                <h3 class="member-name">Ana Liza</h3>
+                <span class="member-role">Senior Web Developer</span>
+                <div class="socials">
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="team-card reveal">
+                <div class="member-img">
+                    <img src="https://picsum.photos/seed/ict3/200/200" alt="Team">
+                </div>
+                <h3 class="member-name">Mark Davao</h3>
+                <span class="member-role">Network Admin</span>
+                <div class="socials">
+                    <a href="#"><i class="fa-solid fa-server"></i></a>
+                    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-card reveal">
+                <div class="member-img">
+                    <img src="https://picsum.photos/seed/ict4/200/200" alt="Team">
+                </div>
+                <h3 class="member-name">Sarah Green</h3>
+                <span class="member-role">UI/UX Designer</span>
+                <div class="socials">
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-behance"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>DENR XI ICT UNIT</h3>
+                <p style="color: #888; line-height: 1.6;">
+                    Davao City, Philippines <br>
+                    Region XI <br><br>
+                    <i class="fa-solid fa-phone" style="color:var(--neon-green)"></i> (082) 227-2104 <br>
+                    <i class="fa-solid fa-envelope" style="color:var(--neon-green)"></i> ict.denrxi@gmail.com
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#systems">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="socials" style="margin-top: 10px;">
+                    <a href="#" style="font-size: 1.2rem;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" style="font-size: 1.2rem;"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" style="font-size: 1.2rem;"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 DENR Region XI ICT Unit. All Rights Reserved. <br>
+            Designed with Nature in Mind.
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <i class="fa-solid fa-xmark close-modal" id="closeModal"></i>
+            <h2 style="color: #fff; margin-bottom: 20px; text-align: center;">Contact Us</h2>
+            <form onsubmit="event.preventDefault(); alert('Message sent!'); document.getElementById('contactModal').classList.remove('open');">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        // 1. Particles Configuration
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#39ff14" }, // Neon Green
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.4, "random": true },
+                "size": { "value": 2, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#006400", // Dark Green Lines
+                    "opacity": 0.3,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": false, "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 0.8 } }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // 2. Typing Effect
+        const words = ["NATURE", "THE FUTURE", "SUSTAINABILITY", "DATA"];
+        let i = 0;
+        let timer;
+
+        function typeWriter() {
+            const element = document.querySelector('.typing-text');
+            const word = words[i];
+            let currentText = element.textContent;
+            
+            if (currentText.length < word.length) {
+                element.textContent = word.substring(0, currentText.length + 1);
+                timer = setTimeout(typeWriter, 150);
+            } else {
+                setTimeout(deleteWriter, 2000);
+            }
+        }
+
+        function deleteWriter() {
+            const element = document.querySelector('.typing-text');
+            let currentText = element.textContent;
+            
+            if (currentText.length > 0) {
+                element.textContent = currentText.substring(0, currentText.length - 1);
+                timer = setTimeout(deleteWriter, 100);
+            } else {
+                i = (i + 1) % words.length;
+                setTimeout(typeWriter, 500);
+            }
+        }
+        
+        // Start typing
+        setTimeout(typeWriter, 1000);
+
+        // 3. Scroll Reveal Animation
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        // Trigger once on load
+        reveal();
+
+        // 4. Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // 5. Mobile Menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            if(navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.right = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(0,0,0,0.95)';
+                navLinks.style.padding = '20px';
+                navLinks.style.textAlign = 'center';
+            }
+        });
+
+        // 6. Modal Logic
+        const modal = document.getElementById('contactModal');
+        const openBtn = document.getElementById('openModal');
+        const closeBtn = document.getElementById('closeModal');
+
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('open');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('open');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>

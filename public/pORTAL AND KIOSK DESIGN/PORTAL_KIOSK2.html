@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DENR XI | Public Service Kiosk</title>
+    
+    <!-- Clean Sans-Serif Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. RESET & VARIABLES --- */
+        :root {
+            --bg-body: #eef2f5;
+            --text-main: #1a1a1a;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            
+            /* Section Colors */
+            --col-charter: #f1c40f;
+            --col-forest: #27ae60;
+            --col-bio: #2980b9;
+            --col-lands: #d35400;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* No scrolling on body */
+            position: relative;
+        }
+
+        /* --- 2. PARTICLES CONTAINER --- */
+        #particles-js {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            opacity: 0.3; /* Subtle background effect */
+            pointer-events: none;
+        }
+
+        /* --- 3. LAYOUT --- */
+        .kiosk-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-icon {
+            width: 50px; height: 50px;
+            background: #004d00;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .brand-text h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #004d00;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .brand-text span {
+            font-size: 12px;
+            color: #666;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .clock {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            background: #f0f0f0;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        /* --- 4. MAIN DASHBOARD (TILES) --- */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .tile-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh; /* Controls the height of the grid */
+        }
+
+        .tile-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            border-left: 8px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Tile Specific Styles */
+        .tile-charter { border-color: var(--col-charter); }
+        .tile-charter:hover { background: linear-gradient(135deg, #fff 0%, #fffbe6 100%); }
+
+        .tile-forest { border-color: var(--col-forest); }
+        .tile-forest:hover { background: linear-gradient(135deg, #fff 0%, #eafaf1 100%); }
+
+        .tile-bio { border-color: var(--col-bio); }
+        .tile-bio:hover { background: linear-gradient(135deg, #fff 0%, #ebf5fb 100%); }
+
+        .tile-lands { border-color: var(--col-lands); }
+        .tile-lands:hover { background: linear-gradient(135deg, #fff 0%, #fbe6e6 100%); }
+
+        .tile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .tile-icon {
+            width: 70px; height: 70px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: #fff;
+        }
+
+        .icon-charter { background: var(--col-charter); }
+        .icon-forest { background: var(--col-forest); }
+        .icon-bio { background: var(--col-bio); }
+        .icon-lands { background: var(--col-lands); }
+
+        .tile-arrow {
+            font-size: 20px;
+            color: #ccc;
+            transition: 0.3s;
+        }
+
+        .tile-card:hover .tile-arrow { color: #333; transform: translateX(5px); }
+
+        .tile-content h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .tile-content p {
+            color: #777;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* --- 5. DETAIL OVERLAY (POPUP) --- */
+        .detail-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #fff;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%); /* Hidden */
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .detail-overlay.active { transform: translateY(0); }
+
+        .overlay-header {
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #fff;
+        }
+
+        .header-charter { background: var(--col-charter); }
+        .header-forest { background: var(--col-forest); }
+        .header-bio { background: var(--col-bio); }
+        .header-lands { background: var(--col-lands); }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #fff;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: #fff; color: #000; }
+
+        .overlay-body {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+
+        /* Service List Styles */
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: 0.3s;
+        }
+
+        .service-item:hover { transform: translateX(10px); border-left-color: #333; }
+
+        .s-id {
+            font-weight: 800;
+            font-size: 24px;
+            color: #eee;
+            min-width: 50px;
+        }
+        
+        .s-content h3 { font-size: 18px; margin-bottom: 5px; color: #222; }
+        .s-content p { font-size: 14px; color: #666; }
+        .s-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+        .tag-req { background: #e3f2fd; color: #1976d2; }
+        .tag-fee { background: #fff3e0; color: #f57c00; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .tile-container { grid-template-columns: 1fr; height: auto; }
+            .tile-card { height: 200px; }
+            .overlay-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <div class="kiosk-wrapper">
+        
+        <!-- Header -->
+        <header>
+            <div class="brand">
+                <div class="brand-icon"><i class="fa-solid fa-tree"></i></div>
+                <div class="brand-text">
+                    <h1>DENR Region XI</h1>
+                    <span>Public Service Kiosk</span>
+                </div>
+            </div>
+            <div class="system-status">
+                <div class="clock" id="clock">12:00 PM</div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main>
+            <div class="tile-container">
+                
+                <!-- Citizen Charter Tile -->
+                <div class="tile-card tile-charter" onclick="openDetail('charter')">
+                    <div class="tile-header">
+                        <div class="tile-icon icon-charter"><i class="fa-solid fa-book-open"></i></div>
+                        <i class="fa-solid fa-chevron-right tile-arrow"></i>
+                    </div>
+                    <div class="tile-content">
+                        <h2>Citizen's Charter</h2>
+                        <p>Standard frontline services, fees, and processing times for public transactions.</p>
+                    </div>
+                </div>
+
+                <!-- Forestry Tile -->
+                <div class="tile-card tile-forest" onclick="openDetail('forest')">
+                    <div class="tile-header">
+                        <div class="tile-icon icon-forest"><i class="fa-solid fa-tree"></i></div>
+                        <i class="fa-solid fa-chevron-right tile-arrow"></i>
+                    </div>
+                    <div class="tile-content">
+                        <h2>Forestry</h2>
+                        <p>Permits for tree cutting, wildlife transport, and nursery seedling requests.</p>
+                    </div>
+                </div>
+
+                <!-- Biodiversity Tile -->
+                <div class="tile-card tile-bio" onclick="openDetail('bio')">
+                    <div class="tile-header">
+                        <div class="tile-icon icon-bio"><i class="fa-solid fa-paw"></i></div>
+                        <i class="fa-solid fa-chevron-right tile-arrow"></i>
+                    </div>
+                    <div class="tile-content">
+                        <h2>Biodiversity</h2>
+                        <p>Conservation, protected areas, wildlife rescue, and environmental education.</p>
+                    </div>
+                </div>
+
+                <!-- Lands Tile -->
+                <div class="tile-card tile-lands" onclick="openDetail('lands')">
+                    <div class="tile-header">
+                        <div class="tile-icon icon-lands"><i class="fa-solid fa-map"></i></div>
+                        <i class="fa-solid fa-chevron-right tile-arrow"></i>
+                    </div>
+                    <div class="tile-content">
+                        <h2>Lands</h2>
+                        <p>Land titling, cadastral surveys, and public land disposition services.</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- DETAILS OVERLAY (Shared Template, JS fills content) -->
+    <div id="detail-overlay" class="detail-overlay">
+        <div class="overlay-header" id="overlay-header-bg">
+            <button class="back-btn" onclick="closeDetail()"><i class="fa-solid fa-arrow-left"></i></button>
+            <div>
+                <h2 id="overlay-title" style="font-size: 28px; font-weight: 800; text-transform: uppercase;">Title</h2>
+                <p style="opacity: 0.9; font-size: 14px;">Available Services & Requirements</p>
+            </div>
+        </div>
+        <div class="overlay-body">
+            <div class="service-list" id="service-list-container">
+                <!-- Items injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripting -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <script>
+        // 1. CLOCK
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // 2. DATA CONTENT
+        const contentData = {
+            charter: {
+                title: "Citizen's Charter",
+                theme: "header-charter",
+                services: [
+                    { title: "Application for Land Title", desc: "Processing of titles for alienable and disposable public lands.", tag: "Processing Time: 6 Months", type: "req" },
+                    { title: "Certification of Land Classification", desc: "Official certification of land status and classification.", tag: "Fee: Php 100.00", type: "fee" },
+                    { title: "Client Satisfaction Survey", desc: "Rate the frontline services provided by the department.", tag: "Feedback", type: "req" }
+                ]
+            },
+            forest: {
+                title: "Forestry Services",
+                theme: "header-forest",
+                services: [
+                    { title: "Private Land Tree Cutting Permit", desc: "Authorization to cut trees within titled private lands.", tag: "Requirements: Sketch Plan", type: "req" },
+                    { title: "Certificate of Transport Permit", desc: "Permit to transport forest products and rattan.", tag: "Fee: Varies", type: "fee" },
+                    { title: "Free Seedling Request", desc: "Request for seedlings from clonal nurseries.", tag: "No Fee", type: "fee" },
+                    { title: "Wildlife Transport Permit", desc: "Authorization to transport wild fauna.", tag: "Legal Papers Needed", type: "req" }
+                ]
+            },
+            bio: {
+                title: "Biodiversity Management",
+                theme: "header-bio",
+                services: [
+                    { title: "Wildlife Rescue Reporting", desc: "24/7 hotline for distressed wildlife.", tag: "Emergency", type: "req" },
+                    { title: "Protected Area Entry Permit", desc: "Permits for trekking and camping in PAs (e.g. Mt Apo).", tag: "Fee: Php 50-200", type: "fee" },
+                    { title: "Wildlife Farm Registration", desc: "Certificate of Wildlife Registration (CWR).", tag: "Inspection Required", type: "req" }
+                ]
+            },
+            lands: {
+                title: "Lands Management",
+                theme: "header-lands",
+                services: [
+                    { title: "Free Patent Application", desc: "Application for Agricultural Free Patent over public lands.", tag: "Processing: 120 Days", type: "req" },
+                    { title: "Cadastral Survey", desc: "Subdivision or consolidation survey request.", tag: "Fee: Php 1,500/ha", type: "fee" },
+                    { title: "Land Sales Application", desc: "Direct sale of public agricultural lands.", tag: "Check Availability", type: "req" }
+                ]
+            }
+        };
+
+        // 3. NAVIGATION LOGIC
+        const overlay = document.getElementById('detail-overlay');
+        const titleEl = document.getElementById('overlay-title');
+        const headerEl = document.getElementById('overlay-header-bg');
+        const listContainer = document.getElementById('service-list-container');
+
+        function openDetail(category) {
+            const data = contentData[category];
+            
+            // Set Content
+            titleEl.innerText = data.title;
+            
+            // Set Theme Classes
+            headerEl.className = 'overlay-header ' + data.theme;
+            
+            // Build List HTML
+            listContainer.innerHTML = data.services.map((s, index) => `
+                <div class="service-item">
+                    <div class="s-id">0${index + 1}</div>
+                    <div class="s-content">
+                        <h3>${s.title}</h3>
+                        <p>${s.desc}</p>
+                        <span class="s-tag ${s.type === 'req' ? 'tag-req' : 'tag-fee'}">${s.tag}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Show Overlay
+            overlay.classList.add('active');
+        }
+
+        function closeDetail() {
+            overlay.classList.remove('active');
+        }
+
+        // 4. PARTICLES JS (Clean & Minimal)
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#004d00" }, /* Dark Green Dust */
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": true },
+                "size": { "value": 4, "random": true },
+                "line_linked": {
+                    "enable": false, /* No lines, just floating dust */
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "direction": "none",
+                    "random": false,
+                    "out_mode": "out"
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": false },
+                    "onclick": { "enable": false }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

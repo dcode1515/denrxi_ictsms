@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DENR XI ICT | Future of Governance</title>
+    
+    <!-- Google Fonts: Space Grotesk (Tech) & Outfit (Clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CORE SETUP --- */
+        :root {
+            --bg-deep: #020403;
+            --bg-panel: rgba(20, 30, 20, 0.4);
+            --primary: #00ff9d; /* Neon Lime */
+            --secondary: #00b8ff; /* Cyan */
+            --accent: #ff0055; /* Alert Pink */
+            --text-main: #ffffff;
+            --text-muted: #8899a6;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --shadow-glow: 0 0 20px rgba(0, 255, 157, 0.15);
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Hide default cursor */ }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- 2. CUSTOM CURSOR --- */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--primary);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        body:hover .cursor-outline {
+            opacity: 1;
+        }
+
+        /* Cursor Hover State */
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 255, 157, 0.1);
+            border-color: transparent;
+        }
+
+        /* Hide custom cursor on mobile */
+        @media (hover: none) {
+            .cursor-dot, .cursor-outline { display: none; }
+            * { cursor: auto; }
+        }
+
+        /* --- 3. DYNAMIC BACKGROUND & NAV --- */
+        #canvas-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.5rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: 0.4s ease;
+            backdrop-filter: blur(0px);
+        }
+
+        nav.scrolled {
+            padding: 1rem 6%;
+            background: rgba(2, 4, 3, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .brand {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand i { color: var(--primary); font-size: 1.2rem; }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0%; height: 2px;
+            background: var(--primary);
+            transition: 0.3s ease;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .nav-link:hover, .nav-link.active { color: #fff; }
+        .nav-link:hover::after { width: 100%; }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 100px;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 span { color: var(--primary); -webkit-text-fill-color: var(--primary); text-shadow: 0 0 30px rgba(0, 255, 157, 0.4); }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .btn-glow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 35px;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+            z-index: 1;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--primary);
+            z-index: -1;
+            transition: 0.4s ease;
+        }
+
+        .btn-glow:hover { color: #000; box-shadow: 0 0 30px var(--primary); }
+        .btn-glow:hover::before { width: 100%; }
+
+        /* --- 5. SECTIONS & UTILS --- */
+        section { padding: 100px 10%; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* --- 6. STATS GRID --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: -50px; /* Overlap hero slightly */
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: rgba(10, 15, 12, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .stat-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .stat-label { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; }
+
+        /* --- 7. 3D TILT CARDS (SYSTEMS) --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            perspective: 1000px; /* Essential for 3D */
+        }
+
+        .tilt-card {
+            background: var(--bg-panel);
+            border-radius: 24px;
+            padding: 10px; /* Inner padding spacing */
+            border: 1px solid var(--border-glass);
+            transition: transform 0.1s; /* Smooth JS tilt */
+            transform-style: preserve-3d;
+            height: 100%;
+            position: relative;
+        }
+
+        .card-content {
+            background: rgba(0,0,0,0.6);
+            border-radius: 16px;
+            height: 100%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.05);
+            transform: translateZ(20px); /* Makes content pop out */
+        }
+
+        .card-icon {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #000;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0, 255, 157, 0.2);
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-link i { transition: 0.3s; }
+        .card-link:hover i { transform: translateX(5px); }
+
+        /* --- 8. TEAM (Holographic Style) --- */
+        .team-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .team-member {
+            width: 280px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: 0.4s;
+        }
+
+        .team-member:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); }
+        .team-member:hover::before { transform: scaleX(1); }
+
+        .member-photo {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            padding: 3px;
+            border: 1px dashed var(--primary);
+            position: relative;
+        }
+
+        .member-photo img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.4s;
+        }
+
+        .team-member:hover img { filter: grayscale(0%); }
+
+        .member-name { color: #fff; font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+        .member-role { color: var(--primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; display: block;}
+
+        /* --- 9. FOOTER --- */
+        footer {
+            background: #010201;
+            padding: 80px 10% 30px;
+            border-top: 1px solid var(--border-glass);
+            position: relative;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p { color: var(--text-muted); margin-bottom: 20px; max-width: 300px; }
+
+        .social-row a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            color: #fff;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-row a:hover { background: var(--primary); color: #000; }
+
+        .footer-links h4 { color: #fff; margin-bottom: 20px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 3.5rem; }
+            .hero { padding-top: 100px; height: auto; min-height: 100vh; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .nav-menu { display: none; } /* Simplified mobile handling */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <!-- Background Canvas -->
+    <canvas id="canvas-container"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf"></i> DENR XI <span style="font-weight:300; color:#888;">ICT</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#stats" class="nav-link">Impact</a></li>
+            <li><a href="#systems" class="nav-link">Systems</a></li>
+            <li><a href="#team" class="nav-link">Team</a></li>
+        </ul>
+        <a href="#" class="btn-glow" style="padding: 10px 25px; font-size: 0.9rem;">Get Access</a>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="badge">Digital Transformation Region XI</span>
+            <h1>TECHNOLOGY <br> FOR <span>NATURE</span></h1>
+            <p class="hero-desc">Pioneering advanced ICT infrastructure to protect, preserve, and manage the environment of Davao Region through data-driven governance.</p>
+            <a href="#systems" class="btn-glow interactive-hover">
+                Explore Systems <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats (Floating) -->
+    <div class="container" style="padding: 0 10%;">
+        <div class="stats-grid">
+            <div class="stat-card interactive-hover">
+                <span class="stat-number" data-target="15">0</span>
+                <span class="stat-label">Systems Deployed</span>
+            </div>
+            <div class="stat-card interactive-hover">
+                <span class="stat-number" data-target="120">0</span>
+                <span class="stat-label">Network Nodes</span>
+            </div>
+            <div class="stat-card interactive-hover">
+                <span class="stat-number" data-target="500">0</span>
+                <span class="stat-label">Active Users</span>
+            </div>
+            <div class="stat-card interactive-hover">
+                <span class="stat-number" data-target="99">0</span>
+                <span class="stat-label">% Server Uptime</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- About / Intro -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-subtitle">Our Mission</span>
+            <h2 class="section-title">Bridging Ecology <br> & Innovation</h2>
+            <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">We are the digital backbone of environmental protection in Region XI.</p>
+        </div>
+        <div class="grid-container">
+            <div class="tilt-card interactive-hover">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+                    <h3 class="card-title">Infrastructure</h3>
+                    <p class="card-desc">Maintaining a redundant fiber-optic network connecting RO, PENROs, and CENROs for real-time data transmission.</p>
+                    <a href="#" class="card-link">View Topology <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+            <div class="tilt-card interactive-hover">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="card-title">Cybersecurity</h3>
+                    <p class="card-desc">Implementing enterprise-grade firewalls and encryption protocols to protect sensitive environmental data.</p>
+                    <a href="#" class="card-link">Security Protocol <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+            <div class="tilt-card interactive-hover">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3 class="card-title">Development</h3>
+                    <p class="card-desc">In-house software engineering team creating bespoke solutions tailored to DENR administrative workflows.</p>
+                    <a href="#" class="card-link">Our Stack <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Systems -->
+    <section id="systems">
+        <div class="section-header">
+            <span class="section-subtitle">Portfolio</span>
+            <h2 class="section-title">Developed Systems</h2>
+        </div>
+        
+        <div class="grid-container">
+            <!-- System 1 -->
+            <div class="tilt-card interactive-hover">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-file-contract"></i></div>
+                    <h3 class="card-title">LAMBMIS</h3>
+                    <p class="card-desc">Land Administration Management Business Information System. The primary database for land titles and patents in Region XI.</p>
+                    <a href="#" class="card-link">Launch App <i class="fa-solid fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <!-- System 2 -->
+            <div class="tilt-card interactive-hover">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-route"></i></div>
+                    <h3 class="card-title">Document Tracking</h3>
+                    <p class="card-desc">Digitizes the routing slip process. Track document movement from receipt to disposition with audit trails.</p>
+                    <a href="#" class="card-link">Track Docs <i class="fa-solid fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <!-- System 3 -->
+            <div class="tilt-card interactive-hover">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3 class="card-title">Geo-Spatial Portal</h3>
+                    <p class="card-desc">Web-based GIS platform for visualizing Protected Areas, Mining Tenements, and Critical Habitats.</p>
+                    <a href="#" class="card-link">Open Map <i class="fa-solid fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+             <!-- System 4 -->
+             <div class="tilt-card interactive-hover">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-users-gear"></i></div>
+                    <h3 class="card-title">HRMIS</h3>
+                    <p class="card-desc">Human Resource Management Information System. Handles leave, payroll, and personnel 201 files securely.</p>
+                    <a href="#" class="card-link">HR Portal <i class="fa-solid fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+             <!-- System 5 -->
+             <div class="tilt-card interactive-hover">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-tree"></i></div>
+                    <h3 class="card-title">Nursery DB</h3>
+                    <p class="card-desc">Inventory management for clonal nurseries. Monitors seedling survival rates and distribution.</p>
+                    <a href="#" class="card-link">View Inventory <i class="fa-solid fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+             <!-- System 6 -->
+             <div class="tilt-card interactive-hover">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <h3 class="card-title">Legal Case Mgmt</h3>
+                    <p class="card-desc">A docketing system for environmental cases. Tracks cases from seizure to court resolution.</p>
+                    <a href="#" class="card-link">Case Docket <i class="fa-solid fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team">
+        <div class="section-header">
+            <span class="section-subtitle">The Unit</span>
+            <h2 class="section-title">Key Personnel</h2>
+        </div>
+        <div class="team-wrapper">
+            <div class="team-member interactive-hover">
+                <div class="member-photo">
+                    <img src="https://picsum.photos/seed/denr1/200/200" alt="Person">
+                </div>
+                <h3 class="member-name">Engr. Roberto Dias</h3>
+                <span class="member-role">OIC, ICT Unit</span>
+                <div class="social-row" style="justify-content: center;">
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-member interactive-hover">
+                <div class="member-photo">
+                    <img src="https://picsum.photos/seed/denr2/200/200" alt="Person">
+                </div>
+                <h3 class="member-name">Ana Liza</h3>
+                <span class="member-role">Lead Developer</span>
+                <div class="social-row" style="justify-content: center;">
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="team-member interactive-hover">
+                <div class="member-photo">
+                    <img src="https://picsum.photos/seed/denr3/200/200" alt="Person">
+                </div>
+                <h3 class="member-name">Mark Davao</h3>
+                <span class="member-role">Network Admin</span>
+                <div class="social-row" style="justify-content: center;">
+                    <a href="#"><i class="fa-solid fa-network-wired"></i></a>
+                    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-member interactive-hover">
+                <div class="member-photo">
+                    <img src="https://picsum.photos/seed/denr4/200/200" alt="Person">
+                </div>
+                <h3 class="member-name">Sarah Green</h3>
+                <span class="member-role">UI/UX Designer</span>
+                <div class="social-row" style="justify-content: center;">
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-behance"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>DENR XI ICT</h2>
+                <p>Department of Environment and Natural Resources<br>Region XI, Davao City</p>
+                <div class="social-row">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Access</h4>
+                <ul>
+                    <li><a href="#">DENR National</a></li>
+                    <li><a href="#">EODB Services</a></li>
+                    <li><a href="#">Transparency Seal</a></li>
+                    <li><a href="#">Citizen's Charter</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot" style="color:var(--primary); width:20px;"></i> Davao City, Philippines</li>
+                    <li><i class="fa-solid fa-phone" style="color:var(--primary); width:20px;"></i> (082) 227-2104</li>
+                    <li><i class="fa-solid fa-envelope" style="color:var(--primary); width:20px;"></i> ict.denrxi@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 DENR Region XI ICT Unit. Designed for Governance.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. CUSTOM CURSOR LOGIC
+        const cursorDot = document.querySelector('[data-cursor-dot]');
+        const cursorOutline = document.querySelector('[data-cursor-outline]');
+        const interactiveElements = document.querySelectorAll('.interactive-hover, a, button');
+
+        window.addEventListener("mousemove", function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Dot follows instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Outline follows with slight delay (animation in CSS keyframes could work, but JS is smoother for trailing)
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Hover effect expansion
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // 2. 3D TILT EFFECT FOR CARDS
+        const cards = document.querySelectorAll('.tilt-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Calculate rotation based on center of card
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10; // Max rotation deg
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+
+        // 3. NUMBER COUNTER ANIMATION
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    
+                    // Lower increment = slower
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                        // Add % if needed
+                        if(counter.parentElement.querySelector('.stat-label').innerText.includes('%')) {
+                            counter.innerText += "%";
+                        } else if (counter.parentElement.querySelector('.stat-label').innerText.includes('+')) {
+                            counter.innerText += "+";
+                        }
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger counter when scrolled into view
+        let counted = false;
+        const statsSection = document.getElementById('stats');
+        
+        window.addEventListener('scroll', () => {
+            if(!counted && window.scrollY > statsSection.offsetTop - 500) {
+                animateCounters();
+                counted = true;
+            }
+
+            // Navbar background on scroll
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // 4. ADVANCED CANVAS BACKGROUND (Organic Network)
+        const canvas = document.getElementById('canvas-container');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray;
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000; // Density
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 0.4) - 0.2;
+                let directionY = (Math.random() * 0.4) - 0.2;
+                let color = '#00ff9d'; // Neon Green
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
+                                   ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    
+                    if (distance < (canvas.width/7) * (canvas.height/7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = 'rgba(0, 255, 157,' + opacityValue * 0.15 + ')';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            init();
+        });
+
+        init();
+        animate();
+
+    </script>
+</body>
+</html>

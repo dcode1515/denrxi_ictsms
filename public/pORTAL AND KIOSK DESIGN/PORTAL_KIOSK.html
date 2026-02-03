@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DENR XI | Public Kiosk Portal</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CORE VARIABLES --- */
+        :root {
+            --denr-green: #006400;
+            --denr-light: #32CD32;
+            --denr-gold: #FFD700;
+            --denr-brown: #8B4513;
+            --text-dark: #1a1a1a;
+            --bg-overlay: rgba(255, 255, 255, 0.95);
+            --shadow-card: 0 10px 25px rgba(0,0,0,0.1);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #000; /* Fallback */
+            color: var(--text-dark);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* Kiosk Mode - No scrolling body */
+            position: relative;
+        }
+
+        /* --- 2. PARTICLES BACKGROUND --- */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a3a25 0%, #051008 100%);
+        }
+
+        /* --- 3. LAYOUT & HEADER --- */
+        .kiosk-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-icon {
+            width: 60px; height: 60px;
+            background: var(--denr-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 30px;
+            border: 4px solid var(--denr-gold);
+        }
+
+        .logo-text h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 28px;
+            color: var(--denr-green);
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .kiosk-info {
+            text-align: right;
+        }
+
+        #clock {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        #date {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* --- 4. MAIN DASHBOARD (HOME VIEW) --- */
+        #home-view {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .welcome-banner {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome-banner h2 {
+            font-size: 48px;
+            color: #fff;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        .welcome-banner p {
+            font-size: 20px;
+            color: #ddd;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 25px;
+            height: 60vh; /* Takes up majority of screen */
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-card);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .menu-btn::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 8px;
+        }
+
+        /* Specific Button Themes */
+        .btn-charter::after { background: var(--denr-gold); }
+        .btn-forestry::after { background: var(--denr-green); }
+        .btn-biodiversity::after { background: #007bff; }
+        .btn-lands::after { background: var(--denr-brown); }
+
+        .menu-btn i {
+            font-size: 60px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-charter i { color: var(--denr-gold); }
+        .btn-forestry i { color: var(--denr-green); }
+        .btn-biodiversity i { color: #007bff; }
+        .btn-lands i { color: var(--denr-brown); }
+
+        .menu-btn span {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        /* --- 5. CONTENT VIEWS (DETAILS) --- */
+        .content-view {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #f4f7f6;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%); /* Hidden off-screen */
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            overflow-y: auto;
+        }
+
+        .content-view.active {
+            transform: translateX(0);
+        }
+
+        .view-header {
+            background: var(--denr-green);
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid #fff;
+            color: #fff;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover { background: #fff; color: var(--denr-green); }
+
+        .view-title { font-size: 28px; text-transform: uppercase; font-weight: 700; }
+
+        .view-content {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Cards inside content */
+        .service-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #ccc;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .service-card.charter { border-left-color: var(--denr-gold); }
+        .service-card.forestry { border-left-color: var(--denr-green); }
+        .service-card.bio { border-left-color: #007bff; }
+        .service-card.lands { border-left-color: var(--denr-brown); }
+
+        .s-icon {
+            width: 60px; height: 60px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #555;
+        }
+
+        .s-info h3 { font-size: 20px; margin-bottom: 5px; color: #222; }
+        .s-info p { color: #666; font-size: 16px; line-height: 1.4; }
+        .steps { margin-top: 10px; font-size: 14px; color: var(--denr-green); font-weight: 600; }
+
+        /* Footer branding in content */
+        .kiosk-footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            padding-bottom: 20px;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+            .menu-grid { grid-template-columns: 1fr; height: auto; }
+            .menu-btn { height: 150px; margin-bottom: 10px; }
+            header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .kiosk-info { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Main Kiosk Container -->
+    <div class="kiosk-container">
+        
+        <!-- Header -->
+        <header>
+            <div class="logo-area">
+                <div class="logo-icon"><i class="fa-solid fa-tree"></i></div>
+                <div class="logo-text">
+                    <h1>DENR Region XI</h1>
+                    <span>Department of Environment and Natural Resources</span>
+                </div>
+            </div>
+            <div class="kiosk-info">
+                <div id="clock">00:00:00 AM</div>
+                <div id="date">Monday, January 1, 2024</div>
+            </div>
+        </header>
+
+        <!-- Home Dashboard (Menu) -->
+        <div id="home-view">
+            <div class="welcome-banner">
+                <h2>HOW MAY WE HELP YOU?</h2>
+                <p>Select a category below to begin.</p>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Citizen Charter -->
+                <button class="menu-btn btn-charter" onclick="openView('view-charter')">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Citizen Charter</span>
+                </button>
+
+                <!-- Forestry -->
+                <button class="menu-btn btn-forestry" onclick="openView('view-forestry')">
+                    <i class="fa-solid fa-tree"></i>
+                    <span>Forestry</span>
+                </button>
+
+                <!-- Biodiversity -->
+                <button class="menu-btn btn-biodiversity" onclick="openView('view-bio')">
+                    <i class="fa-solid fa-paw"></i>
+                    <span>Biodiversity</span>
+                </button>
+
+                <!-- Lands -->
+                <button class="menu-btn btn-lands" onclick="openView('view-lands')">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Lands</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT VIEWS (Overlays) -->
+
+    <!-- 1. CITIZEN CHARTER VIEW -->
+    <div id="view-charter" class="content-view">
+        <div class="view-header" style="background: var(--denr-gold);">
+            <button class="back-btn" onclick="closeView('view-charter')"><i class="fa-solid fa-arrow-left"></i></button>
+            <span class="view-title">Citizen's Charter</span>
+        </div>
+        <div class="view-content">
+            <p style="font-size: 18px; margin-bottom: 30px;">A pledge of commitment to excellence in public service.</p>
+
+            <div class="service-card charter">
+                <div class="s-icon"><i class="fa-solid fa-file-contract"></i></div>
+                <div class="s-info">
+                    <h3>Issuance of Certification</h3>
+                    <p>Certification of land classification, land status, and tenurial instruments.</p>
+                    <div class="steps">Steps: Filing -> Verification -> Approval -> Release</div>
+                </div>
+            </div>
+
+            <div class="service-card charter">
+                <div class="s-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="s-info">
+                    <h3>Client Satisfaction Survey</h3>
+                    <p>Rate our services to help us improve the quality of our frontline services.</p>
+                    <div class="steps">Feedback Link: denr.gov.ph/feedback</div>
+                </div>
+            </div>
+            
+            <div class="kiosk-footer">
+                DENR Region XI | Davao City <br> <i class="fa-solid fa-phone"></i> (082) 227-2104
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. FORESTRY VIEW -->
+    <div id="view-forestry" class="content-view">
+        <div class="view-header" style="background: var(--denr-green);">
+            <button class="back-btn" onclick="closeView('view-forestry')"><i class="fa-solid fa-arrow-left"></i></button>
+            <span class="view-title">Forestry Services</span>
+        </div>
+        <div class="view-content">
+            <div class="service-card forestry">
+                <div class="s-icon"><i class="fa-solid fa-tree"></i></div>
+                <div class="s-info">
+                    <h3>Tree Cutting Permit</h3>
+                    <p>Application for permit to cut naturally grown trees within private lands.</p>
+                    <div class="steps">Requirements: Land Title, Barangay Clearance, Sketch Plan</div>
+                </div>
+            </div>
+
+            <div class="service-card forestry">
+                <div class="s-icon"><i class="fa-solid fa-truck"></i></div>
+                <div class="s-info">
+                    <h3>Transport Permit</h3>
+                    <p>Authority to transport forest products and rattan cane.</p>
+                    <div class="steps">Transport Documents required from source.</div>
+                </div>
+            </div>
+
+            <div class="service-card forestry">
+                <div class="s-icon"><i class="fa-solid fa-seedling"></i></div>
+                <div class="s-info">
+                    <h3>Seedling Request</h3>
+                    <p>Request for free seedlings from our clonal and regular nurseries.</p>
+                    <div class="steps">Visit nearest CENRO to avail.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. BIODIVERSITY VIEW -->
+    <div id="view-bio" class="content-view">
+        <div class="view-header" style="background: #007bff;">
+            <button class="back-btn" onclick="closeView('view-bio')"><i class="fa-solid fa-arrow-left"></i></button>
+            <span class="view-title">Biodiversity Management</span>
+        </div>
+        <div class="view-content">
+            <div class="service-card bio">
+                <div class="s-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                <div class="s-info">
+                    <h3>Wildlife Rescue</h3>
+                    <p>Report wildlife in distress or needing rescue.</p>
+                    <div class="steps">Hotline: 911 or Contact BMB Regional Office</div>
+                </div>
+            </div>
+
+            <div class="service-card bio">
+                <div class="s-icon"><i class="fa-solid fa-camera"></i></div>
+                <div class="s-info">
+                    <h3>Wildlife Farm Permit</h3>
+                    <p>Application for Certificate of Wildlife Registration (CWR).</p>
+                    <div class="steps">Inspection of facility required prior to approval.</div>
+                </div>
+            </div>
+
+            <div class="service-card bio">
+                <div class="s-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                <div class="s-info">
+                    <h3>Protected Area Entry</h3>
+                    <p>Information and permits for entering Protected Areas (e.g., Mt. Apo).</p>
+                    <div class="steps">Register at entry point or with PAMO.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. LANDS VIEW -->
+    <div id="view-lands" class="content-view">
+        <div class="view-header" style="background: var(--denr-brown);">
+            <button class="back-btn" onclick="closeView('view-lands')"><i class="fa-solid fa-arrow-left"></i></button>
+            <span class="view-title">Lands Management</span>
+        </div>
+        <div class="view-content">
+            <div class="service-card lands">
+                <div class="s-icon"><i class="fa-solid fa-file-signature"></i></div>
+                <div class="s-info">
+                    <h3>Patent Application (Homestead)</h3>
+                    <p>Application for land titling over agricultural public lands.</p>
+                    <div class="steps">Submit Form to DENR or LMB.</div>
+                </div>
+            </div>
+
+            <div class="service-card lands">
+                <div class="s-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                <div class="s-info">
+                    <h3>Land Survey</h3>
+                    <p>Request for cadastral survey, subdivision survey, or consolidation survey.</p>
+                    <div class="steps">Prepare Lot Plan and Deed of Transfer.</div>
+                </div>
+            </div>
+
+            <div class="service-card lands">
+                <div class="s-icon"><i class="fa-solid fa-handshake"></i></div>
+                <div class="s-info">
+                    <h3>Public Land Sales</h3>
+                    <p>Direct Sale of public agricultural lands.</p>
+                    <div class="steps">Check land availability with LMD.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <script>
+        // 1. REAL TIME CLOCK
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const dateString = now.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            
+            document.getElementById('clock').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // 2. NAVIGATION LOGIC (SPA Feel)
+        function openView(viewId) {
+            const view = document.getElementById(viewId);
+            view.classList.add('active');
+        }
+
+        function closeView(viewId) {
+            const view = document.getElementById(viewId);
+            view.classList.remove('active');
+        }
+
+        // 3. PARTICLES JS CONFIGURATION (Nature/Organic Theme)
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 60,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 200,
+                    "color": "#ffffff",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1.5, // Slow, gentle movement
+                    "direction": "none",
+                    "random": false,
+                    "out_mode": "out"
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 180,
+                        "line_linked": { "opacity": 0.5 }
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
